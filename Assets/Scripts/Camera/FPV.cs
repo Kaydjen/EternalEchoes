@@ -71,14 +71,14 @@ public class FPV : CameraCore, IUpdate
     {
         _y -= InputHandler.MouseInput.y * _sensitivity * Time.deltaTime;
         _x += InputHandler.MouseInput.x * _sensitivity * Time.deltaTime;
-        _y = Mathf.Clamp(_y, -85f, 85f);
+        _y = Mathf.Clamp(_y, -45f, 45f);
     }
     private void ManageRotation()
     {
         transform.rotation = Quaternion.Euler(0f, _x, 0f);
         _walkDirection.rotation = Quaternion.Euler(0f, _x, 0f);
         _camera.localRotation = Quaternion.Euler(_y, 0f, 0f);
-        _lookOrientation.localRotation = Quaternion.Euler(_y, _x, 0f);
+        _lookOrientation.rotation = Quaternion.Euler(_y, _x, 0f);
     }
     #endregion
     #region OnEvent
