@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddd5187697eca4244b790eebf144a92c, type: 3}
+  m_Name: Basteon
+  m_EditorClassIdentifier: 
+  type: Dungeon
+  layer: 1
+  tiles:
+  - {fileID: 1086057755727516021, guid: d929199b81789d840a27ab779b566c87, type: 3}
+  - {fileID: 1086057755727516021, guid: 7aca7daaca07d2a4990df99683a2b2c5, type: 3}
+  joinType: 0
+  layout: "\u25A1\u25A1\u25A1\u25A1\u25A1\u25A0\u25A1\u25A1\u25A1\u25A1\u25A1\n\u25A1\u25A1\u25A1\u25A1\u25A0\u25A0\u25A0\u25A1\u25A1\u25A1\u25A1\n\u25A1\u25A1\u25A1\u25A0\u25A0\u25A0\u25A0\u25A0\u25A1\u25A1\u25A1\n\u25A0\u25A0\u25A0\u25A0\u25A0\u25A0\u25A0\u25A0\u25A0\u25A0\u25A0\n\u25A1\u25A0\u25A0\u25A0\u25A0\u25A0\u25A0\u25A0\u25A0\u25A0\n\u25A1\u25A1\u25A0\u25A0\u25A0\u25A0\u25A0\u25A0\u25A0\n\u25A1\u25A1\u25A1\u25A0\u25A0\u25A0\u25A0\u25A0\n\u25A1\u25A1\u25A0\u25A0\u25A0\u25A0\u25A0\u25A0\u25A0\n\u25A1\u25A0\u25A0\u25A0\u25A1\u25A1\u25A1\u25A0\u25A0\u25A0\n\u25A0\u25A0\u25A1\u25A1\u25A1\u25A1\u25A1\u25A1\u25A1\u25A0\u25A0"
