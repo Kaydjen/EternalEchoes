@@ -11,6 +11,7 @@ public class InitializationManager : MonoBehaviour
     [Space(20)]
     [Header("Init methods")]
     [SerializeField] private UnityEvent _inits;
+    [SerializeField] private UnityEvent _objectsToEnable;
     private void Awake()
     {
         if (_doWaitBeforeExecute) Invoke(nameof(Execute), _timeToExecute);
@@ -19,6 +20,7 @@ public class InitializationManager : MonoBehaviour
     private void Execute()
     {
         _inits?.Invoke();
+        _objectsToEnable?.Invoke();
 
         Debug.Log($"{nameof(InitializationManager)} was destroyed");
 

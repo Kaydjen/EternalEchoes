@@ -149,7 +149,41 @@ public class Updater : MonoBehaviour
         }
     }
 }
-
+/*
+ 
+    #region Update
+    public void PerformInitialUpdate()
+    {
+        throw new System.NotImplementedException();
+    }
+    public void PerformPreUpdate()
+    {
+        throw new System.NotImplementedException();
+    }
+    public void PerformUpdate()
+    {
+        throw new System.NotImplementedException();
+    }
+    public void PerformFinalUpdate()
+    {
+        throw new System.NotImplementedException();
+    }
+    public void PerformLateUpdate()
+    {
+        throw new System.NotImplementedException();
+    }
+    private void RegisterUpdate()
+    {
+        Updater.Instance.RegisterUpdate(this, Updater.UpdateType.);
+    }
+    private void UnregisterUpdate()
+    {
+        Updater.Instance.UnregisterUpdate(this, Updater.UpdateType.);
+    }
+    #endregion
+ 
+ 
+ */
 /*
  
      #region Update
