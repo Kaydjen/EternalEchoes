@@ -6,7 +6,8 @@ public class FPV : CameraCore, IUpdate
     [SerializeField] private Vector3 _cameraHubOffset = new Vector3(0f, .7f, 0f);
     [SerializeField] private Vector3 _cameraOffset = new Vector3(0f, .15f, .5f);
     [SerializeField][Range(.25f,5f)] private float _sensitivity = 3f;
-    [SerializeField] private Transform _lookOrientation;
+    [SerializeField] private Transform _lookOrientationY;
+    [SerializeField] private Transform _lookOrientationX;
     [SerializeField] private Transform _walkDirection;
 
     private Transform _player;
@@ -76,9 +77,12 @@ public class FPV : CameraCore, IUpdate
     private void ManageRotation()
     {
         transform.rotation = Quaternion.Euler(0f, _x, 0f);
-        _walkDirection.rotation = Quaternion.Euler(0f, _x, 0f);
         _camera.localRotation = Quaternion.Euler(_y, 0f, 0f);
-        _lookOrientation.rotation = Quaternion.Euler(_y, _x, 0f);
+
+        _walkDirection.rotation = Quaternion.Euler(0f, _x, 0f);
+
+        _lookOrientationY.rotation = Quaternion.Euler(0f, _x, 0f);
+        _lookOrientationX.localRotation = Quaternion.Euler(_y, 0f, 0f);
     }
     #endregion
     #region OnEvent
