@@ -1,61 +1,53 @@
 using System.Reflection;
-using System.Runtime.Serialization;
 using UnityEditor;
 using UnityEngine;
 
 public abstract class BaseEditor : Editor
 {
-    static GUIStyle ms_titleStule = null;
-    ComponentAttribute m_componentAttribute = null;
+    private ComponentAttribute _componentAttribute = null;
     private void OnEnable()
     {
-        if (m_componentAttribute == null)
-            m_componentAttribute = GetComponentAttribute(target);
+        if (_componentAttribute == null)
+            _componentAttribute = GetComponentAttribute(target);
     }
     public override void OnInspectorGUI()
     {
-        HeaderGUI(m_componentAttribute); 
+        if (_componentAttribute != null) HeaderGUI(_componentAttribute); 
 
         base.OnInspectorGUI();
-
-       // GUILayout.Label(m_componentAttribute.Name);
     }
     public static void HeaderGUI(ComponentAttribute componentAttribute)
     {
-        if (componentAttribute != null)
+        GUILayout.Space(10f);
+
+        GUIStyle titleStyle = new GUIStyle(GUI.skin.label)
         {
-            GUILayout.Space(10f);
+            fontSize = 15,
+            fontStyle = FontStyle.Bold,
+            alignment = TextAnchor.MiddleCenter
+        };
 
-            if (ms_titleStule == null)
-            {
-                ms_titleStule = new GUIStyle(GUI.skin.label);
-                ms_titleStule.fontSize = 15;
-                ms_titleStule.fontStyle = FontStyle.Bold;
-                ms_titleStule.alignment = TextAnchor.MiddleCenter;
-            }
+        EditorGUILayout.BeginHorizontal();
+        GUILayout.FlexibleSpace();
 
-            EditorGUILayout.BeginHorizontal();
-            GUILayout.FlexibleSpace();
+        GUILayout.Label(componentAttribute.Name, titleStyle);
 
-            GUILayout.Label(componentAttribute.Name, ms_titleStule);
+        GUILayout.FlexibleSpace();
+        EditorGUILayout.EndHorizontal();
 
-            GUILayout.FlexibleSpace();
-            EditorGUILayout.EndHorizontal();
+        EditorGUILayout.BeginHorizontal();
+        GUILayout.FlexibleSpace();
 
-            EditorGUILayout.BeginHorizontal();
-            GUILayout.FlexibleSpace();
+        GUILayout.Box(componentAttribute.Description, GUILayout.Width(Screen.width * .4f));
 
-            GUILayout.Box(componentAttribute.Description, GUILayout.Width(Screen.width * .4f));
-
-            GUILayout.FlexibleSpace();
-            EditorGUILayout.EndHorizontal();
+        GUILayout.FlexibleSpace();
+        EditorGUILayout.EndHorizontal();
 
 
-            GUILayout.Space(20f);
-        }
+        GUILayout.Space(20f);
     }
-    public static ComponentAttribute GetComponentAttribute(UnityEngine.Object obj)
+    public static ComponentAttribute GetComponentAttribute(Object obj)
     {
-        return obj.GetType().GetCustomAttribute<ComponentAttribute>() ?? new ComponentAttribute(obj.GetType().ToString());
+        return obj.GetType().GetCustomAttribute<ComponentAttribute>();
     }
 }

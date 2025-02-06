@@ -1,7 +1,7 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 
-[Component("Gay", "sss")]
+[Component("Entry point", "This script ")]
 public class InitializationManager : MonoBehaviour
 {
     [Space(20)]
