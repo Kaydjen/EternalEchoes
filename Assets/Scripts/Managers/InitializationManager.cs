@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
+[Component("Gay", "sss")]
 public class InitializationManager : MonoBehaviour
 {
     [Space(20)]
@@ -22,10 +23,29 @@ public class InitializationManager : MonoBehaviour
         _inits?.Invoke();
         _objectsToEnable?.Invoke();
 
-        Debug.Log($"{nameof(InitializationManager)} was destroyed");
-
-        if (_doDestroy) Destroy(this);
+        if (_doDestroy)
+        {
+            Debug.Log($"{nameof(InitializationManager)} was destroyed");
+            Destroy(this);
+        }
     }
+    #region Manu
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     [ContextMenu("Do Something")]
     private void DoSomething()
     {
@@ -36,5 +56,9 @@ public class InitializationManager : MonoBehaviour
     {
         Debug.Log("drink coffee and keep working");
     }
+    #endregion
 }
+
+
+
 

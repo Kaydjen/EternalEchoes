@@ -3,7 +3,7 @@ using UnityEngine;
 public class LookOrientation : MonoBehaviour, IUpdate
 {
     #region Variables
-    private Transform _player;
+    public static Vector2 Direction { get; private set; }
     #endregion
     #region Update
     public void PerformInitialUpdate()
@@ -12,7 +12,7 @@ public class LookOrientation : MonoBehaviour, IUpdate
     }
     public void PerformPreUpdate()
     {
-        throw new System.NotImplementedException();
+        Direction = (this.transform.GetChild(0).position - this.transform.position).normalized;
     }
     public void PerformUpdate()
     {
@@ -24,21 +24,15 @@ public class LookOrientation : MonoBehaviour, IUpdate
     }
     public void PerformLateUpdate()
     {
-        this.transform.position = _player.position;
+        throw new System.NotImplementedException();
     }
     private void RegisterUpdate()
     {
-        Updater.Instance.RegisterUpdate(this, Updater.UpdateType.LateUpdate);
+        Updater.Instance.RegisterUpdate(this, Updater.UpdateType.PreUpdate);
     }
     private void UnregisterUpdate()
     {
-        Updater.Instance.UnregisterUpdate(this, Updater.UpdateType.LateUpdate);
-    }
-    #endregion
-    #region Methods
-    public void Init()
-    {
-        _player = PlayerCore.Instance.transform;
+        Updater.Instance.UnregisterUpdate(this, Updater.UpdateType.PreUpdate);
     }
     #endregion
     #region OnEvent
