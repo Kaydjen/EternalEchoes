@@ -1,16 +1,16 @@
 using System;
 
 [AttributeUsage(AttributeTargets.Class)]
-public class ComponentAttribute : Attribute
+public class ComponentInfoAttribute : Attribute
 {
     public string Name { get; private set; } = null;
     public string Description { get; private set; } = null;
 
-    public ComponentAttribute(string name)
+    public ComponentInfoAttribute(string name)
     {
         Name = name;
     }
-    public ComponentAttribute(string name, string description) : this(name)
+    public ComponentInfoAttribute(string name, string description) : this(name)
     {
         Description = description;
     }

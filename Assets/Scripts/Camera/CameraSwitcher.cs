@@ -1,6 +1,12 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
+[ComponentInfo("Перемикач Виду Камери", 
+    "Керує перемиканням між різними режимами камери (ізометричним, FPV та RTS). " +
+    "Використовує Singleton. " +
+    "Є три івенти для кожного виду відповідно." +
+    "Реагує на натискання клавіші C, " +
+    "змінюючи активний режим камери та викликаючи Events.")]
 public class CameraSwitcher : MonoBehaviour
 {
     #region variables

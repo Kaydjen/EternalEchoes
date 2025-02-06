@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class BaseEditor : Editor
 {
-    private ComponentAttribute _componentAttribute = null;
+    private ComponentInfoAttribute _componentAttribute = null;
     private void OnEnable()
     {
         if (_componentAttribute == null)
@@ -16,7 +16,7 @@ public abstract class BaseEditor : Editor
 
         base.OnInspectorGUI();
     }
-    public static void HeaderGUI(ComponentAttribute componentAttribute)
+    public static void HeaderGUI(ComponentInfoAttribute componentAttribute)
     {
         GUILayout.Space(10f);
 
@@ -46,8 +46,8 @@ public abstract class BaseEditor : Editor
 
         GUILayout.Space(20f);
     }
-    public static ComponentAttribute GetComponentAttribute(Object obj)
+    public static ComponentInfoAttribute GetComponentAttribute(Object obj)
     {
-        return obj.GetType().GetCustomAttribute<ComponentAttribute>();
+        return obj.GetType().GetCustomAttribute<ComponentInfoAttribute>();
     }
 }

@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.InputSystem;
 
+[ComponentInfo("Введення гравця", 
+    "Клас містить і обробляє все введення користувача. " +
+    "Містить івенти та static поля, що залежать від даних введення")]
 public class InputHandler : MonoBehaviour
 {
     // Reference to the main input actions asset that contains all input mappings
@@ -137,6 +139,7 @@ public class InputHandler : MonoBehaviour
         _TopDown.Disable();
         _Isometric.Disable();
     }
+
 }
 
 /* Instruction

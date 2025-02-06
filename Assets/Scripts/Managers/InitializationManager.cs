@@ -1,7 +1,13 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
-[Component("Entry point", "This script ")]
+[ComponentInfo("Entry Point",
+    "Точка входу для методів використовується, " +
+    "щоб вказати послідовність першого спрацьовування методів ініціалізації в класах. " +
+    "Замінник методу Awake/Start. Перший перелік для ініціалізації. " +
+    "Другий список для увімкнення об'єктів. Є можливість затримки перед запуском ініціалізації. " +
+    "Можна видалити клас після завершення роботи.")]
+
 public class InitializationManager : MonoBehaviour
 {
     [Space(20)]
@@ -30,22 +36,6 @@ public class InitializationManager : MonoBehaviour
         }
     }
     #region Manu
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     [ContextMenu("Do Something")]
     private void DoSomething()
     {
