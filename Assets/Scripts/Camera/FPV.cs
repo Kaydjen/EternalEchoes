@@ -1,5 +1,10 @@
 ﻿using UnityEngine;
 
+[ComponentInfo("FPV Камера",
+    "Відповідає за управління камерою від першої особи (FPV). " +
+    "Інтерпретує введення з миші для керування обертами камери. " +
+    "Містить механізми для налаштування позицій камери та об'єкта гравця, а також для оновлення кожного кадру. " +
+    "Підтримує підключення до системи оновлень.")]
 public class FPV : CameraCore, IUpdate
 {
     #region Variables
@@ -78,9 +83,9 @@ public class FPV : CameraCore, IUpdate
         transform.rotation = Quaternion.Euler(0f, _x, 0f);
         _camera.localRotation = Quaternion.Euler(_y, 0f, 0f);
 
-        _walkDirection.rotation = Quaternion.Euler(0f, _x, 0f);
+        //_walkDirection.rotation = Quaternion.Euler(0f, _x, 0f);
 
-        _lookOrientation.rotation = Quaternion.Euler(0f, _x, 0f);
+        //_lookOrientation.rotation = Quaternion.Euler(0f, _x, 0f);
     }
     #endregion
     #region OnEvent

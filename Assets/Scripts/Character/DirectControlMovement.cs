@@ -4,7 +4,7 @@ public class DirectControlMovement : MonoBehaviour, IUpdate
 {
     [SerializeField] private float _speed = 7f;
     private CharacterController _controller;
-    private Transform _transform;
+    private Transform _direction;
     private Vector3 _velocity;
     public float Speed
     {
@@ -32,7 +32,7 @@ public class DirectControlMovement : MonoBehaviour, IUpdate
     }
     public void PerformFinalUpdate()
     {
-        _velocity = (_transform.right * InputHandler.WASDInput.x + _transform.forward * InputHandler.WASDInput.y).normalized;
+        _velocity = (_direction.right * InputHandler.WASDInput.x + _direction.forward * InputHandler.WASDInput.y).normalized;
         _controller.Move(_velocity * _speed * Time.deltaTime);
     }
     public void PerformLateUpdate()
@@ -43,7 +43,6 @@ public class DirectControlMovement : MonoBehaviour, IUpdate
     public void Start()
     {
         _controller = this.transform.root.transform.GetComponent<CharacterController>();
-        _transform = WalkDirection.Instance.transform;
         if (_controller == null)
             Debug.LogError($"{gameObject.name}, {this.GetType().Name}, the CharacterController is empty");
         _controller.enabled = true;
@@ -53,11 +52,15 @@ public class DirectControlMovement : MonoBehaviour, IUpdate
         if(_controller != null) _controller.enabled = true;
 
         Updater.Instance.RegisterUpdate(this, Updater.UpdateType.FinalUpdate);
+        CameraSwitcher.OnFPV_Enable.AddListener(EnableFPVMovement);
     }
     private void OnDisable()
     {
         if (_controller != null) _controller.enabled = false;
 
         Updater.Instance.UnregisterUpdate(this, Updater.UpdateType.FinalUpdate);
+        CameraSwitcher.OnIsometricV_Enable.AddListener(DisableFPVMovement);
     }
+    private void EnableFPVMovement() => _direction = CameraSwitcher.Instance.transform;
+    private void DisableFPVMovement() => _direction = this.transform.root.transform;
 }

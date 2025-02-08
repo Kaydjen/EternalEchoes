@@ -1312,23 +1312,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &641359969975923613
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1303284317265907302}
-  - component: {fileID: 8721187514144872506}
-  m_Layer: 0
-  m_Name: WalkDirection
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
 --- !u!1 &809866950083786988
 GameObject:
   m_ObjectHideFlags: 0
@@ -1464,21 +1447,6 @@ Transform:
   - {fileID: 6742636372770216651}
   - {fileID: 7053789813545847944}
   m_Father: {fileID: 4214715752390808944}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &1303284317265907302
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 641359969975923613}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1395176761163484635
 Transform:
@@ -1970,7 +1938,7 @@ MonoBehaviour:
   _cameraOffset: {x: 0, y: 0.15, z: 0.5}
   _sensitivity: 3
   _lookOrientation: {fileID: 2767056009189630883}
-  _walkDirection: {fileID: 1303284317265907302}
+  _walkDirection: {fileID: 0}
 --- !u!4 &2763633541066169505
 Transform:
   m_ObjectHideFlags: 0
@@ -3063,15 +3031,93 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cdd630116319c34cb488fe36ab0ef40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _doDestroy: 1
-  _doWaitBeforeExecute: 0
-  _timeToExecute: 0
+  _doDestroy: 0
+  _doWait: 0
+  _doWaitBeforeEnableList: 1
+  _timeToExecuteAll: 0
+  _timeToExecuteEnableList: 1
   _inits:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 6468203006310399004}
+        m_TargetAssemblyTypeName: InputHandler, Assembly-CSharp
+        m_MethodName: Init
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 5635078826107606869}
+        m_TargetAssemblyTypeName: Updater, Assembly-CSharp
+        m_MethodName: Init
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4756187137003659133}
+        m_TargetAssemblyTypeName: CameraSwitcher, Assembly-CSharp
+        m_MethodName: Init
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   _objectsToEnable:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1462245918919227821}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 2558154706833658080}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  _timeToCharacterEnable: 1
+  _characters:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 268364117522887647}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!4 &5784438159830340066
 Transform:
   m_ObjectHideFlags: 0
@@ -4125,18 +4171,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4208244525494598569}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8721187514144872506
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 641359969975923613}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 495760577124c494cb9c5cf1873bc10b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &8727396074611585175
 GameObject:
   m_ObjectHideFlags: 0
@@ -4290,5 +4324,4 @@ SceneRoots:
   - {fileID: 5077063987054555163}
   - {fileID: 2521770314859737235}
   - {fileID: 2767056009189630883}
-  - {fileID: 1303284317265907302}
   - {fileID: 1665733500}

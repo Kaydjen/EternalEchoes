@@ -3,7 +3,9 @@ using UnityEngine.Events;
 
 [ComponentInfo("Введення гравця", 
     "Клас містить і обробляє все введення користувача. " +
-    "Містить івенти та static поля, що залежать від даних введення")]
+    "\nМістить івенти та static поля, що залежать від зчитаних данних введення" +
+    "\nВикористовує Singleton." +
+    "\nНову клавiшу додавати тут")]
 public class InputHandler : MonoBehaviour
 {
     // Reference to the main input actions asset that contains all input mappings
