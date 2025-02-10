@@ -20,6 +20,7 @@ public class PlayerCore : MonoBehaviour
             Instance = this;
             ChangeSwDMState(true);
         }
+        GameEvents.OnCharacterChange?.Invoke();
     }
     public void ChangeSwDMState(bool state) // SwapDrivenManager
     {

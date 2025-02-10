@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Unity.VisualScripting;
+using UnityEngine;
 using UnityEngine.Events;
 
 [ComponentInfo("Перемикач Виду Камери", 
@@ -35,8 +36,21 @@ public class CameraSwitcher : MonoBehaviour
         #endregion Singleton
 
         InputHandler.OnCPressed.AddListener(Switcher);
-        Switcher();
+        GameEvents.OnCharacterChange.AddListener(FirstEnable);
     }
+    /// <summary>
+    /// Этот метод создан для одиночного срабатывания за всю игру, в момент когда появляется первый персонаж и мы на него переключаемся
+    /// </summary>
+    private void FirstEnable()
+    {
+        SwitchToFPV();
+        OnFPV_Enable.Invoke();
+        _index++;
+        GameEvents.OnCharacterChange.RemoveListener(FirstEnable);
+    }
+    /// <summary>
+    /// Это для переключения между видами по порядку с помощью клавиши C
+    /// </summary>
     private void Switcher()
     {
         // Change value below if added new map. Value represent count of current maps

@@ -18,3 +18,8 @@ public class CameraCore : MonoBehaviour
 }
 
 // obsorver
+
+public interface ICameraUpdate
+{
+    public void UpdateNeededComponents();
+}

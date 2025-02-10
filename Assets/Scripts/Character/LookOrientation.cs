@@ -1,5 +1,6 @@
-using UnityEngine;
+﻿using UnityEngine;
 
+[ComponentInfo("", "Для того, щоб гравець дивився куди треба. Поворот залежить вiд камери")]
 public class LookOrientation : MonoBehaviour, IUpdate
 {
     #region Variables

@@ -1305,6 +1305,7 @@ GameObject:
   - component: {fileID: 5768666277302338522}
   - component: {fileID: 5635078826107606869}
   - component: {fileID: 6468203006310399004}
+  - component: {fileID: 6468203006310399005}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -1495,6 +1496,7 @@ GameObject:
   - component: {fileID: 2745630443341233006}
   - component: {fileID: 2031762633654685140}
   - component: {fileID: 4923236505959427626}
+  - component: {fileID: 4923236505959427627}
   m_Layer: 0
   m_Name: CameraHub
   m_TagString: Untagged
@@ -1934,11 +1936,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 069ba3c27c8d0854fa1b9a46940b35e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cameraHubOffset: {x: 0, y: 0.7, z: 0}
   _cameraOffset: {x: 0, y: 0.15, z: 0.5}
   _sensitivity: 3
-  _lookOrientation: {fileID: 2767056009189630883}
-  _walkDirection: {fileID: 0}
 --- !u!4 &2763633541066169505
 Transform:
   m_ObjectHideFlags: 0
@@ -2741,6 +2740,18 @@ MonoBehaviour:
   _maxZoomHeight: 30
   edgeToleranceGorizontal: 0.08
   edgeToleranceVertical: 0.08
+--- !u!114 &4923236505959427627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1462245918919227821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19a0265dcb0c3de4c81dc7de137db285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &4975907427034202801
 Transform:
   m_ObjectHideFlags: 0
@@ -3031,6 +3042,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cdd630116319c34cb488fe36ab0ef40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _doExecute: 1
   _doDestroy: 0
   _doWait: 0
   _doWaitBeforeEnableList: 1
@@ -3063,6 +3075,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 4923236505959427627}
+        m_TargetAssemblyTypeName: CamerasParametersUpdater, Assembly-CSharp
+        m_MethodName: Init
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
       - m_Target: {fileID: 4756187137003659133}
         m_TargetAssemblyTypeName: CameraSwitcher, Assembly-CSharp
         m_MethodName: Init
@@ -3093,6 +3117,30 @@ MonoBehaviour:
       - m_Target: {fileID: 2558154706833658080}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
         m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3384,6 +3432,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dedf44399a3de4542acafab9c92854ad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6468203006310399005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 522509460435419520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57d8306e76f427448aea93ca2d5bb207, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &6481769838769306166

@@ -94,7 +94,7 @@ public class IsometricV : CameraCore, IUpdate
         transform.GetChild(Constants.Player.CAMERA).GetComponent<Camera>().orthographic = true;
     }
     #endregion
-    #region On events
+    #region MONO METHODS
     private void OnEnable()
     {
         base.ExclusivityСheck();

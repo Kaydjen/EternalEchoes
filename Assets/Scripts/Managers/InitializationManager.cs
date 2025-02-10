@@ -16,6 +16,8 @@ public class InitializationManager : MonoBehaviour
 {
     [Space(20)]
     [Header("Settings")]
+    [SerializeField] private bool _doExecute = true;
+    [Space(5)]
     [SerializeField] private bool _doDestroy = true;
     [SerializeField] private bool _doWait = false;
     [SerializeField] private bool _doWaitBeforeEnableList = false;
@@ -32,7 +34,7 @@ public class InitializationManager : MonoBehaviour
 
     private void Awake()
     {
-        StartCoroutine(Execute());
+        if(_doExecute) StartCoroutine(Execute());
     }
     private IEnumerator Execute()
     {

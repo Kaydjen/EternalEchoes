@@ -1,29 +1,83 @@
-﻿using UnityEngine;
+﻿using Unity.VisualScripting;
+using UnityEngine;
 
 [ComponentInfo("FPV Камера",
     "Відповідає за управління камерою від першої особи (FPV). " +
     "Інтерпретує введення з миші для керування обертами камери. " +
     "Містить механізми для налаштування позицій камери та об'єкта гравця, а також для оновлення кожного кадру. " +
     "Підтримує підключення до системи оновлень.")]
-public class FPV : CameraCore, IUpdate
+public class FPV : CameraCore, IUpdate, ICameraUpdate
 {
-    #region Variables
-    [SerializeField] private Vector3 _cameraHubOffset = new Vector3(0f, .7f, 0f);
-    [SerializeField] private Vector3 _cameraOffset = new Vector3(0f, .15f, .5f);
-    [SerializeField][Range(.25f,5f)] private float _sensitivity = 3f;
-    [SerializeField] private Transform _lookOrientation;
-    [SerializeField] private Transform _walkDirection;
-
+    #region VARIABLES
+    [SerializeField] private Vector3 _cameraOffset = new Vector3(0f, .8f, .5f);
+    [SerializeField][Range(.25f, 10f)] private float _sensitivity = 3f;
     private Transform _player;
     private Transform _camera;
-    private float _y = 0f; 
+    private float _y = 0f;
     private float _x = 0f;
+    #endregion
+    #region PUBLIC METHODS
+    /// <summary>
+    /// It update the camera position according to requirements
+    /// </summary>
+    /// <param name="value">The new offset value to apply to the camera. Don't forget to make z axis about .5f</param>
+    public void ChangeCameraOffset(Vector3 value) // TODO: add some logic here (ChangeHubOffset)
+    {
+        _cameraOffset = value;
+    }
+    /// <summary>
+    /// Updates the sensitivity value for the hub.
+    /// </summary>
+    /// <param name="value">The new sensitivity value. It should be about 3f</param>
+    public void ChangeSensitivity(float value) // TODO: add some logic here (ChangeSensitivity)
+    {
+        _sensitivity = value;
+    }
+    /// <summary>
+    /// 
+    /// </summary>
+    public void UpdateNeededComponents()
+    {
+        _player = PlayerCore.Instance.transform;
+        _camera = transform.GetChild(Constants.Player.CAMERA).transform;
+    }
+    #endregion
+    #region MONO METHODS
+    private void OnEnable()
+    {
+        base.ExclusivityСheck();
+
+        // Camera Hub Position
+        transform.position = _player.position;
+        transform.rotation = _player.rotation;
+
+        // Camera Position
+        _camera.localPosition = _cameraOffset;
+        _camera.localRotation = Quaternion.identity;
+
+        // TODO: тут с обнулением бади есть вопросец, а нахера это надо, стоит задуматся (это надо, но возможно не тут)
+        // Player Body Position
+        _player.GetChild(Constants.Player.BODY_ANIMATIONS).transform.localPosition = Vector3.zero;
+        _player.GetChild(Constants.Player.BODY_ANIMATIONS).transform.localRotation = Quaternion.identity;
+
+        RegisterUpdate();
+    }
+    private void OnDisable()
+    {
+        UnregisterUpdate();
+    }
     #endregion
     #region Update
     public void PerformInitialUpdate()
     {
-        ManageInput();
-        ManageRotation();
+        // Manage Input
+        _y -= InputHandler.MouseInput.y * _sensitivity * Time.deltaTime;
+        _x += InputHandler.MouseInput.x * _sensitivity * Time.deltaTime;
+        _y = Mathf.Clamp(_y, -45f, 45f);
+
+        // Manage Rotation
+        transform.rotation = Quaternion.Euler(0f, _x, 0f);
+        _camera.localRotation = Quaternion.Euler(_y, 0f, 0f);
     }
     public void PerformPreUpdate()
     {
@@ -39,7 +93,7 @@ public class FPV : CameraCore, IUpdate
     }
     public void PerformLateUpdate()
     {
-        transform.position = _player.position + _cameraHubOffset;
+        transform.position = _player.position;
     }
     private void RegisterUpdate()
     {
@@ -50,56 +104,6 @@ public class FPV : CameraCore, IUpdate
     {
         Updater.Instance.UnregisterUpdate(this, Updater.UpdateType.InitialUpdate);
         Updater.Instance.UnregisterUpdate(this, Updater.UpdateType.LateUpdate);
-    }
-    #endregion
-    #region Methods
-    private void GetComponents()
-    {
-        _player = PlayerCore.Instance.transform;
-        _camera = transform.GetChild(Constants.Player.CAMERA).transform;
-    }
-    private void SetPositions()
-    {
-        // Camera Hub Position
-        transform.position = _player.position + _cameraHubOffset;
-        transform.rotation = _player.rotation;
-
-        // Player Body Position
-        _player.GetChild(Constants.Player.BODY_ANIMATIONS).transform.localPosition = Vector3.zero;
-        _player.GetChild(Constants.Player.BODY_ANIMATIONS).transform.localRotation = Quaternion.identity;
-
-        // Camera Position
-        _camera.localPosition = _cameraOffset;
-        _camera.localRotation = Quaternion.identity;
-    }
-    private void ManageInput()
-    {
-        _y -= InputHandler.MouseInput.y * _sensitivity * Time.deltaTime;
-        _x += InputHandler.MouseInput.x * _sensitivity * Time.deltaTime;
-        _y = Mathf.Clamp(_y, -45f, 45f);
-    }
-    private void ManageRotation()
-    {
-        transform.rotation = Quaternion.Euler(0f, _x, 0f);
-        _camera.localRotation = Quaternion.Euler(_y, 0f, 0f);
-
-        //_walkDirection.rotation = Quaternion.Euler(0f, _x, 0f);
-
-        //_lookOrientation.rotation = Quaternion.Euler(0f, _x, 0f);
-    }
-    #endregion
-    #region OnEvent
-    private void OnEnable()
-    {
-        base.ExclusivityСheck();
-
-        GetComponents();
-        SetPositions();
-        RegisterUpdate();
-    }
-    private void OnDisable()
-    {
-        UnregisterUpdate();
     }
     #endregion
 }
