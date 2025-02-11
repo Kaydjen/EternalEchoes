@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[ComponentInfo("Custom Updater", "It replace Unity's Update method my own logic based on HashSets")]
 public class Updater : MonoBehaviour
 {
     private HashSet<IUpdate> InitialUpdateQueue = new HashSet<IUpdate>();

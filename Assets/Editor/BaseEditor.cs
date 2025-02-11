@@ -35,14 +35,16 @@ public abstract class BaseEditor : Editor
         GUILayout.FlexibleSpace();
         EditorGUILayout.EndHorizontal();
 
-        EditorGUILayout.BeginHorizontal();
-        GUILayout.FlexibleSpace();
+        if(componentAttribute.Description != null)
+        {
+            EditorGUILayout.BeginHorizontal();
+            GUILayout.FlexibleSpace();
 
-        GUILayout.Box(componentAttribute.Description, GUILayout.Width(Screen.width * .4f));
+            GUILayout.Box(componentAttribute.Description, GUILayout.Width(Screen.width * .4f));
 
-        GUILayout.FlexibleSpace();
-        EditorGUILayout.EndHorizontal();
-
+            GUILayout.FlexibleSpace();
+            EditorGUILayout.EndHorizontal();
+        }
 
         GUILayout.Space(20f);
     }

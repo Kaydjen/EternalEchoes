@@ -1,11 +1,9 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
-[ComponentInfo("Введення гравця", 
-    "Клас містить і обробляє все введення користувача. " +
-    "\nМістить івенти та static поля, що залежать від зчитаних данних введення" +
-    "\nВикористовує Singleton." +
-    "\nНову клавiшу додавати тут")]
+[ComponentInfo("Player input manager",
+    "Handles player input across multiple control schemes, " +
+    "processes movement and camera actions, and invokes relevant events.")]
 public class InputHandler : MonoBehaviour
 {
     // Reference to the main input actions asset that contains all input mappings
@@ -141,7 +139,6 @@ public class InputHandler : MonoBehaviour
         _TopDown.Disable();
         _Isometric.Disable();
     }
-
 }
 
 /* Instruction
