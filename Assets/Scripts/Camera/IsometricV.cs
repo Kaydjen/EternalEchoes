@@ -1,49 +1,59 @@
 ﻿using UnityEngine; 
 
-public class IsometricV : CameraCore, IUpdate
+public class IsometricV : CameraCore, IUpdate, ICameraUpdate
 {
-    #region Variables
-    [SerializeField] private Vector3 _cameraHubOffset = new Vector3(0f, 0f, 0f);
+    #region VARIABLES
+    [SerializeField] private Transform _lookOrientation;
+    [Space(7)]
     [SerializeField] private Vector3 _cameraOffset = new Vector3(0f, 30f, -10f);
     [SerializeField] private float _rotationSpeed = 850f;
-    [SerializeField] private Transform _lookOrientation;
-
     private Camera _camera;
     private Vector3 _mousePos;
     private Vector3 _mouseScreenPosition;
     private Quaternion _targetRotation;
     private Vector3 _euler;
     private Transform _player;
-
-    public float RotationSpeed
+    #endregion
+    #region PUBLIC METHODS
+    /// <summary>
+    /// It update the camera position according to requirements
+    /// </summary>
+    /// <param name="value">The new offset value to apply to the camera. Don't forget to make z axis about .5f</param>
+    public void ChangeCameraOffset(Vector3 value) // TODO: add some logic here (ChangeHubOffset)
     {
-        get
-        {
-            return _rotationSpeed;
-        }
-        set
-        {
-            _rotationSpeed = Mathf.Clamp(value, 0f, 100f);
-        }
+        _cameraOffset = value;
+    }
+    /// <summary>
+    /// Updates the RotationSpeed value for the hub.
+    /// </summary>
+    /// <param name="value">The new RotationSpeed value. It should be about 850ff</param>
+    public void ChangeRotationSpeed(float value) // TODO: add some logic here (RotationSpeed)
+    {
+        _rotationSpeed = value;
+    }
+    public void UpdateNeededComponents()
+    {
+        _camera = this.transform.GetChild(Constants.Player.CAMERA).transform.GetComponent<Camera>();
+        _player = PlayerCore.Instance.transform;
     }
     #endregion
     #region Update
     public void PerformInitialUpdate()
     {
         _mousePos = Input.mousePosition;
-        _mousePos.z = _camera.WorldToScreenPoint(_lookOrientation.position).z;
+        _mousePos.z = _camera.WorldToScreenPoint(this.transform.position).z;
         _mouseScreenPosition = _camera.ScreenToWorldPoint(_mousePos);
 
         if (_mouseScreenPosition == Vector3.zero) return;
 
-        _targetRotation = Quaternion.LookRotation(_mouseScreenPosition - _lookOrientation.position);
+        _targetRotation = Quaternion.LookRotation(_mouseScreenPosition - this.transform.position);
 
         _euler = _targetRotation.eulerAngles;
-        _euler.x = _lookOrientation.localRotation.eulerAngles.x;
-        _euler.z = _lookOrientation.localRotation.eulerAngles.z;
+        _euler.x = 0f;
+        _euler.z = 0f;
         _targetRotation = Quaternion.Euler(_euler);
 
-        _lookOrientation.localRotation = Quaternion.RotateTowards(_lookOrientation.localRotation, _targetRotation, _rotationSpeed * Time.deltaTime); // the last parameter is degrees per second
+        _lookOrientation.rotation = Quaternion.RotateTowards(_lookOrientation.rotation, _targetRotation, _rotationSpeed * Time.deltaTime); // the last parameter is degrees per second
     }
     public void PerformPreUpdate()
     {
@@ -59,7 +69,7 @@ public class IsometricV : CameraCore, IUpdate
     }
     public void PerformLateUpdate()
     {
-        transform.position = _player.position + _cameraHubOffset;
+        transform.position = _player.position;
     }
     private void RegisterUpdate()
     {
@@ -72,37 +82,20 @@ public class IsometricV : CameraCore, IUpdate
         Updater.Instance.UnregisterUpdate(this, Updater.UpdateType.LateUpdate);
     }
     #endregion
-    #region private methods
-    private void GetComponents()
-    { 
-        _camera = this.transform.GetChild(Constants.Player.CAMERA).transform.GetComponent<Camera>();
-        _player = PlayerCore.Instance.transform;
-    }
-    private void SetCameraHubPosition()
-    {
-        transform.position = _lookOrientation.position;
-        transform.rotation = Quaternion.identity;
-    }
-    private void SetPlayerPosition()
-    {
-        PlayerCore.Instance.transform.rotation = Quaternion.identity;
-    }
-    private void SetCameraPosition()
-    {
-        transform.GetChild(Constants.Player.CAMERA).transform.localPosition = _cameraOffset;
-        transform.GetChild(Constants.Player.CAMERA).transform.LookAt(this.transform);
-        transform.GetChild(Constants.Player.CAMERA).GetComponent<Camera>().orthographic = true;
-    }
-    #endregion
     #region MONO METHODS
     private void OnEnable()
     {
         base.ExclusivityСheck();
 
-        GetComponents();
-        SetCameraHubPosition();
-        SetPlayerPosition();
-        SetCameraPosition();
+        // Set Camera Hub Position
+        transform.position = _lookOrientation.position;
+        transform.rotation = Quaternion.identity;
+
+        // Set Camera Position
+        transform.GetChild(Constants.Player.CAMERA).transform.localPosition = _cameraOffset;
+        transform.GetChild(Constants.Player.CAMERA).transform.LookAt(this.transform);
+        transform.GetChild(Constants.Player.CAMERA).GetComponent<Camera>().orthographic = true;
+
         RegisterUpdate();
     }
     private void OnDisable()
