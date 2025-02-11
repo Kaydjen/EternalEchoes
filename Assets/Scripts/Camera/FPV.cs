@@ -9,6 +9,7 @@ using UnityEngine;
 public class FPV : CameraCore, IUpdate, ICameraUpdate
 {
     #region VARIABLES
+    [SerializeField] private Transform _lookOrientation;
     [SerializeField] private Vector3 _cameraOffset = new Vector3(0f, .8f, .5f);
     [SerializeField][Range(.25f, 10f)] private float _sensitivity = 3f;
     private Transform _player;
@@ -78,6 +79,8 @@ public class FPV : CameraCore, IUpdate, ICameraUpdate
         // Manage Rotation
         transform.rotation = Quaternion.Euler(0f, _x, 0f);
         _camera.localRotation = Quaternion.Euler(_y, 0f, 0f);
+
+        _lookOrientation.rotation = Quaternion.Euler(0f, _x, 0f);
     }
     public void PerformPreUpdate()
     {

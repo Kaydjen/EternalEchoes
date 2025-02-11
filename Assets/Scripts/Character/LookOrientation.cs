@@ -4,7 +4,7 @@
 public class LookOrientation : MonoBehaviour, IUpdate
 {
     #region Variables
-    public static Vector2 Direction { get; private set; }
+    public static Vector3 Direction { get; private set; }
     #endregion
     #region Update
     public void PerformInitialUpdate()
