@@ -30,18 +30,6 @@ public class Updater : MonoBehaviour
     }
     private void Update()
     {
-        AddUpdatesToQueue(ref InitialUpdateAddQueue, ref InitialUpdateQueue);
-        AddUpdatesToQueue(ref PreUpdateAddQueue, ref PreUpdateQueue);
-        AddUpdatesToQueue(ref UpdateAddQueue, ref UpdateQueue);
-        AddUpdatesToQueue(ref FinalUpdateAddQueue, ref FinalUpdateQueue);
-        AddUpdatesToQueue(ref LateUpdateAddQueue, ref LateUpdateQueue);
-
-        RemoveUpdatesFromQueue(ref InitialUpdateRemovalQueue, ref InitialUpdateQueue);
-        RemoveUpdatesFromQueue(ref PreUpdateRemovalQueue, ref PreUpdateQueue);
-        RemoveUpdatesFromQueue(ref UpdateRemovalQueue, ref UpdateQueue);
-        RemoveUpdatesFromQueue(ref FinalUpdateRemovalQueue, ref FinalUpdateQueue);
-        RemoveUpdatesFromQueue(ref LateUpdateRemovalQueue, ref LateUpdateQueue);
-
         if (InitialUpdateQueue.Count > 0)
         {
             foreach (IUpdate e in InitialUpdateQueue)
@@ -123,6 +111,11 @@ public class Updater : MonoBehaviour
                 Debug.Log("RegisterUpdate something goes wrong");
                 break;
         }
+        AddUpdatesToQueue(ref InitialUpdateAddQueue, ref InitialUpdateQueue);
+        AddUpdatesToQueue(ref PreUpdateAddQueue, ref PreUpdateQueue);
+        AddUpdatesToQueue(ref UpdateAddQueue, ref UpdateQueue);
+        AddUpdatesToQueue(ref FinalUpdateAddQueue, ref FinalUpdateQueue);
+        AddUpdatesToQueue(ref LateUpdateAddQueue, ref LateUpdateQueue);
     }
     public void UnregisterUpdate(IUpdate script, UpdateType updateType)
     {
@@ -147,6 +140,11 @@ public class Updater : MonoBehaviour
                 Debug.Log("UnregisterUpdate something goes wrong");
                 break;
         }
+        RemoveUpdatesFromQueue(ref InitialUpdateRemovalQueue, ref InitialUpdateQueue);
+        RemoveUpdatesFromQueue(ref PreUpdateRemovalQueue, ref PreUpdateQueue);
+        RemoveUpdatesFromQueue(ref UpdateRemovalQueue, ref UpdateQueue);
+        RemoveUpdatesFromQueue(ref FinalUpdateRemovalQueue, ref FinalUpdateQueue);
+        RemoveUpdatesFromQueue(ref LateUpdateRemovalQueue, ref LateUpdateQueue);
     }
 }
 /*
