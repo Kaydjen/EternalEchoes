@@ -19,10 +19,8 @@ public class LookOrientation : MonoBehaviour, IUpdate
         v1.Normalize();
         v2.Normalize();
 
-        // Получаем ортогональный вектор (ось Y в локальной системе координат)
         Vector2 yAxis = new Vector2(-v1.y, v1.x);
 
-        // Координаты v2 в новой системе
         float x = Vector2.Dot(v2, v1);
         float y = Vector2.Dot(v2, yAxis);
 

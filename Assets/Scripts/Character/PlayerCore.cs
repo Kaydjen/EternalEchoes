@@ -8,22 +8,18 @@ public class PlayerCore : MonoBehaviour
         if(Instance == null)
         {
             Instance = this;
-            ChangeSwDMState(true);
+            AIPlSwapper.ActivatePlayerControl();
         }
         else
         {
             if (Instance == this) return;
 
-            Instance.ChangeSwDMState(false);
+            AIPlSwapper.ActivateAIControl();
             Instance.enabled = false;
 
             Instance = this;
-            ChangeSwDMState(true);
+            AIPlSwapper.ActivatePlayerControl();
         }
         GameEvents.OnCharacterChange?.Invoke();
-    }
-    public void ChangeSwDMState(bool state) // SwapDrivenManager
-    {
-        transform.GetChild(1).transform.GetChild(0).gameObject.SetActive(state);
     }
 }

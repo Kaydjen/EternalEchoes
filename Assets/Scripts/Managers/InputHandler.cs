@@ -20,7 +20,7 @@ public class InputHandler : MonoBehaviour
     #region Static variables
     public static Vector2 WASDInput { get; private set; } // Movement
     public static Vector2 MouseInput { get; private set; } // Mouse movement
-    public static UnityEvent OnEPressed { get; private set; } = new UnityEvent(); // E - Interaction
+    public static UnityEvent OnInteraction { get; private set; } = new UnityEvent(); // E - Interaction
     public static UnityEvent OnCPressed { get; private set; } = new UnityEvent(); // C - Switch сamera
     public static Vector2 WheelRotate { get; private set; } // Mouse wheel rotate value
     public static UnityEvent OnWheelRotate { get; private set; } = new UnityEvent(); // Mouse wheel rotate event
@@ -75,9 +75,9 @@ public class InputHandler : MonoBehaviour
         _TopDown.ScreenEdgePanning.canceled += _ => MouseInput = Vector2.zero;
         _Isometric.Mouse.canceled += _ => MouseInput = Vector2.zero;
 
-        _FPV.Interaction.performed += _ => OnEPressed.Invoke();
-        _TopDown.Interaction.performed += _ => OnEPressed.Invoke();
-        _Isometric.Interaction.performed += _ => OnEPressed.Invoke();
+        _FPV.Interaction.performed += _ => OnInteraction.Invoke();
+        _TopDown.Interaction.performed += _ => OnInteraction.Invoke();
+        _Isometric.Interaction.performed += _ => OnInteraction.Invoke();
 
         _FPV.SwitchCamera.performed += _ => OnCPressed.Invoke();
         _TopDown.SwitchCamera.performed += _ => OnCPressed.Invoke();

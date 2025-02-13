@@ -38,7 +38,7 @@ public class FPV : CameraCore, IUpdate, ICameraUpdate
     /// <summary>
     /// 
     /// </summary>
-    public void UpdateNeededComponents()
+    public void UpdateNeededComponents() // TODO: we dont need to get camera here, it's better to do in Init method
     {
         _player = PlayerCore.Instance.transform;
         _camera = transform.GetChild(Constants.Player.CAMERA).transform;

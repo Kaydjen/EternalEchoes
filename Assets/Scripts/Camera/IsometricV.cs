@@ -31,7 +31,7 @@ public class IsometricV : CameraCore, IUpdate, ICameraUpdate
     {
         _rotationSpeed = value;
     }
-    public void UpdateNeededComponents()
+    public void UpdateNeededComponents()// TODO: we dont need to get camera here, it's better to do in Init method
     {
         _camera = this.transform.GetChild(Constants.Player.CAMERA).transform.GetComponent<Camera>();
         _player = PlayerCore.Instance.transform;
