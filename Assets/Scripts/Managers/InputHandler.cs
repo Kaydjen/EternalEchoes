@@ -21,7 +21,7 @@ public class InputHandler : MonoBehaviour
     public static Vector2 WASDInput { get; private set; } // Movement
     public static Vector2 MouseInput { get; private set; } // Mouse movement
     public static UnityEvent OnEPressed { get; private set; } = new UnityEvent(); // E - Interaction
-    public static UnityEvent OnCPressed { get; private set; } = new UnityEvent(); // C - Switch character
+    public static UnityEvent OnCPressed { get; private set; } = new UnityEvent(); // C - Switch сamera
     public static Vector2 WheelRotate { get; private set; } // Mouse wheel rotate value
     public static UnityEvent OnWheelRotate { get; private set; } = new UnityEvent(); // Mouse wheel rotate event
     public static UnityEvent OnRMBPerformed { get; private set; } = new UnityEvent();

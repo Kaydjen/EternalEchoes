@@ -4,8 +4,7 @@
 public class LookOrientation : MonoBehaviour, IUpdate
 {
     #region VARIABLES
-    public static Vector3 Direction { get; private set; }
-    private Vector3 _direction;
+    public static Vector2 Direction { get; private set; }
     private Transform _playerBoth;
     #endregion
 
@@ -15,20 +14,21 @@ public class LookOrientation : MonoBehaviour, IUpdate
         _playerBoth = PlayerCore.Instance.transform.GetChild(Constants.Player.BODY_ANIMATIONS).transform;
     }
 
-    private Vector3 GetRelativePosition(Vector2 input, Vector2 forward)
+    Vector2 GetRelativeDirection(Vector2 v1, Vector2 v2)
     {
-        // Нормализуем вектор направления
-        forward.Normalize();
+        v1.Normalize();
+        v2.Normalize();
 
-        // Вычисляем правый вектор (выбираем знак так, чтобы примеры совпадали)
-        Vector2 right = new Vector2(-forward.y, forward.x);
+        // Получаем ортогональный вектор (ось Y в локальной системе координат)
+        Vector2 yAxis = new Vector2(-v1.y, v1.x);
 
-        // Здесь предполагаем, что «вперёд» будет отрицательной компонентой
-        float localForward = -Vector2.Dot(input, forward);
-        float localRight = Vector2.Dot(input, right);
+        // Координаты v2 в новой системе
+        float x = Vector2.Dot(v2, v1);
+        float y = Vector2.Dot(v2, yAxis);
 
-        return new Vector3(localForward, 0f, localRight);
+        return new Vector2(x, y);
     }
+
 
     #endregion
 
@@ -40,14 +40,10 @@ public class LookOrientation : MonoBehaviour, IUpdate
 
     public void PerformPreUpdate()
     {
-        // Вычисляем 3D-направление взгляда
-        _direction = (this.transform.GetChild(0).position - this.transform.position).normalized;
-        // Преобразуем его в 2D (используем оси X и Z)
-        Vector2 forward2D = new Vector2(_direction.x, _direction.z);
+        Direction = (this.transform.GetChild(0).position - this.transform.position).normalized;
 
-        // Получаем относительную позицию
-        Direction = GetRelativePosition(InputHandler.WASDInput, forward2D);
-
+        Direction = GetRelativeDirection(Direction, InputHandler.WASDInput);
+        Debug.Log(Direction);
         _playerBoth.localRotation = this.transform.rotation;
     }
 

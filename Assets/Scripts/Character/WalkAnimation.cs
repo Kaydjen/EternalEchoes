@@ -20,9 +20,7 @@ public class WalkAnimation : MonoBehaviour, IUpdate
     }
     public void PerformUpdate()
     {
-        _newVelocity.x = LookOrientation.Direction.x;
-        _newVelocity.y = LookOrientation.Direction.z;
-        Debug.Log(LookOrientation.Direction);
+        _newVelocity = LookOrientation.Direction;
         _currentVelocity = Vector2.SmoothDamp(_currentVelocity, _newVelocity, ref _velocity, _smoothTime, _maxSpeed);
 
         // float z = Mathf.Clamp(_currentVelocity.y, -1, 1);
