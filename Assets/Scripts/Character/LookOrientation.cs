@@ -41,7 +41,7 @@ public class LookOrientation : MonoBehaviour, IUpdate
         Direction = (this.transform.GetChild(0).position - this.transform.position).normalized;
 
         Direction = GetRelativeDirection(Direction, InputHandler.WASDInput);
-        Debug.Log(Direction);
+        //Debug.Log(Direction);
         _playerBoth.localRotation = this.transform.rotation;
     }
 

@@ -40,7 +40,7 @@ public class WalkAnimation : MonoBehaviour, IUpdate
     #endregion
     private void Awake()
     {
-        if (!this.transform.GetChild(0).transform.TryGetComponent<Animator>(out _animator))
+        if (!this.transform.root.GetChild(0).transform.GetChild(0).transform.GetChild(0).transform.TryGetComponent<Animator>(out _animator))
             Debug.LogError($"{gameObject.name}, {this.GetType().Name}, the Animator is empty");
     }
     private void OnEnable()
