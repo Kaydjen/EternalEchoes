@@ -1,4 +1,5 @@
 public interface IInteraction
 {
-    public void Interact();
+    public void HoverEnter();
+    public void HoverExit();
 }

@@ -103,6 +103,9 @@ public class FPV : CameraCore, IUpdate, ICameraUpdate
         _player.GetChild(Constants.Player.BODY_ANIMATIONS).transform.localPosition = Vector3.zero;
         _player.GetChild(Constants.Player.BODY_ANIMATIONS).transform.localRotation = Quaternion.identity;
 
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
         RegisterUpdate();
     }
     private void OnDisable()

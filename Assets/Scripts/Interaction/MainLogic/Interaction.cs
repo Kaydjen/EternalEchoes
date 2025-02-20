@@ -1,10 +1,13 @@
 using UnityEngine;
 
-public class Interaction : MonoBehaviour, ICameraUpdate
+public class Interaction : MonoBehaviour, ICameraUpdate, IUpdate
 {
     #region VARIABLES
     [SerializeField] private float _raycastDistance;
     private Camera _camera;
+    private IInteraction _lastInteractibleObj;
+    private IInteraction _currentInteractibleObj;
+    private RaycastHit _hit;
     #endregion
     #region PUBLIC METHODS
     public void SetRaycastDistance(float value)
@@ -19,25 +22,79 @@ public class Interaction : MonoBehaviour, ICameraUpdate
     #region PRIVATE METHODS
     private void Interact()
     {
-        if (Physics.Raycast(_camera.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, _raycastDistance))
+        if (Physics.Raycast(_camera.ScreenPointToRay(Input.mousePosition), out _hit, _raycastDistance))
         {
-            IInteraction[] interactions = hit.collider.GetComponents<IInteraction>();
+            IInteraction[] interactions = _hit.collider.GetComponents<IInteraction>();
 
             foreach (var interaction in interactions)
             {
-                interaction.Interact();
+                interaction.HoverEnter();
             }
         }
+    }
+    private void CheckForInteractable()
+    {
+        if (!Physics.Raycast(_camera.ScreenPointToRay(Input.mousePosition), out _hit, _raycastDistance))
+        {
+            ResetLastInteractibleObj();
+            return;
+        }
+        if (!_hit.collider.TryGetComponent<IInteraction>(out _currentInteractibleObj)) return;
+        if (_currentInteractibleObj == _lastInteractibleObj) return;
+
+        ResetLastInteractibleObj();
+
+        _currentInteractibleObj.HoverEnter();
+        _lastInteractibleObj = _currentInteractibleObj;
+    }
+    private void ResetLastInteractibleObj()
+    {
+        if (_lastInteractibleObj is null) return;
+
+        _lastInteractibleObj.HoverExit();
+        _lastInteractibleObj = null;
     }
     #endregion
     #region MONO METHODS
     private void OnEnable()
     {
-        InputHandler.OnInteraction.AddListener(Interact);
+        //InputHandler.OnInteraction.AddListener(Interact);
+        RegisterUpdate();
     }
     private void OnDisable()
     {
-        InputHandler.OnInteraction.RemoveListener(Interact);
+        //InputHandler.OnInteraction.RemoveListener(Interact);
+        UnregisterUpdate();
+    }
+    #endregion
+    #region Update
+    public void PerformInitialUpdate()
+    {
+        CheckForInteractable();
+    }
+    public void PerformPreUpdate()
+    {
+        throw new System.NotImplementedException();
+    }
+    public void PerformUpdate()
+    {
+        throw new System.NotImplementedException();
+    }
+    public void PerformFinalUpdate()
+    {
+        throw new System.NotImplementedException();
+    }
+    public void PerformLateUpdate()
+    {
+        throw new System.NotImplementedException();
+    }
+    private void RegisterUpdate()
+    {
+        Updater.Instance.RegisterUpdate(this, Updater.UpdateType.InitialUpdate);
+    }
+    private void UnregisterUpdate()
+    {
+        Updater.Instance.UnregisterUpdate(this, Updater.UpdateType.InitialUpdate);
     }
     #endregion
 }

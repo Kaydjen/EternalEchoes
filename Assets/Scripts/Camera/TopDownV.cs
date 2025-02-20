@@ -123,6 +123,9 @@ public class TopDownV : CameraCore
 
         InputHandler.OnRMBPerformed.AddListener(EnableMouseMove);
         InputHandler.OnRMBCanceled.AddListener(DisableMouseMove);
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
     private void OnDisable()
     {

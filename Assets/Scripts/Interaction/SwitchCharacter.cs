@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class SwitchCharacter : MonoBehaviour, IInteraction
+public class SwitchCharacter : MonoBehaviour//, IInteraction
 {
     public void Interact()
     {
