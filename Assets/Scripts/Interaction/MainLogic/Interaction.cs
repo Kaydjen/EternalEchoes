@@ -6,7 +6,7 @@ public class Interaction : MonoBehaviour, ICameraUpdate, IUpdate
     [SerializeField] private float _raycastDistance;
     private Camera _camera;
     private IInteraction _lastInteractibleObj;
-    private IInteraction _currentInteractibleObj;
+    private IInteraction _CurrentinteractableObj;
     private RaycastHit _hit;
     #endregion
     #region PUBLIC METHODS
@@ -35,13 +35,13 @@ public class Interaction : MonoBehaviour, ICameraUpdate, IUpdate
     private void CheckForInteractable()
     {
         if (Physics.Raycast(_camera.ScreenPointToRay(Input.mousePosition), out _hit, _raycastDistance) &&
-            _hit.collider.TryGetComponent(out IInteraction interactable))
+            _hit.collider.TryGetComponent(out _CurrentinteractableObj))
         {
-            if (interactable != _lastInteractibleObj)
+            if (_CurrentinteractableObj != _lastInteractibleObj)
             {
                 ResetLastInteractibleObj();
-                interactable.HoverEnter();
-                _lastInteractibleObj = interactable;
+                _CurrentinteractableObj.HoverEnter();
+                _lastInteractibleObj = _CurrentinteractableObj;
             }
         }
         else
