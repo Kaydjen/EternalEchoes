@@ -6,23 +6,23 @@ public class ShowClue : MonoBehaviour, IInteraction, IUpdate
     {
         this.transform.GetChild(0).gameObject.SetActive(true);
         Debug.Log("Enter");
-        Updater.Instance.RegisterUpdate(this, Updater.UpdateType.InitialUpdate);
         this.transform.GetChild(0).transform.localRotation = Quaternion.LookRotation(this.transform.GetChild(0).transform.position - Camera.main.transform.position);
+        Updater.Instance.RegisterUpdate(this, Updater.UpdateType.LateUpdate);
     }
 
     public void HoverExit()
     {
         this.transform.GetChild(0).gameObject.SetActive(false);
         Debug.Log("Exit");
-        Updater.Instance.UnregisterUpdate(this, Updater.UpdateType.InitialUpdate);
+        Updater.Instance.UnregisterUpdate(this, Updater.UpdateType.LateUpdate);
     }
     public void PerformInitialUpdate()
     {
-        this.transform.GetChild(0).transform.localRotation = Quaternion.LookRotation(this.transform.GetChild(0).transform.position - Camera.main.transform.position);
+        throw new System.NotImplementedException();
     }
     public void PerformLateUpdate()
     {
-        throw new System.NotImplementedException();
+        this.transform.GetChild(0).transform.localRotation = Quaternion.LookRotation(this.transform.GetChild(0).transform.position - Camera.main.transform.position);
     }
     public void PerformPreUpdate()
     {

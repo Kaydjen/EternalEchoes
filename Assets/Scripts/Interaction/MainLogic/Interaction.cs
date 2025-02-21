@@ -34,18 +34,20 @@ public class Interaction : MonoBehaviour, ICameraUpdate, IUpdate
     }
     private void CheckForInteractable()
     {
-        if (!Physics.Raycast(_camera.ScreenPointToRay(Input.mousePosition), out _hit, _raycastDistance))
+        if (Physics.Raycast(_camera.ScreenPointToRay(Input.mousePosition), out _hit, _raycastDistance) &&
+            _hit.collider.TryGetComponent(out IInteraction interactable))
+        {
+            if (interactable != _lastInteractibleObj)
+            {
+                ResetLastInteractibleObj();
+                interactable.HoverEnter();
+                _lastInteractibleObj = interactable;
+            }
+        }
+        else
         {
             ResetLastInteractibleObj();
-            return;
         }
-        if (!_hit.collider.TryGetComponent<IInteraction>(out _currentInteractibleObj)) return;
-        if (_currentInteractibleObj == _lastInteractibleObj) return;
-
-        ResetLastInteractibleObj();
-
-        _currentInteractibleObj.HoverEnter();
-        _lastInteractibleObj = _currentInteractibleObj;
     }
     private void ResetLastInteractibleObj()
     {
