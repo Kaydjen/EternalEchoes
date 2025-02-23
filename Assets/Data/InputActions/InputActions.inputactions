@@ -190,15 +190,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
-                },
-                {
-                    "name": "WheelClick",
-                    "type": "Button",
-                    "id": "215430ce-9a84-45ca-b601-015895d4849b",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -293,7 +284,7 @@
                 {
                     "name": "",
                     "id": "c840c0d2-eee8-40be-a61d-af1717ec742c",
-                    "path": "<Mouse>/rightButton",
+                    "path": "<Mouse>/middleButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -309,17 +300,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "ZoomCamera",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "a07c2d94-3c14-4d1d-92d2-e06044a55a06",
-                    "path": "<Mouse>/middleButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "WheelClick",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -24,8 +24,8 @@ public class InputHandler : MonoBehaviour
     public static UnityEvent OnCPressed { get; private set; } = new UnityEvent(); // C - Switch сamera
     public static Vector2 WheelRotate { get; private set; } // Mouse wheel rotate value
     public static UnityEvent OnWheelRotate { get; private set; } = new UnityEvent(); // Mouse wheel rotate event
-    public static UnityEvent OnRMBPerformed { get; private set; } = new UnityEvent();
-    public static UnityEvent OnRMBCanceled { get; private set; } = new UnityEvent();
+    public static UnityEvent OnWheelPerformed { get; private set; } = new UnityEvent();
+    public static UnityEvent OnWheelCanceled { get; private set; } = new UnityEvent();
     /*    public static UnityEvent OnWheelClickPerformed { get; private set; } = new UnityEvent();
         public static UnityEvent OnWheelClickCanceled { get; private set; } = new UnityEvent();*/
     #endregion Static variables
@@ -88,8 +88,8 @@ public class InputHandler : MonoBehaviour
 
         _TopDown.ZoomCamera.performed += _ => OnWheelRotate.Invoke();
 
-        _TopDown.ClickAndDrag.performed += _ => OnRMBPerformed.Invoke();
-        _TopDown.ClickAndDrag.canceled += _ => OnRMBCanceled.Invoke();
+        _TopDown.ClickAndDrag.performed += _ => OnWheelPerformed.Invoke();
+        _TopDown.ClickAndDrag.canceled += _ => OnWheelCanceled.Invoke();
 
         /*        _TopDown.WheelClick.performed += _ => OnWheelClickPerformed.Invoke();
                 _TopDown.WheelClick.canceled += _ => OnWheelClickCanceled.Invoke();*/

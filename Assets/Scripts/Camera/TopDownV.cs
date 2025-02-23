@@ -242,8 +242,8 @@ public class TopDownV : CameraCore, IUpdate, ICameraUpdate
         _cameraTransform.LookAt(this.transform);
 
         InputHandler.OnWheelRotate?.AddListener(ZoomCamera);
-        InputHandler.OnRMBPerformed?.AddListener(EnableMouseMove);
-        InputHandler.OnRMBCanceled?.AddListener(DisableMouseMove);
+        InputHandler.OnWheelPerformed?.AddListener(EnableMouseMove);
+        InputHandler.OnWheelCanceled?.AddListener(DisableMouseMove);
 
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
@@ -253,8 +253,8 @@ public class TopDownV : CameraCore, IUpdate, ICameraUpdate
     private void OnDisable()
     {
         InputHandler.OnWheelRotate?.RemoveListener(ZoomCamera);
-        InputHandler.OnRMBPerformed?.RemoveListener(EnableMouseMove);
-        InputHandler.OnRMBCanceled?.RemoveListener(DisableMouseMove);
+        InputHandler.OnWheelPerformed?.RemoveListener(EnableMouseMove);
+        InputHandler.OnWheelCanceled?.RemoveListener(DisableMouseMove);
 
         StopCoroutine(TweenPosition());
         UnregisterUpdate();

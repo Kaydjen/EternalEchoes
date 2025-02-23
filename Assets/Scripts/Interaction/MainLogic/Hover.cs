@@ -1,12 +1,12 @@
 using UnityEngine;
 
-public class Interaction : MonoBehaviour, ICameraUpdate, IUpdate
+public class Hover : MonoBehaviour, ICameraUpdate, IUpdate
 {
     #region VARIABLES
     [SerializeField] private float _raycastDistance;
     private Camera _camera;
-    private IInteraction _lastInteractibleObj;
-    private IInteraction _CurrentinteractableObj;
+    private IHover _lastInteractibleObj;
+    private IHover _CurrentinteractableObj;
     private RaycastHit _hit;
     #endregion
     #region PUBLIC METHODS
@@ -24,7 +24,7 @@ public class Interaction : MonoBehaviour, ICameraUpdate, IUpdate
     {
         if (Physics.Raycast(_camera.ScreenPointToRay(Input.mousePosition), out _hit, _raycastDistance))
         {
-            IInteraction[] interactions = _hit.collider.GetComponents<IInteraction>();
+            IHover[] interactions = _hit.collider.GetComponents<IHover>();
 
             foreach (var interaction in interactions)
             {

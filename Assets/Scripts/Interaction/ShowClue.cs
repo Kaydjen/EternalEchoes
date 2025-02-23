@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ShowClue : MonoBehaviour, IInteraction, IUpdate
+public class ShowClue : MonoBehaviour, IHover, IUpdate
 {
     public void HoverEnter()
     {

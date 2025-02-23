@@ -212,15 +212,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""WheelClick"",
-                    ""type"": ""Button"",
-                    ""id"": ""215430ce-9a84-45ca-b601-015895d4849b"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -315,7 +306,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""c840c0d2-eee8-40be-a61d-af1717ec742c"",
-                    ""path"": ""<Mouse>/rightButton"",
+                    ""path"": ""<Mouse>/middleButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -331,17 +322,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""ZoomCamera"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""a07c2d94-3c14-4d1d-92d2-e06044a55a06"",
-                    ""path"": ""<Mouse>/middleButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""WheelClick"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -496,7 +476,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         m_TopDown_ZoomCamera = m_TopDown.FindAction("ZoomCamera", throwIfNotFound: true);
         m_TopDown_Interaction = m_TopDown.FindAction("Interaction", throwIfNotFound: true);
         m_TopDown_SwitchCamera = m_TopDown.FindAction("SwitchCamera", throwIfNotFound: true);
-        m_TopDown_WheelClick = m_TopDown.FindAction("WheelClick", throwIfNotFound: true);
         // Isometric
         m_Isometric = asset.FindActionMap("Isometric", throwIfNotFound: true);
         m_Isometric_Movement = m_Isometric.FindAction("Movement", throwIfNotFound: true);
@@ -647,7 +626,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_TopDown_ZoomCamera;
     private readonly InputAction m_TopDown_Interaction;
     private readonly InputAction m_TopDown_SwitchCamera;
-    private readonly InputAction m_TopDown_WheelClick;
     public struct TopDownActions
     {
         private @InputActions m_Wrapper;
@@ -658,7 +636,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         public InputAction @ZoomCamera => m_Wrapper.m_TopDown_ZoomCamera;
         public InputAction @Interaction => m_Wrapper.m_TopDown_Interaction;
         public InputAction @SwitchCamera => m_Wrapper.m_TopDown_SwitchCamera;
-        public InputAction @WheelClick => m_Wrapper.m_TopDown_WheelClick;
         public InputActionMap Get() { return m_Wrapper.m_TopDown; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -686,9 +663,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @SwitchCamera.started += instance.OnSwitchCamera;
             @SwitchCamera.performed += instance.OnSwitchCamera;
             @SwitchCamera.canceled += instance.OnSwitchCamera;
-            @WheelClick.started += instance.OnWheelClick;
-            @WheelClick.performed += instance.OnWheelClick;
-            @WheelClick.canceled += instance.OnWheelClick;
         }
 
         private void UnregisterCallbacks(ITopDownActions instance)
@@ -711,9 +685,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @SwitchCamera.started -= instance.OnSwitchCamera;
             @SwitchCamera.performed -= instance.OnSwitchCamera;
             @SwitchCamera.canceled -= instance.OnSwitchCamera;
-            @WheelClick.started -= instance.OnWheelClick;
-            @WheelClick.performed -= instance.OnWheelClick;
-            @WheelClick.canceled -= instance.OnWheelClick;
         }
 
         public void RemoveCallbacks(ITopDownActions instance)
@@ -816,7 +787,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         void OnZoomCamera(InputAction.CallbackContext context);
         void OnInteraction(InputAction.CallbackContext context);
         void OnSwitchCamera(InputAction.CallbackContext context);
-        void OnWheelClick(InputAction.CallbackContext context);
     }
     public interface IIsometricActions
     {
