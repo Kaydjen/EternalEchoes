@@ -5,5 +5,5 @@ using UnityEngine.Events;
 public class GameEvents : MonoBehaviour
 {
     public static UnityEvent OnCharacterChange = new UnityEvent();
-
+    public static UnityEvent OnScreenResize = new UnityEvent();
 }

@@ -4937,18 +4937,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39062e2df9ec3aa42bcfa5dc6bd8fb1b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cameraPos: {x: 0, y: 10, z: -2}
-  _sensitivity: 15
-  _stepSize: 1
-  _sensitivityMouseDrag: 1
-  _sensitivityRotate: 2
+  _cameraDefOffset: {x: 0, y: 10, z: -2}
+  _cameraMoveSensitivity: 15
+  _cameraClimbingStepValue: 1
+  _mouseDragSensitivity: 2
   _smoothTime: 0.3
   _zoomStepSizeY: 1.2
   _zoomStepSizeZ: 0.7
-  _minZoomHeight: 10
-  _maxZoomHeight: 30
-  edgeToleranceGorizontal: 0.08
-  edgeToleranceVertical: 0.08
+  _minCameraHeight: 10
+  _maxCameraHeight: 30
+  _horizontalEdgeTolerance: 0.01
+  _verticalEdgeTolerance: 0.01
 --- !u!114 &4923236505959427627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5580,6 +5579,18 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 4756187137003659133}
         m_TargetAssemblyTypeName: CameraSwitcher, Assembly-CSharp
+        m_MethodName: Init
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 4923236505959427626}
+        m_TargetAssemblyTypeName: TopDownV, Assembly-CSharp
         m_MethodName: Init
         m_Mode: 1
         m_Arguments:
