@@ -4946,8 +4946,8 @@ MonoBehaviour:
   _zoomStepSizeZ: 0.7
   _minCameraHeight: 10
   _maxCameraHeight: 30
-  _horizontalEdgeTolerance: 0.01
-  _verticalEdgeTolerance: 0.01
+  _horizontalEdgeTolerance: 0.005
+  _verticalEdgeTolerance: 0.005
 --- !u!114 &4923236505959427627
 MonoBehaviour:
   m_ObjectHideFlags: 0
