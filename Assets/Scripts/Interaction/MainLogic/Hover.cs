@@ -43,12 +43,13 @@ public class Hover : MonoBehaviour, ICameraUpdate, IUpdate
     }
     private void CheckForInteractable()
     {
-        if (Physics.Raycast(_camera.ScreenPointToRay(Input.mousePosition), out _hit, _raycastDistance)
-            && _hit.collider.TryGetComponent<IHover>(out _currentInteractableObj))
+        if (Physics.Raycast(_camera.ScreenPointToRay(Input.mousePosition), out _hit, _raycastDistance))
         {
-            if (_currentInteractionType?.GetType() != _currentInteractableObj.GetType()) return;
+            _currentInteractableObj = _hit.collider.GetComponent(_currentInteractionType) as IHover;
 
-            if (_currentInteractableObj != null && _currentInteractableObj != _lastInteractibleObj)
+            if (_currentInteractableObj == null) return;
+
+            if (!ReferenceEquals(_currentInteractableObj, _lastInteractibleObj))
             {
                 ResetLastInteractibleObj();
                 _currentInteractableObj.HoverEnter();
@@ -60,6 +61,7 @@ public class Hover : MonoBehaviour, ICameraUpdate, IUpdate
             ResetLastInteractibleObj();
         }
     }
+
     private void ResetLastInteractibleObj()
     {
         if (_lastInteractibleObj is null) return;
