@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class Hover : MonoBehaviour, ICameraUpdate, IUpdate
@@ -20,9 +21,11 @@ public class Hover : MonoBehaviour, ICameraUpdate, IUpdate
     {
         _camera = this.transform.GetChild(Constants.Player.CAMERA).transform.GetComponent<Camera>();
     }
-    public static void SetNewState<T>() where T : IHover
+    public static IEnumerable SetNewState<T>() where T : IHover
     {
         _currentInteractionType = typeof(T);
+        yield return null;
+        _currentInteractionType = typeof(IHover);
     }
     #endregion
     #region PRIVATE METHODS
@@ -40,9 +43,10 @@ public class Hover : MonoBehaviour, ICameraUpdate, IUpdate
     }
     private void CheckForInteractable()
     {
-        if (Physics.Raycast(_camera.ScreenPointToRay(Input.mousePosition), out _hit, _raycastDistance))
+        if (Physics.Raycast(_camera.ScreenPointToRay(Input.mousePosition), out _hit, _raycastDistance)
+            && _hit.collider.TryGetComponent<IHover>(out _currentInteractableObj))
         {
-            _currentInteractableObj = _hit.collider.GetComponent(_currentInteractionType) as IHover;
+            if (_currentInteractionType?.GetType() != _currentInteractableObj.GetType()) return;
 
             if (_currentInteractableObj != null && _currentInteractableObj != _lastInteractibleObj)
             {

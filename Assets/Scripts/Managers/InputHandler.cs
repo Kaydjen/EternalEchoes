@@ -26,6 +26,19 @@ public class InputHandler : MonoBehaviour
     public static UnityEvent OnWheelRotate { get; private set; } = new UnityEvent(); // Mouse wheel rotate event
     public static UnityEvent OnWheelPerformed { get; private set; } = new UnityEvent();
     public static UnityEvent OnWheelCanceled { get; private set; } = new UnityEvent();
+    #region numbers
+    public static UnityEvent OnOne { get; private set; } = new UnityEvent();
+    public static UnityEvent OnTwo { get; private set; } = new UnityEvent();
+    public static UnityEvent OnThree { get; private set; } = new UnityEvent();
+    public static UnityEvent OnFour { get; private set; } = new UnityEvent();
+    public static UnityEvent OnFive { get; private set; } = new UnityEvent();
+    public static UnityEvent OnSix { get; private set; } = new UnityEvent();
+    public static UnityEvent OnSeven { get; private set; } = new UnityEvent();
+    public static UnityEvent OnEight { get; private set; } = new UnityEvent();
+    public static UnityEvent OnNine { get; private set; } = new UnityEvent();
+    public static UnityEvent OnZero { get; private set; } = new UnityEvent();
+    #endregion
+    public static UnityEvent OnSwitchCharacter { get; private set; } = new UnityEvent();
     /*    public static UnityEvent OnWheelClickPerformed { get; private set; } = new UnityEvent();
         public static UnityEvent OnWheelClickCanceled { get; private set; } = new UnityEvent();*/
     #endregion Static variables
@@ -90,6 +103,42 @@ public class InputHandler : MonoBehaviour
 
         _TopDown.ClickAndDrag.performed += _ => OnWheelPerformed.Invoke();
         _TopDown.ClickAndDrag.canceled += _ => OnWheelCanceled.Invoke();
+
+        #region numbers
+        _FPV.One.performed += _ => OnOne.Invoke();
+        _FPV.Two.performed += _ => OnTwo.Invoke();
+        _FPV.Three.performed += _ => OnThree.Invoke();
+        _FPV.Four.performed += _ => OnFour.Invoke();
+        _FPV.Five.performed += _ => OnFive.Invoke();
+        _FPV.Six.performed += _ => OnSix.Invoke();
+        _FPV.Seven.performed += _ => OnSeven.Invoke();
+        _FPV.Nine.performed += _ => OnNine.Invoke();
+        _FPV.Zero.performed += _ => OnZero.Invoke();
+
+        _Isometric.One.performed += _ => OnOne.Invoke();
+        _Isometric.Two.performed += _ => OnTwo.Invoke();
+        _Isometric.Three.performed += _ => OnThree.Invoke();
+        _Isometric.Four.performed += _ => OnFour.Invoke();
+        _Isometric.Five.performed += _ => OnFive.Invoke();
+        _Isometric.Six.performed += _ => OnSix.Invoke();
+        _Isometric.Seven.performed += _ => OnSeven.Invoke();
+        _Isometric.Nine.performed += _ => OnNine.Invoke();
+        _Isometric.Zero.performed += _ => OnZero.Invoke();
+
+        _TopDown.One.performed += _ => OnOne.Invoke();
+        _TopDown.Two.performed += _ => OnTwo.Invoke();
+        _TopDown.Three.performed += _ => OnThree.Invoke();
+        _TopDown.Four.performed += _ => OnFour.Invoke();
+        _TopDown.Five.performed += _ => OnFive.Invoke();
+        _TopDown.Six.performed += _ => OnSix.Invoke();
+        _TopDown.Seven.performed += _ => OnSeven.Invoke();
+        _TopDown.Nine.performed += _ => OnNine.Invoke();
+        _TopDown.Zero.performed += _ => OnZero.Invoke();
+        #endregion
+
+        _FPV.SwitchCharacter.performed += _ => OnSwitchCharacter.Invoke();
+        _Isometric.SwitchCharacter.performed += _ => OnSwitchCharacter.Invoke();
+        _TopDown.SwitchCharacter.performed += _ => OnSwitchCharacter.Invoke();
 
         /*        _TopDown.WheelClick.performed += _ => OnWheelClickPerformed.Invoke();
                 _TopDown.WheelClick.canceled += _ => OnWheelClickCanceled.Invoke();*/

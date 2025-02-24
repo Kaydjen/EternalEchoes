@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CharacterSwitchable : MonoBehaviour, IInteraction
+public class CharacterSwitchable : MonoBehaviour, ISwitchCharacter
 {
     public void HoverEnter()
     {
