@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Hover : MonoBehaviour, ICameraUpdate, IUpdate
@@ -6,8 +7,9 @@ public class Hover : MonoBehaviour, ICameraUpdate, IUpdate
     [SerializeField] private float _raycastDistance;
     private Camera _camera;
     private IHover _lastInteractibleObj;
-    private IHover _CurrentinteractableObj;
+    private IHover _currentInteractableObj;
     private RaycastHit _hit;
+    private static Type _currentInteractionType = typeof(IHover);
     #endregion
     #region PUBLIC METHODS
     public void SetRaycastDistance(float value)
@@ -17,6 +19,10 @@ public class Hover : MonoBehaviour, ICameraUpdate, IUpdate
     public void UpdateNeededComponents() // TODO: we dont need to get camera here, it's better to do in Init method
     {
         _camera = this.transform.GetChild(Constants.Player.CAMERA).transform.GetComponent<Camera>();
+    }
+    public static void SetNewState<T>() where T : IHover
+    {
+        _currentInteractionType = typeof(T);
     }
     #endregion
     #region PRIVATE METHODS
@@ -34,14 +40,15 @@ public class Hover : MonoBehaviour, ICameraUpdate, IUpdate
     }
     private void CheckForInteractable()
     {
-        if (Physics.Raycast(_camera.ScreenPointToRay(Input.mousePosition), out _hit, _raycastDistance) &&
-            _hit.collider.TryGetComponent(out _CurrentinteractableObj))
+        if (Physics.Raycast(_camera.ScreenPointToRay(Input.mousePosition), out _hit, _raycastDistance))
         {
-            if (_CurrentinteractableObj != _lastInteractibleObj)
+            _currentInteractableObj = _hit.collider.GetComponent(_currentInteractionType) as IHover;
+
+            if (_currentInteractableObj != null && _currentInteractableObj != _lastInteractibleObj)
             {
                 ResetLastInteractibleObj();
-                _CurrentinteractableObj.HoverEnter();
-                _lastInteractibleObj = _CurrentinteractableObj;
+                _currentInteractableObj.HoverEnter();
+                _lastInteractibleObj = _currentInteractableObj;
             }
         }
         else
