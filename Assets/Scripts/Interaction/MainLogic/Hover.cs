@@ -10,7 +10,6 @@ public class Hover : MonoBehaviour, ICameraUpdate, IUpdate
     public static RaycastHit HitInfo;
     private Camera _camera;
     private Collider _lastInteractibleObj;
-    private IHover _currentInteractableObj;
     #endregion
     #region PUBLIC METHODS
     public void SetRaycastDistance(float value)
@@ -41,15 +40,12 @@ public class Hover : MonoBehaviour, ICameraUpdate, IUpdate
         {
             if (_lastInteractibleObj == HitInfo.collider) return;
 
+            ResetLastInteractibleObj();
             if(HitInfo.collider.CompareTag("Item"))
             {
                 HitInfo.collider.GetComponent<Outline>().enabled = true;
             }
-            if (HitInfo.collider.TryGetComponent(out _currentInteractableObj))
-            {
-                ResetLastInteractibleObj();
-                _currentInteractableObj.HoverEnter();
-            }
+            HitInfo.collider.GetComponent<IHover>()?.HoverEnter();
             _lastInteractibleObj = HitInfo.collider;                
         }
         else
@@ -62,8 +58,8 @@ public class Hover : MonoBehaviour, ICameraUpdate, IUpdate
     {
         if (_lastInteractibleObj is null) return;
 
-        if(_lastInteractibleObj.TryGetComponent<IHover>(out IHover hover)) hover.HoverExit();
-        if (_lastInteractibleObj.TryGetComponent<Outline>(out Outline outLine)) outLine.enabled = true;
+        _lastInteractibleObj.GetComponent<IHover>()?.HoverExit();
+        if (_lastInteractibleObj.TryGetComponent(out Outline outLine)) outLine.enabled = false;
         _lastInteractibleObj = null;
     }
     #endregion
