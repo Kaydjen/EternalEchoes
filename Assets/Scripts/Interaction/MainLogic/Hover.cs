@@ -7,7 +7,8 @@ public class Hover : MonoBehaviour, ICameraUpdate, IUpdate
 {
     #region VARIABLES
     [SerializeField] private float _raycastDistance;
-    public static RaycastHit HitInfo;
+    private RaycastHit _hitInfo;
+    public static Collider HitedCollider;
     private Camera _camera;
     private Collider _lastInteractibleObj;
     #endregion
@@ -24,9 +25,9 @@ public class Hover : MonoBehaviour, ICameraUpdate, IUpdate
     #region PRIVATE METHODS
     private void Interact()
     {
-        if (Physics.Raycast(_camera.ScreenPointToRay(Input.mousePosition), out HitInfo, _raycastDistance))
+        if (Physics.Raycast(_camera.ScreenPointToRay(Input.mousePosition), out _hitInfo, _raycastDistance))
         {
-            IHover[] interactions = HitInfo.collider.GetComponents<IHover>();
+            IHover[] interactions = _hitInfo.collider.GetComponents<IHover>();
 
             foreach (var interaction in interactions)
             {
@@ -36,17 +37,18 @@ public class Hover : MonoBehaviour, ICameraUpdate, IUpdate
     }
     private void CheckForInteractable()
     {
-        if (Physics.Raycast(_camera.ScreenPointToRay(Input.mousePosition), out HitInfo, _raycastDistance)) // TODO: тут дальше можно заменить HitInfo на новое статик поле, в которое записать HitInfo.collider и так уже работать, удобнее будет
+        if (Physics.Raycast(_camera.ScreenPointToRay(Input.mousePosition), out _hitInfo, _raycastDistance)) // TODO: тут дальше можно заменить HitInfo на новое статик поле, в которое записать HitInfo.collider и так уже работать, удобнее будет
         {
-            if (_lastInteractibleObj == HitInfo.collider) return;
+            HitedCollider = _hitInfo.collider;
+            if (_lastInteractibleObj == HitedCollider) return;
 
             ResetLastInteractibleObj();
-            if(HitInfo.collider.CompareTag("Item"))
+            if(HitedCollider.CompareTag("Item"))
             {
-                HitInfo.collider.GetComponent<Outline>().enabled = true;
+                HitedCollider.GetComponent<Outline>().enabled = true;
             }
-            HitInfo.collider.GetComponent<IHover>()?.HoverEnter();
-            _lastInteractibleObj = HitInfo.collider;                
+            HitedCollider.GetComponent<IHover>()?.HoverEnter();
+            _lastInteractibleObj = HitedCollider;                
         }
         else
         {
