@@ -8,7 +8,7 @@ public class PlayerCore : MonoBehaviour
         if(Instance == null)
         {
             Instance = this;
-            AIPlSwapper.ActivatePlayerControl();
+            AIPlSwapper.ActivateDirectControl();
         }
         else
         {
@@ -18,7 +18,7 @@ public class PlayerCore : MonoBehaviour
             Instance.enabled = false;
 
             Instance = this;
-            AIPlSwapper.ActivatePlayerControl();
+            AIPlSwapper.ActivateNewCharacterControls();
         }
         GameEvents.OnCharacterChange?.Invoke();
     }

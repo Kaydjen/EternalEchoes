@@ -53,6 +53,7 @@ public class DirectControlMovement : MonoBehaviour, IUpdate
 
         Updater.Instance.RegisterUpdate(this, Updater.UpdateType.FinalUpdate);
         CameraSwitcher.OnFPV_Enable.AddListener(EnableFPVMovement);
+
     }
     private void OnDisable()
     {

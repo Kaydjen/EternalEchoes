@@ -18,6 +18,14 @@ public class CameraSwitcher : MonoBehaviour
     public static UnityEvent OnTopDownV_Enable = new UnityEvent();
 
     private byte _index = 0;
+
+    public enum View
+    {
+        FPV,
+        IsometricV,
+        TopDownV,
+    }
+    public static View CurrentView = View.FPV;
     #endregion
     #region Methods
     public void Init()
@@ -62,14 +70,17 @@ public class CameraSwitcher : MonoBehaviour
             case 0:
                 SwitchToFPV();
                 OnFPV_Enable.Invoke();
+                CurrentView = View.FPV;
                 break;
             case 1:
                 SwitchToIsometricV();
                 OnIsometricV_Enable.Invoke();
+                CurrentView = View.IsometricV;
                 break;
             case 2:
                 SwitchToTopDownV();
                 OnTopDownV_Enable.Invoke();
+                CurrentView = View.TopDownV;
                 break;
         }
         _index++;

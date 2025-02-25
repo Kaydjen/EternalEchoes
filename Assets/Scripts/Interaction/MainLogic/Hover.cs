@@ -1,16 +1,16 @@
 using System;
 using System.Collections;
+using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
 
 public class Hover : MonoBehaviour, ICameraUpdate, IUpdate
 {
     #region VARIABLES
     [SerializeField] private float _raycastDistance;
+    public static RaycastHit HitInfo;
     private Camera _camera;
     private IHover _lastInteractibleObj;
     private IHover _currentInteractableObj;
-    private RaycastHit _hit;
-    private static Type _currentInteractionType = typeof(IHover);
     #endregion
     #region PUBLIC METHODS
     public void SetRaycastDistance(float value)
@@ -21,19 +21,13 @@ public class Hover : MonoBehaviour, ICameraUpdate, IUpdate
     {
         _camera = this.transform.GetChild(Constants.Player.CAMERA).transform.GetComponent<Camera>();
     }
-    public static IEnumerable SetNewState<T>() where T : IHover
-    {
-        _currentInteractionType = typeof(T);
-        yield return null;
-        _currentInteractionType = typeof(IHover);
-    }
     #endregion
     #region PRIVATE METHODS
     private void Interact()
     {
-        if (Physics.Raycast(_camera.ScreenPointToRay(Input.mousePosition), out _hit, _raycastDistance))
+        if (Physics.Raycast(_camera.ScreenPointToRay(Input.mousePosition), out HitInfo, _raycastDistance))
         {
-            IHover[] interactions = _hit.collider.GetComponents<IHover>();
+            IHover[] interactions = HitInfo.collider.GetComponents<IHover>();
 
             foreach (var interaction in interactions)
             {
@@ -43,13 +37,10 @@ public class Hover : MonoBehaviour, ICameraUpdate, IUpdate
     }
     private void CheckForInteractable()
     {
-        if (Physics.Raycast(_camera.ScreenPointToRay(Input.mousePosition), out _hit, _raycastDistance))
+        if (Physics.Raycast(_camera.ScreenPointToRay(Input.mousePosition), out HitInfo, _raycastDistance) &&
+            HitInfo.collider.TryGetComponent(out _currentInteractableObj))
         {
-            _currentInteractableObj = _hit.collider.GetComponent(_currentInteractionType) as IHover;
-
-            if (_currentInteractableObj == null) return;
-
-            if (!ReferenceEquals(_currentInteractableObj, _lastInteractibleObj))
+            if (_currentInteractableObj != _lastInteractibleObj)
             {
                 ResetLastInteractibleObj();
                 _currentInteractableObj.HoverEnter();

@@ -2,14 +2,9 @@ using UnityEngine;
 
 public class CharacterSwitchable : MonoBehaviour, ISwitchCharacter
 {
-    public void HoverEnter()
+    public void Switch()
     {
         GetComponent<PlayerCore>().enabled = true;
         Debug.Log("OPA");
-    }
-
-    public void HoverExit()
-    {
-        throw new System.NotImplementedException();
     }
 }

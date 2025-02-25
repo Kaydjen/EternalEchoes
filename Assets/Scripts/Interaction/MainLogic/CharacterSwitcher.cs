@@ -8,6 +8,7 @@ public class CharacterSwitcher : MonoBehaviour
     }
     private void Switch()
     {
-        Hover.SetNewState<ISwitchCharacter>();
+        Debug.Log("Nu ono raboraet");
+        if (Hover.HitInfo.collider.TryGetComponent(out ISwitchCharacter link)) link.Switch();
     }
 }
