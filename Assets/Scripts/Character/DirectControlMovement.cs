@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class DirectControlMovement : MonoBehaviour, IUpdate
 {
@@ -40,7 +40,7 @@ public class DirectControlMovement : MonoBehaviour, IUpdate
         throw new System.NotImplementedException();
     }
     #endregion
-    public void Start()
+    public void Awake()
     {
         _controller = this.transform.root.transform.GetComponent<CharacterController>();
         if (_controller == null)
@@ -53,7 +53,7 @@ public class DirectControlMovement : MonoBehaviour, IUpdate
 
         Updater.Instance.RegisterUpdate(this, Updater.UpdateType.FinalUpdate);
         CameraSwitcher.OnFPV_Enable.AddListener(EnableFPVMovement);
-
+        DisableFPVMovement(); // TODO: тут тоже переделай, система сырая и корявая, работай
     }
     private void OnDisable()
     {

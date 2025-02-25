@@ -240,7 +240,7 @@ GameObject:
   - component: {fileID: 215883683}
   - component: {fileID: 215883682}
   - component: {fileID: 215883681}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -564,7 +564,7 @@ GameObject:
   - component: {fileID: 428132402}
   - component: {fileID: 428132404}
   - component: {fileID: 428132403}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2733,8 +2733,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2521770314859737235}
   - component: {fileID: 4756187137003659133}
-  - component: {fileID: 4923236505959427629}
   - component: {fileID: 4923236505959427628}
+  - component: {fileID: 4923236505959427630}
+  - component: {fileID: 4923236505959427629}
   - component: {fileID: 2745630443341233006}
   - component: {fileID: 2031762633654685140}
   - component: {fileID: 4923236505959427626}
@@ -5502,6 +5503,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _raycastDistance: 100
+--- !u!114 &4923236505959427630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1462245918919227821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df3c78fc615391644ae27637eb61cbb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4923573882953869959
 GameObject:
   m_ObjectHideFlags: 0
