@@ -64,96 +64,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""One"",
-                    ""type"": ""Button"",
-                    ""id"": ""b3dc8348-3937-4b17-9aac-2738b7a7cc96"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Two"",
-                    ""type"": ""Button"",
-                    ""id"": ""cf97ae4f-24de-48f4-8dc1-0c93fc062ab0"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Three"",
-                    ""type"": ""Button"",
-                    ""id"": ""ad1bca31-67c1-404c-9feb-5ac04fed8b04"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Four"",
-                    ""type"": ""Button"",
-                    ""id"": ""a76222e0-ca1f-4d1e-a00f-e448de7fee47"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Five"",
-                    ""type"": ""Button"",
-                    ""id"": ""254e891a-e4a7-48d9-81a1-c69388311718"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Six"",
-                    ""type"": ""Button"",
-                    ""id"": ""bb924887-7649-404f-87de-c135fab9d211"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Seven"",
-                    ""type"": ""Button"",
-                    ""id"": ""b4ed1be9-acaa-48dc-addd-1fea6167e297"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Eight"",
-                    ""type"": ""Button"",
-                    ""id"": ""b7d524fc-7882-4385-b653-a15bb3fd3fce"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Nine"",
-                    ""type"": ""Button"",
-                    ""id"": ""bcd7d379-27f1-421f-ada6-7035262ffad8"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Zero"",
-                    ""type"": ""Button"",
-                    ""id"": ""8a0d8290-4a21-4461-874b-65a797c92a7e"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""SwitchCharacter"",
                     ""type"": ""Button"",
                     ""id"": ""3bf926aa-a224-472f-9ad8-b7f04588d1cd"",
@@ -254,116 +164,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""f0d0688c-4fc5-4242-b986-bf04299d6e3a"",
-                    ""path"": ""<Keyboard>/1"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""One"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""a2d747bb-0dae-4016-90e1-87cb031173f1"",
-                    ""path"": ""<Keyboard>/2"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Two"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""3ae650df-2fbe-4ca9-982e-078cd023b54a"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Three"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""5a4be545-69d1-400e-b315-e9a46f09ae56"",
-                    ""path"": ""<Keyboard>/4"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Four"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""0b5b0801-36da-48b3-a435-a43e690a168c"",
-                    ""path"": ""<Keyboard>/5"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Five"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""96d33f9d-a1fa-4059-9650-e0c20094901a"",
-                    ""path"": ""<Keyboard>/6"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Six"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""84eeb322-36e7-4bfa-9be3-b30bb2ba94ae"",
-                    ""path"": ""<Keyboard>/7"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Seven"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""7fbc2f26-78c1-4b64-9cb2-d11eb588fe12"",
-                    ""path"": ""<Keyboard>/8"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Eight"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""34da5e20-3e6e-49f2-a2a3-aaa3496ba2d4"",
-                    ""path"": ""<Keyboard>/9"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Nine"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""e6e62c9f-78f0-457a-8fd4-e7c495248553"",
-                    ""path"": ""<Keyboard>/0"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Zero"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""64453b48-f13c-41bd-aeff-508ab13a9dde"",
                     ""path"": ""<Keyboard>/x"",
                     ""interactions"": """",
@@ -380,18 +180,18 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             ""id"": ""769e8037-b798-435a-9e1d-afde285c0a7b"",
             ""actions"": [
                 {
-                    ""name"": ""KeyboardCameraMovement"",
+                    ""name"": ""ScreenEdgePanning"",
                     ""type"": ""Value"",
-                    ""id"": ""cfab4d47-57f7-446d-ab31-df879ef9dd41"",
+                    ""id"": ""42149a0f-314e-4e42-b309-60a2008d51dd"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""ScreenEdgePanning"",
+                    ""name"": ""KeyboardCameraMovement"",
                     ""type"": ""Value"",
-                    ""id"": ""42149a0f-314e-4e42-b309-60a2008d51dd"",
+                    ""id"": ""7bd73732-7b3c-41b8-9494-ef496644ee10"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -434,96 +234,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""One"",
-                    ""type"": ""Button"",
-                    ""id"": ""68b5a8ca-ea43-4746-ab50-09f7d6bf10f0"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Two"",
-                    ""type"": ""Button"",
-                    ""id"": ""96378a75-3e40-48d9-9d6a-bc8912df8bd0"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Three"",
-                    ""type"": ""Button"",
-                    ""id"": ""a128e29b-356c-4855-8738-7d4b44db58ce"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Four"",
-                    ""type"": ""Button"",
-                    ""id"": ""8a457974-4a0d-43a3-b368-e5ee50c16912"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Five"",
-                    ""type"": ""Button"",
-                    ""id"": ""34b12977-7bf5-4318-9149-4bfc4fa02c7d"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Six"",
-                    ""type"": ""Button"",
-                    ""id"": ""ea167d79-74cd-4c1d-ac88-077570b28b48"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Seven"",
-                    ""type"": ""Button"",
-                    ""id"": ""311b7f96-89e7-4462-b018-f5ddd5f76b8b"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Eight"",
-                    ""type"": ""Button"",
-                    ""id"": ""fc89bff9-da44-4d32-b7fc-1ab5a1327190"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Nine"",
-                    ""type"": ""Button"",
-                    ""id"": ""25777571-8459-4e23-b8b9-a5fecb1833ba"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Zero"",
-                    ""type"": ""Button"",
-                    ""id"": ""81258afc-c776-4f35-8954-79b4880a6aa4"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""SwitchCharacter"",
                     ""type"": ""Button"",
                     ""id"": ""a22b4709-551e-4840-a306-1bc6131f63c5"",
@@ -535,178 +245,13 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             ],
             ""bindings"": [
                 {
-                    ""name"": ""2D Vector"",
-                    ""id"": ""5d1080f0-1a61-4176-9bf6-e4603d3bd9ad"",
-                    ""path"": ""2DVector"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""KeyboardCameraMovement"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""up"",
-                    ""id"": ""eabb9363-b8f9-4f6e-a7c1-1015d299bde3"",
-                    ""path"": ""<Keyboard>/w"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""KeyboardCameraMovement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""e762a709-cd3a-48fa-bf9f-26b11ce7567d"",
-                    ""path"": ""<Keyboard>/s"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""KeyboardCameraMovement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""left"",
-                    ""id"": ""d0f6aa15-98ca-4219-9328-23af5b9f1424"",
-                    ""path"": ""<Keyboard>/a"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""KeyboardCameraMovement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""right"",
-                    ""id"": ""f8d55e7e-dc00-4aa0-9952-3a40d1ef278b"",
-                    ""path"": ""<Keyboard>/d"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""KeyboardCameraMovement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
                     ""name"": """",
-                    ""id"": ""8d32385d-5fb7-4856-b4ff-d2878158552b"",
+                    ""id"": ""fc0ec935-b726-4dee-9b55-95260a6bcb4e"",
                     ""path"": ""<Keyboard>/x"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""SwitchCharacter"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""7683a027-e2cc-4cf6-8107-7831a86668b9"",
-                    ""path"": ""<Keyboard>/0"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Zero"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""7e464a20-1021-42db-980e-e7def9f47117"",
-                    ""path"": ""<Keyboard>/9"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Nine"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""d4335457-9dbd-486f-8369-5ddd33e8463d"",
-                    ""path"": ""<Keyboard>/8"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Eight"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""b8652b0a-201b-435d-b584-ea7a215b2dbc"",
-                    ""path"": ""<Keyboard>/7"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Seven"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""89de40e7-669a-4857-ba93-ef258b85c8aa"",
-                    ""path"": ""<Keyboard>/6"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Six"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""3fbab61f-87fb-4168-89dc-18a56b2610c9"",
-                    ""path"": ""<Keyboard>/5"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Five"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""c672bbf3-3055-4a11-afd7-f7e5c4758f4a"",
-                    ""path"": ""<Keyboard>/4"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Four"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""4d98c9a3-5796-477f-b528-e1ece206abce"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Three"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""3f591bac-6d22-4a2d-a098-ad04e8222027"",
-                    ""path"": ""<Keyboard>/2"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Two"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""f35f9d72-53d3-4e90-b61f-ece5566deee6"",
-                    ""path"": ""<Keyboard>/1"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""One"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -742,6 +287,61 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""action"": ""ScreenEdgePanning"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""a27e85c4-745b-4f89-83f4-f2edd1bac4c1"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""KeyboardCameraMovement"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""3046f72f-2b30-4a4d-a8d1-b7ca0119b466"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""KeyboardCameraMovement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""7ecf46e4-20d7-4a51-866c-c409486b090e"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""KeyboardCameraMovement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""b4ef7ea7-cb7c-48d2-8641-28ce0106fe3a"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""KeyboardCameraMovement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""b4f1733d-6d3c-4247-a476-63f7037c7863"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""KeyboardCameraMovement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 },
                 {
                     ""name"": """",
@@ -808,96 +408,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""One"",
-                    ""type"": ""Button"",
-                    ""id"": ""a73f9af4-a08e-476d-81cf-3f7b3364fd7c"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Two"",
-                    ""type"": ""Button"",
-                    ""id"": ""7a4d8df3-4cbd-47a4-9816-5392b8c98f4f"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Three"",
-                    ""type"": ""Button"",
-                    ""id"": ""2c1345cf-006e-46bc-b5b2-497093e4a103"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Four"",
-                    ""type"": ""Button"",
-                    ""id"": ""68ae312d-79e9-4846-a9d3-4d8d40ef63a2"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Five"",
-                    ""type"": ""Button"",
-                    ""id"": ""94800c63-638d-42de-9b43-a452510efb53"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Six"",
-                    ""type"": ""Button"",
-                    ""id"": ""07323e47-c52f-48eb-9508-0a1fb716dceb"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Seven"",
-                    ""type"": ""Button"",
-                    ""id"": ""c736ad1e-c8b4-48be-8904-098a5027653f"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Eight"",
-                    ""type"": ""Button"",
-                    ""id"": ""7e82fc38-680f-4896-b746-ec88a04ecd96"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Nine"",
-                    ""type"": ""Button"",
-                    ""id"": ""2bc85fc6-c80d-4658-adaf-5447a2d6a19a"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Zero"",
-                    ""type"": ""Button"",
-                    ""id"": ""c2819861-fa74-49e4-bd6d-9cf795eaef1f"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""SwitchCharacter"",
                     ""type"": ""Button"",
                     ""id"": ""84e5d877-75cf-49ea-9142-ef905c4a8238"",
@@ -917,6 +427,17 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""groups"": """",
                     ""action"": ""Movement"",
                     ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d8180b37-987b-4a74-8b0f-6897148b6d02"",
+                    ""path"": ""<Keyboard>/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SwitchCharacter"",
+                    ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
@@ -965,127 +486,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""81f11c4c-03a9-4c18-83cf-639fba9e5136"",
-                    ""path"": ""<Keyboard>/x"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""SwitchCharacter"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""b6d22f61-d7bc-43f9-9170-653dfa4bc853"",
-                    ""path"": ""<Keyboard>/0"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Zero"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""77d76706-fb8c-4724-a2a6-e6e91907d353"",
-                    ""path"": ""<Keyboard>/9"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Nine"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""809c9160-76f1-4e89-9c8d-7fed0b00ba8d"",
-                    ""path"": ""<Keyboard>/8"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Eight"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""97b89650-30af-4706-9688-f25f6cecec4f"",
-                    ""path"": ""<Keyboard>/7"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Seven"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""ed475423-705a-4857-b9bd-87dd6616f5bd"",
-                    ""path"": ""<Keyboard>/6"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Six"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""5d9e7597-a8f1-4ad3-a9f9-b2bab3e29f44"",
-                    ""path"": ""<Keyboard>/5"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Five"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""4c805be1-c221-43c3-a0f3-11d7fccb7218"",
-                    ""path"": ""<Keyboard>/4"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Four"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""122d0902-59d4-470c-abaf-d1071d257503"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Three"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""b4ecb731-4cf5-4d90-a46c-16e6f926d607"",
-                    ""path"": ""<Keyboard>/2"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Two"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""3031805b-bf60-4aca-a165-58b8a74fbe53"",
-                    ""path"": ""<Keyboard>/1"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""One"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""12da11d6-6c20-4246-9b4e-4b3a1b328fc4"",
                     ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
@@ -1118,6 +518,422 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""DefNumbers"",
+            ""id"": ""537fa1d5-ab45-4649-8825-b37500a6c53f"",
+            ""actions"": [
+                {
+                    ""name"": ""One"",
+                    ""type"": ""Button"",
+                    ""id"": ""1bd3b47c-c0b4-4467-aa68-a17924fda505"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Two"",
+                    ""type"": ""Button"",
+                    ""id"": ""f92570db-5272-4209-9dc7-0bfab4c17eca"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Three"",
+                    ""type"": ""Button"",
+                    ""id"": ""33966254-4f54-4785-a828-403bc721f6fc"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Four"",
+                    ""type"": ""Button"",
+                    ""id"": ""a688737b-4aa7-4d05-b784-bdaf5ccba85d"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Five"",
+                    ""type"": ""Button"",
+                    ""id"": ""99b65c48-f718-42a6-9725-145dfd72091a"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Six"",
+                    ""type"": ""Button"",
+                    ""id"": ""53f16f61-91e2-4386-b93f-ffc2a55bb82d"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Seven"",
+                    ""type"": ""Button"",
+                    ""id"": ""9c1fb380-e5b8-4385-bc48-c925e0c00c80"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Eight"",
+                    ""type"": ""Button"",
+                    ""id"": ""f984b44c-de6b-43d4-a937-a02d527d7903"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Nine"",
+                    ""type"": ""Button"",
+                    ""id"": ""d4008b1f-ea7b-4c73-b1e3-2c47db3857a6"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Zero"",
+                    ""type"": ""Button"",
+                    ""id"": ""cc93fa49-cfef-45b7-ad4b-83d139930daf"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""6170deb2-f369-4e52-b5af-d4bf4b6a4a89"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""One"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2adaf724-d143-4e34-b791-f02a7874fa0b"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Two"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""190de8b8-660b-4325-b040-b6221742f9d8"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Three"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e97f969b-14d3-4b12-bf8b-5f7434086a17"",
+                    ""path"": ""<Keyboard>/4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Four"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bd1d136e-e83e-4e86-adf3-4aa0a246b13c"",
+                    ""path"": ""<Keyboard>/5"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Five"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a6e82b22-d435-4ad1-ba50-629b36693061"",
+                    ""path"": ""<Keyboard>/6"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Six"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f98f2fc7-d6cf-4e56-bf32-a35ce4d56718"",
+                    ""path"": ""<Keyboard>/7"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Seven"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3badc498-e85e-43aa-a788-93f78c2b9ed9"",
+                    ""path"": ""<Keyboard>/8"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Eight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""58105739-1cf8-4bdf-913f-395004ccfcc7"",
+                    ""path"": ""<Keyboard>/9"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Nine"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""caca9ede-571b-4f67-820b-493e467a6878"",
+                    ""path"": ""<Keyboard>/0"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Zero"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""OptionsNumbers"",
+            ""id"": ""da73e702-d416-4766-b3ba-b5ed2ba727e6"",
+            ""actions"": [
+                {
+                    ""name"": ""One"",
+                    ""type"": ""Button"",
+                    ""id"": ""7c104315-b642-4827-8f86-905bd232be8d"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Two"",
+                    ""type"": ""Button"",
+                    ""id"": ""67eddd05-812e-437c-a57a-9f199406e2a3"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Three"",
+                    ""type"": ""Button"",
+                    ""id"": ""e3637755-4d7c-4bb0-ad63-bc19ff67e0d4"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Four"",
+                    ""type"": ""Button"",
+                    ""id"": ""aacde1d1-361b-4118-8039-53363743a8f1"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Five"",
+                    ""type"": ""Button"",
+                    ""id"": ""ac9421a9-df5f-4eb2-a24a-982938fc4604"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Six"",
+                    ""type"": ""Button"",
+                    ""id"": ""738d4baa-3c65-4f42-a59d-eb1c166fe78a"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Seven"",
+                    ""type"": ""Button"",
+                    ""id"": ""36e5200d-133b-4412-b07b-b0f061d99428"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Eight"",
+                    ""type"": ""Button"",
+                    ""id"": ""634a653a-114e-46de-b863-8366c3a7b288"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Nine"",
+                    ""type"": ""Button"",
+                    ""id"": ""ce29d8b1-694f-49a7-8f33-c230133faf4b"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Zero"",
+                    ""type"": ""Button"",
+                    ""id"": ""cfb87198-0ed0-417b-a7ad-974c28a0f4a7"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""2c894944-4522-4c87-a7c0-32f87232f93d"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""One"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""be4d3c46-716e-42fd-8170-8c1ed2a5d759"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Two"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""12ae7582-1d38-474f-bb18-5506b9b4051d"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Three"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fd1ca249-8ddd-46b8-9ae0-e2d3a9215b34"",
+                    ""path"": ""<Keyboard>/4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Four"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""293d561e-3266-43d5-8dcc-ac4907d2b5be"",
+                    ""path"": ""<Keyboard>/5"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Five"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""95319bf9-db95-4879-8ba3-1c088c6e7237"",
+                    ""path"": ""<Keyboard>/6"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Six"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""416e22ad-d506-4985-9289-28c7a4a88f4f"",
+                    ""path"": ""<Keyboard>/7"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Seven"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5b34b41f-5329-4c75-94f8-4277735d37c3"",
+                    ""path"": ""<Keyboard>/8"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Eight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5ec0892c-39dd-4509-9eda-240124673746"",
+                    ""path"": ""<Keyboard>/9"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Nine"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6ba63d56-908d-4d72-b481-807ed598b83b"",
+                    ""path"": ""<Keyboard>/0"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Zero"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -1128,35 +944,15 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         m_FPV_RotateCamera = m_FPV.FindAction("RotateCamera", throwIfNotFound: true);
         m_FPV_Interaction = m_FPV.FindAction("Interaction", throwIfNotFound: true);
         m_FPV_SwitchCamera = m_FPV.FindAction("SwitchCamera", throwIfNotFound: true);
-        m_FPV_One = m_FPV.FindAction("One", throwIfNotFound: true);
-        m_FPV_Two = m_FPV.FindAction("Two", throwIfNotFound: true);
-        m_FPV_Three = m_FPV.FindAction("Three", throwIfNotFound: true);
-        m_FPV_Four = m_FPV.FindAction("Four", throwIfNotFound: true);
-        m_FPV_Five = m_FPV.FindAction("Five", throwIfNotFound: true);
-        m_FPV_Six = m_FPV.FindAction("Six", throwIfNotFound: true);
-        m_FPV_Seven = m_FPV.FindAction("Seven", throwIfNotFound: true);
-        m_FPV_Eight = m_FPV.FindAction("Eight", throwIfNotFound: true);
-        m_FPV_Nine = m_FPV.FindAction("Nine", throwIfNotFound: true);
-        m_FPV_Zero = m_FPV.FindAction("Zero", throwIfNotFound: true);
         m_FPV_SwitchCharacter = m_FPV.FindAction("SwitchCharacter", throwIfNotFound: true);
         // Top-Down
         m_TopDown = asset.FindActionMap("Top-Down", throwIfNotFound: true);
-        m_TopDown_KeyboardCameraMovement = m_TopDown.FindAction("KeyboardCameraMovement", throwIfNotFound: true);
         m_TopDown_ScreenEdgePanning = m_TopDown.FindAction("ScreenEdgePanning", throwIfNotFound: true);
+        m_TopDown_KeyboardCameraMovement = m_TopDown.FindAction("KeyboardCameraMovement", throwIfNotFound: true);
         m_TopDown_ClickAndDrag = m_TopDown.FindAction("ClickAndDrag", throwIfNotFound: true);
         m_TopDown_ZoomCamera = m_TopDown.FindAction("ZoomCamera", throwIfNotFound: true);
         m_TopDown_Interaction = m_TopDown.FindAction("Interaction", throwIfNotFound: true);
         m_TopDown_SwitchCamera = m_TopDown.FindAction("SwitchCamera", throwIfNotFound: true);
-        m_TopDown_One = m_TopDown.FindAction("One", throwIfNotFound: true);
-        m_TopDown_Two = m_TopDown.FindAction("Two", throwIfNotFound: true);
-        m_TopDown_Three = m_TopDown.FindAction("Three", throwIfNotFound: true);
-        m_TopDown_Four = m_TopDown.FindAction("Four", throwIfNotFound: true);
-        m_TopDown_Five = m_TopDown.FindAction("Five", throwIfNotFound: true);
-        m_TopDown_Six = m_TopDown.FindAction("Six", throwIfNotFound: true);
-        m_TopDown_Seven = m_TopDown.FindAction("Seven", throwIfNotFound: true);
-        m_TopDown_Eight = m_TopDown.FindAction("Eight", throwIfNotFound: true);
-        m_TopDown_Nine = m_TopDown.FindAction("Nine", throwIfNotFound: true);
-        m_TopDown_Zero = m_TopDown.FindAction("Zero", throwIfNotFound: true);
         m_TopDown_SwitchCharacter = m_TopDown.FindAction("SwitchCharacter", throwIfNotFound: true);
         // Isometric
         m_Isometric = asset.FindActionMap("Isometric", throwIfNotFound: true);
@@ -1164,17 +960,31 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         m_Isometric_Mouse = m_Isometric.FindAction("Mouse", throwIfNotFound: true);
         m_Isometric_Interaction = m_Isometric.FindAction("Interaction", throwIfNotFound: true);
         m_Isometric_SwitchCamera = m_Isometric.FindAction("SwitchCamera", throwIfNotFound: true);
-        m_Isometric_One = m_Isometric.FindAction("One", throwIfNotFound: true);
-        m_Isometric_Two = m_Isometric.FindAction("Two", throwIfNotFound: true);
-        m_Isometric_Three = m_Isometric.FindAction("Three", throwIfNotFound: true);
-        m_Isometric_Four = m_Isometric.FindAction("Four", throwIfNotFound: true);
-        m_Isometric_Five = m_Isometric.FindAction("Five", throwIfNotFound: true);
-        m_Isometric_Six = m_Isometric.FindAction("Six", throwIfNotFound: true);
-        m_Isometric_Seven = m_Isometric.FindAction("Seven", throwIfNotFound: true);
-        m_Isometric_Eight = m_Isometric.FindAction("Eight", throwIfNotFound: true);
-        m_Isometric_Nine = m_Isometric.FindAction("Nine", throwIfNotFound: true);
-        m_Isometric_Zero = m_Isometric.FindAction("Zero", throwIfNotFound: true);
         m_Isometric_SwitchCharacter = m_Isometric.FindAction("SwitchCharacter", throwIfNotFound: true);
+        // DefNumbers
+        m_DefNumbers = asset.FindActionMap("DefNumbers", throwIfNotFound: true);
+        m_DefNumbers_One = m_DefNumbers.FindAction("One", throwIfNotFound: true);
+        m_DefNumbers_Two = m_DefNumbers.FindAction("Two", throwIfNotFound: true);
+        m_DefNumbers_Three = m_DefNumbers.FindAction("Three", throwIfNotFound: true);
+        m_DefNumbers_Four = m_DefNumbers.FindAction("Four", throwIfNotFound: true);
+        m_DefNumbers_Five = m_DefNumbers.FindAction("Five", throwIfNotFound: true);
+        m_DefNumbers_Six = m_DefNumbers.FindAction("Six", throwIfNotFound: true);
+        m_DefNumbers_Seven = m_DefNumbers.FindAction("Seven", throwIfNotFound: true);
+        m_DefNumbers_Eight = m_DefNumbers.FindAction("Eight", throwIfNotFound: true);
+        m_DefNumbers_Nine = m_DefNumbers.FindAction("Nine", throwIfNotFound: true);
+        m_DefNumbers_Zero = m_DefNumbers.FindAction("Zero", throwIfNotFound: true);
+        // OptionsNumbers
+        m_OptionsNumbers = asset.FindActionMap("OptionsNumbers", throwIfNotFound: true);
+        m_OptionsNumbers_One = m_OptionsNumbers.FindAction("One", throwIfNotFound: true);
+        m_OptionsNumbers_Two = m_OptionsNumbers.FindAction("Two", throwIfNotFound: true);
+        m_OptionsNumbers_Three = m_OptionsNumbers.FindAction("Three", throwIfNotFound: true);
+        m_OptionsNumbers_Four = m_OptionsNumbers.FindAction("Four", throwIfNotFound: true);
+        m_OptionsNumbers_Five = m_OptionsNumbers.FindAction("Five", throwIfNotFound: true);
+        m_OptionsNumbers_Six = m_OptionsNumbers.FindAction("Six", throwIfNotFound: true);
+        m_OptionsNumbers_Seven = m_OptionsNumbers.FindAction("Seven", throwIfNotFound: true);
+        m_OptionsNumbers_Eight = m_OptionsNumbers.FindAction("Eight", throwIfNotFound: true);
+        m_OptionsNumbers_Nine = m_OptionsNumbers.FindAction("Nine", throwIfNotFound: true);
+        m_OptionsNumbers_Zero = m_OptionsNumbers.FindAction("Zero", throwIfNotFound: true);
     }
 
     ~@InputActions()
@@ -1182,6 +992,8 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         UnityEngine.Debug.Assert(!m_FPV.enabled, "This will cause a leak and performance issues, InputActions.FPV.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_TopDown.enabled, "This will cause a leak and performance issues, InputActions.TopDown.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_Isometric.enabled, "This will cause a leak and performance issues, InputActions.Isometric.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_DefNumbers.enabled, "This will cause a leak and performance issues, InputActions.DefNumbers.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_OptionsNumbers.enabled, "This will cause a leak and performance issues, InputActions.OptionsNumbers.Disable() has not been called.");
     }
 
     public void Dispose()
@@ -1247,16 +1059,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_FPV_RotateCamera;
     private readonly InputAction m_FPV_Interaction;
     private readonly InputAction m_FPV_SwitchCamera;
-    private readonly InputAction m_FPV_One;
-    private readonly InputAction m_FPV_Two;
-    private readonly InputAction m_FPV_Three;
-    private readonly InputAction m_FPV_Four;
-    private readonly InputAction m_FPV_Five;
-    private readonly InputAction m_FPV_Six;
-    private readonly InputAction m_FPV_Seven;
-    private readonly InputAction m_FPV_Eight;
-    private readonly InputAction m_FPV_Nine;
-    private readonly InputAction m_FPV_Zero;
     private readonly InputAction m_FPV_SwitchCharacter;
     public struct FPVActions
     {
@@ -1266,16 +1068,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         public InputAction @RotateCamera => m_Wrapper.m_FPV_RotateCamera;
         public InputAction @Interaction => m_Wrapper.m_FPV_Interaction;
         public InputAction @SwitchCamera => m_Wrapper.m_FPV_SwitchCamera;
-        public InputAction @One => m_Wrapper.m_FPV_One;
-        public InputAction @Two => m_Wrapper.m_FPV_Two;
-        public InputAction @Three => m_Wrapper.m_FPV_Three;
-        public InputAction @Four => m_Wrapper.m_FPV_Four;
-        public InputAction @Five => m_Wrapper.m_FPV_Five;
-        public InputAction @Six => m_Wrapper.m_FPV_Six;
-        public InputAction @Seven => m_Wrapper.m_FPV_Seven;
-        public InputAction @Eight => m_Wrapper.m_FPV_Eight;
-        public InputAction @Nine => m_Wrapper.m_FPV_Nine;
-        public InputAction @Zero => m_Wrapper.m_FPV_Zero;
         public InputAction @SwitchCharacter => m_Wrapper.m_FPV_SwitchCharacter;
         public InputActionMap Get() { return m_Wrapper.m_FPV; }
         public void Enable() { Get().Enable(); }
@@ -1298,36 +1090,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @SwitchCamera.started += instance.OnSwitchCamera;
             @SwitchCamera.performed += instance.OnSwitchCamera;
             @SwitchCamera.canceled += instance.OnSwitchCamera;
-            @One.started += instance.OnOne;
-            @One.performed += instance.OnOne;
-            @One.canceled += instance.OnOne;
-            @Two.started += instance.OnTwo;
-            @Two.performed += instance.OnTwo;
-            @Two.canceled += instance.OnTwo;
-            @Three.started += instance.OnThree;
-            @Three.performed += instance.OnThree;
-            @Three.canceled += instance.OnThree;
-            @Four.started += instance.OnFour;
-            @Four.performed += instance.OnFour;
-            @Four.canceled += instance.OnFour;
-            @Five.started += instance.OnFive;
-            @Five.performed += instance.OnFive;
-            @Five.canceled += instance.OnFive;
-            @Six.started += instance.OnSix;
-            @Six.performed += instance.OnSix;
-            @Six.canceled += instance.OnSix;
-            @Seven.started += instance.OnSeven;
-            @Seven.performed += instance.OnSeven;
-            @Seven.canceled += instance.OnSeven;
-            @Eight.started += instance.OnEight;
-            @Eight.performed += instance.OnEight;
-            @Eight.canceled += instance.OnEight;
-            @Nine.started += instance.OnNine;
-            @Nine.performed += instance.OnNine;
-            @Nine.canceled += instance.OnNine;
-            @Zero.started += instance.OnZero;
-            @Zero.performed += instance.OnZero;
-            @Zero.canceled += instance.OnZero;
             @SwitchCharacter.started += instance.OnSwitchCharacter;
             @SwitchCharacter.performed += instance.OnSwitchCharacter;
             @SwitchCharacter.canceled += instance.OnSwitchCharacter;
@@ -1347,36 +1109,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @SwitchCamera.started -= instance.OnSwitchCamera;
             @SwitchCamera.performed -= instance.OnSwitchCamera;
             @SwitchCamera.canceled -= instance.OnSwitchCamera;
-            @One.started -= instance.OnOne;
-            @One.performed -= instance.OnOne;
-            @One.canceled -= instance.OnOne;
-            @Two.started -= instance.OnTwo;
-            @Two.performed -= instance.OnTwo;
-            @Two.canceled -= instance.OnTwo;
-            @Three.started -= instance.OnThree;
-            @Three.performed -= instance.OnThree;
-            @Three.canceled -= instance.OnThree;
-            @Four.started -= instance.OnFour;
-            @Four.performed -= instance.OnFour;
-            @Four.canceled -= instance.OnFour;
-            @Five.started -= instance.OnFive;
-            @Five.performed -= instance.OnFive;
-            @Five.canceled -= instance.OnFive;
-            @Six.started -= instance.OnSix;
-            @Six.performed -= instance.OnSix;
-            @Six.canceled -= instance.OnSix;
-            @Seven.started -= instance.OnSeven;
-            @Seven.performed -= instance.OnSeven;
-            @Seven.canceled -= instance.OnSeven;
-            @Eight.started -= instance.OnEight;
-            @Eight.performed -= instance.OnEight;
-            @Eight.canceled -= instance.OnEight;
-            @Nine.started -= instance.OnNine;
-            @Nine.performed -= instance.OnNine;
-            @Nine.canceled -= instance.OnNine;
-            @Zero.started -= instance.OnZero;
-            @Zero.performed -= instance.OnZero;
-            @Zero.canceled -= instance.OnZero;
             @SwitchCharacter.started -= instance.OnSwitchCharacter;
             @SwitchCharacter.performed -= instance.OnSwitchCharacter;
             @SwitchCharacter.canceled -= instance.OnSwitchCharacter;
@@ -1401,43 +1133,23 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     // Top-Down
     private readonly InputActionMap m_TopDown;
     private List<ITopDownActions> m_TopDownActionsCallbackInterfaces = new List<ITopDownActions>();
-    private readonly InputAction m_TopDown_KeyboardCameraMovement;
     private readonly InputAction m_TopDown_ScreenEdgePanning;
+    private readonly InputAction m_TopDown_KeyboardCameraMovement;
     private readonly InputAction m_TopDown_ClickAndDrag;
     private readonly InputAction m_TopDown_ZoomCamera;
     private readonly InputAction m_TopDown_Interaction;
     private readonly InputAction m_TopDown_SwitchCamera;
-    private readonly InputAction m_TopDown_One;
-    private readonly InputAction m_TopDown_Two;
-    private readonly InputAction m_TopDown_Three;
-    private readonly InputAction m_TopDown_Four;
-    private readonly InputAction m_TopDown_Five;
-    private readonly InputAction m_TopDown_Six;
-    private readonly InputAction m_TopDown_Seven;
-    private readonly InputAction m_TopDown_Eight;
-    private readonly InputAction m_TopDown_Nine;
-    private readonly InputAction m_TopDown_Zero;
     private readonly InputAction m_TopDown_SwitchCharacter;
     public struct TopDownActions
     {
         private @InputActions m_Wrapper;
         public TopDownActions(@InputActions wrapper) { m_Wrapper = wrapper; }
-        public InputAction @KeyboardCameraMovement => m_Wrapper.m_TopDown_KeyboardCameraMovement;
         public InputAction @ScreenEdgePanning => m_Wrapper.m_TopDown_ScreenEdgePanning;
+        public InputAction @KeyboardCameraMovement => m_Wrapper.m_TopDown_KeyboardCameraMovement;
         public InputAction @ClickAndDrag => m_Wrapper.m_TopDown_ClickAndDrag;
         public InputAction @ZoomCamera => m_Wrapper.m_TopDown_ZoomCamera;
         public InputAction @Interaction => m_Wrapper.m_TopDown_Interaction;
         public InputAction @SwitchCamera => m_Wrapper.m_TopDown_SwitchCamera;
-        public InputAction @One => m_Wrapper.m_TopDown_One;
-        public InputAction @Two => m_Wrapper.m_TopDown_Two;
-        public InputAction @Three => m_Wrapper.m_TopDown_Three;
-        public InputAction @Four => m_Wrapper.m_TopDown_Four;
-        public InputAction @Five => m_Wrapper.m_TopDown_Five;
-        public InputAction @Six => m_Wrapper.m_TopDown_Six;
-        public InputAction @Seven => m_Wrapper.m_TopDown_Seven;
-        public InputAction @Eight => m_Wrapper.m_TopDown_Eight;
-        public InputAction @Nine => m_Wrapper.m_TopDown_Nine;
-        public InputAction @Zero => m_Wrapper.m_TopDown_Zero;
         public InputAction @SwitchCharacter => m_Wrapper.m_TopDown_SwitchCharacter;
         public InputActionMap Get() { return m_Wrapper.m_TopDown; }
         public void Enable() { Get().Enable(); }
@@ -1448,12 +1160,12 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_TopDownActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_TopDownActionsCallbackInterfaces.Add(instance);
-            @KeyboardCameraMovement.started += instance.OnKeyboardCameraMovement;
-            @KeyboardCameraMovement.performed += instance.OnKeyboardCameraMovement;
-            @KeyboardCameraMovement.canceled += instance.OnKeyboardCameraMovement;
             @ScreenEdgePanning.started += instance.OnScreenEdgePanning;
             @ScreenEdgePanning.performed += instance.OnScreenEdgePanning;
             @ScreenEdgePanning.canceled += instance.OnScreenEdgePanning;
+            @KeyboardCameraMovement.started += instance.OnKeyboardCameraMovement;
+            @KeyboardCameraMovement.performed += instance.OnKeyboardCameraMovement;
+            @KeyboardCameraMovement.canceled += instance.OnKeyboardCameraMovement;
             @ClickAndDrag.started += instance.OnClickAndDrag;
             @ClickAndDrag.performed += instance.OnClickAndDrag;
             @ClickAndDrag.canceled += instance.OnClickAndDrag;
@@ -1466,36 +1178,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @SwitchCamera.started += instance.OnSwitchCamera;
             @SwitchCamera.performed += instance.OnSwitchCamera;
             @SwitchCamera.canceled += instance.OnSwitchCamera;
-            @One.started += instance.OnOne;
-            @One.performed += instance.OnOne;
-            @One.canceled += instance.OnOne;
-            @Two.started += instance.OnTwo;
-            @Two.performed += instance.OnTwo;
-            @Two.canceled += instance.OnTwo;
-            @Three.started += instance.OnThree;
-            @Three.performed += instance.OnThree;
-            @Three.canceled += instance.OnThree;
-            @Four.started += instance.OnFour;
-            @Four.performed += instance.OnFour;
-            @Four.canceled += instance.OnFour;
-            @Five.started += instance.OnFive;
-            @Five.performed += instance.OnFive;
-            @Five.canceled += instance.OnFive;
-            @Six.started += instance.OnSix;
-            @Six.performed += instance.OnSix;
-            @Six.canceled += instance.OnSix;
-            @Seven.started += instance.OnSeven;
-            @Seven.performed += instance.OnSeven;
-            @Seven.canceled += instance.OnSeven;
-            @Eight.started += instance.OnEight;
-            @Eight.performed += instance.OnEight;
-            @Eight.canceled += instance.OnEight;
-            @Nine.started += instance.OnNine;
-            @Nine.performed += instance.OnNine;
-            @Nine.canceled += instance.OnNine;
-            @Zero.started += instance.OnZero;
-            @Zero.performed += instance.OnZero;
-            @Zero.canceled += instance.OnZero;
             @SwitchCharacter.started += instance.OnSwitchCharacter;
             @SwitchCharacter.performed += instance.OnSwitchCharacter;
             @SwitchCharacter.canceled += instance.OnSwitchCharacter;
@@ -1503,12 +1185,12 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
 
         private void UnregisterCallbacks(ITopDownActions instance)
         {
-            @KeyboardCameraMovement.started -= instance.OnKeyboardCameraMovement;
-            @KeyboardCameraMovement.performed -= instance.OnKeyboardCameraMovement;
-            @KeyboardCameraMovement.canceled -= instance.OnKeyboardCameraMovement;
             @ScreenEdgePanning.started -= instance.OnScreenEdgePanning;
             @ScreenEdgePanning.performed -= instance.OnScreenEdgePanning;
             @ScreenEdgePanning.canceled -= instance.OnScreenEdgePanning;
+            @KeyboardCameraMovement.started -= instance.OnKeyboardCameraMovement;
+            @KeyboardCameraMovement.performed -= instance.OnKeyboardCameraMovement;
+            @KeyboardCameraMovement.canceled -= instance.OnKeyboardCameraMovement;
             @ClickAndDrag.started -= instance.OnClickAndDrag;
             @ClickAndDrag.performed -= instance.OnClickAndDrag;
             @ClickAndDrag.canceled -= instance.OnClickAndDrag;
@@ -1521,36 +1203,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @SwitchCamera.started -= instance.OnSwitchCamera;
             @SwitchCamera.performed -= instance.OnSwitchCamera;
             @SwitchCamera.canceled -= instance.OnSwitchCamera;
-            @One.started -= instance.OnOne;
-            @One.performed -= instance.OnOne;
-            @One.canceled -= instance.OnOne;
-            @Two.started -= instance.OnTwo;
-            @Two.performed -= instance.OnTwo;
-            @Two.canceled -= instance.OnTwo;
-            @Three.started -= instance.OnThree;
-            @Three.performed -= instance.OnThree;
-            @Three.canceled -= instance.OnThree;
-            @Four.started -= instance.OnFour;
-            @Four.performed -= instance.OnFour;
-            @Four.canceled -= instance.OnFour;
-            @Five.started -= instance.OnFive;
-            @Five.performed -= instance.OnFive;
-            @Five.canceled -= instance.OnFive;
-            @Six.started -= instance.OnSix;
-            @Six.performed -= instance.OnSix;
-            @Six.canceled -= instance.OnSix;
-            @Seven.started -= instance.OnSeven;
-            @Seven.performed -= instance.OnSeven;
-            @Seven.canceled -= instance.OnSeven;
-            @Eight.started -= instance.OnEight;
-            @Eight.performed -= instance.OnEight;
-            @Eight.canceled -= instance.OnEight;
-            @Nine.started -= instance.OnNine;
-            @Nine.performed -= instance.OnNine;
-            @Nine.canceled -= instance.OnNine;
-            @Zero.started -= instance.OnZero;
-            @Zero.performed -= instance.OnZero;
-            @Zero.canceled -= instance.OnZero;
             @SwitchCharacter.started -= instance.OnSwitchCharacter;
             @SwitchCharacter.performed -= instance.OnSwitchCharacter;
             @SwitchCharacter.canceled -= instance.OnSwitchCharacter;
@@ -1579,16 +1231,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Isometric_Mouse;
     private readonly InputAction m_Isometric_Interaction;
     private readonly InputAction m_Isometric_SwitchCamera;
-    private readonly InputAction m_Isometric_One;
-    private readonly InputAction m_Isometric_Two;
-    private readonly InputAction m_Isometric_Three;
-    private readonly InputAction m_Isometric_Four;
-    private readonly InputAction m_Isometric_Five;
-    private readonly InputAction m_Isometric_Six;
-    private readonly InputAction m_Isometric_Seven;
-    private readonly InputAction m_Isometric_Eight;
-    private readonly InputAction m_Isometric_Nine;
-    private readonly InputAction m_Isometric_Zero;
     private readonly InputAction m_Isometric_SwitchCharacter;
     public struct IsometricActions
     {
@@ -1598,16 +1240,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         public InputAction @Mouse => m_Wrapper.m_Isometric_Mouse;
         public InputAction @Interaction => m_Wrapper.m_Isometric_Interaction;
         public InputAction @SwitchCamera => m_Wrapper.m_Isometric_SwitchCamera;
-        public InputAction @One => m_Wrapper.m_Isometric_One;
-        public InputAction @Two => m_Wrapper.m_Isometric_Two;
-        public InputAction @Three => m_Wrapper.m_Isometric_Three;
-        public InputAction @Four => m_Wrapper.m_Isometric_Four;
-        public InputAction @Five => m_Wrapper.m_Isometric_Five;
-        public InputAction @Six => m_Wrapper.m_Isometric_Six;
-        public InputAction @Seven => m_Wrapper.m_Isometric_Seven;
-        public InputAction @Eight => m_Wrapper.m_Isometric_Eight;
-        public InputAction @Nine => m_Wrapper.m_Isometric_Nine;
-        public InputAction @Zero => m_Wrapper.m_Isometric_Zero;
         public InputAction @SwitchCharacter => m_Wrapper.m_Isometric_SwitchCharacter;
         public InputActionMap Get() { return m_Wrapper.m_Isometric; }
         public void Enable() { Get().Enable(); }
@@ -1630,6 +1262,82 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @SwitchCamera.started += instance.OnSwitchCamera;
             @SwitchCamera.performed += instance.OnSwitchCamera;
             @SwitchCamera.canceled += instance.OnSwitchCamera;
+            @SwitchCharacter.started += instance.OnSwitchCharacter;
+            @SwitchCharacter.performed += instance.OnSwitchCharacter;
+            @SwitchCharacter.canceled += instance.OnSwitchCharacter;
+        }
+
+        private void UnregisterCallbacks(IIsometricActions instance)
+        {
+            @Movement.started -= instance.OnMovement;
+            @Movement.performed -= instance.OnMovement;
+            @Movement.canceled -= instance.OnMovement;
+            @Mouse.started -= instance.OnMouse;
+            @Mouse.performed -= instance.OnMouse;
+            @Mouse.canceled -= instance.OnMouse;
+            @Interaction.started -= instance.OnInteraction;
+            @Interaction.performed -= instance.OnInteraction;
+            @Interaction.canceled -= instance.OnInteraction;
+            @SwitchCamera.started -= instance.OnSwitchCamera;
+            @SwitchCamera.performed -= instance.OnSwitchCamera;
+            @SwitchCamera.canceled -= instance.OnSwitchCamera;
+            @SwitchCharacter.started -= instance.OnSwitchCharacter;
+            @SwitchCharacter.performed -= instance.OnSwitchCharacter;
+            @SwitchCharacter.canceled -= instance.OnSwitchCharacter;
+        }
+
+        public void RemoveCallbacks(IIsometricActions instance)
+        {
+            if (m_Wrapper.m_IsometricActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IIsometricActions instance)
+        {
+            foreach (var item in m_Wrapper.m_IsometricActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_IsometricActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public IsometricActions @Isometric => new IsometricActions(this);
+
+    // DefNumbers
+    private readonly InputActionMap m_DefNumbers;
+    private List<IDefNumbersActions> m_DefNumbersActionsCallbackInterfaces = new List<IDefNumbersActions>();
+    private readonly InputAction m_DefNumbers_One;
+    private readonly InputAction m_DefNumbers_Two;
+    private readonly InputAction m_DefNumbers_Three;
+    private readonly InputAction m_DefNumbers_Four;
+    private readonly InputAction m_DefNumbers_Five;
+    private readonly InputAction m_DefNumbers_Six;
+    private readonly InputAction m_DefNumbers_Seven;
+    private readonly InputAction m_DefNumbers_Eight;
+    private readonly InputAction m_DefNumbers_Nine;
+    private readonly InputAction m_DefNumbers_Zero;
+    public struct DefNumbersActions
+    {
+        private @InputActions m_Wrapper;
+        public DefNumbersActions(@InputActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @One => m_Wrapper.m_DefNumbers_One;
+        public InputAction @Two => m_Wrapper.m_DefNumbers_Two;
+        public InputAction @Three => m_Wrapper.m_DefNumbers_Three;
+        public InputAction @Four => m_Wrapper.m_DefNumbers_Four;
+        public InputAction @Five => m_Wrapper.m_DefNumbers_Five;
+        public InputAction @Six => m_Wrapper.m_DefNumbers_Six;
+        public InputAction @Seven => m_Wrapper.m_DefNumbers_Seven;
+        public InputAction @Eight => m_Wrapper.m_DefNumbers_Eight;
+        public InputAction @Nine => m_Wrapper.m_DefNumbers_Nine;
+        public InputAction @Zero => m_Wrapper.m_DefNumbers_Zero;
+        public InputActionMap Get() { return m_Wrapper.m_DefNumbers; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(DefNumbersActions set) { return set.Get(); }
+        public void AddCallbacks(IDefNumbersActions instance)
+        {
+            if (instance == null || m_Wrapper.m_DefNumbersActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_DefNumbersActionsCallbackInterfaces.Add(instance);
             @One.started += instance.OnOne;
             @One.performed += instance.OnOne;
             @One.canceled += instance.OnOne;
@@ -1660,25 +1368,10 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @Zero.started += instance.OnZero;
             @Zero.performed += instance.OnZero;
             @Zero.canceled += instance.OnZero;
-            @SwitchCharacter.started += instance.OnSwitchCharacter;
-            @SwitchCharacter.performed += instance.OnSwitchCharacter;
-            @SwitchCharacter.canceled += instance.OnSwitchCharacter;
         }
 
-        private void UnregisterCallbacks(IIsometricActions instance)
+        private void UnregisterCallbacks(IDefNumbersActions instance)
         {
-            @Movement.started -= instance.OnMovement;
-            @Movement.performed -= instance.OnMovement;
-            @Movement.canceled -= instance.OnMovement;
-            @Mouse.started -= instance.OnMouse;
-            @Mouse.performed -= instance.OnMouse;
-            @Mouse.canceled -= instance.OnMouse;
-            @Interaction.started -= instance.OnInteraction;
-            @Interaction.performed -= instance.OnInteraction;
-            @Interaction.canceled -= instance.OnInteraction;
-            @SwitchCamera.started -= instance.OnSwitchCamera;
-            @SwitchCamera.performed -= instance.OnSwitchCamera;
-            @SwitchCamera.canceled -= instance.OnSwitchCamera;
             @One.started -= instance.OnOne;
             @One.performed -= instance.OnOne;
             @One.canceled -= instance.OnOne;
@@ -1709,62 +1402,157 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @Zero.started -= instance.OnZero;
             @Zero.performed -= instance.OnZero;
             @Zero.canceled -= instance.OnZero;
-            @SwitchCharacter.started -= instance.OnSwitchCharacter;
-            @SwitchCharacter.performed -= instance.OnSwitchCharacter;
-            @SwitchCharacter.canceled -= instance.OnSwitchCharacter;
         }
 
-        public void RemoveCallbacks(IIsometricActions instance)
+        public void RemoveCallbacks(IDefNumbersActions instance)
         {
-            if (m_Wrapper.m_IsometricActionsCallbackInterfaces.Remove(instance))
+            if (m_Wrapper.m_DefNumbersActionsCallbackInterfaces.Remove(instance))
                 UnregisterCallbacks(instance);
         }
 
-        public void SetCallbacks(IIsometricActions instance)
+        public void SetCallbacks(IDefNumbersActions instance)
         {
-            foreach (var item in m_Wrapper.m_IsometricActionsCallbackInterfaces)
+            foreach (var item in m_Wrapper.m_DefNumbersActionsCallbackInterfaces)
                 UnregisterCallbacks(item);
-            m_Wrapper.m_IsometricActionsCallbackInterfaces.Clear();
+            m_Wrapper.m_DefNumbersActionsCallbackInterfaces.Clear();
             AddCallbacks(instance);
         }
     }
-    public IsometricActions @Isometric => new IsometricActions(this);
+    public DefNumbersActions @DefNumbers => new DefNumbersActions(this);
+
+    // OptionsNumbers
+    private readonly InputActionMap m_OptionsNumbers;
+    private List<IOptionsNumbersActions> m_OptionsNumbersActionsCallbackInterfaces = new List<IOptionsNumbersActions>();
+    private readonly InputAction m_OptionsNumbers_One;
+    private readonly InputAction m_OptionsNumbers_Two;
+    private readonly InputAction m_OptionsNumbers_Three;
+    private readonly InputAction m_OptionsNumbers_Four;
+    private readonly InputAction m_OptionsNumbers_Five;
+    private readonly InputAction m_OptionsNumbers_Six;
+    private readonly InputAction m_OptionsNumbers_Seven;
+    private readonly InputAction m_OptionsNumbers_Eight;
+    private readonly InputAction m_OptionsNumbers_Nine;
+    private readonly InputAction m_OptionsNumbers_Zero;
+    public struct OptionsNumbersActions
+    {
+        private @InputActions m_Wrapper;
+        public OptionsNumbersActions(@InputActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @One => m_Wrapper.m_OptionsNumbers_One;
+        public InputAction @Two => m_Wrapper.m_OptionsNumbers_Two;
+        public InputAction @Three => m_Wrapper.m_OptionsNumbers_Three;
+        public InputAction @Four => m_Wrapper.m_OptionsNumbers_Four;
+        public InputAction @Five => m_Wrapper.m_OptionsNumbers_Five;
+        public InputAction @Six => m_Wrapper.m_OptionsNumbers_Six;
+        public InputAction @Seven => m_Wrapper.m_OptionsNumbers_Seven;
+        public InputAction @Eight => m_Wrapper.m_OptionsNumbers_Eight;
+        public InputAction @Nine => m_Wrapper.m_OptionsNumbers_Nine;
+        public InputAction @Zero => m_Wrapper.m_OptionsNumbers_Zero;
+        public InputActionMap Get() { return m_Wrapper.m_OptionsNumbers; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(OptionsNumbersActions set) { return set.Get(); }
+        public void AddCallbacks(IOptionsNumbersActions instance)
+        {
+            if (instance == null || m_Wrapper.m_OptionsNumbersActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_OptionsNumbersActionsCallbackInterfaces.Add(instance);
+            @One.started += instance.OnOne;
+            @One.performed += instance.OnOne;
+            @One.canceled += instance.OnOne;
+            @Two.started += instance.OnTwo;
+            @Two.performed += instance.OnTwo;
+            @Two.canceled += instance.OnTwo;
+            @Three.started += instance.OnThree;
+            @Three.performed += instance.OnThree;
+            @Three.canceled += instance.OnThree;
+            @Four.started += instance.OnFour;
+            @Four.performed += instance.OnFour;
+            @Four.canceled += instance.OnFour;
+            @Five.started += instance.OnFive;
+            @Five.performed += instance.OnFive;
+            @Five.canceled += instance.OnFive;
+            @Six.started += instance.OnSix;
+            @Six.performed += instance.OnSix;
+            @Six.canceled += instance.OnSix;
+            @Seven.started += instance.OnSeven;
+            @Seven.performed += instance.OnSeven;
+            @Seven.canceled += instance.OnSeven;
+            @Eight.started += instance.OnEight;
+            @Eight.performed += instance.OnEight;
+            @Eight.canceled += instance.OnEight;
+            @Nine.started += instance.OnNine;
+            @Nine.performed += instance.OnNine;
+            @Nine.canceled += instance.OnNine;
+            @Zero.started += instance.OnZero;
+            @Zero.performed += instance.OnZero;
+            @Zero.canceled += instance.OnZero;
+        }
+
+        private void UnregisterCallbacks(IOptionsNumbersActions instance)
+        {
+            @One.started -= instance.OnOne;
+            @One.performed -= instance.OnOne;
+            @One.canceled -= instance.OnOne;
+            @Two.started -= instance.OnTwo;
+            @Two.performed -= instance.OnTwo;
+            @Two.canceled -= instance.OnTwo;
+            @Three.started -= instance.OnThree;
+            @Three.performed -= instance.OnThree;
+            @Three.canceled -= instance.OnThree;
+            @Four.started -= instance.OnFour;
+            @Four.performed -= instance.OnFour;
+            @Four.canceled -= instance.OnFour;
+            @Five.started -= instance.OnFive;
+            @Five.performed -= instance.OnFive;
+            @Five.canceled -= instance.OnFive;
+            @Six.started -= instance.OnSix;
+            @Six.performed -= instance.OnSix;
+            @Six.canceled -= instance.OnSix;
+            @Seven.started -= instance.OnSeven;
+            @Seven.performed -= instance.OnSeven;
+            @Seven.canceled -= instance.OnSeven;
+            @Eight.started -= instance.OnEight;
+            @Eight.performed -= instance.OnEight;
+            @Eight.canceled -= instance.OnEight;
+            @Nine.started -= instance.OnNine;
+            @Nine.performed -= instance.OnNine;
+            @Nine.canceled -= instance.OnNine;
+            @Zero.started -= instance.OnZero;
+            @Zero.performed -= instance.OnZero;
+            @Zero.canceled -= instance.OnZero;
+        }
+
+        public void RemoveCallbacks(IOptionsNumbersActions instance)
+        {
+            if (m_Wrapper.m_OptionsNumbersActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IOptionsNumbersActions instance)
+        {
+            foreach (var item in m_Wrapper.m_OptionsNumbersActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_OptionsNumbersActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public OptionsNumbersActions @OptionsNumbers => new OptionsNumbersActions(this);
     public interface IFPVActions
     {
         void OnMovement(InputAction.CallbackContext context);
         void OnRotateCamera(InputAction.CallbackContext context);
         void OnInteraction(InputAction.CallbackContext context);
         void OnSwitchCamera(InputAction.CallbackContext context);
-        void OnOne(InputAction.CallbackContext context);
-        void OnTwo(InputAction.CallbackContext context);
-        void OnThree(InputAction.CallbackContext context);
-        void OnFour(InputAction.CallbackContext context);
-        void OnFive(InputAction.CallbackContext context);
-        void OnSix(InputAction.CallbackContext context);
-        void OnSeven(InputAction.CallbackContext context);
-        void OnEight(InputAction.CallbackContext context);
-        void OnNine(InputAction.CallbackContext context);
-        void OnZero(InputAction.CallbackContext context);
         void OnSwitchCharacter(InputAction.CallbackContext context);
     }
     public interface ITopDownActions
     {
-        void OnKeyboardCameraMovement(InputAction.CallbackContext context);
         void OnScreenEdgePanning(InputAction.CallbackContext context);
+        void OnKeyboardCameraMovement(InputAction.CallbackContext context);
         void OnClickAndDrag(InputAction.CallbackContext context);
         void OnZoomCamera(InputAction.CallbackContext context);
         void OnInteraction(InputAction.CallbackContext context);
         void OnSwitchCamera(InputAction.CallbackContext context);
-        void OnOne(InputAction.CallbackContext context);
-        void OnTwo(InputAction.CallbackContext context);
-        void OnThree(InputAction.CallbackContext context);
-        void OnFour(InputAction.CallbackContext context);
-        void OnFive(InputAction.CallbackContext context);
-        void OnSix(InputAction.CallbackContext context);
-        void OnSeven(InputAction.CallbackContext context);
-        void OnEight(InputAction.CallbackContext context);
-        void OnNine(InputAction.CallbackContext context);
-        void OnZero(InputAction.CallbackContext context);
         void OnSwitchCharacter(InputAction.CallbackContext context);
     }
     public interface IIsometricActions
@@ -1773,6 +1561,10 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         void OnMouse(InputAction.CallbackContext context);
         void OnInteraction(InputAction.CallbackContext context);
         void OnSwitchCamera(InputAction.CallbackContext context);
+        void OnSwitchCharacter(InputAction.CallbackContext context);
+    }
+    public interface IDefNumbersActions
+    {
         void OnOne(InputAction.CallbackContext context);
         void OnTwo(InputAction.CallbackContext context);
         void OnThree(InputAction.CallbackContext context);
@@ -1783,6 +1575,18 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         void OnEight(InputAction.CallbackContext context);
         void OnNine(InputAction.CallbackContext context);
         void OnZero(InputAction.CallbackContext context);
-        void OnSwitchCharacter(InputAction.CallbackContext context);
+    }
+    public interface IOptionsNumbersActions
+    {
+        void OnOne(InputAction.CallbackContext context);
+        void OnTwo(InputAction.CallbackContext context);
+        void OnThree(InputAction.CallbackContext context);
+        void OnFour(InputAction.CallbackContext context);
+        void OnFive(InputAction.CallbackContext context);
+        void OnSix(InputAction.CallbackContext context);
+        void OnSeven(InputAction.CallbackContext context);
+        void OnEight(InputAction.CallbackContext context);
+        void OnNine(InputAction.CallbackContext context);
+        void OnZero(InputAction.CallbackContext context);
     }
 }
