@@ -140,7 +140,7 @@ public class InputHandler : MonoBehaviour
         _OptionsNumbers.Five.performed += _ => OnOptionsFive.Invoke();
         _OptionsNumbers.Six.performed += _ => OnOptionsSix.Invoke();
         _OptionsNumbers.Seven.performed += _ => OnOptionsSeven.Invoke();
-        _OptionsNumbers.Eight.performed += _ => OnDefEight.Invoke();
+        _OptionsNumbers.Eight.performed += _ => OnOptionsEight.Invoke();
         _OptionsNumbers.Nine.performed += _ => OnOptionsNine.Invoke();
         _OptionsNumbers.Zero.performed += _ => OnOptionsZero.Invoke();
         #endregion

@@ -3,7 +3,7 @@
 public class CharacterSwitcher : MonoBehaviour
 {
     private bool _isMenuActivated = false;
-    private void Start()
+    public void Init()
     {
         InputHandler.OnGetCharacterInfo.AddListener(Switch);       
     }
