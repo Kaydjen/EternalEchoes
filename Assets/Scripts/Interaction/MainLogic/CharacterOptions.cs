@@ -3,23 +3,23 @@ using UnityEngine;
 public class CharacterOptions : MonoBehaviour
 {
     #region VARIABLES
+    private static Transform _selectedCharacter;
     #endregion
     #region PUBLIC METHODS
     public static void EnableChoise(Transform characterObj)
     {
-        Debug.Log("3");
         InputHandler.Instance.ActivateOptionsNumbersMap();
+        _selectedCharacter = characterObj;
     }
     public static void DisableChoise()
     {
-        Debug.Log("4");
         InputHandler.Instance.ActivateDefNumbersMap();
     }
     #endregion
     #region PRIVATE METHODS
     private void SwitchToNewCharacter()
     {
-
+        _selectedCharacter.GetComponent<PlayerCore>().enabled = true;
     }
     private void SayHello()
     {

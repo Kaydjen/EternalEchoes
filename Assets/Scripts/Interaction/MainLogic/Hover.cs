@@ -37,6 +37,7 @@ public class Hover : MonoBehaviour, ICameraUpdate, IUpdate
     }
     private void CheckForInteractable()
     {
+        HitedCollider = null;
         if (Physics.Raycast(_camera.ScreenPointToRay(Input.mousePosition), out _hitInfo, _raycastDistance)) // TODO: тут дальше можно заменить HitInfo на новое статик поле, в которое записать HitInfo.collider и так уже работать, удобнее будет
         {
             HitedCollider = _hitInfo.collider;
