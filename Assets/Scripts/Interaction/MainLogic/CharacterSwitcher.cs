@@ -14,12 +14,14 @@ public class CharacterSwitcher : MonoBehaviour
         {
             if (_isMenuActivated) // если меню активированно - вырубаем
             {
+                Debug.Log("1");
                 CharacterOptions.DisableChoise();
                 _isMenuActivated = false;
             }
         }
         else // если попал по персонажу
         {
+            Debug.Log("2");
             if (_isMenuActivated) CharacterOptions.DisableChoise(); // вырубаем старое меню
             CharacterOptions.EnableChoise(Hover.HitedCollider.transform); // врубаем новое меню
             _isMenuActivated = true;

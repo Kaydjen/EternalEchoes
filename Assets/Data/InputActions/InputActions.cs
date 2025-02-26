@@ -372,15 +372,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             ""id"": ""9e2e56e4-eb88-45b1-b3bd-1a160902f751"",
             ""actions"": [
                 {
-                    ""name"": ""Movement"",
-                    ""type"": ""Value"",
-                    ""id"": ""41c269c8-bb0c-4bff-bee5-923bdda2ce24"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                },
-                {
                     ""name"": ""Mouse"",
                     ""type"": ""Value"",
                     ""id"": ""b6ea6928-f18f-4bc1-a6ce-c0fcdcf13ec9"",
@@ -415,20 +406,18 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Movement"",
+                    ""type"": ""Value"",
+                    ""id"": ""030b77c3-9dad-4c5d-bf9a-93467561e4c8"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
-                {
-                    ""name"": ""2D Vector"",
-                    ""id"": ""79a27341-391f-4cb3-9539-492631ca0c28"",
-                    ""path"": ""2DVector"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
                 {
                     ""name"": """",
                     ""id"": ""d8180b37-987b-4a74-8b0f-6897148b6d02"",
@@ -439,50 +428,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""action"": ""SwitchCharacter"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""up"",
-                    ""id"": ""7ac9156e-d2fd-40ea-a517-e2d56559cf27"",
-                    ""path"": ""<Keyboard>/w"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""b32d4dfc-791c-458f-aa08-e65a86f97146"",
-                    ""path"": ""<Keyboard>/s"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""left"",
-                    ""id"": ""45fcad4a-e572-4add-9cd3-1503d44e2067"",
-                    ""path"": ""<Keyboard>/a"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""right"",
-                    ""id"": ""886078ba-cb4c-4921-889d-7b03fbf4d197"",
-                    ""path"": ""<Keyboard>/d"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
                 },
                 {
                     ""name"": """",
@@ -516,6 +461,61 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""action"": ""Mouse"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""cdd4c16e-3d84-48c9-abe0-8395fab25780"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""b5ff1451-9ce6-4f60-b600-03e31a17eed3"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""3d1bac7d-9dd5-492e-b6ec-4091aba6b555"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""e996bc02-40e7-405e-8cea-08286e364085"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""6e7a0b55-eb39-4dc1-8d72-6066fdc3294a"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         },
@@ -956,11 +956,11 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         m_TopDown_SwitchCharacter = m_TopDown.FindAction("SwitchCharacter", throwIfNotFound: true);
         // Isometric
         m_Isometric = asset.FindActionMap("Isometric", throwIfNotFound: true);
-        m_Isometric_Movement = m_Isometric.FindAction("Movement", throwIfNotFound: true);
         m_Isometric_Mouse = m_Isometric.FindAction("Mouse", throwIfNotFound: true);
         m_Isometric_Interaction = m_Isometric.FindAction("Interaction", throwIfNotFound: true);
         m_Isometric_SwitchCamera = m_Isometric.FindAction("SwitchCamera", throwIfNotFound: true);
         m_Isometric_SwitchCharacter = m_Isometric.FindAction("SwitchCharacter", throwIfNotFound: true);
+        m_Isometric_Movement = m_Isometric.FindAction("Movement", throwIfNotFound: true);
         // DefNumbers
         m_DefNumbers = asset.FindActionMap("DefNumbers", throwIfNotFound: true);
         m_DefNumbers_One = m_DefNumbers.FindAction("One", throwIfNotFound: true);
@@ -1227,20 +1227,20 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     // Isometric
     private readonly InputActionMap m_Isometric;
     private List<IIsometricActions> m_IsometricActionsCallbackInterfaces = new List<IIsometricActions>();
-    private readonly InputAction m_Isometric_Movement;
     private readonly InputAction m_Isometric_Mouse;
     private readonly InputAction m_Isometric_Interaction;
     private readonly InputAction m_Isometric_SwitchCamera;
     private readonly InputAction m_Isometric_SwitchCharacter;
+    private readonly InputAction m_Isometric_Movement;
     public struct IsometricActions
     {
         private @InputActions m_Wrapper;
         public IsometricActions(@InputActions wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Movement => m_Wrapper.m_Isometric_Movement;
         public InputAction @Mouse => m_Wrapper.m_Isometric_Mouse;
         public InputAction @Interaction => m_Wrapper.m_Isometric_Interaction;
         public InputAction @SwitchCamera => m_Wrapper.m_Isometric_SwitchCamera;
         public InputAction @SwitchCharacter => m_Wrapper.m_Isometric_SwitchCharacter;
+        public InputAction @Movement => m_Wrapper.m_Isometric_Movement;
         public InputActionMap Get() { return m_Wrapper.m_Isometric; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1250,9 +1250,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_IsometricActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_IsometricActionsCallbackInterfaces.Add(instance);
-            @Movement.started += instance.OnMovement;
-            @Movement.performed += instance.OnMovement;
-            @Movement.canceled += instance.OnMovement;
             @Mouse.started += instance.OnMouse;
             @Mouse.performed += instance.OnMouse;
             @Mouse.canceled += instance.OnMouse;
@@ -1265,13 +1262,13 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @SwitchCharacter.started += instance.OnSwitchCharacter;
             @SwitchCharacter.performed += instance.OnSwitchCharacter;
             @SwitchCharacter.canceled += instance.OnSwitchCharacter;
+            @Movement.started += instance.OnMovement;
+            @Movement.performed += instance.OnMovement;
+            @Movement.canceled += instance.OnMovement;
         }
 
         private void UnregisterCallbacks(IIsometricActions instance)
         {
-            @Movement.started -= instance.OnMovement;
-            @Movement.performed -= instance.OnMovement;
-            @Movement.canceled -= instance.OnMovement;
             @Mouse.started -= instance.OnMouse;
             @Mouse.performed -= instance.OnMouse;
             @Mouse.canceled -= instance.OnMouse;
@@ -1284,6 +1281,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @SwitchCharacter.started -= instance.OnSwitchCharacter;
             @SwitchCharacter.performed -= instance.OnSwitchCharacter;
             @SwitchCharacter.canceled -= instance.OnSwitchCharacter;
+            @Movement.started -= instance.OnMovement;
+            @Movement.performed -= instance.OnMovement;
+            @Movement.canceled -= instance.OnMovement;
         }
 
         public void RemoveCallbacks(IIsometricActions instance)
@@ -1557,11 +1557,11 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     }
     public interface IIsometricActions
     {
-        void OnMovement(InputAction.CallbackContext context);
         void OnMouse(InputAction.CallbackContext context);
         void OnInteraction(InputAction.CallbackContext context);
         void OnSwitchCamera(InputAction.CallbackContext context);
         void OnSwitchCharacter(InputAction.CallbackContext context);
+        void OnMovement(InputAction.CallbackContext context);
     }
     public interface IDefNumbersActions
     {

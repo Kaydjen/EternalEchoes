@@ -7,10 +7,12 @@ public class CharacterOptions : MonoBehaviour
     #region PUBLIC METHODS
     public static void EnableChoise(Transform characterObj)
     {
+        Debug.Log("3");
         InputHandler.Instance.ActivateOptionsNumbersMap();
     }
     public static void DisableChoise()
     {
+        Debug.Log("4");
         InputHandler.Instance.ActivateDefNumbersMap();
     }
     #endregion
