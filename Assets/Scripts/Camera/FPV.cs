@@ -38,10 +38,15 @@ public class FPV : CameraCore, IUpdate, ICameraUpdate
     /// <summary>
     /// 
     /// </summary>
-    public void UpdateNeededComponents() // TODO: we dont need to get camera here, it's better to do in Init method
+    public void UpdateNeededComponents()
     {
         _player = PlayerCore.Instance.transform;
-        _camera = transform.GetChild(Constants.Player.CAMERA).transform;
+        if (this.enabled) // TODO: хз, немного костыльно, мб когда-то переделаю на что-то более адекватное, а пока пусть так будет
+        {
+            transform.rotation = _player.GetChild(Constants.Player.BOTH).transform.localRotation;
+            _y = _camera.localEulerAngles.x;
+            _x = transform.eulerAngles.y;
+        }
     }
     #endregion
     #region Update
@@ -86,22 +91,21 @@ public class FPV : CameraCore, IUpdate, ICameraUpdate
     }
     #endregion
     #region MONO METHODS
+    private void Awake()
+    {
+        _camera = transform.GetChild(Constants.Player.CAMERA).transform;
+    }
     private void OnEnable()
     {
         base.ExclusivityСheck();
 
         // Camera Hub Position
         transform.position = _player.position;
-        transform.rotation = _player.rotation;
+        transform.rotation = _player.GetChild(Constants.Player.BOTH).transform.localRotation;
 
         // Camera Position
         _camera.localPosition = _cameraOffset;
         _camera.localRotation = Quaternion.identity;
-
-        // TODO: тут с обнулением бади есть вопросец, а нахера это надо, стоит задуматся (это надо, но возможно не тут)
-        // Player Body Position
-        _player.GetChild(Constants.Player.BODY_ANIMATIONS).transform.localPosition = Vector3.zero;
-        _player.GetChild(Constants.Player.BODY_ANIMATIONS).transform.localRotation = Quaternion.identity;
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;

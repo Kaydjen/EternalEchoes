@@ -11,7 +11,7 @@ public class LookOrientation : MonoBehaviour, IUpdate
     #region PRIVATE METHODS
     private void UpdateNeededComponents()
     {
-        _playerBoth = PlayerCore.Instance.transform.GetChild(Constants.Player.BODY_ANIMATIONS).transform;
+        _playerBoth = PlayerCore.Instance.transform.GetChild(Constants.Player.BOTH).transform;
     }
 
     Vector2 GetRelativeDirection(Vector2 v1, Vector2 v2)

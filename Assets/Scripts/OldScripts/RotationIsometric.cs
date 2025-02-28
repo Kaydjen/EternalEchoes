@@ -9,7 +9,7 @@ public class RotationIsometric : MonoBehaviour, IUpdate
     #region METHODS
     private void ChangePlayer()
     {
-        _player = PlayerCore.Instance.transform.GetChild(Constants.Player.BODY_ANIMATIONS).transform;
+        _player = PlayerCore.Instance.transform.GetChild(Constants.Player.BOTH).transform;
     }
     #endregion
     #region MONO METHODS

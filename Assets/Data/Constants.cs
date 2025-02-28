@@ -9,6 +9,6 @@ public static class Constants
         }
 
         public static int CAMERA = 0;
-        public static int BODY_ANIMATIONS = 0;
+        public static int BOTH = 0;
     }
 }
