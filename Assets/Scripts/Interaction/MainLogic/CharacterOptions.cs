@@ -23,10 +23,12 @@ public class CharacterOptions : MonoBehaviour
     private void SwitchToNewCharacter()
     {
         _selectedCharacter.GetComponent<PlayerCore>().enabled = true;
+        DisableChoise();
     }
     private void SayHello()
     {
         Debug.Log("Hello");
+        DisableChoise();
     }
     #endregion
     #region MONO METHODS
