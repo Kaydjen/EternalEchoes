@@ -8,8 +8,8 @@ using UnityEngine.Events;
     "\nЄ три івенти для кожного виду відповідно." +
     "\nРеагує на натискання клавіші C, " +
     "змінюючи активний режим камери та викликаючи відповіднi Events виду камер.")]
-public class CameraSwitcher : MonoBehaviour
-{
+public class CameraSwitcher : MonoBehaviour // TODO: там надо сделать оверлей камер, что бы для юай и для игры было
+{ 
     #region variables
     public static CameraSwitcher Instance;
 
