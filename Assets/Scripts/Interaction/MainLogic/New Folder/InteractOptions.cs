@@ -4,15 +4,16 @@ public class InteractOptions : MonoBehaviour
 {
     #region VARIABLES
     private static GameObject _manu;
-    private static InteractStrategyContext _context = new (new ConcreteGreetings());
+    private static IInteractStrategy _context;
+    private static InteractScriptableObject _data;
     #endregion
     #region PUBLIC METHODS
     public static void EnableManu(IInteractStrategy strategy)
     {
         InputHandler.Instance.ActivateOptionsNumbersMap();
 
-        _context.ContextStrategy = strategy;
-
+        _context = strategy;
+        _data = _context.GetData();
         _manu.SetActive(true);
     }
     public static void DisableManu()
@@ -24,27 +25,27 @@ public class InteractOptions : MonoBehaviour
     #region PRIVATE METHODS 
     private void Action1() // TODO: тут мб класс надо будет переделать (вызовы ExecuteAlgorithm1)
     {
-        _context.ExecuteAlgorithm1();
+        _context.Action1();
         DisableManu();
     }
     private void Action2()
     {
-        _context.ExecuteAlgorithm2();
+        _context.Action2();
         DisableManu();
     }
     private void Action3()
     {
-        _context.ExecuteAlgorithm3();
+        _context.Action3();
         DisableManu();
     }
     private void Action4()
     {
-        _context.ExecuteAlgorithm4();
+        _context.Action4();
         DisableManu();
     }
     private void Action5()
     {
-        _context.ExecuteAlgorithm5();
+        _context.Action5();
         DisableManu();
     }
     #endregion

@@ -2,6 +2,11 @@
 
 public class ConcreteGreetings : MonoBehaviour, IInteractStrategy
 {
+    [SerializeField] private InteractScriptableObject _data;
+    public InteractScriptableObject GetData()
+    {
+        return _data;
+    }
     public void Action1()
     {
         Debug.Log("It works");

@@ -9,6 +9,10 @@ public class InteractStrategyContext : MonoBehaviour
     {
         ContextStrategy = strategy;
     }
+    public void GetData()
+    {
+        ContextStrategy.GetData();
+    }
     public void ExecuteAlgorithm1()
     {
         ContextStrategy.Action1();
