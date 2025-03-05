@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class InteractOptions : MonoBehaviour
 {
@@ -21,31 +21,31 @@ public class InteractOptions : MonoBehaviour
         _manu.SetActive(false);
     }
     #endregion
-    #region PRIVATE METHODS
-    private void Action1()
+    #region PRIVATE METHODS 
+    private void Action1() // TODO: тут мб класс надо будет переделать (вызовы ExecuteAlgorithm1)
     {
         _context.ExecuteAlgorithm1();
-        //DisableManu();
+        DisableManu();
     }
     private void Action2()
     {
         _context.ExecuteAlgorithm2();
-        //DisableManu();
+        DisableManu();
     }
     private void Action3()
     {
         _context.ExecuteAlgorithm3();
-        //DisableManu();
+        DisableManu();
     }
     private void Action4()
     {
         _context.ExecuteAlgorithm4();
-        //DisableManu();
+        DisableManu();
     }
     private void Action5()
     {
         _context.ExecuteAlgorithm5();
-        //DisableManu();
+        DisableManu();
     }
     #endregion
     #region MONO METHODS
