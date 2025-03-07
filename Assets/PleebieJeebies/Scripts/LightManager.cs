@@ -13,12 +13,14 @@ public class LightManager : MonoBehaviour
     [SerializeField] private bool ControlLights = true;
 
     private const float inverseDayLength = 1f / 1440f;
+    private Color ZenithColor;
 
     /// <summary>
     /// On project start, if controlLights is true, collect all non-directional lights in the current scene and place in a list
     /// </summary>
     private void Start()
     {
+        ZenithColor = RenderSettings.skybox.GetColor("_ZenithColor");
         if (ControlLights)
         {
             Light[] lights = FindObjectsOfType<Light>();
@@ -47,6 +49,7 @@ public class LightManager : MonoBehaviour
     /// </summary>
     private void Update()
     {
+        //ZenithColor = DirectionalLight.color;
         if (DayNightPreset == null)
             return;
 
@@ -71,6 +74,9 @@ public class LightManager : MonoBehaviour
             if (DirectionalLight.enabled == true)
             {
                 DirectionalLight.color = DayNightPreset.DirectionalColour.Evaluate(timePercent);
+                RenderSettings.skybox.SetColor("_ZenithColor", DayNightPreset.DirectionalColour.Evaluate(timePercent));
+                RenderSettings.skybox.SetColor("_HorizonColor", DayNightPreset.DirectionalColour.Evaluate(timePercent));
+                RenderSettings.skybox.SetColor("_NadirColor", DayNightPreset.DirectionalColour.Evaluate(timePercent));
                 DirectionalLight.transform.localRotation = Quaternion.Euler(new Vector3((timePercent * 360f) - 90f, SunDirection, 0));
             }
         }
