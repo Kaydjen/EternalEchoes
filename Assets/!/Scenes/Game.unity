@@ -1177,7 +1177,7 @@ GameObject:
   - component: {fileID: 1511609016}
   - component: {fileID: 1511609017}
   m_Layer: 0
-  m_Name: nazwy
+  m_Name: Nehochy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1210,7 +1210,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 500a2c0d3db4b504c825a4f4c25efff3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TruckObj: {fileID: 0}
+  TruckObj: {fileID: 4867309171804461635, guid: a1b2515445a130d4594c4b72f1a46699,
+    type: 3}
 --- !u!1001 &1514136965
 PrefabInstance:
   m_ObjectHideFlags: 0
