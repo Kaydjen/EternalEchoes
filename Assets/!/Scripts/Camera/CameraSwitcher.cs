@@ -1,15 +1,14 @@
-﻿using Unity.VisualScripting;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 
-[ComponentInfo("Перемикач Виду Камери", 
+[ComponentInfo("Перемикач Виду Камери",
     "\nКерує перемиканням між різними режимами камери (ізометричним, FPV та RTS). " +
     "\nВикористовує Singleton. " +
     "\nЄ три івенти для кожного виду відповідно." +
     "\nРеагує на натискання клавіші C, " +
     "змінюючи активний режим камери та викликаючи відповіднi Events виду камер.")]
 public class CameraSwitcher : MonoBehaviour // TODO: там надо сделать оверлей камер, что бы для юай и для игры было
-{ 
+{
     #region variables
     public static CameraSwitcher Instance;
 
@@ -26,6 +25,10 @@ public class CameraSwitcher : MonoBehaviour // TODO: там надо сдела�
         TopDownV,
     }
     public static View CurrentView = View.FPV;
+
+    private FPV _FPV;
+    private IsometricV _IsometricV;
+    private TopDownV _TopDownV;
     #endregion
     #region Methods
     public void Init()
@@ -42,6 +45,10 @@ public class CameraSwitcher : MonoBehaviour // TODO: там надо сдела�
         }
         DontDestroyOnLoad(gameObject);
         #endregion Singleton
+
+        _FPV = GetComponent<FPV>();
+        _IsometricV = GetComponent<IsometricV>();
+        _TopDownV = GetComponent<TopDownV>();
 
         InputHandler.OnCPressed.AddListener(Switcher);
         GameEvents.OnCharacterChange.AddListener(FirstEnable);
@@ -69,18 +76,12 @@ public class CameraSwitcher : MonoBehaviour // TODO: там надо сдела�
         {
             case 0:
                 SwitchToFPV();
-                OnFPV_Enable.Invoke();
-                CurrentView = View.FPV;
                 break;
             case 1:
                 SwitchToIsometricV();
-                OnIsometricV_Enable.Invoke();
-                CurrentView = View.IsometricV;
                 break;
             case 2:
                 SwitchToTopDownV();
-                OnTopDownV_Enable.Invoke();
-                CurrentView = View.TopDownV;
                 break;
         }
         _index++;
@@ -90,17 +91,35 @@ public class CameraSwitcher : MonoBehaviour // TODO: там надо сдела�
     public void SwitchToFPV()
     {
         InputHandler.Instance.SetFPVState(true);
-        GetComponent<FPV>().enabled = true;
+        CurrentView = View.FPV;
+        _FPV.enabled = true;
+        OnFPV_Enable.Invoke();
     }
     public void SwitchToIsometricV()
     {
         InputHandler.Instance.SetIsometricState(true);
-        GetComponent<IsometricV>().enabled = true;
+        CurrentView = View.IsometricV;
+        _IsometricV.enabled = true;
+        OnIsometricV_Enable.Invoke();
     }
     public void SwitchToTopDownV()
     {
         InputHandler.Instance.SetTopDownState(true);
-        GetComponent<TopDownV>().enabled = true;
+        CurrentView = View.TopDownV;
+        _TopDownV.enabled = true;
+        OnTopDownV_Enable.Invoke();
+    }
+    public void DisableFPV()
+    {
+        _FPV.enabled = false;
+    }
+    public void DisableIsometricV()
+    {
+        _IsometricV.enabled = false;
+    }
+    public void DisableTopDownV()
+    {
+        _TopDownV.enabled = false;
     }
     #endregion
 

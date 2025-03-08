@@ -934,6 +934,67 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""All"",
+            ""id"": ""cddef8e9-8909-4589-ad3c-d941630a4cf0"",
+            ""actions"": [
+                {
+                    ""name"": ""AltF"",
+                    ""type"": ""Button"",
+                    ""id"": ""feb0ac4e-2e23-436e-9288-46815154eab9"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": ""One Modifier"",
+                    ""id"": ""680465f8-30f1-43e0-8a1d-e93f715660f4"",
+                    ""path"": ""OneModifier"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AltF"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""modifier"",
+                    ""id"": ""d44e1b58-62a0-405d-9834-7c70af2142a9"",
+                    ""path"": ""<Keyboard>/alt"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AltF"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""binding"",
+                    ""id"": ""3ea9f4fc-0ee8-4c24-8f34-3c2de1f3ae43"",
+                    ""path"": ""<Keyboard>/f4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AltF"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""48ffdf1b-85ad-46fb-8add-f92879d1ff94"",
+                    ""path"": ""<Keyboard>/b"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AltF"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -985,6 +1046,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         m_OptionsNumbers_Eight = m_OptionsNumbers.FindAction("Eight", throwIfNotFound: true);
         m_OptionsNumbers_Nine = m_OptionsNumbers.FindAction("Nine", throwIfNotFound: true);
         m_OptionsNumbers_Zero = m_OptionsNumbers.FindAction("Zero", throwIfNotFound: true);
+        // All
+        m_All = asset.FindActionMap("All", throwIfNotFound: true);
+        m_All_AltF = m_All.FindAction("AltF", throwIfNotFound: true);
     }
 
     ~@InputActions()
@@ -994,6 +1058,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         UnityEngine.Debug.Assert(!m_Isometric.enabled, "This will cause a leak and performance issues, InputActions.Isometric.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_DefNumbers.enabled, "This will cause a leak and performance issues, InputActions.DefNumbers.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_OptionsNumbers.enabled, "This will cause a leak and performance issues, InputActions.OptionsNumbers.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_All.enabled, "This will cause a leak and performance issues, InputActions.All.Disable() has not been called.");
     }
 
     public void Dispose()
@@ -1537,6 +1602,52 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         }
     }
     public OptionsNumbersActions @OptionsNumbers => new OptionsNumbersActions(this);
+
+    // All
+    private readonly InputActionMap m_All;
+    private List<IAllActions> m_AllActionsCallbackInterfaces = new List<IAllActions>();
+    private readonly InputAction m_All_AltF;
+    public struct AllActions
+    {
+        private @InputActions m_Wrapper;
+        public AllActions(@InputActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @AltF => m_Wrapper.m_All_AltF;
+        public InputActionMap Get() { return m_Wrapper.m_All; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(AllActions set) { return set.Get(); }
+        public void AddCallbacks(IAllActions instance)
+        {
+            if (instance == null || m_Wrapper.m_AllActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_AllActionsCallbackInterfaces.Add(instance);
+            @AltF.started += instance.OnAltF;
+            @AltF.performed += instance.OnAltF;
+            @AltF.canceled += instance.OnAltF;
+        }
+
+        private void UnregisterCallbacks(IAllActions instance)
+        {
+            @AltF.started -= instance.OnAltF;
+            @AltF.performed -= instance.OnAltF;
+            @AltF.canceled -= instance.OnAltF;
+        }
+
+        public void RemoveCallbacks(IAllActions instance)
+        {
+            if (m_Wrapper.m_AllActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IAllActions instance)
+        {
+            foreach (var item in m_Wrapper.m_AllActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_AllActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public AllActions @All => new AllActions(this);
     public interface IFPVActions
     {
         void OnMovement(InputAction.CallbackContext context);
@@ -1588,5 +1699,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         void OnEight(InputAction.CallbackContext context);
         void OnNine(InputAction.CallbackContext context);
         void OnZero(InputAction.CallbackContext context);
+    }
+    public interface IAllActions
+    {
+        void OnAltF(InputAction.CallbackContext context);
     }
 }

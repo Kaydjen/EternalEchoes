@@ -17,6 +17,7 @@ public class InputHandler : MonoBehaviour
     private InputActions.IsometricActions _Isometric;
     private InputActions.DefNumbersActions _DefNumbers;
     private InputActions.OptionsNumbersActions _OptionsNumbers;
+    private InputActions.AllActions _All;
 
     #endregion Maps
     #region Static variables
@@ -54,6 +55,7 @@ public class InputHandler : MonoBehaviour
     public static UnityEvent OnGetCharacterInfo { get; private set; } = new UnityEvent();
     /*    public static UnityEvent OnWheelClickPerformed { get; private set; } = new UnityEvent();
         public static UnityEvent OnWheelClickCanceled { get; private set; } = new UnityEvent();*/
+    public static UnityEvent OnAltF { get; private set; } = new UnityEvent();
     #endregion Static variables
     #region Init methods
     public void Init()
@@ -68,10 +70,12 @@ public class InputHandler : MonoBehaviour
         _Isometric = _asset.Isometric; // Input action map for Isometric View
         _DefNumbers = _asset.DefNumbers;
         _OptionsNumbers = _asset.OptionsNumbers;
-                                     // add here new maps...
+        _All = _asset.All;
+                                    // add here new maps...
 
         SubscribeToInputActions();
         ActivateDefNumbersMap();
+        SetAllState(true);
     }
     private void ExclusivityСheck()
     {
@@ -151,6 +155,8 @@ public class InputHandler : MonoBehaviour
 
         /*        _TopDown.WheelClick.performed += _ => OnWheelClickPerformed.Invoke();
                 _TopDown.WheelClick.canceled += _ => OnWheelClickCanceled.Invoke();*/
+
+        _All.AltF.performed += _ => OnAltF.Invoke();
         // Add here a new one
     }
     #endregion Init methods
@@ -203,6 +209,16 @@ public class InputHandler : MonoBehaviour
         _OptionsNumbers.Enable();
         _DefNumbers.Disable();
     }
+    /// <summary>
+    ///  Enable or disable the All View input map
+    /// </summary>
+    /// <param name="state"> true - enable, false - disable</param>
+    public void SetAllState(bool state)
+    {
+        DisableAllMaps();
+        if (state) _All.Enable();
+        else _All.Disable();
+    }
     // add here new map's State...
     #endregion
     private void DisableAllMaps()
@@ -210,8 +226,9 @@ public class InputHandler : MonoBehaviour
         _FPV.Disable();
         _TopDown.Disable();
         _Isometric.Disable();
-/*        _DefNumbers.Disable(); those don't touch
-        _Isometric.Disable();*/
+        /*        _DefNumbers.Disable(); those don't touch
+                _Isometric.Disable();*/
+        //_All.Disable();
     }
 }
 
