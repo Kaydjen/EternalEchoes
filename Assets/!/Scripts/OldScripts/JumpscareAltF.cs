@@ -10,14 +10,14 @@ public class JumpscareAltF : MonoBehaviour
     public void Init()
     {
         CamObj = CameraSwitcher.Instance.transform;
-        if (Random.Range(50, 75) == 52)
-        {
             InputHandler.OnAltF.AddListener(ShoNibyd);
+/*        if (Random.Range(50, 75) == 52)
+        {
         }
         else
         {
             Destroy(gameObject);
-        }
+        }*/
     }
     private void ShoNibyd() => StartCoroutine(nameof(Move));
     private IEnumerator Move()
