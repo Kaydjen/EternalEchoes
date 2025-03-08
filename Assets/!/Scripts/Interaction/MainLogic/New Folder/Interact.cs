@@ -14,13 +14,13 @@ public class Interact : MonoBehaviour
         {
             if (_isMenuActivated) // если меню активированно - вырубаем
             {
-                InteractOptions.DisableManu();
+                InteractOptions.Instance.DisableManu();
                 _isMenuActivated = false;
             }
         }
         else // если попал по персонажу
         {
-            InteractOptions.EnableManu(strategy); // врубаем новое меню
+            InteractOptions.Instance.EnableManu(strategy); // врубаем новое меню
             _isMenuActivated = true;
         }
     }
