@@ -12,7 +12,9 @@ public class FPV : CameraCore, IUpdate, ICameraUpdate
     [SerializeField] private Transform _lookOrientation;
     [Space(7)]
     [SerializeField] private Vector3 _cameraOffset = new Vector3(0f, .8f, .5f);
-    [SerializeField][Range(.25f, 10f)] private float _sensitivity = 3f;
+    [SerializeField][Range(0f, 100f)] private float _sensitivity = 3f;
+    [SerializeField][Range(-80f, -10f)] private float _minHeadRotation = -65f;
+    [SerializeField][Range(10f, 80f)] private float _maxHeadRotation = 65f;
     private Transform _player;
     private Transform _camera;
     private float _y = 0f;
@@ -55,7 +57,7 @@ public class FPV : CameraCore, IUpdate, ICameraUpdate
         // Manage Input
         _y -= InputHandler.MouseInput.y * _sensitivity * Time.deltaTime;
         _x += InputHandler.MouseInput.x * _sensitivity * Time.deltaTime;
-        _y = Mathf.Clamp(_y, -45f, 45f);
+        _y = Mathf.Clamp(_y, _minHeadRotation, _maxHeadRotation);
 
         // Manage Rotation
         transform.rotation = Quaternion.Euler(0f, _x, 0f);

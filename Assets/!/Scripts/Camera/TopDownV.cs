@@ -7,9 +7,9 @@ public class TopDownV : CameraCore, IUpdate, ICameraUpdate
 {
     #region VARIABLES
     [SerializeField] private Vector3 _cameraDefOffset = new Vector3(0f, 10f, -2f);
-    [SerializeField][Range(1f, 100f)] private float _cameraMoveSensitivity = 15f;
-    [SerializeField][Range(1f, 100f)] private float _cameraClimbingStepValue = 1f;
-    [SerializeField][Range(1f, 5f)] private float _mouseDragSensitivity = 2f;
+    [SerializeField][Range(.1f, 100f)] private float _cameraMoveSensitivity = 15f;
+    [SerializeField][Range(.1f, 100f)] private float _cameraClimbingStepValue = 1f;
+    [SerializeField][Range(.1f, 20f)] private float _mouseDragSensitivity = 2f;
     [SerializeField] private float _smoothTime = 0.3f;
     [SerializeField] private float _zoomStepSizeY = 1.2f;
     [SerializeField] private float _zoomStepSizeZ = .7f;
