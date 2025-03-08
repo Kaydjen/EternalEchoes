@@ -3,20 +3,19 @@
 public class InteractOptions : MonoBehaviour
 {
     #region VARIABLES
-    private static GameObject _manu;
-    private static IInteractStrategy _context;
-    private static InteractScriptableObject _data;
+    public static InteractOptions Instance { get; private set; }
+    private GameObject _manu;
+    private IInteractStrategy _context;
     #endregion
     #region PUBLIC METHODS
-    public static void EnableManu(IInteractStrategy strategy)
+    public  void EnableManu(IInteractStrategy strategy)
     {
         InputHandler.Instance.ActivateOptionsNumbersMap();
-
         _context = strategy;
-        _data = _context.GetData();
+        GetComponent<Tabs>().CreateTabs(_context.GetData());
         _manu.SetActive(true);
     }
-    public static void DisableManu()
+    public void DisableManu()
     {
         InputHandler.Instance.ActivateDefNumbersMap();
         _manu.SetActive(false);
@@ -52,6 +51,8 @@ public class InteractOptions : MonoBehaviour
     #region MONO METHODS
     public void Init()
     {
+        Instance = this;
+
         InputHandler.OnOptionsOne.AddListener(Action1);
         InputHandler.OnOptionsTwo.AddListener(Action2);
         InputHandler.OnOptionsThree.AddListener(Action3);
