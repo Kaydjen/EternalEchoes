@@ -8,7 +8,7 @@ public class InteractOptions : MonoBehaviour
     private IInteractStrategy _context;
     #endregion
     #region PUBLIC METHODS
-    public  void EnableManu(IInteractStrategy strategy)
+    public void EnableManu(IInteractStrategy strategy)
     {
         InputHandler.Instance.ActivateOptionsNumbersMap();
         _context = strategy;
