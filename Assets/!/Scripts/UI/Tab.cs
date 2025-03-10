@@ -6,4 +6,5 @@ public class Tab : MonoBehaviour
 {
     public Image Icon;
     public TMP_Text Description;
+    public Button Button;
 }

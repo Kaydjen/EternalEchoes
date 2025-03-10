@@ -4,7 +4,7 @@ public class InteractOptions : MonoBehaviour
 {
     #region VARIABLES
     public static InteractOptions Instance { get; private set; }
-    private GameObject _manu;
+    [SerializeField] private GameObject _manu;
     private IInteractStrategy _context;
     #endregion
     #region PUBLIC METHODS
@@ -12,37 +12,44 @@ public class InteractOptions : MonoBehaviour
     {
         InputHandler.Instance.ActivateOptionsNumbersMap();
         _context = strategy;
+
         GetComponent<Tabs>().CreateTabs(_context.GetData());
+
+        CameraSwitcher.Instance.DisableCurrentView();
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
         _manu.SetActive(true);
     }
     public void DisableManu()
     {
         InputHandler.Instance.ActivateDefNumbersMap();
+        CameraSwitcher.Instance.EnableCurrentView();
         _manu.SetActive(false);
     }
     #endregion
     #region PRIVATE METHODS 
-    private void Action1() // TODO: тут мб класс надо будет переделать (вызовы ExecuteAlgorithm1)
+    public void Action1() // TODO: тут мб класс надо будет переделать (вызовы ExecuteAlgorithm1)
     {
         _context.Action1();
         DisableManu();
     }
-    private void Action2()
+    public void Action2()
     {
         _context.Action2();
         DisableManu();
     }
-    private void Action3()
+    public void Action3()
     {
         _context.Action3();
         DisableManu();
     }
-    private void Action4()
+    public void Action4()
     {
         _context.Action4();
         DisableManu();
     }
-    private void Action5()
+    public void Action5()
     {
         _context.Action5();
         DisableManu();
@@ -58,8 +65,8 @@ public class InteractOptions : MonoBehaviour
         InputHandler.OnOptionsThree.AddListener(Action3);
         InputHandler.OnOptionsFour.AddListener(Action4);
         InputHandler.OnOptionsFive.AddListener(Action5);
-        
-        _manu = this.transform.GetChild(0).transform.gameObject;
+
+        GetComponent<Tabs>().InitButtons(new System.Action[]{ Action1, Action2, Action3, Action4, Action5});
     }
     #endregion
 }

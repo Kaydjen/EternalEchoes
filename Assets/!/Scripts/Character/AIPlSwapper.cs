@@ -5,7 +5,7 @@ public class AIPlSwapper : MonoBehaviour
     #region VARIABLES
     #endregion
     #region PUBLIC METHODS
-    public static void ActivateNewCharacterControls()
+    public static void ActivateNewCharacterControls()// TODO: тут есть с этим переключением трабл, и я уже забыл, что конкретно не так, исправить надо короче
     {
         switch(CameraSwitcher.CurrentView) // TODO: тут такая себе система, так что если будет время, нужно будет как-то переделать
         {

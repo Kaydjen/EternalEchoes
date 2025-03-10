@@ -18,13 +18,15 @@ public class CameraSwitcher : MonoBehaviour // TODO: там надо сдела�
 
     private byte _index = 0;
 
-    public enum View
+    public enum View // xuita, pomieniaj
     {
         FPV,
         IsometricV,
         TopDownV,
     }
     public static View CurrentView = View.FPV;
+
+    public CameraCore _currentView;
 
     private FPV _FPV;
     private IsometricV _IsometricV;
@@ -94,6 +96,7 @@ public class CameraSwitcher : MonoBehaviour // TODO: там надо сдела�
         CurrentView = View.FPV;
         _FPV.enabled = true;
         OnFPV_Enable.Invoke();
+        _currentView = _FPV;
     }
     public void SwitchToIsometricV()
     {
@@ -101,6 +104,7 @@ public class CameraSwitcher : MonoBehaviour // TODO: там надо сдела�
         CurrentView = View.IsometricV;
         _IsometricV.enabled = true;
         OnIsometricV_Enable.Invoke();
+        _currentView = _IsometricV;
     }
     public void SwitchToTopDownV()
     {
@@ -108,18 +112,17 @@ public class CameraSwitcher : MonoBehaviour // TODO: там надо сдела�
         CurrentView = View.TopDownV;
         _TopDownV.enabled = true;
         OnTopDownV_Enable.Invoke();
+        _currentView = _TopDownV;
     }
-    public void DisableFPV()
+    public void DisableCurrentView()
     {
-        _FPV.enabled = false;
+        _currentView.enabled = false;
+        InputHandler.OnCPressed.RemoveListener(Switcher);
     }
-    public void DisableIsometricV()
+    public void EnableCurrentView()
     {
-        _IsometricV.enabled = false;
-    }
-    public void DisableTopDownV()
-    {
-        _TopDownV.enabled = false;
+        _currentView.enabled = true;
+        InputHandler.OnCPressed.AddListener(Switcher);
     }
     #endregion
 

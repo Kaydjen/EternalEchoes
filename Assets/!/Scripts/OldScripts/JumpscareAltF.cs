@@ -23,7 +23,7 @@ public class JumpscareAltF : MonoBehaviour
     private IEnumerator Move()
     {
         CameraSwitcher.Instance.SwitchToFPV();
-        CameraSwitcher.Instance.DisableFPV();
+        CameraSwitcher.Instance.DisableCurrentView();
         GameObject InstObj = Instantiate(TruckObj, CamObj);
         InstObj.transform.SetParent(CamObj);
         InstObj.transform.localPosition = new Vector3(0f, 0f, 25f);

@@ -4527,7 +4527,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &2900984912135240013
 GameObject:
   m_ObjectHideFlags: 0
@@ -5842,7 +5842,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &4221887192841903673
 GameObject:
   m_ObjectHideFlags: 0
@@ -6277,6 +6277,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c498fbe2df616c45ab321ffddd7b6ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _currentView: {fileID: 0}
 --- !u!1 &4789964580374132237
 GameObject:
   m_ObjectHideFlags: 0
@@ -6994,7 +6995,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &5768666277302338522
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7088,8 +7089,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: CharacterOptions, Assembly-CSharp
+      - m_Target: {fileID: 6427460554393633903}
+        m_TargetAssemblyTypeName: InteractOptions, Assembly-CSharp
         m_MethodName: Init
         m_Mode: 1
         m_Arguments:
@@ -7656,6 +7657,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ec36e686c07c6748a532d5d9d3327e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _manu: {fileID: 5737901847356795205}
 --- !u!4 &6429448910360201014
 Transform:
   m_ObjectHideFlags: 0
@@ -8281,7 +8283,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c0d057791bd30a4f95e667fe64b84ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _data: {fileID: 0}
+  _data: {fileID: 11400000, guid: 4ef35b434a8ed714daf75309bf5c3d95, type: 2}
 --- !u!1 &7197775860867050503
 GameObject:
   m_ObjectHideFlags: 0
@@ -9123,7 +9125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c0d057791bd30a4f95e667fe64b84ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _data: {fileID: 0}
+  _data: {fileID: 11400000, guid: 4ef35b434a8ed714daf75309bf5c3d95, type: 2}
 --- !u!1 &8003012438442542434
 GameObject:
   m_ObjectHideFlags: 0
