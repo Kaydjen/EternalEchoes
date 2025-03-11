@@ -66,8 +66,7 @@ public class InteractOptions : MonoBehaviour
         InputHandler.OnOptionsFour.AddListener(Action4);
         InputHandler.OnOptionsFive.AddListener(Action5);
 
-        System.Action[] methods = new System.Action[] { Action1, Action2, Action3, Action4, Action5 };
-        GetComponent<Tabs>().InitButtons(methods);
+        GetComponent<Tabs>().InitButtons(new System.Action[] { Action1, Action2, Action3, Action4, Action5 });
     }
     #endregion
 }

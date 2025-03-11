@@ -94,7 +94,7 @@ public class IsometricV : CameraCore, IUpdate, ICameraUpdate
         // Set Camera Position
         transform.GetChild(Constants.Player.CAMERA).transform.localPosition = _cameraOffset;
         transform.GetChild(Constants.Player.CAMERA).transform.LookAt(this.transform);
-        transform.GetChild(Constants.Player.CAMERA).GetComponent<Camera>().orthographic = true;
+        //transform.GetChild(Constants.Player.CAMERA).GetComponent<Camera>().orthographic = true;
 
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
