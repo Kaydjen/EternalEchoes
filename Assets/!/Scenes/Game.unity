@@ -4310,8 +4310,8 @@ MonoBehaviour:
   _lookOrientation: {fileID: 2767056009189630883}
   _cameraOffset: {x: 0, y: 0.15, z: 0.5}
   _sensitivity: 3
-  _minHeadRotation: -65
-  _maxHeadRotation: 65
+  _minHeadRotation: -80
+  _maxHeadRotation: 80
 --- !u!95 &2761344439348896097
 Animator:
   serializedVersion: 5

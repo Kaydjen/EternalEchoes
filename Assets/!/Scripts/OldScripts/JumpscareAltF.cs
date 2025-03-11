@@ -10,7 +10,7 @@ public class JumpscareAltF : MonoBehaviour
     public void Init()
     {
         CamObj = CameraSwitcher.Instance.transform;
-            InputHandler.OnAltF.AddListener(ShoNibyd);
+        InputHandler.OnAltF.AddListener(ShoNibyd);
 /*        if (Random.Range(50, 75) == 52)
         {
         }
@@ -19,9 +19,14 @@ public class JumpscareAltF : MonoBehaviour
             Destroy(gameObject);
         }*/
     }
-    private void ShoNibyd() => StartCoroutine(nameof(Move));
+    private void ShoNibyd()
+    {
+        isQuitting = false;
+        StartCoroutine(nameof(Move));
+    }
     private IEnumerator Move()
     {
+        
         CameraSwitcher.Instance.SwitchToFPV();
         CameraSwitcher.Instance.DisableCurrentView();
         GameObject InstObj = Instantiate(TruckObj, CamObj);
@@ -43,6 +48,11 @@ public class JumpscareAltF : MonoBehaviour
     }
     private void OnApplicationQuit()
     {
-        if (!isQuitting) Application.wantsToQuit += () => false;
+        if (!isQuitting)
+        {
+            #pragma warning disable CS0618
+            Application.CancelQuit();
+            #pragma warning restore CS0618
+        }
     }
 }
