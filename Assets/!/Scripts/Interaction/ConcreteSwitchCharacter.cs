@@ -9,6 +9,7 @@ public class ConcreteSwitchCharacter : MonoBehaviour, IInteractStrategy
     }
     public void Action1()
     {
+        Debug.Log("Mda");
         this.transform.GetComponent<PlayerCore>().enabled = true;
     }
 

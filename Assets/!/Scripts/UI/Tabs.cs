@@ -10,7 +10,7 @@ public class Tabs : MonoBehaviour
     private Transform _instant;
     public void CreateTabs(InteractScriptableObject data)
     {
-        _tabsPosition.sizeDelta = new Vector2(_tabsPosition.sizeDelta.x, 6f * 60f);
+        _tabsPosition.sizeDelta = new Vector2(_tabsPosition.sizeDelta.x, data.Description.Length * 60f);
         Tab tab;
         for (int i = 0; i < data.Description.Length; i++)
         {
@@ -25,11 +25,12 @@ public class Tabs : MonoBehaviour
             tab = _instant.GetComponent<Tab>();
             tab.Icon.sprite = data.Icons[i];
             tab.Description.text = data.Description[i];
-            tab.Button.onClick.AddListener(() => _methods[i]());
+            int index = i;
+            tab.Button.onClick.AddListener(() => _methods[index]());
         }
     }
-    public void InitButtons(Action[] methods)
+    public void InitButtons(Action[] value)
     {
-        _methods = new Action[] { methods[0], methods[1], methods[2], methods[3], methods[4]};
+        _methods = value;
     }
 }
