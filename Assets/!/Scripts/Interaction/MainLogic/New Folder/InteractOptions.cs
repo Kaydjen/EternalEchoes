@@ -25,8 +25,9 @@ public class InteractOptions : MonoBehaviour
     }
     public void DisableManu()
     {
+        Debug.Log("1");
         InputHandler.Instance.ActivateDefNumbersMap();
-        CameraSwitcher.Instance.EnableCurrentView();
+        if(!CameraSwitcher.Instance.IsCurrentViewEnabled()) CameraSwitcher.Instance.EnableCurrentView();
         AIPlSwapper.Reabilitation();
         _manu.SetActive(false);
     }

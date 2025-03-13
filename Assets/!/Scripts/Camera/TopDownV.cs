@@ -161,6 +161,7 @@ public class TopDownV : CameraCore, IUpdate, ICameraUpdate, ICamera
     /// Enable script
     /// </summary>
     public void Disable() => this.enabled = false;
+    public bool IsEnabled() => this.enabled;
     #endregion
     #region PRIVATE METHODS
     private void DragMouseScreen()

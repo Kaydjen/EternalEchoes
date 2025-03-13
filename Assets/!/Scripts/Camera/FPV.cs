@@ -72,6 +72,7 @@ public class FPV : CameraCore, IUpdate, ICameraUpdate, ICamera
     /// Enable script
     /// </summary>
     public void Disable() => this.enabled = false;
+    public bool IsEnabled() => this.enabled;
     #endregion
     #region Update
     public void PerformInitialUpdate()

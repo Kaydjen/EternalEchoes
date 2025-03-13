@@ -62,9 +62,9 @@ public class CameraSwitcher : MonoBehaviour // TODO: там надо сдела�
     /// </summary>
     private void Switcher()
     {
+        Debug.Log("Switched");
         // Change value below if added new map. Value represent count of current maps
         if (_index > 2) _index = 0;
-
         // And add here new case
         switch (_index)
         {
@@ -111,6 +111,7 @@ public class CameraSwitcher : MonoBehaviour // TODO: там надо сдела�
     public void EnableCurrentView()
     {
         _currentView.Enable();
+       // InputHandler.OnCPressed.RemoveAllListeners();
         InputHandler.OnCPressed.AddListener(Switcher);
     }
     public void UpdateControlsOnViewChange()
@@ -124,6 +125,10 @@ public class CameraSwitcher : MonoBehaviour // TODO: там надо сдела�
     public ICamera GetViewType()
     {
         return _currentView;
+    }
+    public bool IsCurrentViewEnabled()
+    {
+        return _currentView.IsEnabled();
     }
     #endregion
 

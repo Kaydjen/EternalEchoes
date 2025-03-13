@@ -16,8 +16,7 @@ public class GameplayModeSwitcher : MonoBehaviour
         foreach (IGameplayModeSwitcher el in _scripts)
         {
             el.ForDirectMode();
-        }
-        Debug.Log(_scripts.Length);        
+        }    
     }
     public void AIMode()
     {
@@ -27,8 +26,7 @@ public class GameplayModeSwitcher : MonoBehaviour
         foreach (IGameplayModeSwitcher el in _scripts)
         {
             el.ForAIMode();
-        }
-        Debug.Log(_scripts.Length);        
+        }     
     }
 }
 
