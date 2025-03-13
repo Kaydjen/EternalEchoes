@@ -19,12 +19,15 @@ public class InteractOptions : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 
+        AIPlSwapper.DisableCharacterControls();
+
         _manu.SetActive(true);
     }
     public void DisableManu()
     {
         InputHandler.Instance.ActivateDefNumbersMap();
         CameraSwitcher.Instance.EnableCurrentView();
+        AIPlSwapper.EnableCharacterControls();
         _manu.SetActive(false);
     }
     #endregion

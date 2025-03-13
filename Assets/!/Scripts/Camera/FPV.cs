@@ -43,7 +43,7 @@ public class FPV : CameraCore, IUpdate, ICameraUpdate, ICamera
     public void UpdateNeededComponents()
     {
         _player = PlayerCore.Instance.transform;
-        if (this.enabled) // TODO: хз, немного костыльно, мб когда-то переделаю на что-то более адекватное, а пока пусть так будет
+        if (CameraSwitcher.Instance.CurrentView == this as ICamera) // TODO: хз, немного костыльно, мб когда-то переделаю на что-то более адекватное, а пока пусть так будет
         {
             transform.rotation = _player.GetChild(Constants.Player.BOTH).transform.localRotation;
             _y = _camera.localEulerAngles.x;

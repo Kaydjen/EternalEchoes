@@ -18,7 +18,7 @@ public class CameraSwitcher : MonoBehaviour // TODO: там надо сдела�
 
     private byte _index = 0;
 
-    public ICamera _currentView;
+    public ICamera CurrentView;
 
     private FPV _FPV;
     private IsometricV _IsometricV;
@@ -87,35 +87,35 @@ public class CameraSwitcher : MonoBehaviour // TODO: там надо сдела�
         InputHandler.Instance.SetFPVState(true);
         _FPV.enabled = true;
         OnFPV_Enable.Invoke();
-        _currentView = _FPV;
+        CurrentView = _FPV;
     }
     public void SwitchToIsometricV()
     {
         InputHandler.Instance.SetIsometricState(true);
         _IsometricV.enabled = true;
         OnIsometricV_Enable.Invoke();
-        _currentView = _IsometricV;
+        CurrentView = _IsometricV;
     }
     public void SwitchToTopDownV()
     {
         InputHandler.Instance.SetTopDownState(true);
         _TopDownV.enabled = true;
         OnTopDownV_Enable.Invoke();
-        _currentView = _TopDownV;
+        CurrentView = _TopDownV;
     }
     public void DisableCurrentView()
     {
-        _currentView.Disable();
+        CurrentView.Disable();
         InputHandler.OnCPressed.RemoveListener(Switcher);
     }
     public void EnableCurrentView()
     {
-        _currentView.Enable();
+        CurrentView.Enable();
         InputHandler.OnCPressed.AddListener(Switcher);
     }
     public void UpdateControlsOnViewChange()
     {
-        _currentView.ForCharacterSwitch();
+        CurrentView.ForCharacterSwitch();
     }
     #endregion
 

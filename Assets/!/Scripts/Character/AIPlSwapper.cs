@@ -21,6 +21,14 @@ public class AIPlSwapper : MonoBehaviour
         PlayerCore.Instance.transform.GetChild(2).gameObject.SetActive(true);
         PlayerCore.Instance.transform.GetComponent<GameplayModeSwitcher>().AIMode();
     }
+    public static void EnableCharacterControls()
+    {
+        PlayerCore.Instance.transform.GetChild(1).gameObject.SetActive(true);
+    }
+    public static void DisableCharacterControls()
+    {
+        PlayerCore.Instance.transform.GetChild(1).gameObject.SetActive(false);
+    }
     #endregion
     #region PRIVATE METHODS
     #endregion

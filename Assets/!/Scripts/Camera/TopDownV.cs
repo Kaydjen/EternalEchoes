@@ -118,21 +118,6 @@ public class TopDownV : CameraCore, IUpdate, ICameraUpdate, ICamera
         get => _verticalEdgeTolerance;
         set => _verticalEdgeTolerance = Mathf.Clamp01(value);
     }
-    /// <summary>
-    ///  Method, which will be invoked after swapping of character
-    /// </summary>
-    public void ForCharacterSwitch()
-    {
-        AIPlSwapper.ActivateAIControl();
-    }
-    /// <summary>
-    /// Disable script
-    /// </summary>
-    public void Enable() => this.enabled = true;
-    /// <summary>
-    /// Enable script
-    /// </summary>
-    public void Disable() => this.enabled = false;
     #endregion
     #region PUBLIC METHODS
     /// <summary>
@@ -154,6 +139,21 @@ public class TopDownV : CameraCore, IUpdate, ICameraUpdate, ICamera
                 Debug.Log($"_maxDown {_bottomEdgeThreshold}");
                 Debug.Log($"_maxUp {_topEdgeThreshold}");*/
     }
+    /// <summary>
+    ///  Method, which will be invoked after swapping of character
+    /// </summary>
+    public void ForCharacterSwitch()
+    {
+        AIPlSwapper.ActivateAIControl();
+    }
+    /// <summary>
+    /// Disable script
+    /// </summary>
+    public void Enable() => this.enabled = true;
+    /// <summary>
+    /// Enable script
+    /// </summary>
+    public void Disable() => this.enabled = false;
     #endregion
     #region PRIVATE METHODS
     private void DragMouseScreen()
