@@ -50,6 +50,8 @@ public class WalkAnimation : MonoBehaviour, IUpdate
     private void OnDisable()
     {
         Updater.Instance.UnregisterUpdate(this, Updater.UpdateType.Update);
+        _animator.SetFloat(Constants.Player.Animations.Z_AXIS, 0f);
+        _animator.SetFloat(Constants.Player.Animations.X_AXIS, 0f);
     }
 }
 
