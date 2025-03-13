@@ -3704,7 +3704,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lookOrientation: {fileID: 2767056009189630883}
-  _cameraOffset: {x: 0, y: 30, z: -10}
+  _cameraOffset: {x: 0, y: 10, z: 0}
   _rotationSpeed: 850
 --- !u!1 &2085122043437654725
 GameObject:

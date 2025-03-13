@@ -21,12 +21,13 @@ public class AIPlSwapper : MonoBehaviour
         PlayerCore.Instance.transform.GetChild(2).gameObject.SetActive(true);
         PlayerCore.Instance.transform.GetComponent<GameplayModeSwitcher>().AIMode();
     }
-    public static void EnableCharacterControls()
+    public static void Reabilitation()
     {
-        PlayerCore.Instance.transform.GetChild(1).gameObject.SetActive(true);
+        CameraSwitcher.Instance.IDK();
     }
-    public static void DisableCharacterControls()
+    public static void DisReabilitation()
     {
+        PlayerCore.Instance.transform.GetChild(1).gameObject.SetActive(false);
         PlayerCore.Instance.transform.GetChild(1).gameObject.SetActive(false);
     }
     #endregion

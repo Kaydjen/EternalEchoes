@@ -58,6 +58,13 @@ public class FPV : CameraCore, IUpdate, ICameraUpdate, ICamera
         AIPlSwapper.ActivateDirectControl();
     }
     /// <summary>
+    ///  Method, which will be invoked after swapping of character
+    /// </summary>
+    public void IDK()
+    {
+        AIPlSwapper.Reabilitation();
+    }
+    /// <summary>
     /// Disable script
     /// </summary>
     public void Enable() => this.enabled = true;

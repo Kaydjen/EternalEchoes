@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-[ComponentInfo("", "Nu, sam poczitaj, mnie len pisat")]
+[ComponentInfo("PISUN", "Nu, sam poczitaj, mnie len pisat")]
 public class TopDownV : CameraCore, IUpdate, ICameraUpdate, ICamera
 {
     #region VARIABLES
@@ -145,6 +145,13 @@ public class TopDownV : CameraCore, IUpdate, ICameraUpdate, ICamera
     public void ForCharacterSwitch()
     {
         AIPlSwapper.ActivateAIControl();
+    }
+    /// <summary>
+    ///  Method, which will be invoked after swapping of character
+    /// </summary>
+    public void IDK()
+    {
+        AIPlSwapper.DisReabilitation();
     }
     /// <summary>
     /// Disable script

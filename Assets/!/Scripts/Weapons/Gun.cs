@@ -6,12 +6,12 @@ public class Gun : AbstractWeapon, IGameplayModeSwitcher
     {
         Debug.Log("BAM!!!");
     }
-    public void ForAIMode()
-    {
-        InputHandler.OnAttackLMB.AddListener(Attack);
-    }
     public void ForDirectMode()
     {
         InputHandler.OnAttackLMB.AddListener(Attack);
+    }
+    public void ForAIMode()
+    {
+        InputHandler.OnAttackLMB.RemoveListener(Attack);
     }
 }

@@ -117,6 +117,10 @@ public class CameraSwitcher : MonoBehaviour // TODO: там надо сдела�
     {
         CurrentView.ForCharacterSwitch();
     }
+    public void IDK()
+    {
+        CurrentView.IDK();
+    }
     #endregion
 
 }
