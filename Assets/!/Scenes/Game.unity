@@ -4308,7 +4308,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lookOrientation: {fileID: 2767056009189630883}
-  _cameraOffset: {x: 0, y: 0.15, z: 0.5}
+  _cameraOffset: {x: 0, y: 0.7, z: 0.3}
   _sensitivity: 3
   _minHeadRotation: -80
   _maxHeadRotation: 80
