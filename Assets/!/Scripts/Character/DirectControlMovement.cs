@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class DirectControlMovement : MonoBehaviour, IUpdate, IGameplayModeSwitcher
+public class DirectControlMovement : MonoBehaviour, IUpdate
 {
     [SerializeField] private float _speed = 7f;
     private CharacterController _controller;
@@ -46,6 +46,7 @@ public class DirectControlMovement : MonoBehaviour, IUpdate, IGameplayModeSwitch
         if (_controller == null)
             Debug.LogError($"{gameObject.name}, {this.GetType().Name}, the CharacterController is empty");
         _controller.enabled = true;
+        _direction = CameraSwitcher.Instance.transform;
     }
     private void OnEnable()
     {
@@ -57,8 +58,6 @@ public class DirectControlMovement : MonoBehaviour, IUpdate, IGameplayModeSwitch
         if (_controller != null) _controller.enabled = false;
         Updater.Instance.UnregisterUpdate(this, Updater.UpdateType.FinalUpdate);
     }
-    public void ForDirectMode() => _direction = CameraSwitcher.Instance.transform;
-    public void ForAIMode() => _direction = this.transform.root.transform;
 }
 
 

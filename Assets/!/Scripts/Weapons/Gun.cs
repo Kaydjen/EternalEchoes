@@ -1,18 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Gun : MonoBehaviour
+public class Gun : AbstractWeapon, IGameplayModeSwitcher
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void Attack()
     {
-        
+        Debug.Log("BAM!!!");
     }
-
-    // Update is called once per frame
-    void Update()
+    public void ForAIMode()
     {
-        
+        InputHandler.OnAttackLMB.AddListener(Attack);
+    }
+    public void ForDirectMode()
+    {
+        InputHandler.OnAttackLMB.AddListener(Attack);
     }
 }

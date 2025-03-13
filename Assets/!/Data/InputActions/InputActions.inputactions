@@ -49,6 +49,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "AttackLMB",
+                    "type": "Button",
+                    "id": "b76b0fd5-464c-469c-a60d-fe3517713e27",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -150,6 +159,17 @@
                     "action": "Movement",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "8c54b85f-562a-4b8d-b6c1-9633ebf4707d",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AttackLMB",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -215,6 +235,15 @@
                     "name": "SwitchCharacter",
                     "type": "Button",
                     "id": "a22b4709-551e-4840-a306-1bc6131f63c5",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "AttackLMB",
+                    "type": "Button",
+                    "id": "989c3508-558d-4be0-a427-46e8573474be",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -342,6 +371,17 @@
                     "action": "ZoomCamera",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9275dbeb-dcf7-4478-9963-48c3efbd2535",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AttackLMB",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -393,6 +433,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "AttackLMB",
+                    "type": "Button",
+                    "id": "29c256c1-f379-4bb1-a86d-385be12e500a",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -437,6 +486,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Mouse",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "43c0b43a-2ced-4746-9fa5-e4ab324b8871",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AttackLMB",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
