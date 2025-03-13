@@ -43,10 +43,10 @@ public class FPV : CameraCore, IUpdate, ICameraUpdate, ICamera
     public void UpdateNeededComponents()
     {
         _player = PlayerCore.Instance.transform;
-        if (CameraSwitcher.Instance.CurrentView == this as ICamera) // TODO: хз, немного костыльно, мб когда-то переделаю на что-то более адекватное, а пока пусть так будет
+        if (CameraSwitcher.Instance.GetViewType() == this as ICamera) // TODO: хз, немного костыльно, мб когда-то переделаю на что-то более адекватное, а пока пусть так будет
         {
             transform.rotation = _player.GetChild(Constants.Player.BOTH).transform.localRotation;
-            _y = _camera.localEulerAngles.x;
+            _y = 0f;
             _x = transform.eulerAngles.y;
         }
     }
@@ -60,9 +60,9 @@ public class FPV : CameraCore, IUpdate, ICameraUpdate, ICamera
     /// <summary>
     ///  Method, which will be invoked after swapping of character
     /// </summary>
-    public void IDK()
+    public void ManageControls()
     {
-        AIPlSwapper.Reabilitation();
+        AIPlSwapper.ManageDirect(true);
     }
     /// <summary>
     /// Disable script

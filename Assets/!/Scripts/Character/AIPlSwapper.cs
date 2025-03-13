@@ -11,25 +11,27 @@ public class AIPlSwapper : MonoBehaviour
     }
     public static void ActivateDirectControl()
     {
-        PlayerCore.Instance.transform.GetChild(1).gameObject.SetActive(true);
-        PlayerCore.Instance.transform.GetChild(2).gameObject.SetActive(false);
+        ManageDirect(true);
+        ManageAI(false);
         PlayerCore.Instance.transform.GetComponent<GameplayModeSwitcher>().DirectMode();
     }
     public static void ActivateAIControl()
     {
-        PlayerCore.Instance.transform.GetChild(1).gameObject.SetActive(false);
-        PlayerCore.Instance.transform.GetChild(2).gameObject.SetActive(true);
+        ManageDirect(false);
+        ManageAI(true);
         PlayerCore.Instance.transform.GetComponent<GameplayModeSwitcher>().AIMode();
     }
     public static void Reabilitation()
     {
-        CameraSwitcher.Instance.IDK();
+        CameraSwitcher.Instance.ManageControls();
     }
     public static void DisReabilitation()
     {
         PlayerCore.Instance.transform.GetChild(1).gameObject.SetActive(false);
         PlayerCore.Instance.transform.GetChild(1).gameObject.SetActive(false);
     }
+    public static void ManageDirect(bool state) => PlayerCore.Instance.transform.GetChild(1).gameObject.SetActive(state);
+    public static void ManageAI(bool state) => PlayerCore.Instance.transform.GetChild(2).gameObject.SetActive(state);
     #endregion
     #region PRIVATE METHODS
     #endregion

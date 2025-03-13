@@ -149,9 +149,9 @@ public class TopDownV : CameraCore, IUpdate, ICameraUpdate, ICamera
     /// <summary>
     ///  Method, which will be invoked after swapping of character
     /// </summary>
-    public void IDK()
+    public void ManageControls()
     {
-        AIPlSwapper.DisReabilitation();
+        AIPlSwapper.ManageAI(true);
     }
     /// <summary>
     /// Disable script

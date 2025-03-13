@@ -49,9 +49,9 @@ public class IsometricV : CameraCore, IUpdate, ICameraUpdate, ICamera
     ///     /// <summary>
     ///  Method, which will be invoked after swapping of character
     /// </summary>
-    public void IDK()
+    public void ManageControls()
     {
-        AIPlSwapper.Reabilitation();
+        AIPlSwapper.ManageDirect(true);
     }
     public void Enable() => this.enabled = true;
     /// <summary>
