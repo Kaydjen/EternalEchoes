@@ -5,33 +5,21 @@ public class AIPlSwapper : MonoBehaviour
     #region VARIABLES
     #endregion
     #region PUBLIC METHODS
-    public static void ActivateNewCharacterControls()// TODO: тут есть с этим переключением трабл, и я уже забыл, что конкретно не так, исправить надо короче
+    public static void ActivateNewCharacterControls()
     {
-        switch(CameraSwitcher.CurrentView) // TODO: тут такая себе система, так что если будет время, нужно будет как-то переделать
-        {
-            case CameraSwitcher.View.FPV:
-                ActivateDirectControl();
-                CameraSwitcher.OnFPV_Enable.Invoke();
-                break;
-            case CameraSwitcher.View.IsometricV:
-                ActivateDirectControl();
-                CameraSwitcher.OnIsometricV_Enable.Invoke();
-                break;
-            case CameraSwitcher.View.TopDownV:
-                ActivateAIControl();
-                CameraSwitcher.OnTopDownV_Enable.Invoke();
-                break;
-        }
+        CameraSwitcher.Instance.UpdateControlsOnViewChange();
     }
     public static void ActivateDirectControl()
     {
         PlayerCore.Instance.transform.GetChild(1).gameObject.SetActive(true);
         PlayerCore.Instance.transform.GetChild(2).gameObject.SetActive(false);
+        PlayerCore.Instance.transform.GetComponent<GameplayModeSwitcher>().DirectMode();
     }
     public static void ActivateAIControl()
     {
         PlayerCore.Instance.transform.GetChild(1).gameObject.SetActive(false);
         PlayerCore.Instance.transform.GetChild(2).gameObject.SetActive(true);
+        PlayerCore.Instance.transform.GetComponent<GameplayModeSwitcher>().AIMode();
     }
     #endregion
     #region PRIVATE METHODS

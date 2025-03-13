@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class DirectControlMovement : MonoBehaviour, IUpdate
+public class DirectControlMovement : MonoBehaviour, IUpdate, IGameplayModeSwitcher
 {
     [SerializeField] private float _speed = 7f;
     private CharacterController _controller;
@@ -50,6 +50,23 @@ public class DirectControlMovement : MonoBehaviour, IUpdate
     private void OnEnable()
     {
         if(_controller != null) _controller.enabled = true;
+        Updater.Instance.RegisterUpdate(this, Updater.UpdateType.FinalUpdate);
+    }
+    private void OnDisable()
+    {
+        if (_controller != null) _controller.enabled = false;
+        Updater.Instance.UnregisterUpdate(this, Updater.UpdateType.FinalUpdate);
+    }
+    public void ForDirectMode() => _direction = CameraSwitcher.Instance.transform;
+    public void ForAIMode() => _direction = this.transform.root.transform;
+}
+
+
+/*
+ 
+     private void OnEnable()
+    {
+        if(_controller != null) _controller.enabled = true;
 
         Updater.Instance.RegisterUpdate(this, Updater.UpdateType.FinalUpdate);
         CameraSwitcher.OnFPV_Enable.AddListener(EnableFPVMovement);
@@ -62,6 +79,6 @@ public class DirectControlMovement : MonoBehaviour, IUpdate
         Updater.Instance.UnregisterUpdate(this, Updater.UpdateType.FinalUpdate);
         CameraSwitcher.OnIsometricV_Enable.AddListener(DisableFPVMovement);
     }
-    private void EnableFPVMovement() => _direction = CameraSwitcher.Instance.transform;
-    private void DisableFPVMovement() => _direction = this.transform.root.transform;
-}
+ 
+ 
+ */

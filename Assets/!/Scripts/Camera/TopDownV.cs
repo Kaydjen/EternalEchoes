@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 [ComponentInfo("", "Nu, sam poczitaj, mnie len pisat")]
-public class TopDownV : CameraCore, IUpdate, ICameraUpdate
+public class TopDownV : CameraCore, IUpdate, ICameraUpdate, ICamera
 {
     #region VARIABLES
     [SerializeField] private Vector3 _cameraDefOffset = new Vector3(0f, 10f, -2f);
@@ -118,6 +118,21 @@ public class TopDownV : CameraCore, IUpdate, ICameraUpdate
         get => _verticalEdgeTolerance;
         set => _verticalEdgeTolerance = Mathf.Clamp01(value);
     }
+    /// <summary>
+    ///  Method, which will be invoked after swapping of character
+    /// </summary>
+    public void ForCharacterSwitch()
+    {
+        AIPlSwapper.ActivateAIControl();
+    }
+    /// <summary>
+    /// Disable script
+    /// </summary>
+    public void Enable() => this.enabled = true;
+    /// <summary>
+    /// Enable script
+    /// </summary>
+    public void Disable() => this.enabled = false;
     #endregion
     #region PUBLIC METHODS
     /// <summary>

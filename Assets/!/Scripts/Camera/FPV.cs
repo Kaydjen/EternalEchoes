@@ -6,7 +6,7 @@ using UnityEngine;
     "Інтерпретує введення з миші для керування обертами камери. " +
     "Містить механізми для налаштування позицій камери та об'єкта гравця, а також для оновлення кожного кадру. " +
     "Підтримує підключення до системи оновлень.")]
-public class FPV : CameraCore, IUpdate, ICameraUpdate
+public class FPV : CameraCore, IUpdate, ICameraUpdate, ICamera
 {
     #region VARIABLES
     [SerializeField] private Transform _lookOrientation;
@@ -50,6 +50,21 @@ public class FPV : CameraCore, IUpdate, ICameraUpdate
             _x = transform.eulerAngles.y;
         }
     }
+    /// <summary>
+    ///  Method, which will be invoked after swapping of character
+    /// </summary>
+    public void ForCharacterSwitch()
+    {
+        AIPlSwapper.ActivateDirectControl();
+    }
+    /// <summary>
+    /// Disable script
+    /// </summary>
+    public void Enable() => this.enabled = true;
+    /// <summary>
+    /// Enable script
+    /// </summary>
+    public void Disable() => this.enabled = false;
     #endregion
     #region Update
     public void PerformInitialUpdate()
