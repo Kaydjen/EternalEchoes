@@ -8,14 +8,14 @@ public class GameplayModeSwitcher : MonoBehaviour
     {
         _scripts = GetComponentsInChildren<IGameplayModeSwitcher>(true);
     } 
-    public void DirectMode()
+    public void ManualMode()
     {
         if (_scripts == null) UpdateScripts();
         if (_scripts == null) return; // Тут это не нужно, но на всякий случай оставлю
 
         foreach (IGameplayModeSwitcher el in _scripts)
         {
-            el.ForDirectMode();
+            el.ForManualMode();
         }    
     }
     public void AIMode()

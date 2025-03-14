@@ -1,6 +1,6 @@
 ﻿public interface IGameplayModeSwitcher
 {
-    public void ForDirectMode();
+    public void ForManualMode();
     public void ForAIMode();
 }
 

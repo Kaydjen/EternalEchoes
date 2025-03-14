@@ -55,14 +55,14 @@ public class FPV : CameraCore, IUpdate, ICameraUpdate, ICamera
     /// </summary>
     public void ForCharacterSwitch()
     {
-        AIPlSwapper.ActivateDirectControl();
+        AIPlSwapper.ActivateManualControl();
     }
     /// <summary>
     ///  Method, which will be invoked after swapping of character
     /// </summary>
-    public void ManageControls()
+    public void ForControlsManage()
     {
-        AIPlSwapper.ManageDirect(true);
+        AIPlSwapper.EnabledManual(true);
     }
     /// <summary>
     /// Disable script

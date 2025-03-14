@@ -19,16 +19,15 @@ public class InteractOptions : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 
-        AIPlSwapper.DisReabilitation();
+        AIPlSwapper.LockControl();
 
         _manu.SetActive(true);
     }
     public void DisableManu()
     {
-        Debug.Log("1");
         InputHandler.Instance.ActivateDefNumbersMap();
         if(!CameraSwitcher.Instance.IsCurrentViewEnabled()) CameraSwitcher.Instance.EnableCurrentView();
-        AIPlSwapper.Reabilitation();
+        AIPlSwapper.UnlockControl();
         _manu.SetActive(false);
     }
     #endregion
