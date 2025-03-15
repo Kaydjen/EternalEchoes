@@ -9,6 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ab7013140764b64b813e83283dd4cdc, type: 3}
-  m_Name: Test
+  m_Script: {fileID: 11500000, guid: 354e4b47b3477774faa3a0ed068cef99, type: 3}
+  m_Name: TestWeapon
   m_EditorClassIdentifier: 
+  Damage: 6
+  CloudDamage: 666

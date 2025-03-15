@@ -2,9 +2,12 @@
 
 public class WeaponManager : MonoBehaviour, IGameplayModeSwitcher
 {
-    public WeaponScriptableAbstract Data;
     public AbstractWeapon AbstractWeapon;
-
+    
+    public void SetUp(AbstractWeapon weapon)
+    {
+        AbstractWeapon = weapon;
+    }
     public void Attack()
     {
         AbstractWeapon.Attack();
