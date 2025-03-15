@@ -1,6 +1,4 @@
-using UnityEngine;
-
-public abstract class AbstractWeapon : MonoBehaviour
+public abstract class AbstractWeapon
 {
     public WeaponScriptableAbstract Data; 
     public abstract void Attack();
