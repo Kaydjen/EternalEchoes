@@ -1,12 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="AbstractWeapon&lt;T&gt;">
-    <Position X="3.5" Y="3.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAABAAAAAAAAAAAAA=</HashCode>
-      <FileName>Assets\!\Scripts\Weapons\MainLogic\AbstractWeapon.cs</FileName>
-    </TypeIdentifier>
-  </Class>
   <Class Name="Gun">
     <Position X="3.5" Y="5.75" Width="1.5" />
     <TypeIdentifier>

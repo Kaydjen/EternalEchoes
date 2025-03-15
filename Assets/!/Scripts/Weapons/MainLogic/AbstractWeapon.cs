@@ -1,7 +1,7 @@
 using UnityEngine;
 
-public abstract class AbstractWeapon<T> : MonoBehaviour where T : WeaponScriptableAbstract
+public abstract class AbstractWeapon: MonoBehaviour
 {
-    public T Data; 
+    public WeaponScriptableAbstract Data; 
     public abstract void Attack();
 }
