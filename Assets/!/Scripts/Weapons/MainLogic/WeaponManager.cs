@@ -1,10 +1,14 @@
 ﻿using UnityEngine;
 
-public class WeaponManager : MonoBehaviour, IGameplayModeSwitcher
+public class WeaponManager : MonoBehaviour, IGameplayModeSwitcher 
 {
-    public AbstractWeapon AbstractWeapon;
-    
-    public void SetUp(AbstractWeapon weapon)
+    public AbstractWeapon<WeaponScriptableAbstract> AbstractWeapon;
+
+    private void Start()
+    {
+        
+    }
+    public void SetUp(AbstractWeapon<WeaponScriptableAbstract> weapon)
     {
         AbstractWeapon = weapon;
     }
