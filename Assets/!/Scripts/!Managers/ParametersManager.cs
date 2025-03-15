@@ -12,6 +12,6 @@ public class ParametersManager : MonoBehaviour // TOKNOW: Perhabs, should be bet
     #endregion
     #region SetParameter
     public void SetManualWalkSpeed(float value) => GetControls().GetComponent<DirectControlMovement>().Speed = value;
-    public void SetWeapon(AbstractWeapon weapon) => GetBoth().GetComponent<WeaponManager>().SetUp(weapon);
+    public void SetWeapon(AbstractWeapon<WeaponScriptableAbstract> weapon) => GetBoth().GetComponent<WeaponManager>().SetUp(weapon);
     #endregion
 }
