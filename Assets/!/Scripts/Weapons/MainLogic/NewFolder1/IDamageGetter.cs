@@ -1,5 +1,5 @@
 ﻿
 public interface IDamageGetter
 {
-    public void GetDamage();
+    public void GetDamage(float damage);
 }
