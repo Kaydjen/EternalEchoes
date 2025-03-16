@@ -1,12 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Assets.__.Scripts.Weapons.MainLogic
+﻿public class Magic : AbstractWeapon
 {
-    internal class Magic
+    private GateOfBabylonScriptable _data;
+    protected override void Start() => _data = Data as GateOfBabylonScriptable;
+    public override void Attack()
     {
+
+    }
+    public override void EnterAimingMode()
+    {
+
+    }
+    public override void ExitAimingMode()
+    {
+
     }
 }
+
+
+

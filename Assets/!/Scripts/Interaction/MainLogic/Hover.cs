@@ -3,7 +3,10 @@
 public class Hover : MonoBehaviour, ICameraUpdate, IUpdate
 {
     #region VARIABLES
-    [SerializeField] private float _raycastDistance;
+    [SerializeField] private float _FPVRayDist = 10f;
+    [SerializeField] private float _IsometricRayDist = 11f;
+    [SerializeField] private float _TopDownRayDist = 50f; // TODO: тут можно динамично изменять дистанцию по мере поднятия камеры в TopDown 
+    private float _standartRayDist = 10f;
     private RaycastHit _hitInfo;
     public static Collider HitedCollider;
     private Camera _camera;
@@ -12,7 +15,7 @@ public class Hover : MonoBehaviour, ICameraUpdate, IUpdate
     #region PUBLIC METHODS
     public void SetRaycastDistance(float value)
     {
-        _raycastDistance = Mathf.Clamp(value, 0f, 100f);
+        _standartRayDist = Mathf.Clamp(value, 0f, 100f);
     }
     public void UpdateNeededComponents() // TODO: we dont need to get camera here, it's better to do in Init method
     {
@@ -22,7 +25,7 @@ public class Hover : MonoBehaviour, ICameraUpdate, IUpdate
     #region PRIVATE METHODS
     private void Interact()
     {
-        if (Physics.Raycast(_camera.ScreenPointToRay(Input.mousePosition), out _hitInfo, _raycastDistance))
+        if (Physics.Raycast(_camera.ScreenPointToRay(Input.mousePosition), out _hitInfo, _standartRayDist))
         {
             IHover[] interactions = _hitInfo.collider.GetComponents<IHover>();
 
@@ -35,7 +38,7 @@ public class Hover : MonoBehaviour, ICameraUpdate, IUpdate
     private void CheckForInteractable()
     {
         HitedCollider = null;
-        if (Physics.Raycast(_camera.ScreenPointToRay(Input.mousePosition), out _hitInfo, _raycastDistance)) // TODO: тут дальше можно заменить HitInfo на новое статик поле, в которое записать HitInfo.collider и так уже работать, удобнее будет
+        if (Physics.Raycast(_camera.ScreenPointToRay(Input.mousePosition), out _hitInfo, _standartRayDist)) 
         {
             HitedCollider = _hitInfo.collider;
             if (_lastInteractibleObj == HitedCollider) return;
@@ -48,7 +51,7 @@ public class Hover : MonoBehaviour, ICameraUpdate, IUpdate
             HitedCollider.GetComponent<IHover>()?.HoverEnter();
             _lastInteractibleObj = HitedCollider;                
         }
-        else
+        else 
         {
             ResetLastInteractibleObj();
         }
@@ -68,11 +71,18 @@ public class Hover : MonoBehaviour, ICameraUpdate, IUpdate
     {
         //InputHandler.OnInteraction.AddListener(Interact);
         RegisterUpdate();
+        _standartRayDist = _FPVRayDist;
+        CameraSwitcher.OnFPV_Enable.AddListener(() => _standartRayDist = _FPVRayDist);
+        CameraSwitcher.OnIsometricV_Enable.AddListener(() => _standartRayDist = _IsometricRayDist);
+        CameraSwitcher.OnTopDownV_Enable.AddListener(() => _standartRayDist = _TopDownRayDist);
     }
     private void OnDisable()
     {
         //InputHandler.OnInteraction.RemoveListener(Interact);
         UnregisterUpdate();
+        CameraSwitcher.OnFPV_Enable.RemoveListener(() => _standartRayDist = _FPVRayDist);
+        CameraSwitcher.OnIsometricV_Enable.RemoveListener(() => _standartRayDist = _IsometricRayDist);
+        CameraSwitcher.OnTopDownV_Enable.RemoveListener(() => _standartRayDist = _TopDownRayDist);
     }
     #endregion
     #region Update

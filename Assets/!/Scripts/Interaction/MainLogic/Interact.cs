@@ -9,7 +9,6 @@ public class Interact : MonoBehaviour
     }
     private void Switch() // TODO: тут вырубать можно не опять с помощью пкм, а с помощью например Esc, надо спросить у Димы
     {
-        Debug.Log("Nu ono raboraet (Interact)");
         if(Hover.HitedCollider == null || !Hover.HitedCollider.TryGetComponent(out IInteractStrategy strategy)) // Если луч не попал, или попал, но обьект не является персонажем 
         {
             if (_isMenuActivated) // если меню активированно - вырубаем

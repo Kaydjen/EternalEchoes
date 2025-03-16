@@ -1,4 +1,6 @@
-public class GateOfBabylon : AbstractWeapon
+using UnityEngine;
+
+public class GateOfBabylon : Magic
 {
     private GateOfBabylonScriptable _data;
     protected override void Start() => _data = Data as GateOfBabylonScriptable;
