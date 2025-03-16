@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: TestWeapon
   m_EditorClassIdentifier: 
   _damage: 52
-  _totalAmmo: 15
-  _currentAmmo: 7
+  _totalAmmo: 10000
+  _currentAmmo: 99990736
   _isMagEmpty: 0
   _range: 50
-  _fireRate: 1
+  _fireRate: 0
   _reloadTime: 1

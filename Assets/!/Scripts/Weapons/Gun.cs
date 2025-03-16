@@ -1,6 +1,9 @@
 using System.Collections;
+using System.Drawing;
+using Unity.VisualScripting;
 using UnityEngine;
 using static Unity.VisualScripting.Member;
+using static UnityEngine.UI.Image;
 
 public class Gun : AbstractWeapon
 {
@@ -12,7 +15,7 @@ public class Gun : AbstractWeapon
         // слой €кий рейкаст ≥гнорить (там дальше в if(Physics.Raycast(...)) закомент≥ровано лейер маск шоб работало розкоментуй
 
         //int layerMask = ~LayerMask.GetMask("LayerA");
-
+        
         if (Time.time >= _nextFireTime && !_data._isMagEmpty)
         {
             RaycastHit hit;
@@ -24,6 +27,7 @@ public class Gun : AbstractWeapon
 
             if (Physics.Raycast(AimDirection.Direction.position, AimDirection.Direction.forward, out hit, _data._range/*, layerMask*/))
             {
+                
                 IDamageGetter target = hit.collider.GetComponentInParent<IDamageGetter>();
 
                 //якшо при попадан≥њ об'Їкту не наноситьс€ дамаг то спавнитьс€ дира в≥д пул≥
