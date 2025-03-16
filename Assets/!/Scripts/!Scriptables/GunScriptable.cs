@@ -9,6 +9,5 @@ public class GunScriptable : WeaponScriptableAbstract
     public float _range;
     public float _fireRate;
     public float _reloadTime;
-    public float _nextFireTime;
 }
 

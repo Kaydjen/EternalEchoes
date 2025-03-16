@@ -12,5 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 354e4b47b3477774faa3a0ed068cef99, type: 3}
   m_Name: TestWeapon
   m_EditorClassIdentifier: 
-  Damage: 6
-  CloudDamage: 666
+  _damage: 52
+  _totalAmmo: 15
+  _currentAmmo: 7
+  _isMagEmpty: 0
+  _range: 50
+  _fireRate: 1
+  _reloadTime: 1

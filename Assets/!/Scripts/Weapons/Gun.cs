@@ -4,6 +4,7 @@ using static Unity.VisualScripting.Member;
 
 public class Gun : AbstractWeapon
 {
+    public float _nextFireTime = 0;
     private GunScriptable _data; 
     protected override void Start() => _data = Data as GunScriptable;
     public override void Attack()
@@ -11,9 +12,8 @@ public class Gun : AbstractWeapon
         // слой який рейкаст ігнорить (там дальше в if(Physics.Raycast(...)) закоментіровано лейер маск шоб работало розкоментуй
 
         //int layerMask = ~LayerMask.GetMask("LayerA");
-        
 
-        if (Time.time >= _data._nextFireTime && !_data._isMagEmpty)
+        if (Time.time >= _nextFireTime && !_data._isMagEmpty)
         {
             RaycastHit hit;
 
@@ -57,13 +57,13 @@ public class Gun : AbstractWeapon
 
             //magTextPistol.text = $"{_data._currentAmmo}/{_data._totalAmmo}";
 
-            if (_data._totalAmmo <= 0)
+            if (_data._currentAmmo <= 0)
             {
                 _data._isMagEmpty = true;
                 StartCoroutine(Reload());
             }
 
-            _data._nextFireTime = Time.time + _data._fireRate;
+            _nextFireTime = Time.time + _data._fireRate;
         }
     }
 
