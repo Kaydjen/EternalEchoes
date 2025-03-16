@@ -9,4 +9,12 @@ public class Gun : AbstractWeapon
         Debug.Log("BAM!!! - " + _data.Damage);
         Debug.Log("Tadada!!! - " + _data.CloudDamage);
     }
+    public override void EnterAimingMode()
+    {
+        throw new System.NotImplementedException();
+    }
+    public override void ExitAimingMode()
+    {
+        throw new System.NotImplementedException();
+    }
 }

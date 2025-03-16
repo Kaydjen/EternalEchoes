@@ -7712,7 +7712,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e801835561d09f488dc791cacde516a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Weapon: {fileID: 585101891}
+  Weapon: {fileID: 1167642174}
 --- !u!4 &6250409094769516551
 Transform:
   m_ObjectHideFlags: 0

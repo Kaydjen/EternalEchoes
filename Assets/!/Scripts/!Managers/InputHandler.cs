@@ -57,6 +57,9 @@ public class InputHandler : MonoBehaviour
         public static UnityEvent OnWheelClickCanceled { get; private set; } = new UnityEvent();*/
     public static UnityEvent OnAltF { get; private set; } = new UnityEvent();
     public static UnityEvent OnAttackLMB { get; private set; } = new UnityEvent();
+    public static UnityEvent OnEnterAimingMode { get; private set; } = new UnityEvent();
+    public static UnityEvent OnExitAimingMode { get; private set; } = new UnityEvent();
+
     #endregion Static variables
     #region Init methods
     public void Init()
@@ -162,6 +165,13 @@ public class InputHandler : MonoBehaviour
         _FPV.AttackLMB.performed += _ => OnAttackLMB.Invoke();
         _Isometric.AttackLMB.performed += _ => OnAttackLMB.Invoke();
         _TopDown.AttackLMB.performed += _ => OnAttackLMB.Invoke();
+
+        _FPV.AimRMB.performed += _ => OnEnterAimingMode.Invoke();
+        _Isometric.AimRMB.performed += _ => OnEnterAimingMode.Invoke();
+        _TopDown.AimRMB.performed += _ => OnEnterAimingMode.Invoke();
+        _FPV.AimRMB.canceled += _ => OnExitAimingMode.Invoke();
+        _Isometric.AimRMB.canceled += _ => OnExitAimingMode.Invoke();
+        _TopDown.AimRMB.canceled += _ => OnExitAimingMode.Invoke();
         // Add here a new one
     }
     #endregion Init methods
