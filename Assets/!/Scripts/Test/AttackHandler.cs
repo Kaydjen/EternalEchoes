@@ -1,25 +1,21 @@
-﻿using UnityEngine;
+using UnityEngine;
 
-/*
- * s - script
- * 
- */
 public class AttackHandler : MonoBehaviour, IGameplayModeSwitcher
 {
     #region VARIABLES
-    public IAttack s_attack;
+    public IAttack Attack;
     #endregion
     #region PUBLIC METHODS
-    public void SetAttack(IAttack attack)
-    {
-        s_attack = attack;
-    }
     public void ExecuteAttack()
     {
-        s_attack.Attack();
+        Attack.Attack();
     }
     #endregion
     #region MONOBEHAVIOUR
+    private void Awake()
+    {
+        if (!TryGetComponent(out Attack)) Debug.Log("Error");
+    }
     public void ForManualMode()
     {
         InputHandler.OnAttackLMB.AddListener(ExecuteAttack);

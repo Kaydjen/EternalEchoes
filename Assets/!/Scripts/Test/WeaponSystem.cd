@@ -1,2 +1,86 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ClassDiagram /> 
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Comment CommentText="Немного болтовни: короче, мне не понравилось то, как не удобно и муторно была реализована оружейная система через наследование, так что я решил все переделать под свой лад, сделав всю механику в виде лего - система собирается и разбирается посредством компонентов, которые вешаються на обьекты (на оружие, если быть точным).">
+    <Position X="0.5" Y="0.5" Height="1.131" Width="3.964" />
+  </Comment>
+  <Comment CommentText="Идея кучи интерфейсов в том, что бы была осуществима модульность скриптов. Тобиж для каждого действия - свой собственный интерфейс.">
+    <Position X="6" Y="6.25" Height="0.75" Width="3.232" />
+  </Comment>
+  <Comment CommentText="Для каждого вида атаки свои классы">
+    <Position X="3.88" Y="9.514" Height="0.444" Width="1.848" />
+  </Comment>
+  <Comment CommentText="Для каждого действия есть обобщенные классы (Для перезарядки есть класс, где описана обобщенная перезарядка)">
+    <Position X="3.88" Y="10.12" Height="0.75" Width="1.83" />
+  </Comment>
+  <Comment CommentText="Для каждого действия есть класс с подпиской этого действия на определенную клавишу. Все такие классы наследуються от интерфейса IGameplayMode">
+    <Position X="0.5" Y="6.458" Height="1.449" Width="1.57" />
+  </Comment>
+  <Class Name="WeaponManager" Collapsed="true">
+    <Position X="12" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\!\Scripts\Test\WeaponManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="A_Gun" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="6" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\!\Scripts\Test\A_Gun.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.219" />
+  </Class>
+  <Class Name="AttackHandler" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAAEAAAAAAAAAAIAAAACAAAAAAAAAAEA=</HashCode>
+      <FileName>Assets\!\Scripts\Test\AttackHandler.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.1" />
+  </Class>
+  <Class Name="GateOfBabylon" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIIAAAAAAAAIIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\!\Scripts\Test\GateOfBabylon.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="FireBall" Collapsed="true">
+    <Position X="6" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAIAAAAAAAAIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\!\Scripts\Test\FireBall.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="IAim" Collapsed="true">
+    <Position X="7.75" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAIAAAAAAAAIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\!\Scripts\Test\IAim.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="IAttack" Collapsed="true">
+    <Position X="6" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\!\Scripts\Test\IAttack.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="IReload" Collapsed="true">
+    <Position X="6" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAA=</HashCode>
+      <FileName>Assets\!\Scripts\Test\IReload.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="IGameplayModeSwitcher" Collapsed="true">
+    <Position X="0.5" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\!\Scripts\!Interfaces\IGameplayModeSwitcher.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
