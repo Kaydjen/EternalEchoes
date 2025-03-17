@@ -22,18 +22,18 @@
       <FileName>Assets\!\Scripts\Test\WeaponManager.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="A_Gun" Collapsed="true" BaseTypeListCollapsed="true">
+  <Class Name="Gun" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="6" Y="9.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Assets\!\Scripts\Test\A_Gun.cs</FileName>
+      <FileName>Assets\!\Scripts\Test\Gun.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.219" />
   </Class>
   <Class Name="AttackHandler" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="0.5" Y="9.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAQAAAAAAAAAAEAAAAAAAAAAIAAAACAAAAAAAAAAEA=</HashCode>
+      <HashCode>AAAQAAAAAAAAAAGAAAAAAAAAAIAAAACAAAAAAAAAAEA=</HashCode>
       <FileName>Assets\!\Scripts\Test\AttackHandler.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.1" />
@@ -41,7 +41,7 @@
   <Class Name="GateOfBabylon" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="7.75" Y="9.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAIIAAAAAAAAIIAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Assets\!\Scripts\Test\GateOfBabylon.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -51,6 +51,22 @@
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAIAAAAAAAAIAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Assets\!\Scripts\Test\FireBall.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="AimPlacer" Collapsed="true">
+    <Position X="7.75" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACBAAEAABBAAAIAAEQAAIAIAAEAAIAhAAIAACAKEA=</HashCode>
+      <FileName>Assets\!\Scripts\Test\AimPlacer.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="AimHandler" Collapsed="true">
+    <Position X="0.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAABAAEIAAAAAAAAIAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Assets\!\Scripts\Test\AimHandler.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>

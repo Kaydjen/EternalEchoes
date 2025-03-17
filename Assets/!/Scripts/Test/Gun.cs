@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-class A_Gun : MonoBehaviour, IAttack 
+class Gun : MonoBehaviour, IAttack 
 {
     public void Attack()
     {
