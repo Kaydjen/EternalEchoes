@@ -1,11 +1,12 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class AttackHandler : MonoBehaviour, IGameplayModeSwitcher
 {
     #region VARIABLES
+    [NonSerialized] public UnityEvent OnAttack = new();
     public IAttack Attack;
-    public UnityEvent OnAttack = new();
     #endregion
     #region PUBLIC METHODS
     public void ExecuteAttack()
