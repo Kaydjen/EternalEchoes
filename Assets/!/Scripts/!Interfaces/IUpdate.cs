@@ -6,7 +6,46 @@ public interface IUpdate
     void PerformFinalUpdate();
     void PerformLateUpdate();
 }
-
+/*
+ 
+ 
+ 
+ 
+     public void PerformInitialUpdate()
+    {
+        throw new System.NotImplementedException();
+    }
+    public void PerformPreUpdate()
+    {
+        throw new System.NotImplementedException();
+    }
+    public void PerformUpdate()
+    {
+        throw new System.NotImplementedException();
+    }
+    public void PerformFinalUpdate()
+    {
+        throw new System.NotImplementedException();
+    }
+    public void PerformLateUpdate()
+    {
+        throw new System.NotImplementedException();
+    }
+    private void RegisterUpdate()
+    {
+        Updater.Instance.RegisterUpdate(this, Updater.UpdateType.InitialUpdate);
+    }
+    private void UnregisterUpdate()
+    {
+        Updater.Instance.UnregisterUpdate(this, Updater.UpdateType.InitialUpdate);
+    }
+ 
+ 
+ 
+ 
+ 
+ 
+ */
 /*
  
  

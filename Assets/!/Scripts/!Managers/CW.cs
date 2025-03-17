@@ -35,7 +35,6 @@ public class CW : MonoBehaviour
             _tabsText.Add(Instantiate(_tabPrefab, _consoleTransform).GetComponent<TMP_Text>());
         }
     }
-
     public void Print(string text, int time = 1)
     {
         int lastIndex = _columnsCount - 1;

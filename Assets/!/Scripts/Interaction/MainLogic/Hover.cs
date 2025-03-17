@@ -1,8 +1,10 @@
-﻿using UnityEngine;
+﻿using Unity.VisualScripting;
+using UnityEngine;
 
 public class Hover : MonoBehaviour, ICameraUpdate, IUpdate
 {
     #region VARIABLES
+    public static Hover Instance { get; private set; }
     [SerializeField] private float _FPVRayDist = 10f;
     [SerializeField] private float _IsometricRayDist = 11f;
     [SerializeField] private float _TopDownRayDist = 50f; // TODO: тут можно динамично изменять дистанцию по мере поднятия камеры в TopDown 
@@ -20,6 +22,15 @@ public class Hover : MonoBehaviour, ICameraUpdate, IUpdate
     public void UpdateNeededComponents() // TODO: we dont need to get camera here, it's better to do in Init method
     {
         _camera = this.transform.GetChild(Constants.Player.CAMERA).transform.GetComponent<Camera>();
+    }
+    public void Enable()
+    {
+        RegisterUpdate();
+    }
+    public void Disable()
+    {
+        UnregisterUpdate();
+        ResetLastInteractibleObj();
     }
     #endregion
     #region PRIVATE METHODS
@@ -67,6 +78,10 @@ public class Hover : MonoBehaviour, ICameraUpdate, IUpdate
     }
     #endregion
     #region MONO METHODS
+    private void Awake()
+    {
+        Instance = this;
+    }
     private void OnEnable()
     {
         //InputHandler.OnInteraction.AddListener(Interact);
