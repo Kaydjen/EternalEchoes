@@ -18,6 +18,7 @@ public class InputHandler : MonoBehaviour
     private InputActions.DefNumbersActions _DefNumbers;
     private InputActions.OptionsNumbersActions _OptionsNumbers;
     private InputActions.AllActions _All;
+    private InputActions.UIActions _UI;
 
     #endregion Maps
     #region Static variables
@@ -75,6 +76,7 @@ public class InputHandler : MonoBehaviour
         _DefNumbers = _asset.DefNumbers;
         _OptionsNumbers = _asset.OptionsNumbers;
         _All = _asset.All;
+        _UI = _asset.UI;
                                     // add here new maps...
 
         SubscribeToInputActions();
@@ -164,14 +166,11 @@ public class InputHandler : MonoBehaviour
 
         _FPV.AttackLMB.performed += _ => OnAttackLMB.Invoke();
         _Isometric.AttackLMB.performed += _ => OnAttackLMB.Invoke();
-        _TopDown.AttackLMB.performed += _ => OnAttackLMB.Invoke();
 
         _FPV.AimRMB.performed += _ => OnEnterAimingMode.Invoke();
         _Isometric.AimRMB.performed += _ => OnEnterAimingMode.Invoke();
-        _TopDown.AimRMB.performed += _ => OnEnterAimingMode.Invoke();
         _FPV.AimRMB.canceled += _ => OnExitAimingMode.Invoke();
         _Isometric.AimRMB.canceled += _ => OnExitAimingMode.Invoke();
-        _TopDown.AimRMB.canceled += _ => OnExitAimingMode.Invoke();
         // Add here a new one
     }
     #endregion Init methods
@@ -225,14 +224,75 @@ public class InputHandler : MonoBehaviour
         _DefNumbers.Disable();
     }
     /// <summary>
+    ///   Enable or disable the movements of all input maps 
+    /// </summary>
+    /// <param name="state">true - enable, false - disable</param>
+    public void SetAllMovement(bool state)
+    {
+        if (state)
+        {
+            _FPV.Movement.Enable();
+            _TopDown.KeyboardCameraMovement.Enable();
+            _Isometric.Movement.Enable();
+        }
+        else
+        {
+            _FPV.Movement.Disable();
+            _TopDown.KeyboardCameraMovement.Disable();
+            _Isometric.Movement.Disable();
+        }
+    }
+    /// <summary>
+    ///   Enable or disable the attack's ability of all input maps 
+    /// </summary>
+    /// <param name="state">true - enable, false - disable</param>
+    public void SetAllAttack(bool state)
+    {
+        if (state)
+        {
+            _FPV.AttackLMB.Enable();
+            _Isometric.AttackLMB.Enable();
+        }
+        else
+        {
+            _FPV.AttackLMB.Disable();
+            _Isometric.AttackLMB.Disable();
+        }
+    }
+    /// <summary>
+    ///   Enable or disable the aim's ability of all input maps 
+    /// </summary>
+    /// <param name="state">true - enable, false - disable</param>
+    public void SetAllAim(bool state)
+    {
+        if (state)
+        {
+            _FPV.AimRMB.Enable();
+            _Isometric.AimRMB.Enable();
+        }
+        else
+        {
+            _FPV.AimRMB.Disable();
+            _Isometric.AimRMB.Disable();
+        }
+    }
+    /// <summary>
     ///  Enable or disable the All View input map
     /// </summary>
     /// <param name="state"> true - enable, false - disable</param>
     public void SetAllState(bool state)
     {
-        DisableAllMaps();
         if (state) _All.Enable();
         else _All.Disable();
+    }
+    /// <summary>
+    ///  Enable or disable the UI input map
+    /// </summary>
+    /// <param name="state"> true - enable, false - disable</param>
+    public void SetUIState(bool state)
+    {
+        if (state) _UI.Enable();
+        else _UI.Disable();
     }
     // add here new map's State...
     #endregion

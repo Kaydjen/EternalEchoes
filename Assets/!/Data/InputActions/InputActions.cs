@@ -281,24 +281,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""AttackLMB"",
-                    ""type"": ""Button"",
-                    ""id"": ""989c3508-558d-4be0-a427-46e8573474be"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""AimRMB"",
-                    ""type"": ""Button"",
-                    ""id"": ""3ad7c406-6fac-47b3-ae6f-f92c82eb8f1c"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -343,17 +325,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""ScreenEdgePanning"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""8959cf54-7bd5-4ae5-a483-076320052ca1"",
-                    ""path"": ""<Mouse>/rightButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""AimRMB"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -431,17 +402,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""ZoomCamera"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""9275dbeb-dcf7-4478-9963-48c3efbd2535"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""AttackLMB"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1115,6 +1075,34 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""UI"",
+            ""id"": ""9674dd43-a0ab-4119-bb1c-f8e5f3f3b159"",
+            ""actions"": [
+                {
+                    ""name"": ""LBM"",
+                    ""type"": ""Button"",
+                    ""id"": ""2f3d9072-d0e8-4c42-9e6a-b5f3d65a3e1e"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""5cb29e7b-402a-4bf6-a459-aa10f45e625c"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LBM"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -1137,8 +1125,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         m_TopDown_Interaction = m_TopDown.FindAction("Interaction", throwIfNotFound: true);
         m_TopDown_SwitchCamera = m_TopDown.FindAction("SwitchCamera", throwIfNotFound: true);
         m_TopDown_SwitchCharacter = m_TopDown.FindAction("SwitchCharacter", throwIfNotFound: true);
-        m_TopDown_AttackLMB = m_TopDown.FindAction("AttackLMB", throwIfNotFound: true);
-        m_TopDown_AimRMB = m_TopDown.FindAction("AimRMB", throwIfNotFound: true);
         // Isometric
         m_Isometric = asset.FindActionMap("Isometric", throwIfNotFound: true);
         m_Isometric_Mouse = m_Isometric.FindAction("Mouse", throwIfNotFound: true);
@@ -1175,6 +1161,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         // All
         m_All = asset.FindActionMap("All", throwIfNotFound: true);
         m_All_AltF = m_All.FindAction("AltF", throwIfNotFound: true);
+        // UI
+        m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
+        m_UI_LBM = m_UI.FindAction("LBM", throwIfNotFound: true);
     }
 
     ~@InputActions()
@@ -1185,6 +1174,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         UnityEngine.Debug.Assert(!m_DefNumbers.enabled, "This will cause a leak and performance issues, InputActions.DefNumbers.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_OptionsNumbers.enabled, "This will cause a leak and performance issues, InputActions.OptionsNumbers.Disable() has not been called.");
         UnityEngine.Debug.Assert(!m_All.enabled, "This will cause a leak and performance issues, InputActions.All.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_UI.enabled, "This will cause a leak and performance issues, InputActions.UI.Disable() has not been called.");
     }
 
     public void Dispose()
@@ -1347,8 +1337,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_TopDown_Interaction;
     private readonly InputAction m_TopDown_SwitchCamera;
     private readonly InputAction m_TopDown_SwitchCharacter;
-    private readonly InputAction m_TopDown_AttackLMB;
-    private readonly InputAction m_TopDown_AimRMB;
     public struct TopDownActions
     {
         private @InputActions m_Wrapper;
@@ -1360,8 +1348,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         public InputAction @Interaction => m_Wrapper.m_TopDown_Interaction;
         public InputAction @SwitchCamera => m_Wrapper.m_TopDown_SwitchCamera;
         public InputAction @SwitchCharacter => m_Wrapper.m_TopDown_SwitchCharacter;
-        public InputAction @AttackLMB => m_Wrapper.m_TopDown_AttackLMB;
-        public InputAction @AimRMB => m_Wrapper.m_TopDown_AimRMB;
         public InputActionMap Get() { return m_Wrapper.m_TopDown; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1392,12 +1378,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @SwitchCharacter.started += instance.OnSwitchCharacter;
             @SwitchCharacter.performed += instance.OnSwitchCharacter;
             @SwitchCharacter.canceled += instance.OnSwitchCharacter;
-            @AttackLMB.started += instance.OnAttackLMB;
-            @AttackLMB.performed += instance.OnAttackLMB;
-            @AttackLMB.canceled += instance.OnAttackLMB;
-            @AimRMB.started += instance.OnAimRMB;
-            @AimRMB.performed += instance.OnAimRMB;
-            @AimRMB.canceled += instance.OnAimRMB;
         }
 
         private void UnregisterCallbacks(ITopDownActions instance)
@@ -1423,12 +1403,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @SwitchCharacter.started -= instance.OnSwitchCharacter;
             @SwitchCharacter.performed -= instance.OnSwitchCharacter;
             @SwitchCharacter.canceled -= instance.OnSwitchCharacter;
-            @AttackLMB.started -= instance.OnAttackLMB;
-            @AttackLMB.performed -= instance.OnAttackLMB;
-            @AttackLMB.canceled -= instance.OnAttackLMB;
-            @AimRMB.started -= instance.OnAimRMB;
-            @AimRMB.performed -= instance.OnAimRMB;
-            @AimRMB.canceled -= instance.OnAimRMB;
         }
 
         public void RemoveCallbacks(ITopDownActions instance)
@@ -1822,6 +1796,52 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         }
     }
     public AllActions @All => new AllActions(this);
+
+    // UI
+    private readonly InputActionMap m_UI;
+    private List<IUIActions> m_UIActionsCallbackInterfaces = new List<IUIActions>();
+    private readonly InputAction m_UI_LBM;
+    public struct UIActions
+    {
+        private @InputActions m_Wrapper;
+        public UIActions(@InputActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @LBM => m_Wrapper.m_UI_LBM;
+        public InputActionMap Get() { return m_Wrapper.m_UI; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(UIActions set) { return set.Get(); }
+        public void AddCallbacks(IUIActions instance)
+        {
+            if (instance == null || m_Wrapper.m_UIActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_UIActionsCallbackInterfaces.Add(instance);
+            @LBM.started += instance.OnLBM;
+            @LBM.performed += instance.OnLBM;
+            @LBM.canceled += instance.OnLBM;
+        }
+
+        private void UnregisterCallbacks(IUIActions instance)
+        {
+            @LBM.started -= instance.OnLBM;
+            @LBM.performed -= instance.OnLBM;
+            @LBM.canceled -= instance.OnLBM;
+        }
+
+        public void RemoveCallbacks(IUIActions instance)
+        {
+            if (m_Wrapper.m_UIActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IUIActions instance)
+        {
+            foreach (var item in m_Wrapper.m_UIActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_UIActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public UIActions @UI => new UIActions(this);
     public interface IFPVActions
     {
         void OnMovement(InputAction.CallbackContext context);
@@ -1841,8 +1861,6 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         void OnInteraction(InputAction.CallbackContext context);
         void OnSwitchCamera(InputAction.CallbackContext context);
         void OnSwitchCharacter(InputAction.CallbackContext context);
-        void OnAttackLMB(InputAction.CallbackContext context);
-        void OnAimRMB(InputAction.CallbackContext context);
     }
     public interface IIsometricActions
     {
@@ -1883,5 +1901,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     public interface IAllActions
     {
         void OnAltF(InputAction.CallbackContext context);
+    }
+    public interface IUIActions
+    {
+        void OnLBM(InputAction.CallbackContext context);
     }
 }

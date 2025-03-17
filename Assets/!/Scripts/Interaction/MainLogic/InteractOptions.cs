@@ -10,28 +10,19 @@ public class InteractOptions : MonoBehaviour
     #region PUBLIC METHODS
     public void EnableManu(IInteractStrategy strategy)
     {
-        InputHandler.Instance.ActivateOptionsNumbersMap();
         _context = strategy;
-
-        GetComponent<Tabs>().CreateTabs(_context.GetData());
-
-        CameraSwitcher.Instance.DisableCurrentView();
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-
-        AIPlSwapper.LockControl();
-
+        InputHandler.Instance.ActivateOptionsNumbersMap();
         _manu.SetActive(true);
+        DisableComponents();
+        GetComponent<Tabs>().CreateTabs(_context.GetData());
     }
     public void DisableManu()
     {
         InputHandler.Instance.ActivateDefNumbersMap();
-        if(!CameraSwitcher.Instance.IsCurrentViewEnabled()) CameraSwitcher.Instance.EnableCurrentView();
-        AIPlSwapper.UnlockControl();
+        ActivateComponents();
         _manu.SetActive(false);
     }
-    #endregion
-    #region PRIVATE METHODS 
+    #region actions
     public void Action1() // TODO: тут мб класс надо будет переделать (вызовы ExecuteAlgorithm1)
     {
         _context.Action1();
@@ -56,6 +47,32 @@ public class InteractOptions : MonoBehaviour
     {
         _context.Action5();
         DisableManu();
+    }
+    #endregion
+    #endregion
+    #region PRIVATE METHODS
+    private void DisableComponents()
+    {
+        InputHandler.Instance.SetAllAim(false);
+        InputHandler.Instance.SetAllAttack(false);
+        InputHandler.Instance.SetAllMovement(false);
+        InputHandler.Instance.SetUIState(true); 
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
+        CameraSwitcher.Instance.DisableCurrentView();
+        AIPlSwapper.LockControl();
+    }
+    private void ActivateComponents()
+    {
+        InputHandler.Instance.SetAllAim(true);
+        InputHandler.Instance.SetAllAttack(true);
+        InputHandler.Instance.SetAllMovement(true);
+        InputHandler.Instance.SetUIState(false);
+
+        if (!CameraSwitcher.Instance.IsCurrentViewEnabled()) CameraSwitcher.Instance.EnableCurrentView();
+        AIPlSwapper.UnlockControl();
     }
     #endregion
     #region MONO METHODS

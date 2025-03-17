@@ -259,24 +259,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
-                },
-                {
-                    "name": "AttackLMB",
-                    "type": "Button",
-                    "id": "989c3508-558d-4be0-a427-46e8573474be",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "AimRMB",
-                    "type": "Button",
-                    "id": "3ad7c406-6fac-47b3-ae6f-f92c82eb8f1c",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -321,17 +303,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "ScreenEdgePanning",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "8959cf54-7bd5-4ae5-a483-076320052ca1",
-                    "path": "<Mouse>/rightButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "AimRMB",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -409,17 +380,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "ZoomCamera",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "9275dbeb-dcf7-4478-9963-48c3efbd2535",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "AttackLMB",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -1089,6 +1049,34 @@
                     "processors": "",
                     "groups": "",
                     "action": "AltF",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "UI",
+            "id": "9674dd43-a0ab-4119-bb1c-f8e5f3f3b159",
+            "actions": [
+                {
+                    "name": "LBM",
+                    "type": "Button",
+                    "id": "2f3d9072-d0e8-4c42-9e6a-b5f3d65a3e1e",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "5cb29e7b-402a-4bf6-a459-aa10f45e625c",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LBM",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
