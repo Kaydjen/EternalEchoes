@@ -1,14 +1,17 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class AttackHandler : MonoBehaviour, IGameplayModeSwitcher
 {
     #region VARIABLES
     public IAttack Attack;
+    public UnityEvent OnAttack = new();
     #endregion
     #region PUBLIC METHODS
     public void ExecuteAttack()
     {
         Attack.Attack();
+        OnAttack.Invoke();
     }
     #endregion
     #region MONOBEHAVIOUR

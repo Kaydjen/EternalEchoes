@@ -901,6 +901,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42f1395010e8fe640969eedceb94926f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnAttack:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &719463239
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -919,6 +922,9 @@ MonoBehaviour:
   _layersToAim:
     serializedVersion: 2
     m_Bits: 4294967295
+  _isLeaving: 1
+  _isDisappearing: 1
+  _disappearTime: 10
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
