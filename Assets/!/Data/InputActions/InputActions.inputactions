@@ -399,6 +399,15 @@
                     "initialStateCheck": true
                 },
                 {
+                    "name": "AimRMB",
+                    "type": "Button",
+                    "id": "c01fa759-49bb-4c06-bec6-25bbd04bafd3",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Interaction",
                     "type": "Button",
                     "id": "2e6b0af4-1b11-4cc4-8495-30271496bb72",
@@ -437,19 +446,10 @@
                 {
                     "name": "AttackLMB",
                     "type": "Button",
-                    "id": "29c256c1-f379-4bb1-a86d-385be12e500a",
+                    "id": "b212d838-df17-4da7-b6d7-af152f6032c9",
                     "expectedControlType": "",
                     "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "AimRMB",
-                    "type": "Button",
-                    "id": "567f36e9-80f4-4002-b088-fe482c9e1aae",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
+                    "interactions": "Hold(duration=0.1,pressPoint=0.02)",
                     "initialStateCheck": false
                 }
             ],
@@ -500,7 +500,7 @@
                 },
                 {
                     "name": "",
-                    "id": "e07fd004-a94c-44cf-aaa6-c6ca77ab9c91",
+                    "id": "b41f95e1-6100-448a-861a-7d148489f05d",
                     "path": "<Mouse>/rightButton",
                     "interactions": "",
                     "processors": "",
@@ -511,7 +511,7 @@
                 },
                 {
                     "name": "",
-                    "id": "43c0b43a-2ced-4746-9fa5-e4ab324b8871",
+                    "id": "8cbc0e12-efe5-46fb-9481-7510ca06d184",
                     "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
