@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-class ReloadGun : MonoBehaviour, IReload, IGameplayModeSwitcher
+class ReloadGun : MonoBehaviour, IReload, IGameplayModeSwitcher 
 {
     [SerializeField] private int _ammoCount = 10;
     [SerializeField] private int _maxbulletsCount = 10;
@@ -27,7 +27,6 @@ class ReloadGun : MonoBehaviour, IReload, IGameplayModeSwitcher
         }
         else
         {
-            BulletsCount--;
             BulletsCount = _maxbulletsCount;
         }
     }
