@@ -53,20 +53,15 @@ public class Interact : MonoBehaviour, IUpdate
     }
     private void ReleazeRay()
     {
-        // Get the mouse position in world coordinates
         _mouseScreenPosition = Input.mousePosition;
         _mouseScreenPosition.z = Camera.main.WorldToScreenPoint(this.transform.position).z;
         _mousePos = Camera.main.ScreenToWorldPoint(_mouseScreenPosition);
 
-        // Calculate the difference between the mouse position and the initial A corner
         Vector3 size = _mousePos - _initialCorner;
 
-        // Set the scale based on the difference
         _zona.localScale = new Vector3(size.x, 1f, size.z);
 
-        // Adjust the position to keep the A corner fixed
         _zona.position = _initialCorner + new Vector3(size.x / 2, 0, size.z / 2);
-
     }
     #endregion
     #region Update
