@@ -89,6 +89,15 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Reload"",
+                    ""type"": ""Button"",
+                    ""id"": ""0669016e-6bbd-4467-bc0e-4695eb64a5f5"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -210,6 +219,17 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""AimRMB"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""53001772-f946-4ecb-b809-6d057f0c5b68"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Reload"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -430,6 +450,15 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""Reload"",
+                    ""type"": ""Button"",
+                    ""id"": ""347e1f74-d170-4fcc-9050-11d76494f20e"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""Interaction"",
                     ""type"": ""Button"",
                     ""id"": ""2e6b0af4-1b11-4cc4-8495-30271496bb72"",
@@ -528,6 +557,17 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""AimRMB"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9fdcda6d-c612-41e5-b4f2-6e0a22401b2e"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Reload"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -1116,6 +1156,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         m_FPV_SwitchCharacter = m_FPV.FindAction("SwitchCharacter", throwIfNotFound: true);
         m_FPV_AttackLMB = m_FPV.FindAction("AttackLMB", throwIfNotFound: true);
         m_FPV_AimRMB = m_FPV.FindAction("AimRMB", throwIfNotFound: true);
+        m_FPV_Reload = m_FPV.FindAction("Reload", throwIfNotFound: true);
         // Top-Down
         m_TopDown = asset.FindActionMap("Top-Down", throwIfNotFound: true);
         m_TopDown_ScreenEdgePanning = m_TopDown.FindAction("ScreenEdgePanning", throwIfNotFound: true);
@@ -1129,6 +1170,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         m_Isometric = asset.FindActionMap("Isometric", throwIfNotFound: true);
         m_Isometric_Mouse = m_Isometric.FindAction("Mouse", throwIfNotFound: true);
         m_Isometric_AimRMB = m_Isometric.FindAction("AimRMB", throwIfNotFound: true);
+        m_Isometric_Reload = m_Isometric.FindAction("Reload", throwIfNotFound: true);
         m_Isometric_Interaction = m_Isometric.FindAction("Interaction", throwIfNotFound: true);
         m_Isometric_SwitchCamera = m_Isometric.FindAction("SwitchCamera", throwIfNotFound: true);
         m_Isometric_SwitchCharacter = m_Isometric.FindAction("SwitchCharacter", throwIfNotFound: true);
@@ -1243,6 +1285,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_FPV_SwitchCharacter;
     private readonly InputAction m_FPV_AttackLMB;
     private readonly InputAction m_FPV_AimRMB;
+    private readonly InputAction m_FPV_Reload;
     public struct FPVActions
     {
         private @InputActions m_Wrapper;
@@ -1254,6 +1297,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         public InputAction @SwitchCharacter => m_Wrapper.m_FPV_SwitchCharacter;
         public InputAction @AttackLMB => m_Wrapper.m_FPV_AttackLMB;
         public InputAction @AimRMB => m_Wrapper.m_FPV_AimRMB;
+        public InputAction @Reload => m_Wrapper.m_FPV_Reload;
         public InputActionMap Get() { return m_Wrapper.m_FPV; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1284,6 +1328,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @AimRMB.started += instance.OnAimRMB;
             @AimRMB.performed += instance.OnAimRMB;
             @AimRMB.canceled += instance.OnAimRMB;
+            @Reload.started += instance.OnReload;
+            @Reload.performed += instance.OnReload;
+            @Reload.canceled += instance.OnReload;
         }
 
         private void UnregisterCallbacks(IFPVActions instance)
@@ -1309,6 +1356,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @AimRMB.started -= instance.OnAimRMB;
             @AimRMB.performed -= instance.OnAimRMB;
             @AimRMB.canceled -= instance.OnAimRMB;
+            @Reload.started -= instance.OnReload;
+            @Reload.performed -= instance.OnReload;
+            @Reload.canceled -= instance.OnReload;
         }
 
         public void RemoveCallbacks(IFPVActions instance)
@@ -1426,6 +1476,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     private List<IIsometricActions> m_IsometricActionsCallbackInterfaces = new List<IIsometricActions>();
     private readonly InputAction m_Isometric_Mouse;
     private readonly InputAction m_Isometric_AimRMB;
+    private readonly InputAction m_Isometric_Reload;
     private readonly InputAction m_Isometric_Interaction;
     private readonly InputAction m_Isometric_SwitchCamera;
     private readonly InputAction m_Isometric_SwitchCharacter;
@@ -1437,6 +1488,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         public IsometricActions(@InputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Mouse => m_Wrapper.m_Isometric_Mouse;
         public InputAction @AimRMB => m_Wrapper.m_Isometric_AimRMB;
+        public InputAction @Reload => m_Wrapper.m_Isometric_Reload;
         public InputAction @Interaction => m_Wrapper.m_Isometric_Interaction;
         public InputAction @SwitchCamera => m_Wrapper.m_Isometric_SwitchCamera;
         public InputAction @SwitchCharacter => m_Wrapper.m_Isometric_SwitchCharacter;
@@ -1457,6 +1509,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @AimRMB.started += instance.OnAimRMB;
             @AimRMB.performed += instance.OnAimRMB;
             @AimRMB.canceled += instance.OnAimRMB;
+            @Reload.started += instance.OnReload;
+            @Reload.performed += instance.OnReload;
+            @Reload.canceled += instance.OnReload;
             @Interaction.started += instance.OnInteraction;
             @Interaction.performed += instance.OnInteraction;
             @Interaction.canceled += instance.OnInteraction;
@@ -1482,6 +1537,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @AimRMB.started -= instance.OnAimRMB;
             @AimRMB.performed -= instance.OnAimRMB;
             @AimRMB.canceled -= instance.OnAimRMB;
+            @Reload.started -= instance.OnReload;
+            @Reload.performed -= instance.OnReload;
+            @Reload.canceled -= instance.OnReload;
             @Interaction.started -= instance.OnInteraction;
             @Interaction.performed -= instance.OnInteraction;
             @Interaction.canceled -= instance.OnInteraction;
@@ -1851,6 +1909,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         void OnSwitchCharacter(InputAction.CallbackContext context);
         void OnAttackLMB(InputAction.CallbackContext context);
         void OnAimRMB(InputAction.CallbackContext context);
+        void OnReload(InputAction.CallbackContext context);
     }
     public interface ITopDownActions
     {
@@ -1866,6 +1925,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     {
         void OnMouse(InputAction.CallbackContext context);
         void OnAimRMB(InputAction.CallbackContext context);
+        void OnReload(InputAction.CallbackContext context);
         void OnInteraction(InputAction.CallbackContext context);
         void OnSwitchCamera(InputAction.CallbackContext context);
         void OnSwitchCharacter(InputAction.CallbackContext context);

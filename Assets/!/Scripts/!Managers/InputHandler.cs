@@ -64,6 +64,7 @@ public class InputHandler : MonoBehaviour
     public static UnityEvent OnAttackLMBReleased { get; private set; } = new UnityEvent();
     public static UnityEvent OnEnterAimingMode { get; private set; } = new UnityEvent();
     public static UnityEvent OnExitAimingMode { get; private set; } = new UnityEvent();
+    public static UnityEvent OnReload { get; private set; } = new UnityEvent();
 
     #endregion Static variables
     #region Init methods
@@ -184,6 +185,9 @@ public class InputHandler : MonoBehaviour
         _TopDown.Interaction.performed += _ => OnInteractionHoldPerformed.Invoke();
         _TopDown.Interaction.canceled += _ => OnInteractionHoldReleased.Invoke();
         #endregion
+
+        _FPV.Reload.performed += _ => OnReload.Invoke();
+        _Isometric.Reload.performed += _ => OnReload.Invoke();
         // Add here a new one
     }
     #endregion Init methods
