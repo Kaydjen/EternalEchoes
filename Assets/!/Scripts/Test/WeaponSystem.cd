@@ -25,7 +25,7 @@
   <Class Name="Gun" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="6" Y="9.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AQAAAAAAAAAAAAAAIAAAAAAAAIAAAAAAACAAAAAAMBA=</HashCode>
+      <HashCode>AQACAAgAAABBAAQAIAACAAIAAIAAAAIAACACAICAOBA=</HashCode>
       <FileName>Assets\!\Scripts\Test\Gun.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.219" />
@@ -33,7 +33,7 @@
   <Class Name="AttackHandlerOneAttack" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="0.5" Y="9.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAQAAAAAAAAAAGAAAAAAAAAAIAAAACAAAAAAAAAAEA=</HashCode>
+      <HashCode>AAAQAAAAAAAAAAGAAAAAAAAAAAAAAACAAAAAAAAAAEA=</HashCode>
       <FileName>Assets\!\Scripts\Test\AttackHandlerOneAttack.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.1" />
@@ -82,13 +82,6 @@
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Assets\!\Scripts\Test\IAttack.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="IReload" Collapsed="true">
-    <Position X="6" Y="7.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAA=</HashCode>
-      <FileName>Assets\!\Scripts\Test\IReload.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="IGameplayModeSwitcher" Collapsed="true">
