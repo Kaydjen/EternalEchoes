@@ -5,7 +5,6 @@ public class Interact : MonoBehaviour, IUpdate
 {
     #region VARIABLES
     [SerializeField] private Transform _zona;
-    [SerializeField] private Collider _hittedCollider;
     private bool _isMenuActivated;
     private bool _isHighlighted;
     #endregion
@@ -36,8 +35,11 @@ public class Interact : MonoBehaviour, IUpdate
         RegisterUpdate();
         Hover.Instance.Disable();
 
-        _zona.localScale = new Vector3(3f, 3f, 3f);
-        _zona.position = _hittedCollider.transform.position - Vector3.one;
+        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, 20))
+        {
+            _zona.localScale = new Vector3(1f, 1f, 1f);
+            _zona.position = hit.transform.position - Vector3.one;
+        }
     }
     private void HoldReleased()
     {
@@ -52,9 +54,15 @@ public class Interact : MonoBehaviour, IUpdate
     }
     private void ReleazeRay()
     {
-        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, 15))
+        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, 20))
         {
+            Vector3 size = hit.transform.position - _zona.position; // Get the difference
 
+            // Set the scale based on distance
+            _zona.localScale = new Vector3(size.x, size.y, 1);
+
+            // Adjust position to keep A corner fixed
+            _zona.position = _zona.position + new Vector3(size.x / 2, size.y / 2, 0);
         }
     }
     #endregion
@@ -94,7 +102,7 @@ public class Interact : MonoBehaviour, IUpdate
         InputHandler.OnInteractionPress.AddListener(TryOpenManu);
         InputHandler.OnInteractionHoldPerformed.AddListener(HoldPerformed);
         InputHandler.OnInteractionHoldReleased.AddListener(HoldReleased);
-        Instantiate(_zona);
+        _zona = Instantiate(_zona);
         _zona.gameObject.SetActive(false);
     }
     #endregion
