@@ -1,12 +1,15 @@
-﻿using UnityEditor.PackageManager;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Interact : MonoBehaviour, IUpdate
 {
     #region VARIABLES
-    [SerializeField] private Transform _zona;
+    [SerializeField] private GameObject _zonaPref;
+    private Transform _zona;
     private bool _isMenuActivated;
     private bool _isHighlighted;
+    private Vector3 _mousePos;
+    private Vector3 _mouseScreenPosition;
+    private Vector3 _initialCorner;
     #endregion
     #region PRIVETE METHODS
     private void TryOpenManu() // TODO: тут вырубать можно не опять с помощью пкм, а с помощью например Esc, надо спросить у Димы
@@ -24,6 +27,8 @@ public class Interact : MonoBehaviour, IUpdate
             InteractOptions.Instance.EnableManu(strategy); // врубаем новое меню
             _isMenuActivated = true;
         }
+        CW.I.Print("Pressed");
+        _zona.position = Hover.HitedCollider.transform.position;
     }
     private void HoldPerformed()
     {
@@ -32,14 +37,9 @@ public class Interact : MonoBehaviour, IUpdate
         _isHighlighted = true;
 
         _zona.gameObject.SetActive(true);
-        RegisterUpdate();
+        _initialCorner = _zona.position;
         Hover.Instance.Disable();
-
-        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, 20))
-        {
-            _zona.localScale = new Vector3(1f, 1f, 1f);
-            _zona.position = hit.transform.position - Vector3.one;
-        }
+        RegisterUpdate();
     }
     private void HoldReleased()
     {
@@ -54,16 +54,20 @@ public class Interact : MonoBehaviour, IUpdate
     }
     private void ReleazeRay()
     {
-        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, 20))
-        {
-            Vector3 size = hit.transform.position - _zona.position; // Get the difference
+        // Get the mouse position in world coordinates
+        _mouseScreenPosition = Input.mousePosition;
+        _mouseScreenPosition.z = Camera.main.WorldToScreenPoint(this.transform.position).z;
+        _mousePos = Camera.main.ScreenToWorldPoint(_mouseScreenPosition);
 
-            // Set the scale based on distance
-            _zona.localScale = new Vector3(size.x, size.y, 1);
+        // Calculate the difference between the mouse position and the initial A corner
+        Vector3 size = _mousePos - _initialCorner;
 
-            // Adjust position to keep A corner fixed
-            _zona.position = _zona.position + new Vector3(size.x / 2, size.y / 2, 0);
-        }
+        // Set the scale based on the difference
+        _zona.localScale = new Vector3(size.x, 1f, size.z);
+
+        // Adjust the position to keep the A corner fixed
+        _zona.position = _initialCorner + new Vector3(size.x / 2, 0, size.z / 2);
+
     }
     #endregion
     #region Update
@@ -102,8 +106,29 @@ public class Interact : MonoBehaviour, IUpdate
         InputHandler.OnInteractionPress.AddListener(TryOpenManu);
         InputHandler.OnInteractionHoldPerformed.AddListener(HoldPerformed);
         InputHandler.OnInteractionHoldReleased.AddListener(HoldReleased);
-        _zona = Instantiate(_zona);
+        _zona = Instantiate(_zonaPref).transform;
         _zona.gameObject.SetActive(false);
     }
     #endregion
 }
+
+
+
+
+
+
+
+
+
+
+/*
+ 
+             Vector3 size = hit.transform.position - _zona.position; // Get the difference
+
+            // Set the scale based on distance
+            _zona.localScale = new Vector3(size.x, 3f, size.z);
+
+            // Adjust position to keep A corner fixed
+            _zona.position = _zona.position + new Vector3(size.x / 2, 0, size.z / 2);
+ 
+ */

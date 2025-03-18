@@ -6732,8 +6732,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df3c78fc615391644ae27637eb61cbb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _zona: {fileID: 0}
-  _hittedCollider: {fileID: 0}
+  _zonaPref: {fileID: 1458090012314450186, guid: 7e9523fbede1de043a5581017434d2b0,
+    type: 3}
 --- !u!114 &4994437926866974845
 MonoBehaviour:
   m_ObjectHideFlags: 0
