@@ -1,6 +1,7 @@
-﻿using Unity.VisualScripting;
-using UnityEngine;
+﻿using UnityEngine;
 
+// SEE: короче, тут можно было бы переделать логику. Сделать так, что бы этот скрипт отвечал не за наводку на обьеткы и их подсветку,
+// а конкретно на пускание луча, который в последствии уже будет использован другими скриптами. 
 public class Hover : MonoBehaviour, ICameraUpdate, IUpdate
 {
     #region VARIABLES

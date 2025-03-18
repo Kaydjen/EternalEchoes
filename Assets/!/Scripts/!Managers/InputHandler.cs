@@ -24,7 +24,9 @@ public class InputHandler : MonoBehaviour
     #region Static variables
     public static Vector2 WASDInput { get; private set; } // Movement
     public static Vector2 MouseInput { get; private set; } // Mouse movement
-    public static UnityEvent OnInteraction { get; private set; } = new UnityEvent(); // E - Interaction
+    public static UnityEvent OnInteractionPress { get; private set; } = new UnityEvent(); // E - Interaction
+    public static UnityEvent OnInteractionHoldPerformed { get; private set; } = new UnityEvent(); 
+    public static UnityEvent OnInteractionHoldReleased { get; private set; } = new UnityEvent(); 
     public static UnityEvent OnCPressed { get; private set; } = new UnityEvent(); // C - Switch сamera
     public static Vector2 WheelRotate { get; private set; } // Mouse wheel rotate value
     public static UnityEvent OnWheelRotate { get; private set; } = new UnityEvent(); // Mouse wheel rotate event
@@ -115,10 +117,6 @@ public class InputHandler : MonoBehaviour
         _TopDown.ScreenEdgePanning.canceled += _ => MouseInput = Vector2.zero;
         _Isometric.Mouse.canceled += _ => MouseInput = Vector2.zero;
 
-        _FPV.Interaction.performed += _ => OnInteraction.Invoke();
-        _TopDown.Interaction.performed += _ => OnInteraction.Invoke();
-        _Isometric.Interaction.performed += _ => OnInteraction.Invoke();
-
         _FPV.SwitchCamera.performed += _ => OnCPressed.Invoke();
         _TopDown.SwitchCamera.performed += _ => OnCPressed.Invoke();
         _Isometric.SwitchCamera.performed += _ => OnCPressed.Invoke();
@@ -171,6 +169,15 @@ public class InputHandler : MonoBehaviour
         _Isometric.AimRMB.performed += _ => OnEnterAimingMode.Invoke();
         _FPV.AimRMB.canceled += _ => OnExitAimingMode.Invoke();
         _Isometric.AimRMB.canceled += _ => OnExitAimingMode.Invoke();
+
+        #region Interact
+        _FPV.Interaction.performed += _ => OnInteractionPress.Invoke();
+        _TopDown.Interaction.started += _ => OnInteractionPress.Invoke();
+        _Isometric.Interaction.performed += _ => OnInteractionPress.Invoke();
+
+        _TopDown.Interaction.performed += _ => OnInteractionHoldPerformed.Invoke();
+        _TopDown.Interaction.canceled += _ => OnInteractionHoldReleased.Invoke();
+        #endregion
         // Add here a new one
     }
     #endregion Init methods

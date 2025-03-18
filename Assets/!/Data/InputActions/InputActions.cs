@@ -261,7 +261,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""id"": ""b6a00bf1-82a5-4add-a045-cc250d387aae"",
                     ""expectedControlType"": """",
                     ""processors"": """",
-                    ""interactions"": """",
+                    ""interactions"": ""Hold(duration=0.1,pressPoint=0.02)"",
                     ""initialStateCheck"": false
                 },
                 {
