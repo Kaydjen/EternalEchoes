@@ -35,18 +35,6 @@ public class Hover : MonoBehaviour, ICameraUpdate, IUpdate
     }
     #endregion
     #region PRIVATE METHODS
-    private void Interact()
-    {
-        if (Physics.Raycast(_camera.ScreenPointToRay(Input.mousePosition), out _hitInfo, _standartRayDist))
-        {
-            IHover[] interactions = _hitInfo.collider.GetComponents<IHover>();
-
-            foreach (var interaction in interactions)
-            {
-                interaction.HoverEnter();
-            }
-        }
-    }
     private void CheckForInteractable()
     {
         HitedCollider = null;

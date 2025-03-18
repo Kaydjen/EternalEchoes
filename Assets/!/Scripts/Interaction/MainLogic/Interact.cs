@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using UnityEditor.PackageManager;
+using UnityEngine;
 
 public class Interact : MonoBehaviour, IUpdate
 {
@@ -9,7 +10,7 @@ public class Interact : MonoBehaviour, IUpdate
     private bool _isHighlighted;
     #endregion
     #region PRIVETE METHODS
-    private void Switch() // TODO: тут вырубать можно не опять с помощью пкм, а с помощью например Esc, надо спросить у Димы
+    private void TryOpenManu() // TODO: тут вырубать можно не опять с помощью пкм, а с помощью например Esc, надо спросить у Димы
     {
         if(Hover.HitedCollider == null || !Hover.HitedCollider.TryGetComponent(out IInteractStrategy strategy)) // Если луч не попал, или попал, но обьект не является персонажем 
         {
@@ -35,7 +36,7 @@ public class Interact : MonoBehaviour, IUpdate
         RegisterUpdate();
         Hover.Instance.Disable();
 
-        _zona.localScale = new Vector3(1f, .2f, 1f);
+        _zona.localScale = new Vector3(3f, 3f, 3f);
         _zona.position = _hittedCollider.transform.position - Vector3.one;
     }
     private void HoldReleased()
@@ -51,13 +52,16 @@ public class Interact : MonoBehaviour, IUpdate
     }
     private void ReleazeRay()
     {
+        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, 15))
+        {
 
+        }
     }
     #endregion
     #region Update
     public void PerformInitialUpdate()
     {
-        throw new System.NotImplementedException();
+        ReleazeRay();
     }
     public void PerformPreUpdate()
     {
@@ -87,7 +91,7 @@ public class Interact : MonoBehaviour, IUpdate
     #region MONOBEHAVIOUR
     public void Init()
     {
-        InputHandler.OnInteractionPress.AddListener(Switch);
+        InputHandler.OnInteractionPress.AddListener(TryOpenManu);
         InputHandler.OnInteractionHoldPerformed.AddListener(HoldPerformed);
         InputHandler.OnInteractionHoldReleased.AddListener(HoldReleased);
         Instantiate(_zona);
