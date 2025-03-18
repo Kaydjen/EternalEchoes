@@ -27,6 +27,7 @@ public class Interact : MonoBehaviour, IUpdate
             InteractOptions.Instance.EnableManu(strategy); // врубаем новое меню
             _isMenuActivated = true;
         }
+        _zona.position = Hover.HitedCollider.transform.position;
     }
     private void HoldPerformed()
     {
@@ -34,8 +35,7 @@ public class Interact : MonoBehaviour, IUpdate
 
         _isHighlighted = true;
 
-        _zona.position = Hover.HitedCollider.transform.position;
-        _initialCorner = _zona.position - new Vector3(_zona.localScale.x / 2, 0, _zona.localScale.z / 2);
+        _initialCorner = _zona.position;
         _zona.gameObject.SetActive(true);
         Hover.Instance.Disable();
         RegisterUpdate();
