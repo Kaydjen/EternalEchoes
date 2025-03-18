@@ -25,16 +25,16 @@
   <Class Name="Gun" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="6" Y="9.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AQAAAAAAAAAAAAAAIAAAAAAAAIAAAAAAACAAAAAAMBA=</HashCode>
       <FileName>Assets\!\Scripts\Test\Gun.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.219" />
   </Class>
-  <Class Name="AttackHandler" Collapsed="true" BaseTypeListCollapsed="true">
+  <Class Name="AttackHandlerOneAttack" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="0.5" Y="9.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAQAAAAAAAAAAGAAAAAAAAAAIAAAACAAAAAAAAAAEA=</HashCode>
-      <FileName>Assets\!\Scripts\Test\AttackHandler.cs</FileName>
+      <FileName>Assets\!\Scripts\Test\AttackHandlerOneAttack.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.1" />
   </Class>

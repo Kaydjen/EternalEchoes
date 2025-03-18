@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[RequireComponent(typeof(AttackHandler))]
+[RequireComponent(typeof(AttackHandlerOneAttack))]
 public class GateOfBabylon : MonoBehaviour, IAttack
 {
     public void Attack()

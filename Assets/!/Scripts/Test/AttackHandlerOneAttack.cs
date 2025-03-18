@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class AttackHandler : MonoBehaviour, IGameplayModeSwitcher
+public class AttackHandlerOneAttack : MonoBehaviour, IGameplayModeSwitcher
 {
     #region VARIABLES
     [NonSerialized] public UnityEvent OnAttack = new();

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[RequireComponent(typeof(AttackHandler))]
+[RequireComponent(typeof(AttackHandlerOneAttack))]
 class Gun : MonoBehaviour, IAttack
 {
     [SerializeField] private float _rayDist = 15f;

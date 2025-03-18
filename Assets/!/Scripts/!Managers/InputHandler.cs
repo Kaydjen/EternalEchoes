@@ -60,6 +60,8 @@ public class InputHandler : MonoBehaviour
         public static UnityEvent OnWheelClickCanceled { get; private set; } = new UnityEvent();*/
     public static UnityEvent OnAltF { get; private set; } = new UnityEvent();
     public static UnityEvent OnAttackLMB { get; private set; } = new UnityEvent();
+    public static UnityEvent OnAttackLMBPerformed { get; private set; } = new UnityEvent();
+    public static UnityEvent OnAttackLMBReleased { get; private set; } = new UnityEvent();
     public static UnityEvent OnEnterAimingMode { get; private set; } = new UnityEvent();
     public static UnityEvent OnExitAimingMode { get; private set; } = new UnityEvent();
 
@@ -162,8 +164,12 @@ public class InputHandler : MonoBehaviour
 
         _All.AltF.performed += _ => OnAltF.Invoke();
 
-        _FPV.AttackLMB.performed += _ => OnAttackLMB.Invoke();
-        _Isometric.AttackLMB.performed += _ => OnAttackLMB.Invoke();
+        _FPV.AttackLMB.started += _ => OnAttackLMB.Invoke();
+        _Isometric.AttackLMB.started += _ => OnAttackLMB.Invoke();
+        _FPV.AttackLMB.performed += _ => OnAttackLMBPerformed.Invoke();
+        _Isometric.AttackLMB.performed += _ => OnAttackLMBPerformed.Invoke();
+        _FPV.AttackLMB.canceled += _ => OnAttackLMBReleased.Invoke();
+        _Isometric.AttackLMB.canceled += _ => OnAttackLMBReleased.Invoke();
 
         _FPV.AimRMB.performed += _ => OnEnterAimingMode.Invoke();
         _Isometric.AimRMB.performed += _ => OnEnterAimingMode.Invoke();
