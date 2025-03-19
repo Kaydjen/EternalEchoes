@@ -27,31 +27,27 @@ public class Interact : MonoBehaviour, IUpdate
             InteractOptions.Instance.EnableManu(strategy); // врубаем новое меню
             _isMenuActivated = true;
         }
-        _zona.position = Hover.HitedCollider.transform.position;
+        _zona.position = Hover.HitInfo.point;
     }
     private void HoldPerformed()
     {
-        CW.I.Print("hold");
-
-        _isHighlighted = true;
-
-        _initialCorner = _zona.position;
+        if (_zona.position == Vector3.zero) return;
         _zona.gameObject.SetActive(true);
+        _initialCorner = _zona.position;
         Hover.Instance.Disable();
+        _isHighlighted = true;
         RegisterUpdate();
     }
     private void HoldReleased()
     {
-        CW.I.Print("released");
-
         if (!_isHighlighted) return;
         _isHighlighted = false;
 
         _zona.gameObject.SetActive(false);
-        UnregisterUpdate();
         Hover.Instance.Enable();
+        UnregisterUpdate();
     }
-    private void ReleazeRay()
+    private void ResizeZona()
     {
         _mouseScreenPosition = Input.mousePosition;
         _mouseScreenPosition.z = Camera.main.WorldToScreenPoint(this.transform.position).z;
@@ -67,7 +63,7 @@ public class Interact : MonoBehaviour, IUpdate
     #region Update
     public void PerformInitialUpdate()
     {
-        ReleazeRay();
+        ResizeZona();
     }
     public void PerformPreUpdate()
     {

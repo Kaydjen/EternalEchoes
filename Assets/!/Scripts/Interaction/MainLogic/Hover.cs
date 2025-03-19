@@ -10,8 +10,8 @@ public class Hover : MonoBehaviour, ICameraUpdate, IUpdate
     [SerializeField] private float _IsometricRayDist = 11f;
     [SerializeField] private float _TopDownRayDist = 50f; // TODO: тут можно динамично изменять дистанцию по мере поднятия камеры в TopDown 
     private float _standartRayDist = 10f;
-    private RaycastHit _hitInfo;
     public static Collider HitedCollider;
+    public static RaycastHit HitInfo;
     private Camera _camera;
     private Collider _lastInteractibleObj;
     #endregion
@@ -38,9 +38,9 @@ public class Hover : MonoBehaviour, ICameraUpdate, IUpdate
     private void CheckForInteractable()
     {
         HitedCollider = null;
-        if (Physics.Raycast(_camera.ScreenPointToRay(Input.mousePosition), out _hitInfo, _standartRayDist)) 
+        if (Physics.Raycast(_camera.ScreenPointToRay(Input.mousePosition), out HitInfo, _standartRayDist)) 
         {
-            HitedCollider = _hitInfo.collider;
+            HitedCollider = HitInfo.collider;
             if (_lastInteractibleObj == HitedCollider) return;
 
             ResetLastInteractibleObj();
