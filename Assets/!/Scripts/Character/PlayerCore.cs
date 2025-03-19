@@ -19,6 +19,7 @@ public class PlayerCore : MonoBehaviour
 
             Instance = this;
             AIPlSwapper.UpdateControls();
+            Debug.Log("Switched");
         }
         GameEvents.OnCharacterChange?.Invoke();
     }

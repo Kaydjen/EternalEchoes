@@ -11,16 +11,16 @@ public class InteractOptions : MonoBehaviour
     public void EnableManu(IInteractStrategy strategy)
     {
         _context = strategy;
+        GetComponent<Tabs>().CreateTabs(_context.GetData());
         InputHandler.Instance.ActivateOptionsNumbersMap();
         _manu.SetActive(true);
         DisableComponents();
-        GetComponent<Tabs>().CreateTabs(_context.GetData());
     }
     public void DisableManu()
     {
         InputHandler.Instance.ActivateDefNumbersMap();
-        ActivateComponents();
         _manu.SetActive(false);
+        ActivateComponents();
     }
     #region actions
     public void Action1() // TODO: тут мб класс надо будет переделать (вызовы ExecuteAlgorithm1)
