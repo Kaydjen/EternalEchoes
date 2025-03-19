@@ -9,14 +9,14 @@ public class AimPlacer : MonoBehaviour, IAim, IUpdate
     [SerializeField] private bool _isLeaving = false;
     [SerializeField] private bool _isDisappearing = false;
     [SerializeField] private float _disappearTime = 0f;
-    private Transform _particle;
+    private Transform _aimTransform;
     public void StartAim()
     {
         CW.I.Print("Start");
         GetComponent<AttackHandlerOneAttack>().OnAttack.AddListener(DisableAim);
         Hover.Instance.Disable();
         RegisterUpdate();
-        _particle.gameObject.SetActive(true);
+        _aimTransform.gameObject.SetActive(true);
     }
     public void StopAim()
     {
@@ -33,23 +33,23 @@ public class AimPlacer : MonoBehaviour, IAim, IUpdate
     public void DisableAim()
     {
         CW.I.Print("Disable");
-        _particle.gameObject.SetActive(false);
+        _aimTransform.gameObject.SetActive(false);
         GetComponent<AttackHandlerOneAttack>().OnAttack.RemoveListener(DisableAim);
     }
     public void PerformeRay()
     {
         if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, _distance, _layersToAim))
         {
-            _particle.position = hit.point;
-            _particle.rotation = Quaternion.LookRotation(hit.normal);
+            _aimTransform.position = hit.point;
+            _aimTransform.rotation = Quaternion.LookRotation(hit.normal);
         }
     }
-    public Transform GetAimTransform() => _particle;
+    public Transform GetAimTransform() => _aimTransform;
     #region MONOBEHAIVOUR
     private void Awake()
     {
-        _particle = Instantiate(_aimParticle, Vector3.zero, Quaternion.identity).transform;
-        _particle.gameObject.SetActive(false);
+        _aimTransform = Instantiate(_aimParticle, Vector3.zero, Quaternion.identity).transform;
+        _aimTransform.gameObject.SetActive(false);
     }
     #endregion
     #region UPDATE
