@@ -7,12 +7,17 @@ public class AttackHandlerOneAttack : MonoBehaviour, IGameplayModeSwitcher
     #region VARIABLES
     [NonSerialized] public UnityEvent OnAttack = new();
     private IAttack _attack;
+
+    [SerializeField] private float _fireRate = 1f;
+    private float _nextFireTime;
     #endregion
     #region PUBLIC METHODS
     public void ExecuteAttack()
     {
+        if (Time.time < _nextFireTime) return;
         _attack.Attack();
         OnAttack.Invoke();
+        _nextFireTime = Time.time + _fireRate;
     }
     #endregion
     #region MONOBEHAVIOUR

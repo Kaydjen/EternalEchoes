@@ -301,9 +301,12 @@ public class InputHandler : MonoBehaviour
     {
         if (state)
         {
-            _FPV.Interaction.Enable();
-            _Isometric.Interaction.Enable();
-            _TopDown.Interaction.Enable();
+            if(CameraSwitcher.Instance.GetViewType() is FPV)
+                _FPV.Interaction.Enable();
+            if (CameraSwitcher.Instance.GetViewType() is IsometricV)
+                _Isometric.Interaction.Enable();
+            if (CameraSwitcher.Instance.GetViewType() is TopDownV)
+                _TopDown.Interaction.Enable();
         }
         else
         {
