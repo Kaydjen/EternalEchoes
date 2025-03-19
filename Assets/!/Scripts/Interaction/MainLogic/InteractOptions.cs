@@ -56,6 +56,7 @@ public class InteractOptions : MonoBehaviour
         InputHandler.Instance.SetAllAim(false);
         InputHandler.Instance.SetAllAttack(false);
         InputHandler.Instance.SetAllMovement(false);
+        InputHandler.Instance.SetAllInteract(false);
         InputHandler.Instance.SetUIState(true); 
 
         Cursor.lockState = CursorLockMode.None;
@@ -69,6 +70,7 @@ public class InteractOptions : MonoBehaviour
         InputHandler.Instance.SetAllAim(true);
         InputHandler.Instance.SetAllAttack(true);
         InputHandler.Instance.SetAllMovement(true);
+        InputHandler.Instance.SetAllInteract(true);
         InputHandler.Instance.SetUIState(false);
 
         if (!CameraSwitcher.Instance.IsCurrentViewEnabled()) CameraSwitcher.Instance.EnableCurrentView();

@@ -7380,6 +7380,7 @@ GameObject:
   - component: {fileID: 7176384562682061780}
   - component: {fileID: 5731174036974171538}
   - component: {fileID: 7767166228260133738}
+  - component: {fileID: 7767166228260133739}
   m_Layer: 5
   m_Name: Commans
   m_TagString: Untagged
@@ -9279,6 +9280,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!225 &7767166228260133739
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5737901847356795205}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!4 &7789981938338998403
 Transform:
   m_ObjectHideFlags: 0

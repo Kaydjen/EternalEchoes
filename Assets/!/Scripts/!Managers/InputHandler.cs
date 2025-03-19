@@ -294,6 +294,25 @@ public class InputHandler : MonoBehaviour
         }
     }
     /// <summary>
+    ///   Enable or disable the aim's ability of all input maps 
+    /// </summary>
+    /// <param name="state">true - enable, false - disable</param>
+    public void SetAllInteract(bool state)
+    {
+        if (state)
+        {
+            _FPV.Interaction.Enable();
+            _Isometric.Interaction.Enable();
+            _TopDown.Interaction.Enable();
+        }
+        else
+        {
+            _FPV.Interaction.Disable();
+            _Isometric.Interaction.Disable();
+            _TopDown.Interaction.Disable();
+        }
+    }
+    /// <summary>
     ///  Enable or disable the All View input map
     /// </summary>
     /// <param name="state"> true - enable, false - disable</param>
