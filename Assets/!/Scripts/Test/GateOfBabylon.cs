@@ -9,8 +9,8 @@ public class GateOfBabylon : MonoBehaviour, IAttack
     {
         // GetComponent<AimPlacer>().Particle.position
         CW.I.Print($"Attack {GetComponent<AimPlacer>().GetAimTransform().position}", 10);
-        Vector3 pos = (GetComponent<AimPlacer>().GetAimTransform().position + this.transform.position) / 2;
+        Vector3 pos = GetComponent<AimPlacer>().GetAimTransform().position;
         pos.y += _height;
-
+        Instantiate(_particle, pos, Quaternion.identity);
     }
 }

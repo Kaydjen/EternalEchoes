@@ -863,7 +863,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 543450651884089773}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &719463236
 MonoBehaviour:
@@ -889,6 +889,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36c2a5c0b299c364d9495fdab2b9cb33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _particle: {fileID: 5848998287593226803, guid: fe6ef969317cf5147bf2aea196039219,
+    type: 3}
+  _height: 20
 --- !u!114 &719463238
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2753,6 +2756,7 @@ Transform:
   - {fileID: 6531924344020549146}
   - {fileID: 4167280742925311100}
   - {fileID: 3487251235597284220}
+  - {fileID: 719463234}
   m_Father: {fileID: 7273966471673400142}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &543450652212531599 stripped
@@ -6156,6 +6160,7 @@ GameObject:
   - component: {fileID: 3839798953953440985}
   - component: {fileID: 5307347396454562640}
   - component: {fileID: 7185315654228062274}
+  - component: {fileID: 7185315654228062276}
   - component: {fileID: 7185315654228062275}
   - component: {fileID: 7185315654228062273}
   - component: {fileID: 2480421922669849228}
@@ -8688,6 +8693,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf75847a387198f4dad58d3cab10bdaf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7185315654228062276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4170313510501855242}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcdbc145b03729049aff906c138f83ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7197775860867050503
 GameObject:
   m_ObjectHideFlags: 0
@@ -9521,9 +9538,9 @@ GameObject:
   - component: {fileID: 7842761308165876957}
   - component: {fileID: 7996292093910299765}
   - component: {fileID: 7996292093910299767}
+  - component: {fileID: 7996292093910299766}
   - component: {fileID: 2312572995657348414}
   - component: {fileID: 409812742152809812}
-  - component: {fileID: 7996292093910299766}
   m_Layer: 0
   m_Name: Character
   m_TagString: Character
@@ -10725,4 +10742,3 @@ SceneRoots:
   - {fileID: 1724114451}
   - {fileID: 1514136965}
   - {fileID: 3386522972742436564}
-  - {fileID: 719463234}
