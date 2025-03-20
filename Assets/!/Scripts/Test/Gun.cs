@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-class Gun : MonoBehaviour, IAttack, IAttackDouble, IUpdate
+class Gun : MonoBehaviour, IAttack
 {
     [SerializeField] private float _rayDist = 15f;
     [SerializeField] private LayerMask _layers;
@@ -9,6 +9,7 @@ class Gun : MonoBehaviour, IAttack, IAttackDouble, IUpdate
     [SerializeField] private float _spreadRandomX = .01f; 
     [SerializeField] private float _spreadRandomY = .01f;
     private Vector3 _spread;
+    private AttackHandler _attackHandler;
     private void CastRay()
     {
         if (_doSpread) _spread = new Vector3(Random.Range(-_spreadRandomX, _spreadRandomX), Random.Range(-_spreadRandomY, _spreadRandomY), 0f);
@@ -25,42 +26,4 @@ class Gun : MonoBehaviour, IAttack, IAttackDouble, IUpdate
     {
         CastRay();
     }
-    public void AttackPerformed()
-    {
-        RegisterUpdate();
-    }
-    public void AttackReleased()
-    {
-        UnregisterUpdate();
-    }
-    #region Update
-    public void PerformInitialUpdate()
-    {
-        CastRay();
-    }
-    public void PerformPreUpdate()
-    {
-        throw new System.NotImplementedException();
-    }
-    public void PerformUpdate()
-    {
-        throw new System.NotImplementedException();
-    }
-    public void PerformFinalUpdate()
-    {
-        throw new System.NotImplementedException();
-    }
-    public void PerformLateUpdate()
-    {
-        throw new System.NotImplementedException();
-    }
-    private void RegisterUpdate()
-    {
-        Updater.Instance.RegisterUpdate(this, Updater.UpdateType.InitialUpdate);
-    }
-    private void UnregisterUpdate()
-    {
-        Updater.Instance.UnregisterUpdate(this, Updater.UpdateType.InitialUpdate);
-    }
-    #endregion
 }

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[RequireComponent(typeof(AttackHandlerOneAttack))]
+[RequireComponent(typeof(AttackHandler))]
 public class GateOfBabylon : MonoBehaviour, IAttack
 {
     [SerializeField] private GameObject _particlePref;

@@ -40,12 +40,12 @@ class ReloadGun : MonoBehaviour, IReload, IGameplayModeSwitcher
     }
     public void ForManualMode()
     {
-        GetComponent<AttackHandlerOneAttack>().OnAttack.AddListener(SubtractOne);
+        GetComponent<AttackHandler>().OnAttack.AddListener(SubtractOne);
         InputHandler.OnReload.AddListener(Reload);
     }
     public void ForAIMode()
     {
-        GetComponent<AttackHandlerOneAttack>().OnAttack.RemoveListener(SubtractOne);
+        GetComponent<AttackHandler>().OnAttack.RemoveListener(SubtractOne);
         InputHandler.OnReload.RemoveListener(Reload);
     }
 }

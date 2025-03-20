@@ -13,7 +13,7 @@ public class AimPlacer : MonoBehaviour, IAim, IUpdate
     public void StartAim()
     {
         CW.I.Print("Start");
-        GetComponent<AttackHandlerOneAttack>().OnAttack.AddListener(DisableAim);
+        GetComponent<AttackHandler>().OnAttack.AddListener(DisableAim);
         Hover.Instance.Disable();
         RegisterUpdate();
         _aimTransform.gameObject.SetActive(true);
@@ -34,7 +34,7 @@ public class AimPlacer : MonoBehaviour, IAim, IUpdate
     {
         CW.I.Print("Disable");
         _aimTransform.gameObject.SetActive(false);
-        GetComponent<AttackHandlerOneAttack>().OnAttack.RemoveListener(DisableAim);
+        GetComponent<AttackHandler>().OnAttack.RemoveListener(DisableAim);
     }
     public void PerformeRay()
     {

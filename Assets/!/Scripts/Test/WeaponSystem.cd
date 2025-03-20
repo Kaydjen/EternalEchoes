@@ -25,23 +25,23 @@
   <Class Name="Gun" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="6" Y="9.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AQACAAgAAABBAAQAIAACAAIAAIAAAAIAACACAICAOBA=</HashCode>
+      <HashCode>AQACAAAAACBBAAAAIAACAAIAAIAACAIAACACAICAOBA=</HashCode>
       <FileName>Assets\!\Scripts\Test\Gun.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.219" />
   </Class>
-  <Class Name="AttackHandlerOneAttack" Collapsed="true" BaseTypeListCollapsed="true">
+  <Class Name="AttackHandler" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="0.5" Y="9.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAQAAAAAAAAAAGAAAAAAAAAAAAAAACAAAAAAAAAAEA=</HashCode>
-      <FileName>Assets\!\Scripts\Test\AttackHandlerOneAttack.cs</FileName>
+      <HashCode>AAAQAQgAAAAABAWAAAAAAACAABAAAACAAAAAAAAAAEA=</HashCode>
+      <FileName>Assets\!\Scripts\Test\AttackHandler.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.1" />
   </Class>
   <Class Name="GateOfBabylon" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="7.75" Y="9.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAACCAAAAAAACAAAAAgIAAAAAAAAAAAAAFAAA=</HashCode>
       <FileName>Assets\!\Scripts\Test\GateOfBabylon.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -57,7 +57,7 @@
   <Class Name="AimPlacer" Collapsed="true">
     <Position X="7.75" Y="10.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAACBAAEAABBAAAIAAEQAAIAIAAEAAIAhAAIAACAKEA=</HashCode>
+      <HashCode>AAACBAAEAABBAAAIAAEAAAIAIAAEAAIAhAAIAADAKEA=</HashCode>
       <FileName>Assets\!\Scripts\Test\AimPlacer.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -81,7 +81,7 @@
   <Class Name="AttackHandlerDouble" Collapsed="true" BaseTypeListCollapsed="true">
     <Position X="0.5" Y="11.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAQAQAAAAAEAAEAAAAQAAAAABAAAAAAAAAAAAAAAEA=</HashCode>
+      <HashCode>AAAQAQAAAAAAAAEAAAAAAAAAABAAAAAAAAAAAAAAAEA=</HashCode>
       <FileName>Assets\!\Scripts\Test\AttackHandlerDouble.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
