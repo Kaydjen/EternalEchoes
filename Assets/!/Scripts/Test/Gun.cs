@@ -2,6 +2,8 @@
 
 class Gun : MonoBehaviour, IAttack
 {
+    [SerializeField] private bool _isShotgun;
+    [SerializeField] private int _shotgunBulletCount = 2;
     [SerializeField] private float _critMultiplier = 2f;
     [SerializeField] private float _critChance = .05f;
     [SerializeField] private int _minDamage = 10;
@@ -39,6 +41,16 @@ class Gun : MonoBehaviour, IAttack
     }
     public void Attack()
     {
-        CastRay();
+        if (_isShotgun)
+        {
+            for (int i = 0; i < _shotgunBulletCount; i++)
+            {
+                CastRay();
+            }
+        }
+        else
+        {
+            CastRay();       
+        }
     }
 }
