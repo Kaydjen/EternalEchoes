@@ -13,10 +13,6 @@ public class AI : MonoBehaviour
     {
         if(!TryGetComponent(out _agent))
             Debug.Log($"In AI {this.gameObject.name} in script {this.name} the NavMeshAgent component can't be getted");
-
-        SetDestionaiton(Vector3.zero);
-
-        Debug.Log($"_agent.destination = {_agent.destination}");
     }
     
 }
