@@ -9,10 +9,17 @@ public class AI : MonoBehaviour
     {
         _agent.destination = coordinates;
     }
-    protected virtual void Start()
+    protected virtual void Awake()
     {
         if(!TryGetComponent(out _agent))
             Debug.Log($"In AI {this.gameObject.name} in script {this.name} the NavMeshAgent component can't be getted");
     }
-    
+    protected virtual void Start()
+    {
+        PerformSpawnEffect();
+    }
+    protected virtual void PerformSpawnEffect()
+    {
+        EnemySpawnEffectPool.Instance.SetEffect(this.transform.position);
+    }
 }
