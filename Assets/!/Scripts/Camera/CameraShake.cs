@@ -14,12 +14,13 @@ public class CameraShake : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        ogPos = transform.localPosition;
-        ogRot = transform.localRotation;
+        
     }
 
     public void Anus(float duration, float magnitude)
     {
+        ogPos = transform.localPosition;
+        ogRot = transform.localRotation;
         _duration = duration;
         _magnitude = magnitude;
         StartCoroutine(Shake());
