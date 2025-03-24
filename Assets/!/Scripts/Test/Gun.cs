@@ -50,7 +50,7 @@ class Gun : MonoBehaviour, IAttack
         }
         else
         {
-            CastRay();       
+            CastRay();
         }
     }
 }
