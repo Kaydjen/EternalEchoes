@@ -3,6 +3,7 @@ using UnityEngine;
 public class EnemySpawnEffectPool : ObjectPool
 {
     public static EnemySpawnEffectPool Instance;
+    [SerializeField] private Vector3 _defSize;
     private void Awake()
     {
         Instance = this;
@@ -20,6 +21,7 @@ public class EnemySpawnEffectPool : ObjectPool
         GameObject effect = base.GetObject();
 
         effect.transform.position = position;
+        effect.transform.localScale = _defSize;
         base.DelayedReturnObject(effect, duration);
     }
 }

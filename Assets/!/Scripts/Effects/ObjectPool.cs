@@ -5,13 +5,13 @@ using UnityEngine;
 public class ObjectPool : MonoBehaviour
 {
     [SerializeField] private GameObject _prefab;
-    [SerializeField] private int _initialSize = 10;
+    [SerializeField] private int _initialPoolSize = 10;
 
     private Queue<GameObject> _pool = new Queue<GameObject>();
 
     protected virtual void Start()
     {
-        for (int i = 0; i < _initialSize; i++)
+        for (int i = 0; i < _initialPoolSize; i++)
         {
             CreateNewObject();
         }
