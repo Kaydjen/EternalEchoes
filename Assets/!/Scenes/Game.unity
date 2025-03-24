@@ -11257,6 +11257,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _duration: 0
   _magnitude: 0
+  ogPos: {x: 0, y: 0, z: 0}
 --- !u!1 &8101693261697924261
 GameObject:
   m_ObjectHideFlags: 0

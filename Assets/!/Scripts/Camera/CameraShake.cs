@@ -6,7 +6,7 @@ public class CameraShake : MonoBehaviour
 {
     [SerializeField] private float _duration;
     [SerializeField] private float _magnitude;
-    private Vector3 ogPos;
+    public Vector3 ogPos;
     private Quaternion ogRot;
 
     public static CameraShake Instance;
@@ -16,13 +16,6 @@ public class CameraShake : MonoBehaviour
         Instance = this;
         ogPos = transform.localPosition;
         ogRot = transform.localRotation;
-    }
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.Mouse0))
-        {
-            Anus(_duration, _magnitude);
-        }
     }
 
     public void Anus(float duration, float magnitude)
