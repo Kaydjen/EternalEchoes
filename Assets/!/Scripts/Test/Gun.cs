@@ -51,7 +51,7 @@ class Gun : MonoBehaviour, IAttack
         else
         {
             CastRay();
-            CameraShake.Instance.Anus(0.1f, 0.1f);
+            CameraShake.Instance.Anus(0.5f, 0.1f);
         }
     }
 }
