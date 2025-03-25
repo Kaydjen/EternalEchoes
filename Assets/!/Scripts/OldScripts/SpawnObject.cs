@@ -14,7 +14,7 @@ public class SpawnObject : MonoBehaviour
     {
         foreach (var e in _objects)
         {
-            Instantiate(e, new Vector3(Random.Range(-10, 10), 0f, Random.Range(-10, 10)), Quaternion.identity);
+            Instantiate(e, Vector3.zero, Quaternion.identity);
             StartCoroutine(Enable(e));
         }
     }
