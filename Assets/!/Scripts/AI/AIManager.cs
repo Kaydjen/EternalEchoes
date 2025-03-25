@@ -16,8 +16,9 @@ public class AIManager : MonoBehaviour
     }
     private IEnumerator SpawnEffect(GameObject obj)
     {
-        yield return new WaitForSeconds(2.5f);
         EnemySpawnEffectPool.Instance.SetEffect(obj.transform.position);
+        yield return new WaitForSeconds(2.5f);
+        obj.SetActive(true);
     }
     #endregion
     #region MONOBEHAVIOUR
