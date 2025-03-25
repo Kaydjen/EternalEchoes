@@ -5,28 +5,36 @@ public class JumpscareAltF : MonoBehaviour
 {
     private Transform CamObj;
     public GameObject TruckObj;
-    private bool isQuitting;
+    private bool isQuitting = false;
+
+    private void Awake()
+    {
+        Application.wantsToQuit += WantsToQuitHandler;
+    }
 
     public void Init()
     {
         CamObj = CameraSwitcher.Instance.transform;
         InputHandler.OnAltF.AddListener(ShoNibyd);
-/*        if (Random.Range(50, 75) == 52)
-        {
-        }
-        else
-        {
-            Destroy(gameObject);
-        }*/
     }
+
+    private bool WantsToQuitHandler()
+    {
+        if (!isQuitting)
+        {
+            Debug.Log("Закриття скасовано!");
+            return false; // Блокуємо вихід
+        }
+        return true; // Дозволяємо вихід після джамскеру
+    }
+
     private void ShoNibyd()
     {
-        isQuitting = false;
         StartCoroutine(nameof(Move));
     }
+
     private IEnumerator Move()
     {
-        
         CameraSwitcher.Instance.SwitchToFPV();
         CameraSwitcher.Instance.DisableCurrentView();
         GameObject InstObj = Instantiate(TruckObj, CamObj);
@@ -37,22 +45,19 @@ public class JumpscareAltF : MonoBehaviour
 
         while (true)
         {
-            InstObj.transform.position = Vector3.MoveTowards(InstObj.transform.position, CamObj.position + new Vector3(0, -1f, 0), 20 * Time.deltaTime);
-            if (Vector3.Distance(InstObj.transform.position, CamObj.position + new Vector3(0, -1f, 1.5f)) <= 1f)
+            InstObj.transform.position = Vector3.MoveTowards(InstObj.transform.position, CamObj.position, 20 * Time.deltaTime);
+            if (Vector3.Distance(InstObj.transform.position, CamObj.position) <= 1f)
             {
+                Debug.Log("Фура в'їхала!");
                 isQuitting = true;
                 Application.Quit();
             }
-            yield return new WaitForEndOfFrame();
+            yield return null;
         }
     }
-    private void OnApplicationQuit()
+
+    private void OnDestroy()
     {
-        if (!isQuitting)
-        {
-            #pragma warning disable CS0618
-            Application.CancelQuit();
-            #pragma warning restore CS0618
-        }
+        Application.wantsToQuit -= WantsToQuitHandler;
     }
 }

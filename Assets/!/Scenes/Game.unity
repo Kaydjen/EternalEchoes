@@ -3024,6 +3024,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TruckObj: {fileID: 4867309171804461635, guid: a1b2515445a130d4594c4b72f1a46699,
     type: 3}
+  isQuitting: 1
 --- !u!1001 &1514136965
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9491,7 +9492,7 @@ Transform:
   m_GameObject: {fileID: 7996292093910299764}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 2}
+  m_LocalPosition: {x: 0, y: 0, z: 2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
