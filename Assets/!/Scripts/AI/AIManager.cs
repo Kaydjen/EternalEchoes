@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class AIManager : MonoBehaviour
@@ -5,13 +6,18 @@ public class AIManager : MonoBehaviour
     #region PRIVATE 
     private void SubscribeOnEvents()
     {
-        EnemyRepository.Instance.OnRegister += _ => EnemySpawnEffectPool.Instance.SetEffect(_.transform.position);
-        EnemyRepository.Instance.OnUnregister += _ => Debug.Log($"Enemy with ID {_} just died");
+        EnemyRepository.Instance.OnRegister += obj => StartCoroutine(SpawnEffect(obj));
+        EnemyRepository.Instance.OnUnregister += id => Debug.Log($"Enemy with ID {id} just died");
     }
     private void UnsubscribeOnEvents()
     {
-        EnemyRepository.Instance.OnRegister -= _ => EnemySpawnEffectPool.Instance.SetEffect(_.transform.position);
-        EnemyRepository.Instance.OnUnregister -= _ => Debug.Log($"Enemy with ID {_} just died");
+        EnemyRepository.Instance.OnRegister -= obj => StartCoroutine(SpawnEffect(obj));
+        EnemyRepository.Instance.OnUnregister -= id => Debug.Log($"Enemy with ID {id} just died");
+    }
+    private IEnumerator SpawnEffect(GameObject obj)
+    {
+        yield return new WaitForSeconds(2.5f);
+        EnemySpawnEffectPool.Instance.SetEffect(obj.transform.position);
     }
     #endregion
     #region MONOBEHAVIOUR
