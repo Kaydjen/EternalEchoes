@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class AIManager : MonoBehaviour, IUpdate
+public class AIManager : MonoBehaviour
 {
     #region PRIVATE 
     private void SubscribeOnEvents()
@@ -14,7 +14,25 @@ public class AIManager : MonoBehaviour, IUpdate
         EnemyRepository.Instance.OnUnregister -= _ => Debug.Log($"Enemy with ID {_} just died");
     }
     #endregion
-    #region Update
+    #region MONOBEHAVIOUR
+    protected virtual void OnEnable()
+    {
+        SubscribeOnEvents();
+    }
+    protected virtual void OnDisable()
+    {
+        UnsubscribeOnEvents();
+    }
+    #endregion
+}
+
+
+
+
+
+
+/*
+     #region Update
     public void PerformInitialUpdate()
     {
         throw new System.NotImplementedException();
@@ -44,26 +62,8 @@ public class AIManager : MonoBehaviour, IUpdate
         Updater.Instance.UnregisterUpdate(this, Updater.UpdateType.InitialUpdate);
     }
     #endregion
-    #region MONOBEHAVIOUR
-    protected virtual void OnEnable()
-    {
-       // RegisterUpdate();
-        SubscribeOnEvents();
-    }
-    protected virtual void OnDisable()
-    {
-       // UnregisterUpdate();
-        UnsubscribeOnEvents();
-    }
-    #endregion
-}
-
-
-
-
-
-
-
+ 
+ */
 
 
 
