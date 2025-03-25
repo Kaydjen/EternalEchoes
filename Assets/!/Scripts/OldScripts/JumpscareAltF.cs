@@ -15,17 +15,20 @@ public class JumpscareAltF : MonoBehaviour
     public void Init()
     {
         CamObj = CameraSwitcher.Instance.transform;
-        InputHandler.OnAltF.AddListener(ShoNibyd);
+        
+        if (Random.Range(50, 75) == 52)
+            InputHandler.OnAltF.AddListener(ShoNibyd);
+        else
+            Destroy(gameObject);
     }
 
     private bool WantsToQuitHandler()
     {
         if (!isQuitting)
         {
-            Debug.Log("Закриття скасовано!");
-            return false; // Блокуємо вихід
+            return false;
         }
-        return true; // Дозволяємо вихід після джамскеру
+        return true;
     }
 
     private void ShoNibyd()
@@ -48,7 +51,6 @@ public class JumpscareAltF : MonoBehaviour
             InstObj.transform.position = Vector3.MoveTowards(InstObj.transform.position, CamObj.position, 20 * Time.deltaTime);
             if (Vector3.Distance(InstObj.transform.position, CamObj.position) <= 1f)
             {
-                Debug.Log("Фура в'їхала!");
                 isQuitting = true;
                 Application.Quit();
             }
