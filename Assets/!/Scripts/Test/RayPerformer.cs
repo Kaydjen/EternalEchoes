@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
-
-class Gun : MonoBehaviour, IAttack
+public delegate void HitPointDelegate(RaycastHit hitInfo);
+class RayPerformer : MonoBehaviour, IAttack
 {
+    public event HitPointDelegate OnHitSomething;
+    public event HitPointDelegate OnHitDamageable;
     [SerializeField] private bool _isShotgun;
     [SerializeField] private int _shotgunBulletCount = 2;
     [SerializeField] private float _critMultiplier = 2f;
@@ -30,10 +32,12 @@ class Gun : MonoBehaviour, IAttack
                     _damage = (int)(Random.Range(_minDamage, _maxDamage) * _critMultiplier);
                 else
                     _damage = Random.Range(_minDamage, _maxDamage);
-                _damageable.GetDamage(_damage); 
+                _damageable.GetDamage(_damage);
 
+                OnHitDamageable?.Invoke(hitInfo);
                 Debug.Log(_damage);
             }
+            OnHitSomething?.Invoke(hitInfo);
             #if UNITY_EDITOR
             Debug.DrawRay(AimDirection.Direction.position, (AimDirection.Direction.forward + _spread).normalized * _rayDist, Color.cyan, 1f);
             #endif

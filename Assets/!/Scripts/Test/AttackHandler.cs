@@ -16,7 +16,7 @@ public class AttackHandler : MonoBehaviour, IGameplayModeSwitcher, IUpdate
     {
         if (Time.time < _nextFireTime) return;
         _attack.Attack();
-        OnAttack.Invoke();
+        OnAttack?.Invoke();
         _nextFireTime = Time.time + _fireRate;
     }
     public void ExecuteAttackPerformed()
