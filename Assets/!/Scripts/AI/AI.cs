@@ -13,13 +13,11 @@ public class AI : MonoBehaviour
     {
         if(!TryGetComponent(out _agent))
             Debug.Log($"In AI {this.gameObject.name} in script {this.name} the NavMeshAgent component can't be getted");
+
+        EnemyRepository.Instance.Register(this.gameObject, this.GetInstanceID());
     }
-    protected virtual void Start()
+    protected void OnDestroy()
     {
-        PerformSpawnEffect();
-    }
-    protected virtual void PerformSpawnEffect()
-    {
-        EnemySpawnEffectPool.Instance.SetEffect(this.transform.position);
+        EnemyRepository.Instance.Unregister(this.GetInstanceID());
     }
 }

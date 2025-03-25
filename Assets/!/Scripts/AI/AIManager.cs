@@ -2,7 +2,18 @@ using UnityEngine;
 
 public class AIManager : MonoBehaviour, IUpdate
 {
-
+    #region PRIVATE 
+    private void SubscribeOnEvents()
+    {
+        EnemyRepository.Instance.OnRegister += _ => EnemySpawnEffectPool.Instance.SetEffect(_.transform.position);
+        EnemyRepository.Instance.OnUnregister += _ => Debug.Log($"Enemy with ID {_} just died");
+    }
+    private void UnsubscribeOnEvents()
+    {
+        EnemyRepository.Instance.OnRegister -= _ => EnemySpawnEffectPool.Instance.SetEffect(_.transform.position);
+        EnemyRepository.Instance.OnUnregister -= _ => Debug.Log($"Enemy with ID {_} just died");
+    }
+    #endregion
     #region Update
     public void PerformInitialUpdate()
     {
@@ -36,11 +47,33 @@ public class AIManager : MonoBehaviour, IUpdate
     #region MONOBEHAVIOUR
     protected virtual void OnEnable()
     {
-        RegisterUpdate();
+       // RegisterUpdate();
+        SubscribeOnEvents();
     }
     protected virtual void OnDisable()
     {
-        UnregisterUpdate();
+       // UnregisterUpdate();
+        UnsubscribeOnEvents();
     }
     #endregion
 }
+
+
+
+
+
+
+
+
+
+
+/*public class Repository<T, TKey> where TKey : notnull
+{
+    public Dictionary<TKey, T> Items { get; } = new();
+
+    public void Register(TKey id, T item) => 
+        Items.Add(id, item);
+
+    public void Unregister(TKey id) => 
+        Items.Remove(id);
+}*/
