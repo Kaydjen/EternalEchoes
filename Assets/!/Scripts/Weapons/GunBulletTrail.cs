@@ -3,18 +3,18 @@ using UnityEngine;
 
 class GunBulletTrail : MonoBehaviour
 {
-/*    [SerializeField] private GameObject _bullet;
+    [SerializeField] private TrailRenderer _bulletTrailPrefab;
     [SerializeField] private Transform _gunBarrel;
     [SerializeField] private float _fakeBulletSpeed = 500f;
     private WaitForSeconds _trailDelay;
-    private BulletObsorver _pool;
-    public void SetNewBullet(GameObject )
+    private Pool<TrailRenderer> _pool;
+/*    public void SetNewBullet(GameObject )
     {
 
-    }
+    }*/
     private IEnumerator PerformBullet(RaycastHit hitInfo)
     {
-        GameObject bullet = _pool.Get();
+        TrailRenderer bullet = _pool.Get();
         Vector3 startPosition = bullet.transform.position;
         float distance = Vector3.Distance(startPosition, hitInfo.point);
         float remainingDistance = distance;
@@ -26,13 +26,12 @@ class GunBulletTrail : MonoBehaviour
         }
         bullet.transform.position = hitInfo.point;
         yield return _trailDelay;
-        _pool.Release(bullet);
+        _pool.Return(bullet);
     }
     private void Awake()
     {
         RayPerformer rayPerformer = GetComponent<RayPerformer>();
         rayPerformer.OnHitDamageable += _ => StartCoroutine(PerformBullet(_));
-        _pool = new();
-        _trailDelay = _bullet.
-    }*/
+        _trailDelay = new WaitForSeconds(_bulletTrailPrefab.time);
+    }
 }

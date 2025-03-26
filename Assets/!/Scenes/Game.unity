@@ -2137,7 +2137,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26c1b0698edb7a8489346e2bbd6923de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 6503656453472594762, guid: c1eff285ae8887149beb8da1dea162cc, type: 3}
+  _prefab: {fileID: 1208825480842771416, guid: c1eff285ae8887149beb8da1dea162cc, type: 3}
   _initialPoolSize: 10
   _defSize: {x: 1.5, y: 1.5, z: 1.5}
 --- !u!1 &758462289
