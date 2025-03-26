@@ -1,0 +1,38 @@
+﻿using System.Collections;
+using UnityEngine;
+
+class GunBulletTrail : MonoBehaviour
+{
+/*    [SerializeField] private GameObject _bullet;
+    [SerializeField] private Transform _gunBarrel;
+    [SerializeField] private float _fakeBulletSpeed = 500f;
+    private WaitForSeconds _trailDelay;
+    private BulletObsorver _pool;
+    public void SetNewBullet(GameObject )
+    {
+
+    }
+    private IEnumerator PerformBullet(RaycastHit hitInfo)
+    {
+        GameObject bullet = _pool.Get();
+        Vector3 startPosition = bullet.transform.position;
+        float distance = Vector3.Distance(startPosition, hitInfo.point);
+        float remainingDistance = distance;
+        while (remainingDistance > 0)
+        {
+            bullet.transform.position = Vector3.Lerp(startPosition, hitInfo.point, 1 - (remainingDistance / distance));
+            remainingDistance -= _fakeBulletSpeed * Time.deltaTime;
+            yield return null;
+        }
+        bullet.transform.position = hitInfo.point;
+        yield return _trailDelay;
+        _pool.Release(bullet);
+    }
+    private void Awake()
+    {
+        RayPerformer rayPerformer = GetComponent<RayPerformer>();
+        rayPerformer.OnHitDamageable += _ => StartCoroutine(PerformBullet(_));
+        _pool = new();
+        _trailDelay = _bullet.
+    }*/
+}
