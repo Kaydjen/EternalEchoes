@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraShake : MonoBehaviour
@@ -52,3 +51,5 @@ public class CameraShake : MonoBehaviour
         transform.localRotation = ogRot;
     }
 }
+
+//             CameraShake.Instance.Anus(0.5f, 0.1f);
