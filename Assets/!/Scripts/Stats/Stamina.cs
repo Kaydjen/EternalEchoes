@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
@@ -5,11 +6,10 @@ using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEngine.Rendering.DebugUI;
 
-public class Stamina : MonoBehaviour
+public class Stamina : MonoBehaviour, ISliderValue
 {
     [SerializeField] private float _maxStamina;
     [SerializeField] private float _currentStamina;
-    private float _lastStamina;
 
     [SerializeField] private float _staminaDelay;
     [SerializeField] private float _regenSpeed;
@@ -18,9 +18,30 @@ public class Stamina : MonoBehaviour
 
     private Coroutine _staminaCoroutine;
 
+    public event Action<float, float> OnValueChanged;
+
+    public float Max
+    {
+        get { return _maxStamina; }
+        set 
+        { 
+            _maxStamina = value;
+            OnValueChanged?.Invoke(_currentStamina, _maxStamina);
+        }
+    }
+
+    public float Current
+    {
+        get { return _currentStamina;}
+        set 
+        {
+           _currentStamina = Mathf.Clamp(value, 0f , _maxStamina);
+        }
+    } 
+
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P)) SubtractStamina(1f);
+        if (Input.GetKeyDown(KeyCode.P)) SubtractStamina(30f);
 
         if (_lastTimeShot < Time.time && hasShot)
         {
@@ -32,14 +53,10 @@ public class Stamina : MonoBehaviour
             }
         }
     }
-    public float MaxStamina
-    {
-        get { return _maxStamina; }
-        set { _maxStamina = value; }
-    }
 
-    public void SubtractStamina(float value)
+    public bool SubtractStamina(float value)
     {
+        if(_currentStamina - value < 0) return false;
         if (_staminaCoroutine != null)
         {
             StopCoroutine(_staminaCoroutine);
@@ -48,12 +65,10 @@ public class Stamina : MonoBehaviour
         }
         _lastTimeShot = Time.time + _staminaDelay;
         _currentStamina -= value;
+        OnValueChanged?.Invoke(_currentStamina, _maxStamina);
         hasShot = true;
         Debug.Log("ya strelnyv");
-    }
-    private void AddSmoothly()
-    {
-        
+        return true;
     }
 
     private IEnumerator StaminaAdd()
@@ -61,14 +76,11 @@ public class Stamina : MonoBehaviour
         while (_currentStamina < _maxStamina)
         {
             _currentStamina += 1f;
+            OnValueChanged?.Invoke(_currentStamina, _maxStamina);
             yield return new WaitForSeconds(_regenSpeed);
         }
         _currentStamina = _maxStamina;
         _staminaCoroutine = null;
         Debug.Log("Регенерація завершена");
-    }
-    public void AddStamina()
-    {
-
     }
 }

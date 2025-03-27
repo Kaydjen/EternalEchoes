@@ -1700,7 +1700,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxStamina: 150
   _currentStamina: 2
-  _reloadTimer: 10
+  _staminaDelay: 3
+  _regenSpeed: 1
 --- !u!1 &565615007
 GameObject:
   m_ObjectHideFlags: 0
