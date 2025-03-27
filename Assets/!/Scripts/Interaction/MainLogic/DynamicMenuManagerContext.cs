@@ -14,7 +14,7 @@ public class DynamicMenuManagerContext : MonoBehaviour
     {
         if (_menuList.TryGetValue(type, out IMenu menu)) menu?.EnableMenu();
     }
-    public void AddMenu(EMenu menuType, IMenu logic) 
+    public void RegisterMenu(EMenu menuType, IMenu logic) 
     {
         _menuList.Add(menuType, logic);
     }
