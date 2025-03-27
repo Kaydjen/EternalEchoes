@@ -29,7 +29,7 @@ public class Interact : MonoBehaviour, IUpdate
         }
         _zona.position = Hover.HitInfo.point;
     }
-    private void HoldPerformed()
+    private void HoldPerformed() // Эту логику можно было бы вынести в другой скрипт
     {
         if (_zona.position == Vector3.zero) return;
         _zona.gameObject.SetActive(true);
