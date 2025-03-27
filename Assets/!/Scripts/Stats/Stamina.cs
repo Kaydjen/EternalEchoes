@@ -41,15 +41,12 @@ public class Stamina : MonoBehaviour, ISliderValue
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P)) SubtractStamina(30f);
-
         if (_lastTimeShot < Time.time && hasShot)
         {
             hasShot = false;
             if (_staminaCoroutine == null)
             {
                 _staminaCoroutine = StartCoroutine(StaminaAdd());
-                Debug.Log("Почалась регенерація");
             }
         }
     }
@@ -61,13 +58,11 @@ public class Stamina : MonoBehaviour, ISliderValue
         {
             StopCoroutine(_staminaCoroutine);
             _staminaCoroutine = null;
-            Debug.Log("Зупинив корутину");
         }
         _lastTimeShot = Time.time + _staminaDelay;
         _currentStamina -= value;
         OnValueChanged?.Invoke(_currentStamina, _maxStamina);
         hasShot = true;
-        Debug.Log("ya strelnyv");
         return true;
     }
 
@@ -81,6 +76,5 @@ public class Stamina : MonoBehaviour, ISliderValue
         }
         _currentStamina = _maxStamina;
         _staminaCoroutine = null;
-        Debug.Log("Регенерація завершена");
     }
 }
