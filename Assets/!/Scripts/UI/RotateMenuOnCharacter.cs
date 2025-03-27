@@ -1,54 +1,25 @@
-using UnityEngine;
+﻿using UnityEngine;
 
-public class RotateMenuOnCharacter : MonoBehaviour, IUpdate, IGameplayModeSwitcher
+public class RotateMenuOnCharacter : MonoBehaviour
 {
-    [SerializeField] private Transform _menu;
-    [SerializeField] private float _maxAngle = 50f;
-    [SerializeField] private float _speed = 50f;
-    #region Update
-    public void PerformInitialUpdate()
-    {
-        Vector3 toTarget = (PlayerCore.Instance.transform.position - transform.position).normalized;
-        float angle = Vector3.Angle(_menu.transform.forward, toTarget);
+    public Transform targetC;  // Объект, на который нужно навестись
+    public Transform childB;   // Дочерний объект B (должен быть дочерним к A в иерархии)
 
-        if (angle > _maxAngle)
+    void Update()
+    {
+        Vector3 directionToTarget = targetC.position - childB.position;
+        directionToTarget.y = 0;
+
+        if (directionToTarget.sqrMagnitude > 0.001f)
         {
-            Vector3 limitedDirection = Vector3.Lerp(_menu.transform.forward, toTarget, _speed * Time.deltaTime);
-            transform.rotation = Quaternion.LookRotation(limitedDirection);
-        }
-    }
-    public void PerformPreUpdate()
-    {
-        throw new System.NotImplementedException();
-    }
-    public void PerformUpdate()
-    {
-        throw new System.NotImplementedException();
-    }
-    public void PerformFinalUpdate()
-    {
-        throw new System.NotImplementedException();
-    }
-    public void PerformLateUpdate()
-    {
-        throw new System.NotImplementedException();
-    }
-    private void RegisterUpdate()
-    {
-        Updater.Instance.RegisterUpdate(this, Updater.UpdateType.InitialUpdate);
-    }
-    private void UnregisterUpdate()
-    {
-        Updater.Instance.UnregisterUpdate(this, Updater.UpdateType.InitialUpdate);
-    }
-    #endregion
-    public void ForManualMode()
-    {
-        RegisterUpdate();
-    }
-    public void ForAIMode()
-    {
+            Quaternion targetRotation = Quaternion.LookRotation(directionToTarget);
 
+            transform.rotation = Quaternion.Slerp(
+                transform.rotation,
+                Quaternion.Euler(0, targetRotation.eulerAngles.y, 0),
+                Time.deltaTime * 5
+            );
+        }
     }
 }
 

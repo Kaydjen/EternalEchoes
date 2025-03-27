@@ -4,7 +4,7 @@
     <Position X="0.5" Y="0.5" Height="1.131" Width="3.964" />
   </Comment>
   <Comment CommentText="Идея кучи интерфейсов в том, что бы была осуществима модульность скриптов. Тобиж для каждого действия - свой собственный интерфейс.">
-    <Position X="6" Y="6.25" Height="0.75" Width="3.232" />
+    <Position X="6.019" Y="5.644" Height="0.75" Width="3.232" />
   </Comment>
   <Comment CommentText="Для каждого вида атаки свои классы">
     <Position X="3.88" Y="9.514" Height="0.444" Width="1.848" />
@@ -19,70 +19,54 @@
     <Position X="12" Y="9.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Assets\!\Scripts\Test\WeaponManager.cs</FileName>
+      <FileName>Assets\!\Scripts\Weapons\WeaponManager.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Gun" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="6" Y="9.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AQACAAAAACBBAAAAIAACAAIAAIAACAIAACACAICAOBA=</HashCode>
-      <FileName>Assets\!\Scripts\Test\Gun.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.219" />
-  </Class>
-  <Class Name="AttackHandler" Collapsed="true" BaseTypeListCollapsed="true">
+  <Class Name="AttackHandler" BaseTypeListCollapsed="true">
     <Position X="0.5" Y="9.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAQAQgAAAAABAWAAAAAAACAABAAAACAAAAAAAAAAEA=</HashCode>
-      <FileName>Assets\!\Scripts\Test\AttackHandler.cs</FileName>
+      <HashCode>AAASAQgAAABBAAWAAAAAAAKAABAAAAKAAAAAAACACEA=</HashCode>
+      <FileName>Assets\!\Scripts\Weapons\AttackHandler.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.1" />
   </Class>
-  <Class Name="GateOfBabylon" Collapsed="true" BaseTypeListCollapsed="true">
+  <Class Name="GateOfBabylon" BaseTypeListCollapsed="true">
     <Position X="7.75" Y="9.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAACCAAAAAAACAAAAAgIAAAAAAAAAAAAAFAAA=</HashCode>
-      <FileName>Assets\!\Scripts\Test\GateOfBabylon.cs</FileName>
+      <FileName>Assets\!\Scripts\Weapons\GateOfBabylon.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="FireBall" Collapsed="true">
-    <Position X="6" Y="10.25" Width="1.5" />
+  <Class Name="FireBall">
+    <Position X="6" Y="9.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAIAAAAAAAAIAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Assets\!\Scripts\Test\FireBall.cs</FileName>
+      <FileName>Assets\!\Scripts\Weapons\FireBall.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="AimPlacer" Collapsed="true">
-    <Position X="7.75" Y="10.25" Width="1.5" />
+  <Class Name="AimPlacer">
+    <Position X="6" Y="11.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAACBAAEAABBAAAIAAEAAAIAIAAEAAIAhAAIAADAKEA=</HashCode>
-      <FileName>Assets\!\Scripts\Test\AimPlacer.cs</FileName>
+      <FileName>Assets\!\Scripts\Weapons\AimPlacer.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="AimHandler" Collapsed="true">
-    <Position X="0.5" Y="10.25" Width="1.5" />
+  <Class Name="AimHandler">
+    <Position X="0.5" Y="14.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAQAAAAAAABAAEIAAAAAAAAIAAAAAAAAAAAAAAAAEA=</HashCode>
-      <FileName>Assets\!\Scripts\Test\AimHandler.cs</FileName>
+      <FileName>Assets\!\Scripts\Weapons\AimHandler.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="ReloadGun" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="6" Y="11.25" Width="1.5" />
+  <Class Name="ReloadGun" BaseTypeListCollapsed="true">
+    <Position X="7.75" Y="12.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAQAAAAAAAAAAEAAAAAgAAAAEAgAAAACAAABAAABAE=</HashCode>
-      <FileName>Assets\!\Scripts\Test\ReloadGun.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
-  </Class>
-  <Class Name="AttackHandlerDouble" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="0.5" Y="11.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAQAQAAAAAAAAEAAAAAAAAAABAAAAAAAAAAAAAAAEA=</HashCode>
-      <FileName>Assets\!\Scripts\Test\AttackHandlerDouble.cs</FileName>
+      <FileName>Assets\!\Scripts\Weapons\ReloadGun.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
@@ -90,14 +74,14 @@
     <Position X="7.75" Y="7" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAIAAAAAAAAIAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Assets\!\Scripts\Test\IAim.cs</FileName>
+      <FileName>Assets\!\Scripts\Weapons\IAim.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="IAttack" Collapsed="true">
     <Position X="6" Y="8" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Assets\!\Scripts\Test\IAttack.cs</FileName>
+      <FileName>Assets\!\Scripts\Weapons\IAttack.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="IGameplayModeSwitcher" Collapsed="true">
@@ -111,21 +95,14 @@
     <Position X="6" Y="7" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAA=</HashCode>
-      <FileName>Assets\!\Scripts\Test\IReload.cs</FileName>
+      <FileName>Assets\!\Scripts\Weapons\IReload.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="IDamageable" Collapsed="true">
     <Position X="12" Y="8.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Assets\!\Scripts\Test\IDamageable.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="IAttackDouble" Collapsed="true">
-    <Position X="7.75" Y="8" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAACAAAAAAA=</HashCode>
-      <FileName>Assets\!\Scripts\Test\IAttackDouble.cs</FileName>
+      <FileName>Assets\!\Scripts\Weapons\IDamageable.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Font Name="Segoe UI" Size="9" />
