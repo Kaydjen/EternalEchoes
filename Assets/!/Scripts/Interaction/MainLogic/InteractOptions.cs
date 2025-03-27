@@ -8,7 +8,7 @@ public class InteractOptions : MonoBehaviour
     private IInteractStrategy _context;
     #endregion
     #region PUBLIC METHODS
-    public void EnableManu(IInteractStrategy strategy)
+    public void EnableMenu(IInteractStrategy strategy)
     {
         _context = strategy;
         GetComponent<Tabs>().CreateTabs(_context.GetData());
@@ -16,7 +16,7 @@ public class InteractOptions : MonoBehaviour
         _manu.SetActive(true);
         DisableComponents();
     }
-    public void DisableManu()
+    public void DisableMenu()
     {
         InputHandler.Instance.ActivateDefNumbersMap();
         _manu.SetActive(false);
@@ -26,27 +26,27 @@ public class InteractOptions : MonoBehaviour
     public void Action1() // TODO: тут мб класс надо будет переделать (вызовы ExecuteAlgorithm1)
     {
         _context.Action1();
-        DisableManu();
+        DisableMenu();
     }
     public void Action2()
     {
         _context.Action2();
-        DisableManu();
+        DisableMenu();
     }
     public void Action3()
     {
         _context.Action3();
-        DisableManu();
+        DisableMenu();
     }
     public void Action4()
     {
         _context.Action4();
-        DisableManu();
+        DisableMenu();
     }
     public void Action5()
     {
         _context.Action5();
-        DisableManu();
+        DisableMenu();
     }
     #endregion
     #endregion

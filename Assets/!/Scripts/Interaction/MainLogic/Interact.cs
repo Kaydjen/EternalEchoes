@@ -18,13 +18,13 @@ public class Interact : MonoBehaviour, IUpdate
         {
             if (_isMenuActivated) // если меню активированно - вырубаем
             {
-                InteractOptions.Instance.DisableManu();
+                InteractOptions.Instance.DisableMenu();
                 _isMenuActivated = false;
             }
         }
         else // если попал по персонажу
         {
-            InteractOptions.Instance.EnableManu(strategy); // врубаем новое меню
+            InteractOptions.Instance.EnableMenu(strategy); // врубаем новое меню
             _isMenuActivated = true;
         }
         _zona.position = Hover.HitInfo.point;
@@ -101,6 +101,25 @@ public class Interact : MonoBehaviour, IUpdate
     }
     #endregion
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
