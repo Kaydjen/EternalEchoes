@@ -10,7 +10,7 @@ public class AIManager : MonoBehaviour
         EnemyRepository.Instance.OnUnregister += id => Debug.Log($"Enemy with ID {id} just died");
     }
     private void UnsubscribeOnEvents()
-    {
+    { 
         EnemyRepository.Instance.OnRegister -= obj => StartCoroutine(SpawnEffect(obj));
         EnemyRepository.Instance.OnUnregister -= id => Debug.Log($"Enemy with ID {id} just died");
     }

@@ -24,7 +24,7 @@ public class Interact : MonoBehaviour, IUpdate
         }
         else // если попал по персонажу
         {
-            InteractOptions.Instance.EnableMenu(strategy); // врубаем новое меню
+            InteractOptions.Instance.EnableMenu(); // врубаем новое меню
             _isMenuActivated = true;
         }
         _zona.position = Hover.HitInfo.point;

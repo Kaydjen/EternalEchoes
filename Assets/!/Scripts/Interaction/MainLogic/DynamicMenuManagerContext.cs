@@ -18,6 +18,10 @@ public class DynamicMenuManagerContext : MonoBehaviour
     {
         _menuList.Add(menuType, logic);
     }
+    public void UnregisterMenu(EMenu menuType)
+    {
+        if(_menuList.ContainsKey(menuType))_menuList.Remove(menuType);
+    }
     private void Awake()
     {
         Instance = this;

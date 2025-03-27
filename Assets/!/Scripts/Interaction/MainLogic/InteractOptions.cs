@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class InteractOptions : MonoBehaviour
+public class InteractOptions : MonoBehaviour, IMenu
 {
     #region VARIABLES
     public static InteractOptions Instance { get; private set; }
@@ -8,9 +8,10 @@ public class InteractOptions : MonoBehaviour
     private IInteractStrategy _context;
     #endregion
     #region PUBLIC METHODS
-    public void EnableMenu(IInteractStrategy strategy)
+    public void EnableMenu()
     {
-        _context = strategy;
+        if(Hover.HitedCollider.TryGetComponent(out IInteractStrategy strategy))
+            _context = strategy;
         GetComponent<Tabs>().CreateTabs(_context.GetData());
         InputHandler.Instance.ActivateOptionsNumbersMap();
         _manu.SetActive(true);
@@ -99,8 +100,30 @@ public class InteractOptions : MonoBehaviour
 
 
 
+public class OptionsManu
+{
+
+}
 
 
 
 
+public class OBJOptionsManu : MonoBehaviour, IMenu
+{
+    public void EnableMenu()
+    {
 
+    }
+    public void DisableMenu()
+    {
+
+    }
+    private void OnEnable()
+    {
+        DynamicMenuManagerContext.Instance.RegisterMenu(EMenu.FPVMenu, this);
+    }
+    private void OnDisable()
+    {
+       // DynamicMenuManagerContext.Instance.UnregisterMenu(EMenu.FPVMenu, this);
+    }
+}
