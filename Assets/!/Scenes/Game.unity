@@ -876,7 +876,7 @@ GameObject:
   - component: {fileID: 234346330}
   - component: {fileID: 234346329}
   - component: {fileID: 234346331}
-  m_Layer: 31
+  m_Layer: 0
   m_Name: Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2486,7 +2486,7 @@ GameObject:
   - component: {fileID: 785358022}
   - component: {fileID: 785358021}
   - component: {fileID: 785358020}
-  m_Layer: 31
+  m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3695,7 +3695,7 @@ GameObject:
   - component: {fileID: 980332290}
   - component: {fileID: 980332289}
   - component: {fileID: 980332288}
-  m_Layer: 31
+  m_Layer: 0
   m_Name: TabsHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5003,7 +5003,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1484764865
 Transform:
   m_ObjectHideFlags: 0
@@ -5050,6 +5050,7 @@ MonoBehaviour:
   _tabPref: {fileID: 5032878507446296572, guid: 4696540a590dcef40a6f6a10115efd67,
     type: 3}
   _data: {fileID: 11400000, guid: 4aabea651132fa842a87f8bbe2c03b29, type: 2}
+  _initTabsCount: 5
 --- !u!114 &1484764868
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5766,6 +5767,7 @@ MonoBehaviour:
   _tabPref: {fileID: 3356800731547532826, guid: 09f26b63cfec6dd4987e3055c507adbc,
     type: 3}
   _data: {fileID: 11400000, guid: 4aabea651132fa842a87f8bbe2c03b29, type: 2}
+  _initTabsCount: 5
 --- !u!114 &1636458903
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7669,6 +7671,7 @@ GameObject:
   - component: {fileID: 1552150627400746791}
   - component: {fileID: 8057294464353260043}
   - component: {fileID: 8057294464353260044}
+  - component: {fileID: 8057294464353260045}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -19290,6 +19293,22 @@ MonoBehaviour:
   _duration: 0
   _magnitude: 0
   ogPos: {x: 0, y: 0, z: 0}
+--- !u!114 &8057294464353260045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 809866950083786988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c49b4cc203aa6414fae5c798d1d0e7d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EventMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_MaxRayIntersections: 0
 --- !u!1 &8101693261697924261
 GameObject:
   m_ObjectHideFlags: 0

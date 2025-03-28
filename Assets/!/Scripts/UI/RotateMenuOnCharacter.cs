@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 public class RotateMenuOnCharacter : MonoBehaviour, IUpdate
 {
@@ -10,8 +9,6 @@ public class RotateMenuOnCharacter : MonoBehaviour, IUpdate
     public void PerformInitialUpdate()
     {
         transform.position = _pos.position;
-
-
 
         Vector3 directionToTarget = targetC.position - childB.position;
         directionToTarget.y = 0;
