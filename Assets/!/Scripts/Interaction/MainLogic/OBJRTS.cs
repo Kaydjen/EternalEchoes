@@ -1,64 +1,29 @@
 ﻿using UnityEngine;
 
-public class InteractOptions : MonoBehaviour, IMenu
+public class OBJRTS: OBJOptionsManu
 {
-    #region VARIABLES
-    public static InteractOptions Instance { get; private set; }
-    [SerializeField] private GameObject _manu;
-    private IInteractStrategy _context;
-    #endregion
-    #region PUBLIC METHODS
-    public void EnableMenu()
+    #region PUBLIC
+    public override void EnableMenu()
     {
-        if(Hover.HitedCollider.TryGetComponent(out IInteractStrategy strategy))
-            _context = strategy;
-        GetComponent<Tabs>().CreateTabs(_context.GetData());
+        base.EnableMenu();
         InputHandler.Instance.ActivateOptionsNumbersMap();
-        _manu.SetActive(true);
         DisableComponents();
     }
-    public void DisableMenu()
+    public override void DisableMenu()
     {
+        base.DisableMenu();
         InputHandler.Instance.ActivateDefNumbersMap();
-        _manu.SetActive(false);
         ActivateComponents();
     }
-    #region actions
-    public void Action1() // TODO: тут мб класс надо будет переделать (вызовы ExecuteAction1)
-    {
-        _context.Action1();
-        DisableMenu();
-    }
-    public void Action2()
-    {
-        _context.Action2();
-        DisableMenu();
-    }
-    public void Action3()
-    {
-        _context.Action3();
-        DisableMenu();
-    }
-    public void Action4()
-    {
-        _context.Action4();
-        DisableMenu();
-    }
-    public void Action5()
-    {
-        _context.Action5();
-        DisableMenu();
-    }
     #endregion
-    #endregion
-    #region PRIVATE METHODS
-    private void DisableComponents()
+    #region PROTECTED
+    protected virtual void DisableComponents()
     {
         InputHandler.Instance.SetAllAim(false);
         InputHandler.Instance.SetAllAttack(false);
         InputHandler.Instance.SetAllMovement(false);
         InputHandler.Instance.SetAllInteract(false);
-        InputHandler.Instance.SetUIState(true); 
+        InputHandler.Instance.SetUIState(true);
 
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
@@ -66,7 +31,7 @@ public class InteractOptions : MonoBehaviour, IMenu
         CameraSwitcher.Instance.DisableCurrentView();
         AIPlSwapper.LockControl();
     }
-    private void ActivateComponents()
+    protected virtual void ActivateComponents()
     {
         InputHandler.Instance.SetAllAim(true);
         InputHandler.Instance.SetAllAttack(true);
@@ -78,26 +43,20 @@ public class InteractOptions : MonoBehaviour, IMenu
         AIPlSwapper.UnlockControl();
     }
     #endregion
-    #region MONO METHODS
-    public void Init()
+    #region MONOBEHAVIOUR
+    protected virtual void OnEnable()
     {
-        Instance = this;
+        DynamicMenuManagerContext.Instance.RegisterMenu(EMenu.RTSMenu, this);
 
-        InputHandler.OnOptionsOne.AddListener(Action1);
-        InputHandler.OnOptionsTwo.AddListener(Action2);
-        InputHandler.OnOptionsThree.AddListener(Action3);
-        InputHandler.OnOptionsFour.AddListener(Action4);
-        InputHandler.OnOptionsFive.AddListener(Action5);
-
-        GetComponent<Tabs>().InitButtons(new System.Action[] { Action1, Action2, Action3, Action4, Action5 });
+        InputHandler.OnOptionsOne.AddListener  (ExecuteAction1);
+        InputHandler.OnOptionsTwo.AddListener  (ExecuteAction2);
+        InputHandler.OnOptionsThree.AddListener(ExecuteAction3);
+        InputHandler.OnOptionsFour.AddListener (ExecuteAction4);
+        InputHandler.OnOptionsFive.AddListener (ExecuteAction5);
     }
-    private void OnEnable()
+    protected virtual void OnDisable()
     {
-        DynamicMenuManagerContext.Instance.RegisterMenu(EMenu.FPVMenu, this);
-    }
-    private void OnDisable()
-    {
-        DynamicMenuManagerContext.Instance.UnregisterMenu(EMenu.FPVMenu, this);
+        DynamicMenuManagerContext.Instance.UnregisterMenu(EMenu.RTSMenu, this);
     }
     #endregion
 }
