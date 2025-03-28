@@ -7,13 +7,16 @@ public class MenuModeManager : MonoBehaviour
     private void Start() => MenuType = EMenu.FPVMenu;
     private void OnEnable()
     {
+        Debug.Log("MenuModeManager");
         CameraSwitcher.OnFPV_Enable.AddListener(() => MenuType = EMenu.FPVMenu);
         CameraSwitcher.OnIsometricV_Enable.AddListener(() => MenuType = EMenu.RTSMenu);
+        CameraSwitcher.OnTopDownV_Enable.AddListener(() => MenuType = EMenu.RTSMenu);
     }
     private void OnDisable()
     {
         CameraSwitcher.OnFPV_Enable.RemoveListener(() => MenuType = EMenu.FPVMenu);
         CameraSwitcher.OnIsometricV_Enable.RemoveListener(() => MenuType = EMenu.RTSMenu);
+        CameraSwitcher.OnTopDownV_Enable.RemoveListener(() => MenuType = EMenu.RTSMenu);
     }
 }
 

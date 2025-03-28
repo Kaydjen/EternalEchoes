@@ -47,7 +47,7 @@ public class DynamicMenuManagerContext : MonoBehaviour
             if(_menuList[menuType].Count == 0) _menuList.Remove(menuType);
         }
     }
-    private void Awake()
+    public void Init()
     {
         Instance = this;
     }
