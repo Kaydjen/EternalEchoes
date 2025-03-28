@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class Interact : MonoBehaviour, IUpdate
 {
@@ -14,8 +15,12 @@ public class Interact : MonoBehaviour, IUpdate
     #region PRIVETE METHODS
     private void TryOpenManu() // TODO: тут вырубать можно не опять с помощью пкм, а с помощью например Esc, надо спросить у Димы
     {
-        if(Hover.HitedCollider == null || !Hover.HitedCollider.TryGetComponent(out IInteractStrategy strategy)) // Если луч не попал, или попал, но обьект не является персонажем 
+            // it's the worst code ever I wrote, but this line just check if the obj we hitted is a button
+        if (Hover.HitedCollider != null && Hover.HitedCollider.CompareTag("Button") && Hover.HitedCollider.TryGetComponent(out Button button))
+                    button.onClick?.Invoke();
+        if (Hover.HitedCollider == null || !Hover.HitedCollider.TryGetComponent(out IInteractStrategy strategy)) // Если луч не попал, или попал, но обьект не является персонажем 
         {
+
             if (_isMenuActivated) // если меню активированно - вырубаем
             {
                 DynamicMenuManagerContext.Instance.DisableMenu(MenuModeManager.MenuType);
