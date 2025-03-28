@@ -2511,7 +2511,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: -0.984, y: 0.284}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 100, y: 136}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &785358020
 MonoBehaviour:
@@ -3718,8 +3718,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: -35.3, y: 0}
+  m_SizeDelta: {x: 26, y: 130}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &980332288
 MonoBehaviour:
@@ -3739,7 +3739,7 @@ MonoBehaviour:
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 0
-  m_Spacing: 5
+  m_Spacing: 1
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 1
@@ -5003,7 +5003,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1484764865
 Transform:
   m_ObjectHideFlags: 0
@@ -5047,7 +5047,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _tabsPosition: {fileID: 980332287}
-  _tabPref: {fileID: 3356800731547532826, guid: 09f26b63cfec6dd4987e3055c507adbc,
+  _tabPref: {fileID: 5032878507446296572, guid: 4696540a590dcef40a6f6a10115efd67,
     type: 3}
   _data: {fileID: 11400000, guid: 4aabea651132fa842a87f8bbe2c03b29, type: 2}
 --- !u!114 &1484764868
