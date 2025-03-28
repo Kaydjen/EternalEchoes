@@ -1,26 +1,51 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class DynamicMenuManagerContext : MonoBehaviour
 {
     public static DynamicMenuManagerContext Instance;
-    private Dictionary<EMenu, IMenu> _menuList = new();
+    private Dictionary<EMenu, List<IMenu>> _menuList = new();
 
     public void EnableMenu(EMenu type)
     {
-        if (_menuList.TryGetValue(type, out IMenu menu)) menu?.EnableMenu();
+        if (_menuList.ContainsKey(type))
+        {
+            foreach (IMenu item in _menuList[type])
+            {
+                item.EnableMenu();
+            }
+        }
     }
     public void DisableMenu(EMenu type)
     {
-        if (_menuList.TryGetValue(type, out IMenu menu)) menu?.EnableMenu();
+        if (_menuList.ContainsKey(type))
+        {
+            foreach (IMenu item in _menuList[type])
+            {
+                item.DisableMenu();
+            }
+        }
     }
     public void RegisterMenu(EMenu menuType, IMenu logic) 
     {
-        _menuList.Add(menuType, logic);
+        if (!_menuList.ContainsKey(menuType))        
+            _menuList.Add(menuType, new List<IMenu>());
+
+        _menuList[menuType].Add(logic);
     }
-    public void UnregisterMenu(EMenu menuType)
+    public void UnregisterMenu(EMenu menuType, IMenu logic = null)
     {
-        if(_menuList.ContainsKey(menuType))_menuList.Remove(menuType);
+        if (!_menuList.ContainsKey(menuType)) return;
+        if (logic == null)
+        {
+            _menuList.Remove(menuType);
+        }
+        else
+        {
+            _menuList[menuType].Remove(logic);
+            if(_menuList[menuType].Count == 0) _menuList.Remove(menuType);
+        }
     }
     private void Awake()
     {
