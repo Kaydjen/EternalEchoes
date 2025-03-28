@@ -7,7 +7,6 @@ public class OBJOptionsManu : MonoBehaviour, IMenu
     #region PUBLIC
     public virtual void EnableMenu()
     {
-        Debug.Log("Mmmmmmmm");
         SetContext();
         SetTabs();
         SetMenuPanelState(true);

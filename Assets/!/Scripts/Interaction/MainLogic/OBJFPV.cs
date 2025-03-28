@@ -4,6 +4,7 @@
     public override void EnableMenu()
     {
         base.EnableMenu();
+      //  GetComponent<RotateMenuOnCharacter>().Enable(PlayerCore.Instance.transform, );
     }
     public override void DisableMenu()
     {

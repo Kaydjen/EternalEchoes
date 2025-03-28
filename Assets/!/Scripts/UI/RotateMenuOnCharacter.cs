@@ -1,13 +1,18 @@
 ﻿using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class RotateMenuOnCharacter : MonoBehaviour, IUpdate
 {
     public Transform targetC;  // Объект, на который нужно навестись
     public Transform childB;   // Дочерний объект B (должен быть дочерним к A в иерархии)
-
+    private Transform _pos;
     #region Update
     public void PerformInitialUpdate()
     {
+        transform.position = _pos.position;
+
+
+
         Vector3 directionToTarget = targetC.position - childB.position;
         directionToTarget.y = 0;
 
@@ -47,6 +52,16 @@ public class RotateMenuOnCharacter : MonoBehaviour, IUpdate
         Updater.Instance.UnregisterUpdate(this, Updater.UpdateType.InitialUpdate);
     }
     #endregion
+    public void Enable(Transform traget, Transform pos)
+    {
+        targetC = traget;
+        _pos = pos;
+        RegisterUpdate();
+    }
+    public void Disable()
+    {
+        UnregisterUpdate();
+    }
 }
 
 
