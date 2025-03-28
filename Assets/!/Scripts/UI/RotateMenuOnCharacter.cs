@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class RotateMenuOnCharacter : MonoBehaviour, IUpdate
 {
@@ -60,17 +61,3 @@ public class RotateMenuOnCharacter : MonoBehaviour, IUpdate
         UnregisterUpdate();
     }
 }
-
-
-/*
-         Vector3 toTarget = (PlayerCore.Instance.transform.position - transform.position).normalized;
-        float angle = Vector3.Angle(_menu.transform.forward, toTarget);
-
-        if (angle > _maxAngle)
-        {
-            Vector3 limitedDirection = Vector3.RotateTowards(_menu.transform.forward, toTarget, Mathf.Deg2Rad * _maxAngle, 0);
-            transform.rotation = Quaternion.LookRotation(limitedDirection);
-        }
- 
- 
- */

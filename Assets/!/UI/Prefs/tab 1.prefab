@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5798324985500882005}
   - component: {fileID: 5906208756533052938}
   - component: {fileID: 4081224467586164922}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Description
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -145,7 +145,7 @@ GameObject:
   - component: {fileID: 953119294552670546}
   - component: {fileID: 8579029550239383372}
   - component: {fileID: 5168225224257554497}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -220,7 +220,7 @@ GameObject:
   - component: {fileID: 7371375579523298935}
   - component: {fileID: 5524804775349788702}
   - component: {fileID: 7911217293013976054}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -295,7 +295,7 @@ GameObject:
   - component: {fileID: 8697192828966118973}
   - component: {fileID: 6901106209980839091}
   - component: {fileID: 2769445325483796839}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: tab 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -362,9 +362,9 @@ GameObject:
   - component: {fileID: 5189649500915433899}
   - component: {fileID: 2101634429787697835}
   - component: {fileID: 3608688041145456147}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Button
-  m_TagString: Untagged
+  m_TagString: Button
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -502,7 +502,7 @@ GameObject:
   - component: {fileID: 5291095479330512038}
   - component: {fileID: 5263790221983479587}
   - component: {fileID: 6182494015960172862}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: IconBackgroud
   m_TagString: Untagged
   m_Icon: {fileID: 0}
