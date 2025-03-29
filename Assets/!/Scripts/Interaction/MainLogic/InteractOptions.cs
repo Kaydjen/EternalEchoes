@@ -89,7 +89,7 @@ public class InteractOptions : MonoBehaviour, IMenu
         InputHandler.OnOptionsFour.AddListener(Action4);
         InputHandler.OnOptionsFive.AddListener(Action5);
 
-        GetComponent<Tabs>().InitButtons(new System.Action[] { Action1, Action2, Action3, Action4, Action5 });
+        GetComponent<Tabs>().InitButtonMethods(new System.Action[] { Action1, Action2, Action3, Action4, Action5 });
     }
     private void OnEnable()
     {
@@ -205,7 +205,7 @@ public class InteractOptions : MonoBehaviour, IMenu
         InputHandler.OnOptionsFour.AddListener(Action4);
         InputHandler.OnOptionsFive.AddListener(Action5);
 
-        GetComponent<Tabs>().InitButtons(new System.Action[] { Action1, Action2, Action3, Action4, Action5 });
+        GetComponent<Tabs>().InitButtonMethods(new System.Action[] { Action1, Action2, Action3, Action4, Action5 });
     }
     private void OnEnable()
     {
