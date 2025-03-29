@@ -36,6 +36,19 @@ public class InteractScriptableObject : ScriptableObject
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*
  
     public string[] Description = 
