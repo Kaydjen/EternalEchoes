@@ -1555,7 +1555,7 @@ GameObject:
   m_Component:
   - component: {fileID: 209594512}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Shadows
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6907,7 +6907,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1141468244}
   m_Layer: 0
-  m_Name: GameObject (1)
+  m_Name: ButtonsBackground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7033,7 +7033,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1164726494}
   m_Layer: 0
-  m_Name: GameObject (3)
+  m_Name: Stats
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8106,7 +8106,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1403635244}
   m_Layer: 0
-  m_Name: GameObject (2)
+  m_Name: ButtonTemp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8557,7 +8557,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1484764865
 Transform:
   m_ObjectHideFlags: 0
@@ -23968,7 +23968,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8257632109346540942
 Transform:
   m_ObjectHideFlags: 0
