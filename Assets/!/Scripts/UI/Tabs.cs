@@ -3,6 +3,56 @@ using System;
 
 public class Tabs : MonoBehaviour
 {
+    [SerializeField] private InteractScriptableObject _data;
+    [SerializeField] private Tab[] _tabs = new Tab[8];
+    private Action[] _methods;
+    public void CreateTabs(InteractScriptableObject data)
+    {
+        int countLimiter = Math.Clamp(_data.Icons.Length, 0, 8);
+        if (countLimiter == 0) return;
+        for (int i = 0; i < countLimiter; i++)
+        {
+            _tabs[i].MainIcon.sprite = _data.Icons[i];
+            _tabs[i].TemporaryIcon.gameObject.SetActive(false);
+
+            int index = i;
+            _tabs[i].Button.onClick.RemoveAllListeners();
+            _tabs[i].Button.onClick.AddListener(() => _methods[index]());
+        }
+        if(countLimiter == 8) return;
+        for (int i = countLimiter-1; i < 8; i++)
+        {
+            _tabs[i].TemporaryIcon.gameObject.SetActive(true);
+        }
+    }
+    public void InitButtonMethods(Action[] value)
+    {
+        _methods = value;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+ 
+ public class Tabs : MonoBehaviour
+{
     [SerializeField] private RectTransform _tabsPosition;
     [SerializeField] private GameObject _tabPref;
     [SerializeField] private InteractScriptableObject _data;
@@ -18,7 +68,7 @@ public class Tabs : MonoBehaviour
             _instants[i].gameObject.SetActive(true);
             tab = _instants[i].GetComponent<Tab>();
 
-            tab.Icon.sprite = data.Icons[i];
+            tab.MainIcon.sprite = data.Icons[i];
             tab.Description.text = data.Description[i];
 
             int index = i;
@@ -33,7 +83,7 @@ public class Tabs : MonoBehaviour
             }
         }
     }
-    public void InitButtons(Action[] value)
+    public void InitButtonMethods(Action[] value)
     {
         _methods = value;
         int index = 0;
@@ -46,7 +96,8 @@ public class Tabs : MonoBehaviour
     }
 }
 
-
+ 
+ */
 /*
  
  
@@ -65,7 +116,7 @@ public class Tabs : MonoBehaviour
                 _instant = _tabsPosition.GetChild(i);
             }
             tab = _instant.GetComponent<Tab>();
-            tab.Icon.sprite = data.Icons[i];
+            tab.MainIcon.sprite = data.Icons[i];
             tab.Description.text = data.Description[i];
             int index = i;
             tab.Button.onClick.RemoveAllListeners();
