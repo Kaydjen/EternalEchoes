@@ -9449,11 +9449,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d77307bb50a72eb418b8bc7567fa7fea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tabsPosition: {fileID: 2587381403333935091}
-  _tabPref: {fileID: 3356800731547532826, guid: 09f26b63cfec6dd4987e3055c507adbc,
-    type: 3}
   _data: {fileID: 11400000, guid: 4aabea651132fa842a87f8bbe2c03b29, type: 2}
-  _initTabsCount: 5
+  _tabs:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &850663381936717246
 GameObject:
   m_ObjectHideFlags: 0
@@ -41878,7 +41883,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &6862692311749459656
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -55603,11 +55608,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d77307bb50a72eb418b8bc7567fa7fea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tabsPosition: {fileID: 3277279236496853067}
-  _tabPref: {fileID: 5032878507446296572, guid: 4696540a590dcef40a6f6a10115efd67,
-    type: 3}
   _data: {fileID: 11400000, guid: 4aabea651132fa842a87f8bbe2c03b29, type: 2}
-  _initTabsCount: 5
+  _tabs:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!222 &8878447970869324855
 CanvasRenderer:
   m_ObjectHideFlags: 0
