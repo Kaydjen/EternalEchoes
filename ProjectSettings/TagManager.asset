@@ -7,6 +7,7 @@ TagManager:
   - Item
   - Damageable
   - Button
+  - Character
   layers:
   - Default
   - TransparentFX
@@ -43,4 +44,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Fireball
+    uniqueID: 3465228359
+    locked: 0
+  - name: FX
+    uniqueID: 846994635
     locked: 0
