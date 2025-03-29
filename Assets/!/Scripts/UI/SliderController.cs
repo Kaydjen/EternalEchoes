@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -9,10 +10,10 @@ public class SliderController : MonoBehaviour
     [SerializeField] private MonoBehaviour _sliderValueSource;
     private ISliderValue _sliderValue;
     [SerializeField] private Slider _slider;
+    [SerializeField] private TMP_Text _valueText;
 
     private void Start()
     {
-        _slider = GetComponent<Slider>();
 
         // Приводимо об'єкт до інтерфейсу ISliderValue
         _sliderValue = _sliderValueSource as ISliderValue;
@@ -33,5 +34,6 @@ public class SliderController : MonoBehaviour
     {
         _slider.maxValue = maxValue;
         _slider.value = currentValue;
+        _valueText.text = $"{currentValue}/{maxValue}";
     }
 }

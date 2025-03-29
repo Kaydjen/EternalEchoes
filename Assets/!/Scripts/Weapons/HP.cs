@@ -31,15 +31,27 @@ public class HP : MonoBehaviour, IDamageable, ISliderValue
 
     public event Action<float, float> OnValueChanged;
 
+    private void Start()
+    {
+        OnValueChanged?.Invoke(_currentHealth, _maxHealth);
+    }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            GetDamage(30f);
+        }
+    }
+
     public void GetDamage(float value)
     {
         _aDamage = value * (1f - _armor / 100f);
         _currentHealth -= _aDamage;
-        if(_currentHealth<=0)
+        /*if(_currentHealth<=0)
         {
             //Logic for death
             Destroy(gameObject);
-        }
+        }*/
         OnValueChanged?.Invoke(_currentHealth, _maxHealth);
     }
 }

@@ -1,10 +1,6 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Threading;
-using Unity.VisualScripting;
 using UnityEngine;
-using static UnityEngine.Rendering.DebugUI;
 
 public class Stamina : MonoBehaviour, ISliderValue
 {
@@ -20,6 +16,10 @@ public class Stamina : MonoBehaviour, ISliderValue
 
     public event Action<float, float> OnValueChanged;
 
+    private void Start()
+    {
+        OnValueChanged?.Invoke(_currentStamina, _maxStamina);
+    }
     public float Max
     {
         get { return _maxStamina; }
@@ -41,6 +41,10 @@ public class Stamina : MonoBehaviour, ISliderValue
 
     private void Update()
     {
+        if(Input.GetKeyDown(KeyCode.P))
+        {
+            SubtractStamina(30f);
+        }
         if (_lastTimeShot < Time.time && hasShot)
         {
             hasShot = false;
