@@ -3,15 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(AimHandler))]
-public class FireBall : MonoBehaviour, IAim
+public class FireBall : MonoBehaviour, IAttack
 {
-    public void StartAim()
+    public void Attack()
     {
-        CW.I.Print("WORKS");
-    }
-
-    public void StopAim()
-    {
-        CW.I.Print("1WORKS");
+        
     }
 }
