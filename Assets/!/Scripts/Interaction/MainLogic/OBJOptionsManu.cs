@@ -49,11 +49,11 @@ public class OBJOptionsManu : MonoBehaviour, IMenu
         if (Hover.HitedCollider.TryGetComponent(out IInteractStrategy strategy))
             _context = strategy;
     }
-    protected virtual void SetTabs()
+    protected virtual void CreateTabs()
     {
         GetComponent<Tabs>().CreateTabs(_context.GetData());
     }
-    protected virtual void CreateTabs()
+    protected virtual void SetTabs()
     {
         GetComponent<Tabs>().InitButtons(new System.Action[] { ExecuteAction1, ExecuteAction2, ExecuteAction3, ExecuteAction4, ExecuteAction5 });
     }
