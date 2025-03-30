@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class HP : MonoBehaviour, IDamageable, ISliderValue
+public class HP : MonoBehaviour, IDamageable, IStatsValue
 {
     [SerializeField] private float _maxHealth = 100;
     [SerializeField] private float _currentHealth = 100;

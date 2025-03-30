@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public class Stamina : MonoBehaviour, ISliderValue
+public class Stamina : MonoBehaviour, IStatsValue
 {
     [SerializeField] private float _maxStamina;
     [SerializeField] private float _currentStamina;

@@ -1,5 +1,5 @@
 ﻿using System;
-public interface ISliderValue
+public interface IStatsValue
 {
     public ESliderType Type { get; set; }
     public float Current { get;  set; }
