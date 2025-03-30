@@ -15,12 +15,15 @@ public class FreezeCharacter : MonoBehaviour
     }
     private IEnumerator FreezeCoroutine(NavMeshAgent agent, Rigidbody enemyRb, float duration)
     {
-        if (agent != null) agent.enabled = false;
-        if (enemyRb != null) enemyRb.isKinematic = true;
+        if (agent == null) yield break;
+        if (enemyRb == null) yield break;
+
+        agent.enabled = false;
+        enemyRb.isKinematic = true;
 
         yield return new WaitForSeconds(duration);
 
-        if (agent != null) agent.enabled = true;
-        if (enemyRb != null) enemyRb.isKinematic = false;
+        agent.enabled = true;
+        enemyRb.isKinematic = false;
     }
 }
