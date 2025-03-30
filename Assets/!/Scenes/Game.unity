@@ -3708,8 +3708,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68a2f4d0f076433439c5b28e7e75d630, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sliderValueSource: {fileID: 460798391}
-  _slider: {fileID: 516435363}
+  _sliders:
+  - Type: 0
+    Slider: {fileID: 0}
   _valueText: {fileID: 688174489}
 --- !u!4 &532452511
 Transform:
@@ -3738,8 +3739,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68a2f4d0f076433439c5b28e7e75d630, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sliderValueSource: {fileID: 564518023}
-  _slider: {fileID: 301993487}
+  _sliders: []
   _valueText: {fileID: 741620555}
 --- !u!1001 &535070617
 PrefabInstance:
@@ -32562,6 +32562,7 @@ GameObject:
   - component: {fileID: 7185315654228062277}
   - component: {fileID: 7185315654228062273}
   - component: {fileID: 2480421922669849228}
+  - component: {fileID: 7185315654228062278}
   m_Layer: 0
   m_Name: Character (1)
   m_TagString: Damageable
@@ -52981,6 +52982,28 @@ MonoBehaviour:
   _maxHealth: 100
   _currentHealth: 100
   _armor: 0
+--- !u!195 &7185315654228062278
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4170313510501855242}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.2
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1.7
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!199 &7185350824355282864
 ParticleSystemRenderer:
   serializedVersion: 6

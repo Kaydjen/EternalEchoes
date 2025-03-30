@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class HP : MonoBehaviour, IDamageable, ISliderValue
@@ -10,6 +8,7 @@ public class HP : MonoBehaviour, IDamageable, ISliderValue
     [SerializeField] private int _armor;
     private float _aDamage;
 
+    public ESliderType Type { get => ESliderType.HP; set { } }
     public float Max
     {
         get { return _maxHealth; }
@@ -29,6 +28,7 @@ public class HP : MonoBehaviour, IDamageable, ISliderValue
         }
     }
 
+
     public event Action<float, float> OnValueChanged;
 
     private void Start()
@@ -47,11 +47,6 @@ public class HP : MonoBehaviour, IDamageable, ISliderValue
     {
         _aDamage = value * (1f - _armor / 100f);
         _currentHealth -= _aDamage;
-        /*if(_currentHealth<=0)
-        {
-            //Logic for death
-            Destroy(gameObject);
-        }*/
         OnValueChanged?.Invoke(_currentHealth, _maxHealth);
     }
 }

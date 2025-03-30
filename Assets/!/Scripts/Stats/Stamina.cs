@@ -13,7 +13,7 @@ public class Stamina : MonoBehaviour, ISliderValue
     private bool hasShot = false;
 
     private Coroutine _staminaCoroutine;
-
+    public ESliderType Type { get => ESliderType.Stamina; set { } }
     public event Action<float, float> OnValueChanged;
 
     private void Start()
