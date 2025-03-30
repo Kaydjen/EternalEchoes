@@ -24,9 +24,8 @@ public class IcicleProjectile : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             NavMeshAgent agent = other.GetComponent<NavMeshAgent>();
-            Rigidbody enemyRb = other.GetComponent<Rigidbody>();
 
-            FreezeCharacter.Instance.Freeze(agent, enemyRb, _freezeDuration);
+            FreezeCharacter.Instance.Freeze(agent, _freezeDuration);
 
             IciclePool.Instance.Return(this.transform);
         }

@@ -9,21 +9,18 @@ public class FreezeCharacter : MonoBehaviour
     {
         Instance = this;
     }
-    public void Freeze(NavMeshAgent agent, Rigidbody enemyRb, float duration)
+    public void Freeze(NavMeshAgent agent, float duration)
     {
-        StartCoroutine(FreezeCoroutine(agent, enemyRb, duration));
+        StartCoroutine(FreezeCoroutine(agent, duration));
     }
-    private IEnumerator FreezeCoroutine(NavMeshAgent agent, Rigidbody enemyRb, float duration)
+    private IEnumerator FreezeCoroutine(NavMeshAgent agent, float duration)
     {
         if (agent == null) yield break;
-        if (enemyRb == null) yield break;
 
         agent.enabled = false;
-        enemyRb.isKinematic = true;
 
         yield return new WaitForSeconds(duration);
 
         agent.enabled = true;
-        enemyRb.isKinematic = false;
     }
 }
