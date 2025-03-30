@@ -14,6 +14,7 @@ public class IcicleProjectile : MonoBehaviour
 
     private void OnEnable()
     {
+        if (AimDirection.Direction == null) return;
         _rb.velocity = Vector3.zero;
         transform.rotation = Quaternion.LookRotation(AimDirection.Direction.forward);
         _rb.AddForce(AimDirection.Direction.forward * _speed, ForceMode.Impulse);
