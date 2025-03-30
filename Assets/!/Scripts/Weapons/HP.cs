@@ -49,4 +49,6 @@ public class HP : MonoBehaviour, IDamageable, ISliderValue
         _currentHealth -= _aDamage;
         OnValueChanged?.Invoke(_currentHealth, _maxHealth);
     }
+
+    public void Unsubscribe() => OnValueChanged = null;
 }

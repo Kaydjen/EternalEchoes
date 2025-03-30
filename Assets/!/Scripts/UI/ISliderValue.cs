@@ -6,6 +6,7 @@ public interface ISliderValue
     public float Max { get; set; }
 
     event Action<float, float> OnValueChanged;
+    public void Unsubscribe();
 }
 
 public enum ESliderType

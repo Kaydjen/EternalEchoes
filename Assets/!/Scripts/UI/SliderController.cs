@@ -22,14 +22,13 @@ public class SliderController : MonoBehaviour
 
     private void UpdateParameters()
     {
-        foreach (var slider in _sliderValue)
+        foreach (var slider in _sliderValue) slider.Unsubscribe();
+        _sliderValue.Clear();
+        foreach (var slider in _sliders)
         {
-            if (slider != null && _slidersDictionary.ContainsKey(slider.Type))
-            {
-                slider.OnValueChanged -= HandleSliderValueChanged(slider);
-            }
+            slider.TextValue.Current.text = "";
+            slider.TextValue.Max.text = "";
         }
-
         _sliderValue = PlayerCore.Instance.transform.GetComponents<ISliderValue>().ToList();
 
         if (_sliderValue.Count == 0)

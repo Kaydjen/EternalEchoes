@@ -77,4 +77,5 @@ public class Stamina : MonoBehaviour, ISliderValue
         _currentStamina = _maxStamina;
         _staminaCoroutine = null;
     }
+    public void Unsubscribe() => OnValueChanged = null;
 }
