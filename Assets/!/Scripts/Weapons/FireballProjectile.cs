@@ -15,7 +15,7 @@ public class FireballProjectile : MonoBehaviour
 
     private void OnEnable()
     {
-        _rb.AddForce(transform.forward * _speed, ForceMode.Impulse);
+        _rb.AddForce(AimDirection.Direction.forward * _speed, ForceMode.Impulse);
     }
 
     private void OnTriggerEnter(Collider other)

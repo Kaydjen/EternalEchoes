@@ -41,10 +41,6 @@ public class Stamina : MonoBehaviour, ISliderValue
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.P))
-        {
-            SubtractStamina(30f);
-        }
         if (_lastTimeShot < Time.time && hasShot)
         {
             hasShot = false;
