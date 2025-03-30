@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(AimHandler))]
+[RequireComponent(typeof(AttackHandler))]
 public class ProjectileInstantiater : MonoBehaviour, IAttack
 {
     [SerializeField] private Pool<Transform> _pool;

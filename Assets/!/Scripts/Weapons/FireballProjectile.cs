@@ -10,9 +10,17 @@ public class FireballProjectile : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _rb = GetComponent<Rigidbody>();
+        _rb = GetComponent<Rigidbody>(); 
+    }
 
+    private void OnEnable()
+    {
         _rb.AddForce(transform.forward * _speed, ForceMode.Impulse);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        FireballPool.Instance.Return(this.transform);
     }
 
 }
