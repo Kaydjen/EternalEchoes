@@ -8,6 +8,7 @@ TagManager:
   - Damageable
   - Button
   - Character
+  - Enemy
   layers:
   - Default
   - TransparentFX
