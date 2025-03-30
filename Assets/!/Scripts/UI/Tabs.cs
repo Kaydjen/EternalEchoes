@@ -3,34 +3,49 @@ using System;
 
 public class Tabs : MonoBehaviour
 {
-    [SerializeField] private InteractScriptableObject _data;
-    [SerializeField] private Tab[] _tabs = new Tab[8];
+    private const int MAX_TABS = 8;
+
+    [SerializeField] private Tab[] _tabs = new Tab[MAX_TABS];
     private Action[] _methods;
+
     public void CreateTabs(InteractScriptableObject data)
     {
-        int countLimiter = Math.Clamp(_data.IconsMain.Length, 0, 8);
-        if (countLimiter == 0) return;
+        if (data == null || data.IconsMain == null || data.IconsHighlighted == null)
+        {
+            Debug.LogError("Data or icons arrays are null");
+            return;
+        }
+        if (data.IconsMain.Length != data.IconsHighlighted.Length)
+        {
+            Debug.LogError("Icons arrays have different lengths");
+            return;
+        }
+
+        int countLimiter = Math.Clamp(data.IconsMain.Length, 0, MAX_TABS);
+
         for (int i = 0; i < countLimiter; i++)
         {
-            _tabs[i].MainIcon.sprite = _data.IconsMain[i];
-            _tabs[i].MainIconHighlighted.sprite = _data.IconsHighlighted[i];
-            //_tabs[i].MainIconPressed.sprite = _data.IconsPressed[i];
+            if (_tabs[i] == null) continue;
+
+            _tabs[i].MainIcon.sprite = data.IconsMain[i];
+            _tabs[i].MainIconHighlighted.sprite = data.IconsHighlighted[i];
             _tabs[i].TemporaryIcon.gameObject.SetActive(false);
+            _tabs[i].MainIcon.gameObject.SetActive(true);
 
             int index = i;
             _tabs[i].Button.onClick.RemoveAllListeners();
             _tabs[i].Button.onClick.AddListener(() => _methods[index]());
-            //_tabs[i].Button.onClick.AddListener(() => _tabs[i].MainIconPressed.gameObject.SetActive(true));
         }
-        if(countLimiter == 8) return;
-        for (int i = countLimiter-1; i < 8; i++)
+
+        for (int i = countLimiter; i < MAX_TABS; i++)
         {
+            if (_tabs[i] == null) continue;
+
             _tabs[i].TemporaryIcon.gameObject.SetActive(true);
             _tabs[i].MainIcon.gameObject.SetActive(false);
-            //_tabs[i].MainIconHighlighted.gameObject.SetActive(false);
-            //_tabs[i].MainIconPressed.gameObject.SetActive(false);
         }
     }
+
     public void InitButtonMethods(Action[] value)
     {
         _methods = value;

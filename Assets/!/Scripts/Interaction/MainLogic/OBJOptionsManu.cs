@@ -18,7 +18,6 @@ public class OBJOptionsManu : MonoBehaviour, IMenu
     #region actions
     public void ExecuteAction1() 
     {
-    Debug.Log("Oczeń Stranno");
         _context.Action1();
         DisableMenu();
     }

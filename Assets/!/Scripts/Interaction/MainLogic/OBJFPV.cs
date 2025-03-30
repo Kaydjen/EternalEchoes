@@ -4,7 +4,6 @@
     public override void EnableMenu()
     {
         base.EnableMenu();
-
         // Enable behaviour of FPV manu 
         GetComponent<RotateMenuOnCharacter>().Enable(PlayerCore.Instance.transform, Hover.HitedCollider.transform);
     }
