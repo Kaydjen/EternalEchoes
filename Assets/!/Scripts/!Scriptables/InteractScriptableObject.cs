@@ -4,7 +4,9 @@ using UnityEngine;
 public class InteractScriptableObject : ScriptableObject
 {
     [Header("MAX 8")]
-    public Sprite[] Icons;
+    public Sprite[] IconsMain;
+    public Sprite[] IconsHighlighted;
+    public Sprite[] IconsPressed;
 }
 
 

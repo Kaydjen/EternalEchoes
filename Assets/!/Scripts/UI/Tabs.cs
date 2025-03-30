@@ -8,22 +8,27 @@ public class Tabs : MonoBehaviour
     private Action[] _methods;
     public void CreateTabs(InteractScriptableObject data)
     {
-        int countLimiter = Math.Clamp(_data.Icons.Length, 0, 8);
+        int countLimiter = Math.Clamp(_data.IconsMain.Length, 0, 8);
         if (countLimiter == 0) return;
         for (int i = 0; i < countLimiter; i++)
         {
-            _tabs[i].MainIcon.sprite = _data.Icons[i];
+            _tabs[i].MainIcon.sprite = _data.IconsMain[i];
+            _tabs[i].MainIconHighlighted.sprite = _data.IconsHighlighted[i];
+            //_tabs[i].MainIconPressed.sprite = _data.IconsPressed[i];
             _tabs[i].TemporaryIcon.gameObject.SetActive(false);
 
             int index = i;
             _tabs[i].Button.onClick.RemoveAllListeners();
             _tabs[i].Button.onClick.AddListener(() => _methods[index]());
+            //_tabs[i].Button.onClick.AddListener(() => _tabs[i].MainIconPressed.gameObject.SetActive(true));
         }
         if(countLimiter == 8) return;
         for (int i = countLimiter-1; i < 8; i++)
         {
             _tabs[i].TemporaryIcon.gameObject.SetActive(true);
             _tabs[i].MainIcon.gameObject.SetActive(false);
+            //_tabs[i].MainIconHighlighted.gameObject.SetActive(false);
+            //_tabs[i].MainIconPressed.gameObject.SetActive(false);
         }
     }
     public void InitButtonMethods(Action[] value)
@@ -69,7 +74,7 @@ public class Tabs : MonoBehaviour
             _instants[i].gameObject.SetActive(true);
             tab = _instants[i].GetComponent<Tab>();
 
-            tab.MainIcon.sprite = data.Icons[i];
+            tab.MainIcon.sprite = data.IconsMain[i];
             tab.Description.text = data.Description[i];
 
             int index = i;
@@ -117,7 +122,7 @@ public class Tabs : MonoBehaviour
                 _instant = _tabsPosition.GetChild(i);
             }
             tab = _instant.GetComponent<Tab>();
-            tab.MainIcon.sprite = data.Icons[i];
+            tab.MainIcon.sprite = data.IconsMain[i];
             tab.Description.text = data.Description[i];
             int index = i;
             tab.Button.onClick.RemoveAllListeners();
