@@ -8,7 +8,7 @@ public class FireballProjectile : MonoBehaviour
     [SerializeField] private float _speed;
 
     // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         _rb = GetComponent<Rigidbody>(); 
     }
@@ -20,7 +20,7 @@ public class FireballProjectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        FireballPool.Instance.Return(this.transform);
+      //  FireballPool.Instance.Return(this.transform);
     }
 
 }
