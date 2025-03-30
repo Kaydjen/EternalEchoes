@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -28,22 +26,10 @@ public class IcicleProjectile : MonoBehaviour
             NavMeshAgent agent = other.GetComponent<NavMeshAgent>();
             Rigidbody enemyRb = other.GetComponent<Rigidbody>();
 
-            if (agent != null) agent.enabled = false;
-            if (enemyRb != null) enemyRb.isKinematic = true;
-
-            StartCoroutine(UnfreezeEnemy(agent, enemyRb));
+            FreezeCharacter.Instance.Freeze(agent, enemyRb, _freezeDuration);
 
             IciclePool.Instance.Return(this.transform);
         }
     }
 
-    private IEnumerator UnfreezeEnemy(NavMeshAgent agent, Rigidbody enemyRb)
-    {
-        Debug.Log("Caratina da");
-        yield return new WaitForSeconds(_freezeDuration);
-
-        if (agent != null) agent.enabled = true;
-        if (enemyRb != null) enemyRb.isKinematic = false;
-        Debug.Log("Caratina ne");
-    }
 }

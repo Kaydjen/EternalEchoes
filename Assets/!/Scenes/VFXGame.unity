@@ -2166,7 +2166,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sliders: []
-  _valueText: {fileID: 688174489}
 --- !u!4 &532452511
 Transform:
   m_ObjectHideFlags: 0
@@ -2195,7 +2194,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sliders: []
-  _valueText: {fileID: 741620555}
 --- !u!4 &544519028 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1889673045694591082, guid: 0dfcdccfca1abc843a8a4e0e17bfe3bc,
@@ -3211,6 +3209,7 @@ Transform:
   - {fileID: 329762431}
   - {fileID: 1473857399}
   - {fileID: 1530561585}
+  - {fileID: 1821430578}
   m_Father: {fileID: 2763633541066169505}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &741163025
@@ -7338,6 +7337,50 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1818321538}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1821430577
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1821430578}
+  - component: {fileID: 1821430579}
+  m_Layer: 0
+  m_Name: Freeze
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1821430578
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1821430577}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 741163024}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1821430579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1821430577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0750578e6cdd55543bd81f2b7c3c8f0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1848005051
 GameObject:
   m_ObjectHideFlags: 0
