@@ -51,11 +51,11 @@ public class OBJOptionsManu : MonoBehaviour, IMenu
     }
     protected virtual void CreateTabs()
     {
-       // GetComponent<Tabs>().CreateTabs(_context.GetData());
+        GetComponent<Tabs>().InitButtonMethods(new System.Action[] { ExecuteAction1, ExecuteAction2, ExecuteAction3, ExecuteAction4, ExecuteAction5 });
     }
     protected virtual void SetTabs()
     {
-       // GetComponent<Tabs>().InitButtonMethods(new System.Action[] { ExecuteAction1, ExecuteAction2, ExecuteAction3, ExecuteAction4, ExecuteAction5 });
+        GetComponent<Tabs>().CreateTabs(_context.GetData());
     }
     protected virtual void SetMenuPanelState(bool state)
     {

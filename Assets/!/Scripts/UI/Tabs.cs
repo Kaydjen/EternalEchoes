@@ -23,6 +23,7 @@ public class Tabs : MonoBehaviour
         for (int i = countLimiter-1; i < 8; i++)
         {
             _tabs[i].TemporaryIcon.gameObject.SetActive(true);
+            _tabs[i].MainIcon.gameObject.SetActive(false);
         }
     }
     public void InitButtonMethods(Action[] value)

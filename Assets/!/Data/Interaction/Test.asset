@@ -12,9 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d1fdb483c7eb7942b05486a1ac41473, type: 3}
   m_Name: Test
   m_EditorClassIdentifier: 
-  Description:
-  - '> Just first'
-  - '> Control character'
   Icons:
-  - {fileID: 21300000, guid: f0fd38d18f6aa55449192cf2cc2701b3, type: 3}
-  - {fileID: 21300000, guid: 909bdb5fa69cfef4781be9d5267d89e8, type: 3}
+  - {fileID: 21300000, guid: 91d8ee060b215cb489767194863ab402, type: 3}
+  - {fileID: 21300000, guid: 91d8ee060b215cb489767194863ab402, type: 3}
