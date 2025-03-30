@@ -10,7 +10,7 @@ public class Stamina : MonoBehaviour, ISliderValue
     [SerializeField] private float _staminaDelay;
     [SerializeField] private float _regenSpeed;
     private float _lastTimeShot;
-    private bool hasShot = false;
+    private bool hasShot = true;
 
     private Coroutine _staminaCoroutine;
     public ESliderType Type { get => ESliderType.Stamina; set { } }

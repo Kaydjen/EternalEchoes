@@ -1,49 +1,72 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class SliderController : MonoBehaviour
 {
-    [SerializeField] private List<SliderSerealizable> _sliders = new();
-    [SerializeField] private Dictionary<ESliderType, Slider> _slidersDictionary = new();
-    [SerializeField] private TMP_Text _valueText;
+    [SerializeField] private List<SliderSerializable> _sliders = new();
+    private Dictionary<ESliderType, MaxCurrentTextSerializable> _slidersDictionary = new();
     private List<ISliderValue> _sliderValue = new();
 
     private void Start()
     {
         GameEvents.OnCharacterChange.AddListener(UpdateParameters);
 
-        foreach (SliderSerealizable el in _sliders)
+        foreach (SliderSerializable el in _sliders)
         {
-            _slidersDictionary.Add(el.Type, el.Slider);
+            _slidersDictionary.Add(el.Type, el.TextValue);
         }
+        UpdateParameters();
     }
+
     private void UpdateParameters()
     {
-        // clear _sliderValue mb
+        foreach (var slider in _sliderValue)
+        {
+            if (slider != null && _slidersDictionary.ContainsKey(slider.Type))
+            {
+                slider.OnValueChanged -= HandleSliderValueChanged(slider);
+            }
+        }
+
         _sliderValue = PlayerCore.Instance.transform.GetComponents<ISliderValue>().ToList();
 
-        if (_sliderValue == null)
+        if (_sliderValue.Count == 0)
         {
-            Debug.Log($"{_sliderValue.GetType().Name} is Null in {this.name}");
+            Debug.Log($"No {nameof(ISliderValue)} components found in {this.name}");
             return;
         }
+
         foreach (ISliderValue sliderValue in _sliderValue)
         {
             if (_slidersDictionary.ContainsKey(sliderValue.Type))
             {
-                sliderValue.OnValueChanged += (current, max) => UpdateSlider(current, max); // maybe just += UpdateSlider(float currentValue, float maxValue)
+                sliderValue.OnValueChanged += HandleSliderValueChanged(sliderValue);
             }
-            sliderValue.OnValueChanged += UpdateSlider;
-            UpdateSlider(sliderValue.Current, sliderValue.Max);
         }
+
+        UpdateAllSliderValues();
     }
-    private void UpdateSlider(float currentValue, float maxValue)
+
+    private Action<float, float> HandleSliderValueChanged(ISliderValue sliderValue)
     {
-        //_slider.maxValue = maxValue;
-       // _slider.value = currentValue;
-        _valueText.text = $"{currentValue}/{maxValue}";
+        return (current, max) =>
+        {
+            _slidersDictionary[sliderValue.Type].Max.text = max.ToString();
+            _slidersDictionary[sliderValue.Type].Current.text = current.ToString();
+        };
+    }
+
+    private void UpdateAllSliderValues()
+    {
+        foreach (ISliderValue sliderValue in _sliderValue)
+        {
+            if (_slidersDictionary.ContainsKey(sliderValue.Type))
+            {
+                _slidersDictionary[sliderValue.Type].Max.text = sliderValue.Max.ToString();
+                _slidersDictionary[sliderValue.Type].Current.text = sliderValue.Current.ToString();
+            }
+        }
     }
 }
