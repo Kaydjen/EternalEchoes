@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FireballProjectile : MonoBehaviour
@@ -15,6 +13,7 @@ public class FireballProjectile : MonoBehaviour
 
     private void OnEnable()
     {
+        if (AimDirection.Direction == null) return;
         _rb.AddForce(AimDirection.Direction.forward * _speed, ForceMode.Impulse);
     }
 
