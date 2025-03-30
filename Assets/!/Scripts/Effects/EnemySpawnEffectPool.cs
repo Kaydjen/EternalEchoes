@@ -27,3 +27,4 @@ public class EnemySpawnEffectPool : Pool<Transform>
         base.StartCoroutine(DelayedReturn(effect, duration));
     }
 }
+
