@@ -14,7 +14,7 @@ public class ConcreteSwitchCharacter : MonoBehaviour, IInteractStrategy
 
     public void Action2()
     {
-
+        Debug.Log("Stranno");
     }
 
     public void Action3()

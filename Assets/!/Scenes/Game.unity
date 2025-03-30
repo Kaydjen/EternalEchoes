@@ -15847,7 +15847,6 @@ GameObject:
   - component: {fileID: 1552150627400746791}
   - component: {fileID: 8057294464353260043}
   - component: {fileID: 8057294464353260044}
-  - component: {fileID: 8057294464353260045}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -45726,16 +45725,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6239351285899274946, guid: dc79128047c209c4c85a54878ea012da,
-        type: 3}
-      propertyPath: m_Transition
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6239351285899274946, guid: dc79128047c209c4c85a54878ea012da,
-        type: 3}
-      propertyPath: m_TargetGraphic
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 6558294998880092198, guid: dc79128047c209c4c85a54878ea012da,
         type: 3}
       propertyPath: m_Name
@@ -59804,22 +59793,6 @@ MonoBehaviour:
   _duration: 0
   _magnitude: 0
   ogPos: {x: 0, y: 0, z: 0}
---- !u!114 &8057294464353260045
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 809866950083786988}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c49b4cc203aa6414fae5c798d1d0e7d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EventMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_MaxRayIntersections: 0
 --- !u!1 &8078935717689474549
 GameObject:
   m_ObjectHideFlags: 0

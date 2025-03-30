@@ -2,12 +2,17 @@
 
 public class ButtonHover : MonoBehaviour, IHover
 {
+    private GameObject _icon;
+    private void Start()
+    {
+        _icon = this.GetComponentInParent<Tab>().MainIconHighlighted.gameObject;
+    }
     public void HoverEnter()
     {
-        this.GetComponentInParent<Tab>().MainIconHighlighted.gameObject.SetActive(true);
+        _icon.SetActive(true);
     }
     public void HoverExit()
     {
-        this.GetComponentInParent<Tab>().MainIconHighlighted.gameObject.SetActive(false);
+        _icon.SetActive(false);
     }
 }

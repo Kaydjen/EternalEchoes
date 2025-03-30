@@ -13,8 +13,11 @@ MonoBehaviour:
   m_Name: Test
   m_EditorClassIdentifier: 
   IconsMain:
+  - {fileID: 21300000, guid: c8675694c7d1bba45852c18e3025cd69, type: 3}
   - {fileID: 21300000, guid: 91d8ee060b215cb489767194863ab402, type: 3}
   IconsHighlighted:
   - {fileID: 21300000, guid: e70b24f472ac6ac488fb06bcad74c6d8, type: 3}
+  - {fileID: 21300000, guid: e70b24f472ac6ac488fb06bcad74c6d8, type: 3}
   IconsPressed:
+  - {fileID: 21300000, guid: 4fb7856b7bd657e44a1bab122c73844d, type: 3}
   - {fileID: 21300000, guid: 4fb7856b7bd657e44a1bab122c73844d, type: 3}
