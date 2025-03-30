@@ -31,8 +31,8 @@ namespace ProceduralGeneration.Logic
 
                         if (location.Grid.Contains(directions[j] + position + directions[i]) && location.Grid.Contains(directions[i]+position))
                         {
-                            GameObject vertix = tile.Find("Vertixes").Find(Directions.directions[directions[j]] + "_" + Directions.directions[directions[i]]).gameObject;
-                            if (vertix == null) vertix = tile.Find("Vertixes").Find(Directions.directions[directions[i]] + "_" + Directions.directions[directions[j]]).gameObject;
+                            GameObject vertix = tile.Find("Vertixes").Find(Directions.directions[directions[j]] + "_pool" + Directions.directions[directions[i]]).gameObject;
+                            if (vertix == null) vertix = tile.Find("Vertixes").Find(Directions.directions[directions[i]] + "_pool" + Directions.directions[directions[j]]).gameObject;
                             if (vertix == null) continue;
 #if UNITY_EDITOR
                             vertix.SetActive(false);
@@ -74,8 +74,8 @@ namespace ProceduralGeneration.Logic
                         if (world.FindLocation(x => x.Grid.Contains(directions[i] + directions[j] + position)) != null && 
                             world.FindLocation(x => x.Grid.Contains(directions[i] + position)) != null)
                         {
-                            GameObject vertix = tile.Find("Vertixes").Find(Directions.directions[directions[j]] + "_" + Directions.directions[directions[i]]).gameObject;
-                            if (vertix == null) vertix = tile.Find("Vertixes").Find(Directions.directions[directions[i]] + "_" + Directions.directions[directions[j]]).gameObject;
+                            GameObject vertix = tile.Find("Vertixes").Find(Directions.directions[directions[j]] + "_pool" + Directions.directions[directions[i]]).gameObject;
+                            if (vertix == null) vertix = tile.Find("Vertixes").Find(Directions.directions[directions[i]] + "_pool" + Directions.directions[directions[j]]).gameObject;
                             if (vertix == null) continue;
 #if UNITY_EDITOR
                             vertix.SetActive(false);

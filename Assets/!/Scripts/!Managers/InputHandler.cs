@@ -160,8 +160,8 @@ public class InputHandler : MonoBehaviour
         _Isometric.SwitchCharacter.performed += _ => OnGetCharacterInfo.Invoke();
         _TopDown.SwitchCharacter.performed += _ => OnGetCharacterInfo.Invoke();
 
-        /*        _TopDown.WheelClick.performed += _ => OnWheelClickPerformed.Invoke();
-                _TopDown.WheelClick.canceled += _ => OnWheelClickCanceled.Invoke();*/
+        /*        _TopDown.WheelClick.performed += _pool => OnWheelClickPerformed.Invoke();
+                _TopDown.WheelClick.canceled += _pool => OnWheelClickCanceled.Invoke();*/
 
         _All.AltF.performed += _ => OnAltF.Invoke();
 

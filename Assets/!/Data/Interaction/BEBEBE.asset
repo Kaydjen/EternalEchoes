@@ -12,9 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d1fdb483c7eb7942b05486a1ac41473, type: 3}
   m_Name: BEBEBE
   m_EditorClassIdentifier: 
-  Description:
-  - '> 6'
-  - '> 1'
   Icons:
-  - {fileID: 21300000, guid: 8f187e1cb1b2fad4297f084ec95f8d0d, type: 3}
-  - {fileID: 21300000, guid: 2cf69aad3039c1d49940598e3d58bbbe, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
