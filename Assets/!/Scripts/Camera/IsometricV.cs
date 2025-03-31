@@ -141,14 +141,14 @@ public class IsometricV : CameraCore, IUpdate, ICameraUpdate, ICamera
 
         if (mouseScreenPosition == Vector3.zero) return;
 
-        targetRotation = Quaternion.LookRotation(mouseScreenPosition - _objToRotate.position);
+        _targetRotation = Quaternion.LookRotation(mouseScreenPosition - _objToRotate.position);
 
-        euler = targetRotation.eulerAngles;
+        euler = _targetRotation.eulerAngles;
         euler.x = _objToRotate.rotation.eulerAngles.x;
         euler.z = _objToRotate.rotation.eulerAngles.z;
-        targetRotation = Quaternion.Euler(euler);
+        _targetRotation = Quaternion.Euler(euler);
 
-        _objToRotate.rotation = Quaternion.RotateTowards(_objToRotate.rotation, targetRotation, _speed * Time.deltaTime); // the last parameter is degrees per second
+        _objToRotate.rotation = Quaternion.RotateTowards(_objToRotate.rotation, _targetRotation, _speed * Time.deltaTime); // the last parameter is degrees per second
         transform.position = _objToRotate.position;
  
  

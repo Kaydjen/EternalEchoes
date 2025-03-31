@@ -404,7 +404,7 @@ public class TopDownV : CameraCore
     #endregion
     #region On event methods
     private void EnableMouseMove() => _doMouseMove = true;
-    private void DisableMouseMove() => _doMouseMove = false;
+    private void EnableMouse() => _doMouseMove = false;
     private void OnEnable()
     {
         base.ExclusivityСheck();
@@ -417,7 +417,7 @@ public class TopDownV : CameraCore
         InputHandler.OnWheelRotate.AddListener(ZoomCamera);
 
         InputHandler.OnRMBPerformed.AddListener(EnableMouseMove);
-        InputHandler.OnRMBCanceled.AddListener(DisableMouseMove);
+        InputHandler.OnRMBCanceled.AddListener(EnableMouse);
 
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
@@ -427,7 +427,7 @@ public class TopDownV : CameraCore
         InputHandler.OnWheelRotate.RemoveListener(ZoomCamera);
 
         InputHandler.OnRMBPerformed.RemoveListener(EnableMouseMove);
-        InputHandler.OnRMBCanceled.RemoveListener(DisableMouseMove);
+        InputHandler.OnRMBCanceled.RemoveListener(EnableMouse);
         StopCoroutine(TweenPosition());
     }
     #endregion
