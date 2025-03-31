@@ -1,15 +1,25 @@
-﻿using UnityEngine.EventSystems;
+﻿using UnityEngine.UI;
 using UnityEngine;
 
-public class ButtonHoverEffect : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class ButtonHoverEffect : MonoBehaviour
 {
-    public void OnPointerEnter(PointerEventData eventData)
+    [SerializeField] private Image _mainIcon;
+    [SerializeField] private Image _iconHighlighted;
+    [SerializeField] private Image _iconPressed;
+    private Image _icon;
+    public void OnPointerEnter()
     {
-        Debug.Log("Курсор на кнопке!");
+        _icon.sprite = _iconHighlighted.sprite;
+        _icon.color = _iconHighlighted.color;
     }
-
-    public void OnPointerExit(PointerEventData eventData)
+    public void OnPointerExit()
     {
-        Debug.Log("Курсор ушёл с кнопки!");
+        _icon.sprite = _mainIcon.sprite;
+        _icon.color = _mainIcon.color;
+    }
+    private void Awake()
+    {
+        _icon = GetComponent<Image>();
+        OnPointerExit();
     }
 }
