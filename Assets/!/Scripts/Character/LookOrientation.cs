@@ -4,7 +4,8 @@
 public class LookOrientation : MonoBehaviour, IUpdate
 {
     #region VARIABLES
-    public static Vector2 Direction { get; private set; }
+    public static Vector2 LookDirection { get; private set; }
+    public static Transform Direction { get; private set; }
     private Transform _playerBoth;
     #endregion
 
@@ -38,10 +39,10 @@ public class LookOrientation : MonoBehaviour, IUpdate
 
     public void PerformPreUpdate()
     {
-        Direction = (this.transform.GetChild(0).position - this.transform.position).normalized;
+        LookDirection = (this.transform.GetChild(0).position - this.transform.position).normalized;
 
-        Direction = GetRelativeDirection(Direction, InputHandler.WASDInput);
-        //Debug.Log(Direction);
+        LookDirection = GetRelativeDirection(LookDirection, InputHandler.WASDInput);
+        //Debug.Log(LookDirection);
         _playerBoth.localRotation = this.transform.rotation;
     }
 
@@ -75,6 +76,7 @@ public class LookOrientation : MonoBehaviour, IUpdate
     public void Init()
     {
         UpdateNeededComponents();
+        Direction = this.transform;
     }
 
     private void OnEnable()
