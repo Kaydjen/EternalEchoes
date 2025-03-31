@@ -5,22 +5,33 @@ using UnityEngine.AI;
 public class TornadoPull : MonoBehaviour
 {
     public static TornadoPull Instance;
+
+    [SerializeField] private float pullSpeed = 5f;
     private void Awake()
     {
         Instance = this;
     }
-    public void Pull(NavMeshAgent agent, float duration)
+
+    public void Pull(NavMeshAgent agent)
     {
-        StartCoroutine(PullCoroutine(agent, duration));
+        StartCoroutine(PullCoroutine(agent));
     }
-    private IEnumerator PullCoroutine(NavMeshAgent agent, float duration)
+
+    private IEnumerator PullCoroutine(NavMeshAgent agent)
     {
         if (agent == null) yield break;
 
         agent.enabled = false;
 
-        yield return new WaitForSeconds(duration);
+        while (gameObject.activeSelf)
+        {
+            if (agent != null)
+            {
+                agent.transform.position = Vector3.MoveTowards(agent.transform.position, transform.position, pullSpeed * Time.deltaTime);
+            }
+            yield return null;
+        }
 
-        agent.enabled = true;
+        if (agent != null) agent.enabled = true;
     }
 }

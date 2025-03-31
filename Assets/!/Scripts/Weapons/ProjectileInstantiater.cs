@@ -18,6 +18,9 @@ public class ProjectileInstantiater : MonoBehaviour, IAttack
             case EProjectile.Icicle:
                 _pool = IciclePool.Instance;
                 break;
+            case EProjectile.Tornado:
+                _pool = TornadoPool.Instance;
+                break;
         }
         _stamina = this.transform.root.GetComponent<Stamina>();
     }
