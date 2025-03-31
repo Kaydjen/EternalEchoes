@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
-public class IciclePool : Pool<Transform>
+public class TornadoPool : Pool<Transform>
 {
-    public static IciclePool Instance;
+    public static TornadoPool Instance;
 
     private void Awake()
     {

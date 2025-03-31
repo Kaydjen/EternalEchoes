@@ -2165,7 +2165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68a2f4d0f076433439c5b28e7e75d630, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sliders: []
+  _inspectorSetup: []
 --- !u!4 &532452511
 Transform:
   m_ObjectHideFlags: 0
@@ -2193,7 +2193,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68a2f4d0f076433439c5b28e7e75d630, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sliders: []
+  _inspectorSetup: []
 --- !u!4 &544519028 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1889673045694591082, guid: 0dfcdccfca1abc843a8a4e0e17bfe3bc,
@@ -3209,6 +3209,7 @@ Transform:
   - {fileID: 329762431}
   - {fileID: 1473857399}
   - {fileID: 1530561585}
+  - {fileID: 875049460}
   - {fileID: 1821430578}
   m_Father: {fileID: 2763633541066169505}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3848,6 +3849,52 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 845248663}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &875049459
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 875049460}
+  - component: {fileID: 875049461}
+  m_Layer: 0
+  m_Name: TornadoPool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &875049460
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 875049459}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 741163024}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &875049461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 875049459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46141c547d1d68a4eb86fc4b7a000008, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _prefab: {fileID: 0}
+  _initialPoolSize: 1
 --- !u!1001 &884968302
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5024,8 +5071,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e897995ccb8c5c4b91f7fce39a7d806, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _type: 1
-  _manaCost: 30
+  _type: 2
+  _manaCost: 100
 --- !u!114 &1134373140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6047,6 +6094,88 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TruckObj: {fileID: 4867309171804461635, guid: a1b2515445a130d4594c4b72f1a46699,
     type: 3}
+--- !u!1 &1512706507
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1512706508}
+  - component: {fileID: 1512706510}
+  - component: {fileID: 1512706509}
+  m_Layer: 0
+  m_Name: TornadoProjectile
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1512706508
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1512706507}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 3370612427541703961}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1512706509
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1512706507}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 15, y: 10, z: 15}
+  m_Center: {x: 0, y: 5, z: 0}
+--- !u!54 &1512706510
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1512706507}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &1514136965
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25418,12 +25547,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2785878069589603549}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 7.43, y: 0.00000023841858, z: -1.15}
-  m_LocalScale: {x: 5.263535, y: 5.263535, z: 4.814924}
+  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1512706508}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!108 &3386522971466831821
 Light:
@@ -25591,7 +25720,7 @@ MonoBehaviour:
   DirectionalLight: {fileID: 3386522971466831821}
   DayNightPreset: {fileID: 11400000, guid: d870b1e4aa0d7f3438bb848641560280, type: 2}
   LampPreset: {fileID: 11400000, guid: bf338d0029f05bd489266297219f16b7, type: 2}
-  TimeOfDay: 0
+  TimeOfDay: 100
   SunDirection: 170
   TimeMultiplier: 0
   ControlLights: 0
@@ -26836,14 +26965,14 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2785878069589603549}
   serializedVersion: 8
-  lengthInSec: 5
+  lengthInSec: 10
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
   ringBufferMode: 0
   ringBufferLoopRange: {x: 0, y: 1}
   emitterVelocityMode: 1
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0
@@ -26912,7 +27041,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 3
       scalar: 1.6
-      minScalar: 1.2
+      minScalar: 1.9
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -42468,4 +42597,4 @@ SceneRoots:
   - {fileID: 463777603}
   - {fileID: 2056038966}
   - {fileID: 186986203}
-  - {fileID: 3370612427541703961}
+  - {fileID: 1512706508}
