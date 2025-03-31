@@ -62,6 +62,9 @@ public class InputHandler : MonoBehaviour
     public static UnityEvent OnAttackLMB { get; private set; } = new UnityEvent();
     public static UnityEvent OnAttackLMBPerformed { get; private set; } = new UnityEvent();
     public static UnityEvent OnAttackLMBReleased { get; private set; } = new UnityEvent();
+    public static UnityEvent OnAttackRMB { get; private set; } = new UnityEvent();
+    public static UnityEvent OnAttackRMBPerformed { get; private set; } = new UnityEvent();
+    public static UnityEvent OnAttackRMBReleased { get; private set; } = new UnityEvent();
     public static UnityEvent OnEnterAimingMode { get; private set; } = new UnityEvent();
     public static UnityEvent OnExitAimingMode { get; private set; } = new UnityEvent();
     public static UnityEvent OnReload { get; private set; } = new UnityEvent();
@@ -171,6 +174,13 @@ public class InputHandler : MonoBehaviour
         _Isometric.AttackLMB.performed += _ => OnAttackLMBPerformed.Invoke();
         _FPV.AttackLMB.canceled += _ => OnAttackLMBReleased.Invoke();
         _Isometric.AttackLMB.canceled += _ => OnAttackLMBReleased.Invoke();
+
+        _FPV.AttackRMB.started += _ => OnAttackRMB.Invoke();
+        _Isometric.AttackRMB.started += _ => OnAttackRMB.Invoke();
+        _FPV.AttackRMB.performed += _ => OnAttackRMBPerformed.Invoke();
+        _Isometric.AttackRMB.performed += _ => OnAttackRMBPerformed.Invoke();
+        _FPV.AttackRMB.canceled += _ => OnAttackRMBReleased.Invoke();
+        _Isometric.AttackRMB.canceled += _ => OnAttackRMBReleased.Invoke();
 
         _FPV.AimRMB.performed += _ => OnEnterAimingMode.Invoke();
         _Isometric.AimRMB.performed += _ => OnEnterAimingMode.Invoke();
