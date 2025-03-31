@@ -1,12 +1,13 @@
 using System;
 using UnityEngine;
 using UnityEngine.Events;
-using static UnityEngine.Rendering.DebugUI;
 
 public class AttackHandler : MonoBehaviour, IGameplayModeSwitcher, IUpdate
 {
     #region VARIABLES
+    public EAttackSide Type{ get => _type; set => _type = value;}
     [NonSerialized] public UnityEvent OnAttack = new();
+    [SerializeField] private EAttackSide _type = EAttackSide.Left;
     [SerializeField] private float _fireRate = 1f;
     [SerializeField] private bool _isAutomatic;
     private float _nextFireTime;
@@ -66,19 +67,41 @@ public class AttackHandler : MonoBehaviour, IGameplayModeSwitcher, IUpdate
     }
     public void ForManualMode()
     {
-        InputHandler.OnAttackLMB.AddListener(ExecuteAttack);
+        if(_type == EAttackSide.Left)
+        {
+            InputHandler.OnAttackLMB.AddListener(ExecuteAttack);
 
-        if (!_isAutomatic) return;
-        InputHandler.OnAttackLMBPerformed.AddListener(ExecuteAttackPerformed);
-        InputHandler.OnAttackLMBReleased.AddListener(ExecuteAttackReleased);
+            if (!_isAutomatic) return;
+            InputHandler.OnAttackLMBPerformed.AddListener(ExecuteAttackPerformed);
+            InputHandler.OnAttackLMBReleased.AddListener(ExecuteAttackReleased);
+        }
+        else
+        {
+            InputHandler.OnAttackRMB.AddListener(ExecuteAttack);
+
+            if (!_isAutomatic) return;
+            InputHandler.OnAttackRMBPerformed.AddListener(ExecuteAttackPerformed);
+            InputHandler.OnAttackRMBReleased.AddListener(ExecuteAttackReleased);
+        }
     }
     public void ForAIMode()
     {
-        InputHandler.OnAttackLMB.RemoveListener(ExecuteAttack);
+        if (_type == EAttackSide.Left)
+        {
+            InputHandler.OnAttackLMB.RemoveListener(ExecuteAttack);
 
-        if (!_isAutomatic) return;
-        InputHandler.OnAttackLMBPerformed.RemoveListener(ExecuteAttackPerformed);
-        InputHandler.OnAttackLMBReleased.RemoveListener(ExecuteAttackReleased);
+            if (!_isAutomatic) return;
+            InputHandler.OnAttackLMBPerformed.RemoveListener(ExecuteAttackPerformed);
+            InputHandler.OnAttackLMBReleased.RemoveListener(ExecuteAttackReleased);
+        }
+        else
+        {
+            InputHandler.OnAttackRMB.RemoveListener(ExecuteAttack);
+
+            if (!_isAutomatic) return;
+            InputHandler.OnAttackRMBPerformed.RemoveListener(ExecuteAttackPerformed);
+            InputHandler.OnAttackRMBReleased.RemoveListener(ExecuteAttackReleased);
+        }
     }
     #endregion
 }
@@ -91,6 +114,10 @@ public class AttackHandler : MonoBehaviour, IGameplayModeSwitcher, IUpdate
 
 
 
-
+public enum EAttackSide
+{
+    Left,
+    Right,
+}
 
 

@@ -60,6 +60,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "AttackRMB",
+                    "type": "Button",
+                    "id": "ed4bb7f3-6121-42b9-8a2c-473cf8b9b4b2",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Hold(duration=0.1,pressPoint=0.02)",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "AimRMB",
                     "type": "Button",
                     "id": "67598535-9c04-450d-a5a7-15041ead47c3",
@@ -186,6 +195,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "AttackLMB",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "22014eeb-b6be-4e21-8ac4-6413f7d54da4",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AttackRMB",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -480,6 +500,15 @@
                     "processors": "",
                     "interactions": "Hold(duration=0.1,pressPoint=0.02)",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "AttackRMB",
+                    "type": "Button",
+                    "id": "abd83de4-163e-4edd-b670-3ebff7453620",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Hold(duration=0.1,pressPoint=0.02)",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -524,6 +553,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Mouse",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e28e8440-ffed-4e58-bc21-f46a1a07cb98",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AttackRMB",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
