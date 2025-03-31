@@ -18,7 +18,7 @@ public class TornadoProjectile : MonoBehaviour
         if (AimDirection.Direction == null) return;
         _rb.velocity = Vector3.zero;
         Debug.Log("Should add force");
-        _rb.AddForce(LookOrientation.Direction * _speed, ForceMode.Impulse);
+        _rb.AddForce(LookOrientation.Direction.forward * _speed, ForceMode.Impulse);
         Debug.Log("Should add forc2e");
     }
 

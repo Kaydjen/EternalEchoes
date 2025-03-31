@@ -107,17 +107,3 @@ public class AttackHandler : MonoBehaviour, IGameplayModeSwitcher, IUpdate
 }
 
 
-
-
-
-
-
-
-
-public enum EAttackSide
-{
-    Left,
-    Right,
-}
-
-
