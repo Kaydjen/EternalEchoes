@@ -5,7 +5,7 @@ public class ProjectileInstantiater : MonoBehaviour, IAttack
 {
     [SerializeField] private EProjectile _type;
     [SerializeField] private float _manaCost;
-    [Tooltip("-")][SerializeField] private Vector3 _offset = new Vector3(0f,0f,0f);
+    [SerializeField] private Vector3 _offset = new Vector3(0f,0f,0f);
     private Pool<Transform> _pool;
     private Stamina _stamina;
 
@@ -29,6 +29,6 @@ public class ProjectileInstantiater : MonoBehaviour, IAttack
     {
         if (!_stamina.SubtractStamina(_manaCost)) return;
         Transform bullet = _pool.Get();
-        bullet.position = this.transform.position - _offset;
+        bullet.position = this.transform.position + _offset;
     }
 }
