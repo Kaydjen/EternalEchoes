@@ -1,52 +1,61 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
-using System;
-using System.Net.Sockets;
+using static UnityEditor.PlayerSettings;
 
-public class UICampas : MonoBehaviour
+public class RatotorShlafe : MonoBehaviour
 {
-    [SerializeField] private List<TransformRectTransform> _points;
-    [SerializeField][Range(0.1f, 2f)] private float _pointDensity = 1f; 
-    [SerializeField][Range(0.1f, 5f)] private float _fadeWidth = 1f; // NOTE: just play with it, because this value makes everything extremely different 
-    [SerializeField] private RectTransform _compassBarTransform;
-    [SerializeField] private Transform _cameraObjectTransform;
+    [Header("Make sure the width is int")]
+    [SerializeField] private RectTransform _barTransform;
+    [SerializeField] private Transform _placeToInstantiate;
+    [SerializeField] private List<RectTransform> _pointsListInspector = new();
+    [SerializeField] private int _widthBtwPoints;
+    [SerializeField] private int _pointsWidth; 
 
-    private void Update() => UpdateMarkers();
-    private void UpdateMarkers()
+    private List<RectTransform> _pointsList = new();
+
+    private void Awake()
     {
-        float barWidth = _compassBarTransform.rect.width;
-        float halfWidth = barWidth * 0.5f;
-        float spacing = barWidth / (_points.Count * _pointDensity);
-
-        for (int i = 0; i < _points.Count; i++)
+        if (_pointsListInspector.Count == 0 || _widthBtwPoints <= 0)
         {
-            TransformRectTransform el = _points[i];
-            Vector3 directionToTarget = el.TrackedObject.position - _cameraObjectTransform.position;
-            float signedAngle = Vector3.SignedAngle(
-                new Vector3(_cameraObjectTransform.forward.x, 0, _cameraObjectTransform.forward.z),
-                new Vector3(directionToTarget.x, 0, directionToTarget.z),
-                Vector3.up);
+            Debug.LogError("Invalid setup: empty points list or zero width between points");
+            return;
+        }
 
-            float normalizedPosition = signedAngle / 180f;
-            float mainPosition = normalizedPosition * halfWidth;
-            float wrappedPosition = mainPosition;
+        float barWidth = _barTransform.rect.width;
+        int countToPlace = Mathf.FloorToInt(barWidth / _widthBtwPoints);
 
-            if (mainPosition < -halfWidth) wrappedPosition += barWidth;
-            else if (mainPosition > halfWidth) wrappedPosition -= barWidth;
+        // Создаем нужное количество точек
+        int pointsNeeded = countToPlace;
+        int pointsPerCycle = _pointsListInspector.Count;
+        int cycles = Mathf.CeilToInt((float)pointsNeeded / pointsPerCycle);
 
-            el.MarkerTransform.anchoredPosition = new Vector2(wrappedPosition, 0);
-
-            float distanceFromCenter = Mathf.Abs(normalizedPosition);
-            float alpha = Mathf.Clamp01(1f - distanceFromCenter * _fadeWidth);
-
-            if (el.MarkerTransform.TryGetComponent(out UIAlphaController img))
+        for (int i = 0; i < cycles; i++)
+        {
+            foreach (RectTransform el in _pointsListInspector)
             {
-                img.ChangeAlpha(alpha);
+                if (_pointsList.Count >= pointsNeeded) break; 
+                RectTransform t = Instantiate(el, _placeToInstantiate);
+                _pointsList.Add(t);
             }
+        }
 
-            el.MarkerTransform.gameObject.SetActive(alpha > 0.05f);
+        // Равномерно распределяем точки внутри бара
+        float halfBarWidth = barWidth * 0.5f;
+        float step = barWidth / (countToPlace - 1); // Шаг между точками
+
+        for (int i = 0; i < _pointsList.Count; i++)
+        {
+            float xPos = -halfBarWidth + i * step;
+            _pointsList[i].anchoredPosition = new Vector2(xPos, 0f);
         }
     }
+    /*    private void Update()
+        {
+            foreach(RectTransform el in _pointsList)
+            {
+
+            }   
+        }*/
 }
 
 
