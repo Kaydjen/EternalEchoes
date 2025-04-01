@@ -11,6 +11,6 @@ public class ArtificialBackwardness : AI
 
     private void Update()
     {
-        base.SetDestionaiton(_target.position);
+        //base.SetDestionaiton(_target.position);
     }
 }

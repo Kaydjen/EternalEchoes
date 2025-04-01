@@ -5,21 +5,18 @@ public class TornadoProjectile : MonoBehaviour
 {
     private Rigidbody _rb;
     [SerializeField] private float _speed;
-    private ParticleSystem _ps;
 
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
-        _ps = GetComponentInChildren<ParticleSystem>();
     }
-
     private void OnEnable()
     {
+        
         if (AimDirection.Direction == null) return;
         _rb.velocity = Vector3.zero;
-        Debug.Log("Should add force");
         _rb.AddForce(LookOrientation.Direction.forward * _speed, ForceMode.Impulse);
-        Debug.Log("Should add forc2e");
+        transform.position = new Vector3(transform.position.x, 0, transform.position.z);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -27,11 +24,11 @@ public class TornadoProjectile : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             NavMeshAgent agent = other.GetComponent<NavMeshAgent>();
-            TornadoPull.Instance.Pull(agent);
+            TornadoPull.Instance.Pull(agent, gameObject);
         }
     }
 
-    private void OnParticleSystemStopped()
+    public void OnParticleSystemStopped()
     {
         TornadoPool.Instance.Return(this.transform);
     }

@@ -12,23 +12,20 @@ public class TornadoPull : MonoBehaviour
         Instance = this;
     }
 
-    public void Pull(NavMeshAgent agent)
+    public void Pull(NavMeshAgent agent, GameObject tornado)
     {
-        StartCoroutine(PullCoroutine(agent));
+        StartCoroutine(PullCoroutine(agent, tornado));
     }
 
-    private IEnumerator PullCoroutine(NavMeshAgent agent)
+    private IEnumerator PullCoroutine(NavMeshAgent agent, GameObject tornado)
     {
         if (agent == null) yield break;
 
         agent.enabled = false;
 
-        while (gameObject.activeSelf)
+        while (tornado.activeSelf)
         {
-            if (agent != null)
-            {
-                agent.transform.position = Vector3.MoveTowards(agent.transform.position, transform.position, pullSpeed * Time.deltaTime);
-            }
+            agent.transform.position = Vector3.MoveTowards(agent.transform.position, tornado.transform.position, pullSpeed * Time.deltaTime);
             yield return null;
         }
 
