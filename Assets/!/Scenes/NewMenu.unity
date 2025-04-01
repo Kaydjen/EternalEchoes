@@ -2477,6 +2477,8 @@ MonoBehaviour:
     PointsOnMap: {fileID: 743177826}
   - objectiveMarkerTransform: {fileID: 1719102465}
     PointsOnMap: {fileID: 800259212}
+  _pointDensity: 1
+  _fadeWidth: 1.04
   compassBarTransform: {fileID: 437856858}
   cameraObjectTransform: {fileID: 12624501}
 --- !u!1 &1223076953
