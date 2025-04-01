@@ -18,7 +18,6 @@ public class TornadoProjectile : MonoBehaviour
         _rb.AddForce(LookOrientation.Direction.forward * _speed, ForceMode.Impulse);
         transform.position = new Vector3(transform.position.x, 0, transform.position.z);
     }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Enemy"))

@@ -4,15 +4,16 @@ using UnityEngine;
 public class ProjectileInstantiater : MonoBehaviour, IAttack
 {
     [SerializeField] private EProjectile _type;
-    private Pool<Transform> _pool;
     [SerializeField] private float _manaCost;
+    [Tooltip("-")][SerializeField] private Vector3 _offset = new Vector3(0f,0f,0f);
+    private Pool<Transform> _pool;
     private Stamina _stamina;
 
     private void Start()
     {
         switch (_type)
         {
-            case EProjectile.Fireball :
+            case EProjectile.Fireball:
                 _pool = FireballPool.Instance;
                 break;
             case EProjectile.Icicle:
@@ -28,6 +29,6 @@ public class ProjectileInstantiater : MonoBehaviour, IAttack
     {
         if (!_stamina.SubtractStamina(_manaCost)) return;
         Transform bullet = _pool.Get();
-        bullet.position = this.transform.position;
+        bullet.position = this.transform.position - _offset;
     }
 }
