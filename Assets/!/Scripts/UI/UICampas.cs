@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 using System;
-using UnityEngine.UI;
+using System.Net.Sockets;
 
 public class UICampas : MonoBehaviour
 {
@@ -11,7 +11,7 @@ public class UICampas : MonoBehaviour
     [SerializeField] private RectTransform _compassBarTransform;
     [SerializeField] private Transform _cameraObjectTransform;
 
-    void Update() => UpdateMarkers();
+    private void Update() => UpdateMarkers();
     private void UpdateMarkers()
     {
         float barWidth = _compassBarTransform.rect.width;
@@ -39,11 +39,9 @@ public class UICampas : MonoBehaviour
             float distanceFromCenter = Mathf.Abs(normalizedPosition);
             float alpha = Mathf.Clamp01(1f - distanceFromCenter * _fadeWidth);
 
-            if (el.MarkerTransform.TryGetComponent(out Image img))
+            if (el.MarkerTransform.TryGetComponent(out UIAlphaController img))
             {
-                Color cl = img.color;
-                cl.a = alpha;
-                img.color = cl;
+                img.ChangeAlpha(alpha);
             }
 
             el.MarkerTransform.gameObject.SetActive(alpha > 0.05f);
@@ -51,15 +49,62 @@ public class UICampas : MonoBehaviour
     }
 }
 
-[Serializable]
-public class TransformRectTransform
+
+
+public class RatotorShlafe : MonoBehaviour
 {
-    public RectTransform MarkerTransform;
-    public Transform TrackedObject;
+    [Header("Make sure the wight is int")]
+    [SerializeField] private RectTransform _barTransform; 
+    [SerializeField] private List<RectTransform> _pointsListInspector;
+    [SerializeField] private int _widthBtwPoints;
+    private List<RectTransform> _pointsList;
+    private void Awake()
+    {
+        int countToPlace = (int)_barTransform.rect.width / _widthBtwPoints;
+        int count = countToPlace / _pointsListInspector.Count;
+        for (int i = 0; i < count; i++)
+        {            
+            foreach (RectTransform t in _pointsListInspector)
+            {
+                _pointsList.Add(t);
+            }
+        }
+        float value = 1 / countToPlace; 
+        for (int i = 0; i < countToPlace; i++)
+        {
+            _pointsList[i].anchoredPosition = new Vector2(value * i, 0);
+        }
+
+    }
+/*    private void Update()
+    {
+        foreach(RectTransform el in _pointsList)
+        {
+
+        }   
+    }*/
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*
- 
  1. Направление от нашей позиции до обьекта
  2. signedAngle между вектором нашего направления и вектором направления на цель, тобиж угол поворота в градусах от -180 до 180 от нашего направления до цели. Если мы смотрим на север, а обьект стоит на востоке, то значение signedAngle будет 90
  3. Нормализуем позицию деля полученный signedAngle на 180 градусов. Получиться значение от -1 до 1. (-150 / 180 = -.8)

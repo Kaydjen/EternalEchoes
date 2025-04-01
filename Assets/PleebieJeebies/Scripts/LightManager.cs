@@ -49,7 +49,7 @@ public class LightManager : MonoBehaviour
     /// </summary>
     private void Update()
     {
-        //ZenithColor = DirectionalLight.color;
+        //ZenithColor = DirectionalLight._color;
         if (DayNightPreset == null)
             return;
 
@@ -81,7 +81,7 @@ public class LightManager : MonoBehaviour
             }
         }
 
-        //Go through each spot light, ensure it is active, and set it's color accordingly
+        //Go through each spot light, ensure it is active, and set it's _color accordingly
         foreach (Light lamp in SpotLights)
         {
             if (lamp != null)

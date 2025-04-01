@@ -57,7 +57,7 @@ namespace FogWar
                             tileOpacity = fogWar.revealedTileOpacity;
                         }
 
-                        // The reason that the darker side is the revealed ones is to let users customize fog's color
+                        // The reason that the darker side is the revealed ones is to let users customize fog's _color
                         colors[levelRow.Count() * (xIterator + 1) - (yIterator + 1)] =
                         new Color(1, 1, 1, (tileOpacity) * fogPlaneAlpha);
                     }
