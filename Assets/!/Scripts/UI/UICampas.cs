@@ -71,6 +71,21 @@ public class TransformRectTransform
  9. Проверяем прозрачность, если она больше минимального значения (.05f) то активируем маркер, иначе выключаем
  */
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*   
     public RectTransform _compassBarTransform;
     public RectTransform MarkerTransform;
