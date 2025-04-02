@@ -13280,6 +13280,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1241182031470649457, guid: fc36e326b60254040ac9827a7ee19329,
+        type: 3}
+      propertyPath: m_text
+      value: 'Press to play
+
+        Eternal Echoes'
+      objectReference: {fileID: 0}
     - target: {fileID: 1376899431033294426, guid: fc36e326b60254040ac9827a7ee19329,
         type: 3}
       propertyPath: m_Name
@@ -13288,6 +13295,16 @@ PrefabInstance:
     - target: {fileID: 6875582888022407607, guid: fc36e326b60254040ac9827a7ee19329,
         type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7708486247187482863, guid: fc36e326b60254040ac9827a7ee19329,
+        type: 3}
+      propertyPath: m_text
+      value: PLAY
+      objectReference: {fileID: 0}
+    - target: {fileID: 7708486247187482863, guid: fc36e326b60254040ac9827a7ee19329,
+        type: 3}
+      propertyPath: m_fontStyle
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
