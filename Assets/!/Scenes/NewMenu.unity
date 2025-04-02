@@ -2307,7 +2307,7 @@ MonoBehaviour:
   - {fileID: 5851825161822238666, guid: ebb8577bdc6d3d64f812abac819d32e9, type: 3}
   - {fileID: 6352561799129767599, guid: 6259f426e5d0e944aad795977dd16041, type: 3}
   _widthBtwPoints: 2
-  _pointsWidth: 0
+  _pointsWidth: 3
 --- !u!1 &1258997485
 GameObject:
   m_ObjectHideFlags: 0

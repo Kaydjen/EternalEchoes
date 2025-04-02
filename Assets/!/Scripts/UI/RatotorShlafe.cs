@@ -22,7 +22,7 @@ public class RatotorShlafe : MonoBehaviour
         }
 
         float barWidth = _barTransform.rect.width;
-        int countToPlace = Mathf.FloorToInt(barWidth / _widthBtwPoints);
+        int countToPlace = Mathf.FloorToInt(barWidth / (_widthBtwPoints + _pointsWidth));
 
         // Создаем нужное количество точек
         int pointsNeeded = countToPlace;
@@ -57,7 +57,6 @@ public class RatotorShlafe : MonoBehaviour
             }   
         }*/
 }
-
 
 
 
