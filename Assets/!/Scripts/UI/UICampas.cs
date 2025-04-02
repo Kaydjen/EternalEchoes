@@ -10,7 +10,7 @@ public class UICampas : MonoBehaviour
     [SerializeField][Range(0.1f, 5f)] private float _fadeWidth = 1f; // NOTE: just play with it, because this value makes everything extremely different 
     [SerializeField] private RectTransform _compassBarTransform;
     [SerializeField] private Transform _origin; // camera
-
+    [SerializeField][Range(-1f, 1f)] private float _alphaPower = .01f;
     private void Update() => UpdateMarkers();
     private void UpdateMarkers()
     {
@@ -37,7 +37,7 @@ public class UICampas : MonoBehaviour
             el.MarkerTransform.anchoredPosition = new Vector2(wrappedPosition, 0);
 
             float distanceFromCenter = Mathf.Abs(normalizedPosition);
-            float alpha = Mathf.Clamp01(1f - distanceFromCenter * _fadeWidth);
+            float alpha = Mathf.Clamp01(1f - distanceFromCenter * _fadeWidth) + _alphaPower;
 
             if (el.MarkerTransform.TryGetComponent(out UIAlphaController img))
             {
