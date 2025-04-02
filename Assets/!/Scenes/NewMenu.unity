@@ -409,9 +409,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _listOfPositions:
   - {fileID: 551283370}
-  - {fileID: 1936439734}
   - {fileID: 526035104}
   - {fileID: 706399866}
+  - {fileID: 1936439734}
   - {fileID: 1724304860}
   - {fileID: 782104058}
 --- !u!1 &64396722

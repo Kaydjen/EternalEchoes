@@ -26,14 +26,24 @@ public class CameraMenuRotate : MonoBehaviour
     private Transform _lockedTarget = null;
     private Vector2 _mouseDelta;
     private bool _isManualRotating = false;
-    private bool _tutu = false; // короче мне лень в нейронку кидать на форматирование названий, надо будет, кину, я и так старался все норм называть
+    private bool _tutu = false;
     private bool _isNothingWorks = false;
     private bool _isDragging = false;
 
-    private void Start()
+    private void OnEnable()
     {
+        // При включении скрипта синхронизируем текущие значения с реальным вращением камеры
         _currentXRotation = transform.rotation.eulerAngles.x;
         _currentYRotation = transform.rotation.eulerAngles.y;
+
+        // Корректируем углы, если они выходят за пределы -180..180
+        if (_currentXRotation > 180) _currentXRotation -= 360;
+        if (_currentYRotation > 180) _currentYRotation -= 360;
+    }
+
+    private void Start()
+    {
+        OnEnable(); 
     }
 
     private void Update()
@@ -70,7 +80,7 @@ public class CameraMenuRotate : MonoBehaviour
         else
         {
             _isManualRotating = false;
-            if(_isDragging)
+            if (_isDragging)
             {
                 Invoke(nameof(EnableMouse), _timeAfterDragNothingWorks);
                 _isDragging = false;
@@ -82,7 +92,7 @@ public class CameraMenuRotate : MonoBehaviour
 
     private void HandleTargetLock()
     {
-        if(_tutu) return;
+        if (_tutu) return;
         if (_isManualRotating) return;
 
         Transform nearestTarget = null;
@@ -102,29 +112,27 @@ public class CameraMenuRotate : MonoBehaviour
             }
         }
 
-        // А вот тут нейронка постаралась, оно работает, так что норм
-        // Если нашли новую цель
         if (nearestTarget != null)
         {
             _lockedTarget = nearestTarget;
 
-            // Вычисляем желаемый поворот к цели
             Vector3 targetDirection = (_lockedTarget.position - transform.position).normalized;
             Quaternion targetLookRotation = Quaternion.LookRotation(targetDirection);
 
-            // Плавно доворачиваем текущие значения поворота
             _currentYRotation = Mathf.LerpAngle(_currentYRotation, targetLookRotation.eulerAngles.y,
                                               _lockOnSmoothness * Time.deltaTime);
             _currentXRotation = Mathf.LerpAngle(_currentXRotation, targetLookRotation.eulerAngles.x,
                                               _lockOnSmoothness * Time.deltaTime);
         }
     }
+
     private void ApplyRotation()
     {
         Quaternion targetRotation = Quaternion.Euler(_currentXRotation, _currentYRotation, 0f);
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation,
                                            _rotationSpeed * Time.deltaTime);
     }
+
     private void EnableMouse() => _isNothingWorks = false;
 }
 
