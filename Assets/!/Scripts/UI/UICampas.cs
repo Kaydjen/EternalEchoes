@@ -9,7 +9,7 @@ public class UICampas : MonoBehaviour
     [SerializeField][Range(0.1f, 2f)] private float _pointDensity = 1f; 
     [SerializeField][Range(0.1f, 5f)] private float _fadeWidth = 1f; // NOTE: just play with it, because this value makes everything extremely different 
     [SerializeField] private RectTransform _compassBarTransform;
-    [SerializeField] private Transform _cameraObjectTransform;
+    [SerializeField] private Transform _origin; // camera
 
     private void Update() => UpdateMarkers();
     private void UpdateMarkers()
@@ -21,9 +21,9 @@ public class UICampas : MonoBehaviour
         for (int i = 0; i < _points.Count; i++)
         {
             TransformRectTransform el = _points[i];
-            Vector3 directionToTarget = el.TrackedObject.position - _cameraObjectTransform.position;
+            Vector3 directionToTarget = el.TrackedObject.position - _origin.position;
             float signedAngle = Vector3.SignedAngle(
-                new Vector3(_cameraObjectTransform.forward.x, 0, _cameraObjectTransform.forward.z),
+                new Vector3(_origin.forward.x, 0, _origin.forward.z),
                 new Vector3(directionToTarget.x, 0, directionToTarget.z),
                 Vector3.up);
 
@@ -98,7 +98,7 @@ public class UICampas : MonoBehaviour
 /*   
     public RectTransform _compassBarTransform;
     public RectTransform MarkerTransform;
-    public Transform _cameraObjectTransform;
+    public Transform _origin;
     public List<Transform> _points ;
 
     void Update()
@@ -108,8 +108,8 @@ public class UICampas : MonoBehaviour
     }
     private void SetMarkerPosition(RectTransform markerTransform, Vector3 worldPosition)
     {
-        Vector3 directionToTarget = worldPosition - _cameraObjectTransform.position;
-        float signedAngle = Vector3.SignedAngle(new Vector3(_cameraObjectTransform.forward.x, 0, _cameraObjectTransform.forward.z), new Vector3(directionToTarget.x, 0, directionToTarget.z), Vector3.up);
+        Vector3 directionToTarget = worldPosition - _origin.position;
+        float signedAngle = Vector3.SignedAngle(new Vector3(_origin.forward.x, 0, _origin.forward.z), new Vector3(directionToTarget.x, 0, directionToTarget.z), Vector3.up);
         float compassPosition = Mathf.Clamp(signedAngle / Camera.main.fieldOfView, -0.5f, 0.5f);
         markerTransform.anchoredPosition = new Vector2(_compassBarTransform.rect.width * compassPosition, 0);
     }

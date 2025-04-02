@@ -2285,7 +2285,7 @@ MonoBehaviour:
   _pointDensity: 1
   _fadeWidth: 1.04
   _compassBarTransform: {fileID: 437856858}
-  _cameraObjectTransform: {fileID: 12624501}
+  _origin: {fileID: 12624501}
 --- !u!114 &1124769251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2300,14 +2300,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _barTransform: {fileID: 437856858}
   _placeToInstantiate: {fileID: 1091509900}
+  _origin: {fileID: 12624501}
+  _target: {fileID: 551283370}
   _pointsListInspector:
   - {fileID: 5851825161822238666, guid: ebb8577bdc6d3d64f812abac819d32e9, type: 3}
   - {fileID: 5851825161822238666, guid: ebb8577bdc6d3d64f812abac819d32e9, type: 3}
   - {fileID: 5851825161822238666, guid: ebb8577bdc6d3d64f812abac819d32e9, type: 3}
   - {fileID: 5851825161822238666, guid: ebb8577bdc6d3d64f812abac819d32e9, type: 3}
   - {fileID: 6352561799129767599, guid: 6259f426e5d0e944aad795977dd16041, type: 3}
-  _widthBtwPoints: 2
-  _pointsWidth: 3
+  _widthBtwPoints: 5
+  _pointsWidth: 5
 --- !u!1 &1258997485
 GameObject:
   m_ObjectHideFlags: 0
