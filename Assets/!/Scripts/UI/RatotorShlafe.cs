@@ -17,60 +17,46 @@ public class RatotorShlafe : MonoBehaviour
     private float _oldNormalizedPosition = 0f;
     private float _barWidth;
     private float _halfBarWidth;
-    private bool _isInitialized = false;
 
     private void Awake()
     {
-        // Проверка на null и валидность параметров
-        if (_barTransform == null || _placeToInstantiate == null || _origin == null || _target == null)
+        if (_pointsListInspector.Count == 0 || _widthBtwPoints <= 0)
         {
-            Debug.LogError("One or more required transforms are not assigned!");
-            return;
-        }
-
-        if (_pointsListInspector.Count == 0 || _widthBtwPoints <= 0 || _pointsWidth <= 0)
-        {
-            Debug.LogError("Invalid setup: empty points list or non-positive width values!");
+            Debug.LogError("Invalid setup: empty points list or zero width between points");
             return;
         }
 
         _barWidth = _barTransform.rect.width;
-        if (_barWidth <= 0)
+        int countToPlace = Mathf.FloorToInt(_barWidth / (_widthBtwPoints + _pointsWidth));
+
+        // Create the required number of points
+        int pointsNeeded = countToPlace;
+        int pointsPerCycle = _pointsListInspector.Count;
+        int cycles = Mathf.CeilToInt((float)pointsNeeded / pointsPerCycle);
+
+        for (int i = 0; i < cycles; i++)
         {
-            Debug.LogError("Bar width must be positive!");
-            return;
+            foreach (RectTransform el in _pointsListInspector)
+            {
+                if (_pointsList.Count >= pointsNeeded) break;
+                RectTransform t = Instantiate(el, _placeToInstantiate);
+                _pointsList.Add(t);
+            }
         }
 
-        // Рассчитываем количество точек с учетом их ширины и промежутков
-        float totalUnitWidth = _widthBtwPoints + _pointsWidth;
-        int countToPlace = Mathf.Max(1, Mathf.FloorToInt((_barWidth + _widthBtwPoints) / totalUnitWidth));
-
-        // Создаем точки, циклически используя шаблоны из _pointsListInspector
-        for (int i = 0; i < countToPlace; i++)
-        {
-            int templateIndex = i % _pointsListInspector.Count;
-            RectTransform point = Instantiate(_pointsListInspector[templateIndex], _placeToInstantiate);
-            _pointsList.Add(point);
-        }
-
-        // Распределяем точки равномерно внутри бара
+        // distribute dots evenly within the bar
         _halfBarWidth = _barWidth * 0.5f;
-        float effectiveWidth = _barWidth - _pointsWidth; // Учитываем ширину последней точки
-        float step = (countToPlace > 1) ? effectiveWidth / (countToPlace - 1) : 0f;
+        float step = _barWidth / (countToPlace - 1); // step between points
 
         for (int i = 0; i < _pointsList.Count; i++)
         {
             float xPos = -_halfBarWidth + i * step;
             _pointsList[i].anchoredPosition = new Vector2(xPos, 0f);
         }
-
-        _isInitialized = true;
     }
 
     private void Update()
     {
-        if (!_isInitialized) return;
-
         _directionToTarget = _target.position - _origin.position;
         float signedAngle = Vector3.SignedAngle(
             new Vector3(_origin.forward.x, 0, _origin.forward.z),
@@ -88,15 +74,8 @@ public class RatotorShlafe : MonoBehaviour
         {
             float newPos = point.anchoredPosition.x + movement;
 
-            // Перенос точки при выходе за границы бара
-            if (newPos < -_halfBarWidth)
-            {
-                newPos += _barWidth;
-            }
-            else if (newPos > _halfBarWidth)
-            {
-                newPos -= _barWidth;
-            }
+            if (newPos < -_halfBarWidth) newPos += _barWidth;
+            else if (newPos > _halfBarWidth) newPos -= _barWidth;
 
             point.anchoredPosition = new Vector2(newPos, 0f);
         }
