@@ -10,7 +10,7 @@ public class SwitchPanelMenuRotate : MonoBehaviour
     [SerializeField] private float _speed = 10f;
     [SerializeField] private float _rotationThreshold = 0.1f; // Порог для завершения поворота
     private CameraMenuRotate _rotator;
-
+    private Coroutine _coroutine;
     private void Awake()
     {
         _rotator = GetComponent<CameraMenuRotate>();
@@ -24,7 +24,8 @@ public class SwitchPanelMenuRotate : MonoBehaviour
             return;
         }
 
-        StartCoroutine(SmoothRotation(number));
+        if (_coroutine != null) StopCoroutine(_coroutine);
+        _coroutine = StartCoroutine(SmoothRotation(number));
     }
 
     private IEnumerator SmoothRotation(int number)

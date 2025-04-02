@@ -394,7 +394,7 @@ MonoBehaviour:
   _sensitivityDrag: 20
   _minVerticalRotation: -5
   _maxVerticalRotation: 5
-  _timeAfterDragNothingWorks: 0.2
+  _timeAfterDragNothingWorks: 0.5
 --- !u!114 &12624507
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -414,6 +414,8 @@ MonoBehaviour:
   - {fileID: 1936439734}
   - {fileID: 1724304860}
   - {fileID: 782104058}
+  _speed: 7
+  _rotationThreshold: 0.1
 --- !u!1 &64396722
 GameObject:
   m_ObjectHideFlags: 0
