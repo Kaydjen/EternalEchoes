@@ -18,7 +18,7 @@ public class RatotorShlafe : MonoBehaviour
     private float _barWidth;
     private float _halfBarWidth;
 
-    private void Awake()
+    private void Start()
     {
         if (_pointsListInspector.Count == 0 || _widthBtwPoints <= 0)
         {

@@ -56,7 +56,7 @@ public class CameraMenuRotate : MonoBehaviour
             _lockedTarget = null;
 
             _currentYRotation -= _mouseDelta.x * _sensitivityDrag * Time.deltaTime;
-            _currentXRotation -= _mouseDelta.y * _sensitivityDrag * Time.deltaTime;
+            //_currentXRotation -= _mouseDelta.y * _sensitivityDrag * Time.deltaTime;
         }
         else if (_mouseDelta.magnitude > 0.1f && !_isNothingWorks)
         {
