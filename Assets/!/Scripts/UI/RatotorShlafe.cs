@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
-using static UnityEditor.PlayerSettings;
 
 public class RatotorShlafe : MonoBehaviour
 {
@@ -24,7 +23,7 @@ public class RatotorShlafe : MonoBehaviour
         float barWidth = _barTransform.rect.width;
         int countToPlace = Mathf.FloorToInt(barWidth / (_widthBtwPoints + _pointsWidth));
 
-        // Создаем нужное количество точек
+        // Create the required number of points
         int pointsNeeded = countToPlace;
         int pointsPerCycle = _pointsListInspector.Count;
         int cycles = Mathf.CeilToInt((float)pointsNeeded / pointsPerCycle);
@@ -39,9 +38,9 @@ public class RatotorShlafe : MonoBehaviour
             }
         }
 
-        // Равномерно распределяем точки внутри бара
+        // distribute dots evenly within the bar
         float halfBarWidth = barWidth * 0.5f;
-        float step = barWidth / (countToPlace - 1); // Шаг между точками
+        float step = barWidth / (countToPlace - 1); // step between points
 
         for (int i = 0; i < _pointsList.Count; i++)
         {
