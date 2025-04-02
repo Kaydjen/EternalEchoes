@@ -19150,11 +19150,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Panel
       objectReference: {fileID: 0}
-    - target: {fileID: 6123588090074504356, guid: fc36e326b60254040ac9827a7ee19329,
-        type: 3}
-      propertyPath: m_text
-      value: 02
-      objectReference: {fileID: 0}
     - target: {fileID: 6875582888022407607, guid: fc36e326b60254040ac9827a7ee19329,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -37486,6 +37481,13 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Panel
+      objectReference: {fileID: 0}
+    - target: {fileID: 6123588090074504356, guid: fc36e326b60254040ac9827a7ee19329,
+        type: 3}
+      propertyPath: m_text
+      value: '01
+
+'
       objectReference: {fileID: 0}
     - target: {fileID: 6875582888022407607, guid: fc36e326b60254040ac9827a7ee19329,
         type: 3}
