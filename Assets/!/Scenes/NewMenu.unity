@@ -7800,6 +7800,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Marker (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 6372244439780121260, guid: 92e6d35feedc52948b2f356a329c30b7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7029060835202081799, guid: 92e6d35feedc52948b2f356a329c30b7,
         type: 3}
       propertyPath: m_Pivot.x
@@ -8159,6 +8164,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Marker (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6372244439780121260, guid: 92e6d35feedc52948b2f356a329c30b7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7029060835202081799, guid: 92e6d35feedc52948b2f356a329c30b7,
         type: 3}
@@ -9228,6 +9238,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Marker (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 6372244439780121260, guid: 92e6d35feedc52948b2f356a329c30b7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7029060835202081799, guid: 92e6d35feedc52948b2f356a329c30b7,
         type: 3}
       propertyPath: m_Pivot.x
@@ -9345,6 +9360,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Marker (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6372244439780121260, guid: 92e6d35feedc52948b2f356a329c30b7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7029060835202081799, guid: 92e6d35feedc52948b2f356a329c30b7,
         type: 3}
@@ -9703,6 +9723,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Marker (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6372244439780121260, guid: 92e6d35feedc52948b2f356a329c30b7,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7029060835202081799, guid: 92e6d35feedc52948b2f356a329c30b7,
         type: 3}
@@ -11668,6 +11693,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Panel
+      objectReference: {fileID: 0}
+    - target: {fileID: 4028674953241056675, guid: fc36e326b60254040ac9827a7ee19329,
+        type: 3}
+      propertyPath: m_Name
+      value: Setting
+      objectReference: {fileID: 0}
+    - target: {fileID: 6193705049572480003, guid: fc36e326b60254040ac9827a7ee19329,
+        type: 3}
+      propertyPath: m_Name
+      value: Number
       objectReference: {fileID: 0}
     - target: {fileID: 6875582888022407607, guid: fc36e326b60254040ac9827a7ee19329,
         type: 3}
