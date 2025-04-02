@@ -381,9 +381,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _targets:
   - {fileID: 551283370}
-  - {fileID: 1936439734}
   - {fileID: 526035104}
   - {fileID: 706399866}
+  - {fileID: 1936439734}
   - {fileID: 1724304860}
   - {fileID: 782104058}
   _angleThreshold: 20
@@ -9982,6 +9982,11 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: SwitchToPanel
       objectReference: {fileID: 0}
+    - target: {fileID: 8075181037462480927, guid: 92e6d35feedc52948b2f356a329c30b7,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10119,6 +10124,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: SwitchToPanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 8075181037462480927, guid: 92e6d35feedc52948b2f356a329c30b7,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
