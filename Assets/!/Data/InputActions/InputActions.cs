@@ -116,6 +116,15 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Jump"",
+                    ""type"": ""Button"",
+                    ""id"": ""eb71b13c-f5a2-4824-a0ef-0e06b5bb891a"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -272,6 +281,17 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""action"": ""HPRecovery"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e628f776-bb1d-42bd-91a6-1e868f547b57"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -287,6 +307,15 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Jump"",
+                    ""type"": ""Button"",
+                    ""id"": ""f46b951a-b036-4e02-8f47-de5114a3148b"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 },
                 {
                     ""name"": ""HPRecovery"",
@@ -399,6 +428,17 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""68326760-2e89-44b8-8773-4d79add63379"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""bd4631a3-0501-42a9-a70f-38a7f7cb5627"",
                     ""path"": ""<Keyboard>/v"",
                     ""interactions"": """",
@@ -499,6 +539,15 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Jump"",
+                    ""type"": ""Button"",
+                    ""id"": ""12309e44-7018-42bd-9fdd-aa63651d0325"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 },
                 {
                     ""name"": ""HPRecovery"",
@@ -624,6 +673,17 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Mouse"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bdc94215-ed52-4848-b65d-25758deeb6ae"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -1259,9 +1319,11 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         m_FPV_AimRMB = m_FPV.FindAction("AimRMB", throwIfNotFound: true);
         m_FPV_Reload = m_FPV.FindAction("Reload", throwIfNotFound: true);
         m_FPV_HPRecovery = m_FPV.FindAction("HPRecovery", throwIfNotFound: true);
+        m_FPV_Jump = m_FPV.FindAction("Jump", throwIfNotFound: true);
         // Top-Down
         m_TopDown = asset.FindActionMap("Top-Down", throwIfNotFound: true);
         m_TopDown_ScreenEdgePanning = m_TopDown.FindAction("ScreenEdgePanning", throwIfNotFound: true);
+        m_TopDown_Jump = m_TopDown.FindAction("Jump", throwIfNotFound: true);
         m_TopDown_HPRecovery = m_TopDown.FindAction("HPRecovery", throwIfNotFound: true);
         m_TopDown_KeyboardCameraMovement = m_TopDown.FindAction("KeyboardCameraMovement", throwIfNotFound: true);
         m_TopDown_ClickAndDrag = m_TopDown.FindAction("ClickAndDrag", throwIfNotFound: true);
@@ -1272,6 +1334,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         // Isometric
         m_Isometric = asset.FindActionMap("Isometric", throwIfNotFound: true);
         m_Isometric_Mouse = m_Isometric.FindAction("Mouse", throwIfNotFound: true);
+        m_Isometric_Jump = m_Isometric.FindAction("Jump", throwIfNotFound: true);
         m_Isometric_HPRecovery = m_Isometric.FindAction("HPRecovery", throwIfNotFound: true);
         m_Isometric_AimRMB = m_Isometric.FindAction("AimRMB", throwIfNotFound: true);
         m_Isometric_Reload = m_Isometric.FindAction("Reload", throwIfNotFound: true);
@@ -1393,6 +1456,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_FPV_AimRMB;
     private readonly InputAction m_FPV_Reload;
     private readonly InputAction m_FPV_HPRecovery;
+    private readonly InputAction m_FPV_Jump;
     public struct FPVActions
     {
         private @InputActions m_Wrapper;
@@ -1407,6 +1471,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         public InputAction @AimRMB => m_Wrapper.m_FPV_AimRMB;
         public InputAction @Reload => m_Wrapper.m_FPV_Reload;
         public InputAction @HPRecovery => m_Wrapper.m_FPV_HPRecovery;
+        public InputAction @Jump => m_Wrapper.m_FPV_Jump;
         public InputActionMap Get() { return m_Wrapper.m_FPV; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1446,6 +1511,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @HPRecovery.started += instance.OnHPRecovery;
             @HPRecovery.performed += instance.OnHPRecovery;
             @HPRecovery.canceled += instance.OnHPRecovery;
+            @Jump.started += instance.OnJump;
+            @Jump.performed += instance.OnJump;
+            @Jump.canceled += instance.OnJump;
         }
 
         private void UnregisterCallbacks(IFPVActions instance)
@@ -1480,6 +1548,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @HPRecovery.started -= instance.OnHPRecovery;
             @HPRecovery.performed -= instance.OnHPRecovery;
             @HPRecovery.canceled -= instance.OnHPRecovery;
+            @Jump.started -= instance.OnJump;
+            @Jump.performed -= instance.OnJump;
+            @Jump.canceled -= instance.OnJump;
         }
 
         public void RemoveCallbacks(IFPVActions instance)
@@ -1502,6 +1573,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_TopDown;
     private List<ITopDownActions> m_TopDownActionsCallbackInterfaces = new List<ITopDownActions>();
     private readonly InputAction m_TopDown_ScreenEdgePanning;
+    private readonly InputAction m_TopDown_Jump;
     private readonly InputAction m_TopDown_HPRecovery;
     private readonly InputAction m_TopDown_KeyboardCameraMovement;
     private readonly InputAction m_TopDown_ClickAndDrag;
@@ -1514,6 +1586,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         private @InputActions m_Wrapper;
         public TopDownActions(@InputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @ScreenEdgePanning => m_Wrapper.m_TopDown_ScreenEdgePanning;
+        public InputAction @Jump => m_Wrapper.m_TopDown_Jump;
         public InputAction @HPRecovery => m_Wrapper.m_TopDown_HPRecovery;
         public InputAction @KeyboardCameraMovement => m_Wrapper.m_TopDown_KeyboardCameraMovement;
         public InputAction @ClickAndDrag => m_Wrapper.m_TopDown_ClickAndDrag;
@@ -1533,6 +1606,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @ScreenEdgePanning.started += instance.OnScreenEdgePanning;
             @ScreenEdgePanning.performed += instance.OnScreenEdgePanning;
             @ScreenEdgePanning.canceled += instance.OnScreenEdgePanning;
+            @Jump.started += instance.OnJump;
+            @Jump.performed += instance.OnJump;
+            @Jump.canceled += instance.OnJump;
             @HPRecovery.started += instance.OnHPRecovery;
             @HPRecovery.performed += instance.OnHPRecovery;
             @HPRecovery.canceled += instance.OnHPRecovery;
@@ -1561,6 +1637,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @ScreenEdgePanning.started -= instance.OnScreenEdgePanning;
             @ScreenEdgePanning.performed -= instance.OnScreenEdgePanning;
             @ScreenEdgePanning.canceled -= instance.OnScreenEdgePanning;
+            @Jump.started -= instance.OnJump;
+            @Jump.performed -= instance.OnJump;
+            @Jump.canceled -= instance.OnJump;
             @HPRecovery.started -= instance.OnHPRecovery;
             @HPRecovery.performed -= instance.OnHPRecovery;
             @HPRecovery.canceled -= instance.OnHPRecovery;
@@ -1604,6 +1683,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Isometric;
     private List<IIsometricActions> m_IsometricActionsCallbackInterfaces = new List<IIsometricActions>();
     private readonly InputAction m_Isometric_Mouse;
+    private readonly InputAction m_Isometric_Jump;
     private readonly InputAction m_Isometric_HPRecovery;
     private readonly InputAction m_Isometric_AimRMB;
     private readonly InputAction m_Isometric_Reload;
@@ -1618,6 +1698,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         private @InputActions m_Wrapper;
         public IsometricActions(@InputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Mouse => m_Wrapper.m_Isometric_Mouse;
+        public InputAction @Jump => m_Wrapper.m_Isometric_Jump;
         public InputAction @HPRecovery => m_Wrapper.m_Isometric_HPRecovery;
         public InputAction @AimRMB => m_Wrapper.m_Isometric_AimRMB;
         public InputAction @Reload => m_Wrapper.m_Isometric_Reload;
@@ -1639,6 +1720,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @Mouse.started += instance.OnMouse;
             @Mouse.performed += instance.OnMouse;
             @Mouse.canceled += instance.OnMouse;
+            @Jump.started += instance.OnJump;
+            @Jump.performed += instance.OnJump;
+            @Jump.canceled += instance.OnJump;
             @HPRecovery.started += instance.OnHPRecovery;
             @HPRecovery.performed += instance.OnHPRecovery;
             @HPRecovery.canceled += instance.OnHPRecovery;
@@ -1673,6 +1757,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @Mouse.started -= instance.OnMouse;
             @Mouse.performed -= instance.OnMouse;
             @Mouse.canceled -= instance.OnMouse;
+            @Jump.started -= instance.OnJump;
+            @Jump.performed -= instance.OnJump;
+            @Jump.canceled -= instance.OnJump;
             @HPRecovery.started -= instance.OnHPRecovery;
             @HPRecovery.performed -= instance.OnHPRecovery;
             @HPRecovery.canceled -= instance.OnHPRecovery;
@@ -2057,10 +2144,12 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         void OnAimRMB(InputAction.CallbackContext context);
         void OnReload(InputAction.CallbackContext context);
         void OnHPRecovery(InputAction.CallbackContext context);
+        void OnJump(InputAction.CallbackContext context);
     }
     public interface ITopDownActions
     {
         void OnScreenEdgePanning(InputAction.CallbackContext context);
+        void OnJump(InputAction.CallbackContext context);
         void OnHPRecovery(InputAction.CallbackContext context);
         void OnKeyboardCameraMovement(InputAction.CallbackContext context);
         void OnClickAndDrag(InputAction.CallbackContext context);
@@ -2072,6 +2161,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     public interface IIsometricActions
     {
         void OnMouse(InputAction.CallbackContext context);
+        void OnJump(InputAction.CallbackContext context);
         void OnHPRecovery(InputAction.CallbackContext context);
         void OnAimRMB(InputAction.CallbackContext context);
         void OnReload(InputAction.CallbackContext context);

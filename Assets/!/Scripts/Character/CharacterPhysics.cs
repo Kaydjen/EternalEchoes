@@ -32,6 +32,16 @@ public class CharacterPhysics : MonoBehaviour, ICameraUpdate, IUpdate
         _groundCheckPosition = PlayerCore.Instance.Component.GetGroundCheck();
     }
     #endregion
+    #region Private
+    private void Jump()
+    {
+        if (_isGrounded)// chack if the player staying on the ground and can jump
+        {
+            _verticalVelocity = _jumpForce;
+            _isJumping = true;
+        }
+    }
+    #endregion
     #region Update
     public void PerformInitialUpdate()
     {
@@ -72,16 +82,6 @@ public class CharacterPhysics : MonoBehaviour, ICameraUpdate, IUpdate
             _verticalVelocity -= ((_gravity * _mass * 2.96f * Mathf.Sqrt(Time.deltaTime)) + _fallAcceleration) * Time.deltaTime;
         }
 
-        if (_isGrounded) // chack if the player staying on the ground and can jump
-        {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                _verticalVelocity = _jumpForce;
-                _isJumping = true;
-            }
-        }
-
-
         _controller.Move(new Vector3(0f, _verticalVelocity, 0f) * Time.deltaTime); // apply all physics to the player
     }
     public void PerformPreUpdate()
@@ -112,11 +112,13 @@ public class CharacterPhysics : MonoBehaviour, ICameraUpdate, IUpdate
     #region MONOBEHAVIOUR
     private void OnEnable()
     {
+        InputHandler.OnJump.AddListener(Jump);
         UpdateNeededComponents();
         RegisterUpdate();
     }
     private void OnDisable()
     {
+        InputHandler.OnJump.RemoveListener(Jump);
         UnregisterUpdate();
     }
     #endregion
