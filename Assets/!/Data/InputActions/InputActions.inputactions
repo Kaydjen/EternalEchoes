@@ -85,6 +85,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "HPRecovery",
+                    "type": "Button",
+                    "id": "5b128459-6d1b-45d6-a5a1-a0d8abbb2b3b",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -230,6 +239,17 @@
                     "action": "Reload",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d4e490eb-291b-4c33-886c-844de403583d",
+                    "path": "<Keyboard>/v",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "HPRecovery",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
@@ -245,6 +265,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "HPRecovery",
+                    "type": "Button",
+                    "id": "51418ea9-f003-4d18-9dae-1c776a8f82d0",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "KeyboardCameraMovement",
@@ -347,6 +376,17 @@
                     "isPartOfComposite": false
                 },
                 {
+                    "name": "",
+                    "id": "bd4631a3-0501-42a9-a70f-38a7f7cb5627",
+                    "path": "<Keyboard>/v",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "HPRecovery",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
                     "name": "2D Vector",
                     "id": "a27e85c4-745b-4f89-83f4-f2edd1bac4c1",
                     "path": "2DVector",
@@ -437,6 +477,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "HPRecovery",
+                    "type": "Button",
+                    "id": "88e76ace-ffa5-4cff-ab3b-b4a011f1f391",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 },
                 {
                     "name": "AimRMB",
@@ -553,6 +602,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Mouse",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ff62f364-6d29-4b87-91db-7f10f61797e0",
+                    "path": "<Keyboard>/v",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "HPRecovery",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

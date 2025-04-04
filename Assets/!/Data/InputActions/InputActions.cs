@@ -107,6 +107,15 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""HPRecovery"",
+                    ""type"": ""Button"",
+                    ""id"": ""5b128459-6d1b-45d6-a5a1-a0d8abbb2b3b"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -252,6 +261,17 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""action"": ""Reload"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d4e490eb-291b-4c33-886c-844de403583d"",
+                    ""path"": ""<Keyboard>/v"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""HPRecovery"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -267,6 +287,15 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""HPRecovery"",
+                    ""type"": ""Button"",
+                    ""id"": ""51418ea9-f003-4d18-9dae-1c776a8f82d0"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 },
                 {
                     ""name"": ""KeyboardCameraMovement"",
@@ -369,6 +398,17 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
+                    ""name"": """",
+                    ""id"": ""bd4631a3-0501-42a9-a70f-38a7f7cb5627"",
+                    ""path"": ""<Keyboard>/v"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""HPRecovery"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
                     ""name"": ""2D Vector"",
                     ""id"": ""a27e85c4-745b-4f89-83f4-f2edd1bac4c1"",
                     ""path"": ""2DVector"",
@@ -459,6 +499,15 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""HPRecovery"",
+                    ""type"": ""Button"",
+                    ""id"": ""88e76ace-ffa5-4cff-ab3b-b4a011f1f391"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 },
                 {
                     ""name"": ""AimRMB"",
@@ -575,6 +624,17 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Mouse"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ff62f364-6d29-4b87-91db-7f10f61797e0"",
+                    ""path"": ""<Keyboard>/v"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""HPRecovery"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -1198,9 +1258,11 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         m_FPV_AttackRMB = m_FPV.FindAction("AttackRMB", throwIfNotFound: true);
         m_FPV_AimRMB = m_FPV.FindAction("AimRMB", throwIfNotFound: true);
         m_FPV_Reload = m_FPV.FindAction("Reload", throwIfNotFound: true);
+        m_FPV_HPRecovery = m_FPV.FindAction("HPRecovery", throwIfNotFound: true);
         // Top-Down
         m_TopDown = asset.FindActionMap("Top-Down", throwIfNotFound: true);
         m_TopDown_ScreenEdgePanning = m_TopDown.FindAction("ScreenEdgePanning", throwIfNotFound: true);
+        m_TopDown_HPRecovery = m_TopDown.FindAction("HPRecovery", throwIfNotFound: true);
         m_TopDown_KeyboardCameraMovement = m_TopDown.FindAction("KeyboardCameraMovement", throwIfNotFound: true);
         m_TopDown_ClickAndDrag = m_TopDown.FindAction("ClickAndDrag", throwIfNotFound: true);
         m_TopDown_ZoomCamera = m_TopDown.FindAction("ZoomCamera", throwIfNotFound: true);
@@ -1210,6 +1272,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         // Isometric
         m_Isometric = asset.FindActionMap("Isometric", throwIfNotFound: true);
         m_Isometric_Mouse = m_Isometric.FindAction("Mouse", throwIfNotFound: true);
+        m_Isometric_HPRecovery = m_Isometric.FindAction("HPRecovery", throwIfNotFound: true);
         m_Isometric_AimRMB = m_Isometric.FindAction("AimRMB", throwIfNotFound: true);
         m_Isometric_Reload = m_Isometric.FindAction("Reload", throwIfNotFound: true);
         m_Isometric_Interaction = m_Isometric.FindAction("Interaction", throwIfNotFound: true);
@@ -1329,6 +1392,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_FPV_AttackRMB;
     private readonly InputAction m_FPV_AimRMB;
     private readonly InputAction m_FPV_Reload;
+    private readonly InputAction m_FPV_HPRecovery;
     public struct FPVActions
     {
         private @InputActions m_Wrapper;
@@ -1342,6 +1406,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         public InputAction @AttackRMB => m_Wrapper.m_FPV_AttackRMB;
         public InputAction @AimRMB => m_Wrapper.m_FPV_AimRMB;
         public InputAction @Reload => m_Wrapper.m_FPV_Reload;
+        public InputAction @HPRecovery => m_Wrapper.m_FPV_HPRecovery;
         public InputActionMap Get() { return m_Wrapper.m_FPV; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1378,6 +1443,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @Reload.started += instance.OnReload;
             @Reload.performed += instance.OnReload;
             @Reload.canceled += instance.OnReload;
+            @HPRecovery.started += instance.OnHPRecovery;
+            @HPRecovery.performed += instance.OnHPRecovery;
+            @HPRecovery.canceled += instance.OnHPRecovery;
         }
 
         private void UnregisterCallbacks(IFPVActions instance)
@@ -1409,6 +1477,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @Reload.started -= instance.OnReload;
             @Reload.performed -= instance.OnReload;
             @Reload.canceled -= instance.OnReload;
+            @HPRecovery.started -= instance.OnHPRecovery;
+            @HPRecovery.performed -= instance.OnHPRecovery;
+            @HPRecovery.canceled -= instance.OnHPRecovery;
         }
 
         public void RemoveCallbacks(IFPVActions instance)
@@ -1431,6 +1502,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_TopDown;
     private List<ITopDownActions> m_TopDownActionsCallbackInterfaces = new List<ITopDownActions>();
     private readonly InputAction m_TopDown_ScreenEdgePanning;
+    private readonly InputAction m_TopDown_HPRecovery;
     private readonly InputAction m_TopDown_KeyboardCameraMovement;
     private readonly InputAction m_TopDown_ClickAndDrag;
     private readonly InputAction m_TopDown_ZoomCamera;
@@ -1442,6 +1514,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         private @InputActions m_Wrapper;
         public TopDownActions(@InputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @ScreenEdgePanning => m_Wrapper.m_TopDown_ScreenEdgePanning;
+        public InputAction @HPRecovery => m_Wrapper.m_TopDown_HPRecovery;
         public InputAction @KeyboardCameraMovement => m_Wrapper.m_TopDown_KeyboardCameraMovement;
         public InputAction @ClickAndDrag => m_Wrapper.m_TopDown_ClickAndDrag;
         public InputAction @ZoomCamera => m_Wrapper.m_TopDown_ZoomCamera;
@@ -1460,6 +1533,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @ScreenEdgePanning.started += instance.OnScreenEdgePanning;
             @ScreenEdgePanning.performed += instance.OnScreenEdgePanning;
             @ScreenEdgePanning.canceled += instance.OnScreenEdgePanning;
+            @HPRecovery.started += instance.OnHPRecovery;
+            @HPRecovery.performed += instance.OnHPRecovery;
+            @HPRecovery.canceled += instance.OnHPRecovery;
             @KeyboardCameraMovement.started += instance.OnKeyboardCameraMovement;
             @KeyboardCameraMovement.performed += instance.OnKeyboardCameraMovement;
             @KeyboardCameraMovement.canceled += instance.OnKeyboardCameraMovement;
@@ -1485,6 +1561,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @ScreenEdgePanning.started -= instance.OnScreenEdgePanning;
             @ScreenEdgePanning.performed -= instance.OnScreenEdgePanning;
             @ScreenEdgePanning.canceled -= instance.OnScreenEdgePanning;
+            @HPRecovery.started -= instance.OnHPRecovery;
+            @HPRecovery.performed -= instance.OnHPRecovery;
+            @HPRecovery.canceled -= instance.OnHPRecovery;
             @KeyboardCameraMovement.started -= instance.OnKeyboardCameraMovement;
             @KeyboardCameraMovement.performed -= instance.OnKeyboardCameraMovement;
             @KeyboardCameraMovement.canceled -= instance.OnKeyboardCameraMovement;
@@ -1525,6 +1604,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Isometric;
     private List<IIsometricActions> m_IsometricActionsCallbackInterfaces = new List<IIsometricActions>();
     private readonly InputAction m_Isometric_Mouse;
+    private readonly InputAction m_Isometric_HPRecovery;
     private readonly InputAction m_Isometric_AimRMB;
     private readonly InputAction m_Isometric_Reload;
     private readonly InputAction m_Isometric_Interaction;
@@ -1538,6 +1618,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         private @InputActions m_Wrapper;
         public IsometricActions(@InputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Mouse => m_Wrapper.m_Isometric_Mouse;
+        public InputAction @HPRecovery => m_Wrapper.m_Isometric_HPRecovery;
         public InputAction @AimRMB => m_Wrapper.m_Isometric_AimRMB;
         public InputAction @Reload => m_Wrapper.m_Isometric_Reload;
         public InputAction @Interaction => m_Wrapper.m_Isometric_Interaction;
@@ -1558,6 +1639,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @Mouse.started += instance.OnMouse;
             @Mouse.performed += instance.OnMouse;
             @Mouse.canceled += instance.OnMouse;
+            @HPRecovery.started += instance.OnHPRecovery;
+            @HPRecovery.performed += instance.OnHPRecovery;
+            @HPRecovery.canceled += instance.OnHPRecovery;
             @AimRMB.started += instance.OnAimRMB;
             @AimRMB.performed += instance.OnAimRMB;
             @AimRMB.canceled += instance.OnAimRMB;
@@ -1589,6 +1673,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @Mouse.started -= instance.OnMouse;
             @Mouse.performed -= instance.OnMouse;
             @Mouse.canceled -= instance.OnMouse;
+            @HPRecovery.started -= instance.OnHPRecovery;
+            @HPRecovery.performed -= instance.OnHPRecovery;
+            @HPRecovery.canceled -= instance.OnHPRecovery;
             @AimRMB.started -= instance.OnAimRMB;
             @AimRMB.performed -= instance.OnAimRMB;
             @AimRMB.canceled -= instance.OnAimRMB;
@@ -1969,10 +2056,12 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         void OnAttackRMB(InputAction.CallbackContext context);
         void OnAimRMB(InputAction.CallbackContext context);
         void OnReload(InputAction.CallbackContext context);
+        void OnHPRecovery(InputAction.CallbackContext context);
     }
     public interface ITopDownActions
     {
         void OnScreenEdgePanning(InputAction.CallbackContext context);
+        void OnHPRecovery(InputAction.CallbackContext context);
         void OnKeyboardCameraMovement(InputAction.CallbackContext context);
         void OnClickAndDrag(InputAction.CallbackContext context);
         void OnZoomCamera(InputAction.CallbackContext context);
@@ -1983,6 +2072,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     public interface IIsometricActions
     {
         void OnMouse(InputAction.CallbackContext context);
+        void OnHPRecovery(InputAction.CallbackContext context);
         void OnAimRMB(InputAction.CallbackContext context);
         void OnReload(InputAction.CallbackContext context);
         void OnInteraction(InputAction.CallbackContext context);

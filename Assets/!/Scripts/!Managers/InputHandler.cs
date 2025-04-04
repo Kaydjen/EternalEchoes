@@ -68,6 +68,7 @@ public class InputHandler : MonoBehaviour
     public static UnityEvent OnEnterAimingMode { get; private set; } = new UnityEvent();
     public static UnityEvent OnExitAimingMode { get; private set; } = new UnityEvent();
     public static UnityEvent OnReload { get; private set; } = new UnityEvent();
+    public static UnityEvent OnHPRecovery { get; private set; } = new UnityEvent();
 
     #endregion Static variables
     #region Init methods
@@ -198,6 +199,11 @@ public class InputHandler : MonoBehaviour
 
         _FPV.Reload.performed += _ => OnReload.Invoke();
         _Isometric.Reload.performed += _ => OnReload.Invoke();
+
+        _FPV.HPRecovery.performed += _ => OnHPRecovery.Invoke();
+        _TopDown.HPRecovery.performed += _ => OnHPRecovery.Invoke();
+        _Isometric.HPRecovery.performed += _ => OnHPRecovery.Invoke();
+        
         // Add here a new one
     }
     #endregion Init methods
