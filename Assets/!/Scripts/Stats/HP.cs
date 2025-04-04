@@ -25,6 +25,9 @@ public class HPRecovery : Stats, IGameplayModeSwitcher
     public override event Action<float, float> OnValueChanged;
 
     [SerializeField] private List<float> _levels;
+
+    public override float Max { get => base.Max; set => base.Max = value; }
+    public override float Current { get => base.Current; set => base.Current = value; }
     public void Recovery()
     {
 
