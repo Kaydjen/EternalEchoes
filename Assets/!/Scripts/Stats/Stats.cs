@@ -12,6 +12,8 @@ public class Stats : MonoBehaviour, IStatsValue
         set
         {
             currentValue = Mathf.Clamp(value, 0f, maxValue);
+            OnValueChanged?.Invoke(currentValue, maxValue);
+            Debug.Log("Blia, i czo nie tak togda");
         }
     }
     public virtual float Max 

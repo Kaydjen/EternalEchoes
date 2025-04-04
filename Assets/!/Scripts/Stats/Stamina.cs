@@ -11,7 +11,6 @@ public class Stamina : Stats, IGameplayModeSwitcher, IUpdate
     private bool hasShot = true;
 
     public override ESliderType Type { get => ESliderType.Stamina; set { } }
-    public override event Action<float, float> OnValueChanged;
 
     public bool SubtractStamina(float value)
     {
@@ -22,8 +21,7 @@ public class Stamina : Stats, IGameplayModeSwitcher, IUpdate
             _staminaCoroutine = null;
         }
         _lastTimeShot = Time.time + _staminaDelay;
-        currentValue -= value;
-        OnValueChanged?.Invoke(currentValue, maxValue);
+        Current -= value;
         hasShot = true;
         return true;
     }
@@ -31,11 +29,10 @@ public class Stamina : Stats, IGameplayModeSwitcher, IUpdate
     {
         while (currentValue < maxValue)
         {
-            currentValue += 1f;
-            OnValueChanged?.Invoke(currentValue, maxValue);
+            Current += 1f;
             yield return new WaitForSeconds(_regenSpeed);
         }
-        currentValue = maxValue;
+        Current = maxValue;
         _staminaCoroutine = null;
     }
     public void ForManualMode()
