@@ -11,7 +11,7 @@ public class AIPlSwapper : MonoBehaviour
         CameraSwitcher.Instance.UpdateControls();
     }
     /// <summary> 
-    ///  Activate Manual controls on current character (and disable AI)
+    ///  Activate Manual controls on currentValue character (and disable AI)
     /// </summary>
     public static void ActivateManualControl()
     {
@@ -20,7 +20,7 @@ public class AIPlSwapper : MonoBehaviour
         PlayerCore.Instance.transform.GetComponent<GameplayModeSwitcher>().ManualMode();
     }
     /// <summary>
-    ///  Activate AI controls on current character  (and disable Manual)
+    ///  Activate AI controls on currentValue character  (and disable Manual)
     /// </summary>
     public static void ActivateAIControl()
     {
@@ -44,12 +44,12 @@ public class AIPlSwapper : MonoBehaviour
         CameraSwitcher.Instance.ManageControl();
     }
     /// <summary>
-    /// Enable or disable Manual control of current character
+    /// Enable or disable Manual control of currentValue character
     /// </summary>
     /// <param name="state">True - enable, False - disable</param>
     public static void EnabledManual(bool state) => PlayerCore.Instance.transform.GetChild(1).gameObject.SetActive(state);
     /// <summary>
-    /// Enable or disable AI control of current character
+    /// Enable or disable AI control of currentValue character
     /// </summary>
     /// <param name="state">True - enable, False - disable</param>
     public static void EnabledAI(bool state) => PlayerCore.Instance.transform.GetChild(2).gameObject.SetActive(state);

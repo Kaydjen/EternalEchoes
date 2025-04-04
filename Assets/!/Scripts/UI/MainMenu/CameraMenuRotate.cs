@@ -175,16 +175,16 @@ public class CameraMenuRotate : MonoBehaviour
 
     private void Update()
     {
-        if (Mouse.current.leftButton.isPressed)
+        if (Mouse.currentValue.leftButton.isPressed)
         {
-            _x -= Mouse.current.delta.ReadValue().x * _sensitivityDrag * Time.deltaTime;
-            _y += Mouse.current.delta.ReadValue().y * _sensitivityDrag * Time.deltaTime;
+            _x -= Mouse.currentValue.delta.ReadValue().x * _sensitivityDrag * Time.deltaTime;
+            _y += Mouse.currentValue.delta.ReadValue().y * _sensitivityDrag * Time.deltaTime;
             _y = Mathf.Clamp(_y, _minHeadRotation, _maxHeadRotation);
         }
         else
         {
-            _y -= Mouse.current.delta.ReadValue().y * _sensitivity * Time.deltaTime;
-            _x += Mouse.current.delta.ReadValue().x * _sensitivityX * Time.deltaTime;
+            _y -= Mouse.currentValue.delta.ReadValue().y * _sensitivity * Time.deltaTime;
+            _x += Mouse.currentValue.delta.ReadValue().x * _sensitivityX * Time.deltaTime;
             _y = Mathf.Clamp(_y, _minHeadRotation, _maxHeadRotation);
         }
         for()

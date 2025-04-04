@@ -3311,8 +3311,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfc0ec121c2d4ee458f034c6876fbe25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 100
-  _currentHealth: 100
+  max: 0
+  current: 0
   _armor: 50
 --- !u!135 &460798392
 SphereCollider:
@@ -3986,8 +3986,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6597a55619fd2e7478df2ac9fa752ecd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxStamina: 150
-  _currentStamina: 150
+  max: 0
+  current: 0
   _staminaDelay: 5
   _regenSpeed: 0.1
 --- !u!1 &565423145
@@ -15070,12 +15070,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _inspectorSetup:
-  - Type: 0
+  - Type: 1
     Components:
       Max: {fileID: 753709346}
       Current: {fileID: 1858787166}
       PartsObj: {fileID: 1507655909}
-  - Type: 1
+  - Type: 2
     Components:
       Max: {fileID: 603355947}
       Current: {fileID: 1417672044}
@@ -50588,8 +50588,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfc0ec121c2d4ee458f034c6876fbe25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 100
-  _currentHealth: 52
+  max: 0
+  current: 0
   _armor: 0
 --- !u!195 &7185315654228062278
 NavMeshAgent:
@@ -56745,8 +56745,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfc0ec121c2d4ee458f034c6876fbe25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 100
-  _currentHealth: 100
+  max: 100
+  current: 10
   _armor: 0
 --- !u!136 &7996292093910299769
 CapsuleCollider:
@@ -56796,8 +56796,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6597a55619fd2e7478df2ac9fa752ecd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxStamina: 9999
-  _currentStamina: 52
+  max: 100
+  current: 10
   _staminaDelay: 2
   _regenSpeed: 1
 --- !u!1 &8003012438442542434

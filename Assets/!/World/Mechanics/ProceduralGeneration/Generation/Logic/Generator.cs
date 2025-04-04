@@ -27,7 +27,7 @@ namespace ProceduralGeneration.Logic
          public enum WalkType
          {
              random,
-             current,
+             currentValue,
              constant
          }
 
@@ -52,7 +52,7 @@ namespace ProceduralGeneration.Logic
 
                      iterationsGenerated.UnionWith(WalkAlgorithm.WalkAlgorithm.Location(randomPosition, steps, size));
                  }
-                 else if (iterationStart == WalkType.current) iterationsGenerated.UnionWith(WalkAlgorithm.Location(ref startPosition, steps, size));
+                 else if (iterationStart == WalkType.currentValue) iterationsGenerated.UnionWith(WalkAlgorithm.Location(ref startPosition, steps, size));
                  else iterationsGenerated.UnionWith(WalkAlgorithm.WalkAlgorithm.Location(startPosition, steps, size));
              }
 

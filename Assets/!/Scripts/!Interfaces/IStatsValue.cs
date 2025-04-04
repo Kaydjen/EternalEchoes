@@ -8,9 +8,3 @@ public interface IStatsValue
     event Action<float, float> OnValueChanged;
     public void Unsubscribe();
 }
-
-public enum ESliderType
-{
-    HP,
-    Stamina
-}

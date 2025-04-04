@@ -357,19 +357,19 @@ public class TopDownV : CameraCore
     }
     private void ChangeScreenPositionMause()
     {
-        if (Mouse.current.position.ReadValue().x > _edgeToleranceRight)
+        if (Mouse.currentValue.position.ReadValue().x > _edgeToleranceRight)
         {
             _moveDestination.x += _stepSize; // Move right.
         }
-        if (Mouse.current.position.ReadValue().x < _edgeToleranceLeft)
+        if (Mouse.currentValue.position.ReadValue().x < _edgeToleranceLeft)
         {
             _moveDestination.x -= _stepSize; // Move left.
         }
-        if (Mouse.current.position.ReadValue().y > _edgeToleranceUp)
+        if (Mouse.currentValue.position.ReadValue().y > _edgeToleranceUp)
         {
             _moveDestination.z += _stepSize; // Move forward/up.
         }
-        if (Mouse.current.position.ReadValue().y < _edgeToleranceDown)
+        if (Mouse.currentValue.position.ReadValue().y < _edgeToleranceDown)
         {
             _moveDestination.z -= _stepSize; // Move backward/down.
         }

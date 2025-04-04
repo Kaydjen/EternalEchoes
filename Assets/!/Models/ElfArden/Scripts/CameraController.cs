@@ -15,7 +15,7 @@ public class CameraController : MonoBehaviour
 
     private Vector3 _offset;
     private float _currentY;
-    private float _currentDistance;  // Use a variable to store the current distance
+    private float _currentDistance;  // Use a variable to store the currentValue distance
 
     public static float CurrentX { get; private set; }
 

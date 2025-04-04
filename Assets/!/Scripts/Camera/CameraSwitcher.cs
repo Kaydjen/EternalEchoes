@@ -62,7 +62,7 @@ public class CameraSwitcher : MonoBehaviour
     /// </summary>
     private void Switcher()
     {
-        // Change value below if added new map. Value represent count of current maps
+        // Change value below if added new map. Value represent count of currentValue maps
         if (_index > 2) _index = 0;
         // And add here new case
         switch (_index)
@@ -103,7 +103,7 @@ public class CameraSwitcher : MonoBehaviour
         _currentView = _TopDownV;
     }
     /// <summary>
-    /// Disable current camera View and remove listener from switch button
+    /// Disable currentValue camera View and remove listener from switch button
     /// </summary>
     public void DisableCurrentView()
     {
@@ -111,7 +111,7 @@ public class CameraSwitcher : MonoBehaviour
         InputHandler.OnCPressed.RemoveListener(Switcher);
     }
     /// <summary>
-    /// Enable current camera View and add listener to switch button
+    /// Enable currentValue camera View and add listener to switch button
     /// </summary>
     public void EnableCurrentView()
     {
@@ -119,7 +119,7 @@ public class CameraSwitcher : MonoBehaviour
         InputHandler.OnCPressed.AddListener(Switcher);
     }
     /// <summary>
-    ///  It used when character was switched and we want to be sure current player controls were switched correctly
+    ///  It used when character was switched and we want to be sure currentValue player controls were switched correctly
     ///  | FPV -> Manual Controls (WASD) Character is controlled by Player
     ///  | IsometricV -> Manual Controls (WASD) Character is controlled by Player
     ///  | TopDown -> AI Controls (NavMesh) Character is controlled by AI logic
@@ -144,7 +144,7 @@ public class CameraSwitcher : MonoBehaviour
         return _currentView;
     }
     /// <summary>
-    /// Make clear is current View activated or not
+    /// Make clear is currentValue View activated or not
     /// </summary>
     /// <returns> True of false</returns>
     public bool IsCurrentViewEnabled()

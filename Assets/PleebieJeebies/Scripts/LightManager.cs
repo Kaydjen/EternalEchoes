@@ -7,7 +7,7 @@ public class LightManager : MonoBehaviour
     [SerializeField] private LightPreset DayNightPreset, LampPreset;
     private List<Light> SpotLights = new List<Light>();
 
-    [SerializeField, Range(0, 1440), Header("Modifiers"), Tooltip("The game's current time of day")] private float TimeOfDay;
+    [SerializeField, Range(0, 1440), Header("Modifiers"), Tooltip("The game's currentValue time of day")] private float TimeOfDay;
     [SerializeField, Tooltip("Angle to rotate the sun")] private float SunDirection = 170f;
     [SerializeField, Tooltip("How fast time will go")] private float TimeMultiplier = 1;
     [SerializeField] private bool ControlLights = true;
@@ -16,7 +16,7 @@ public class LightManager : MonoBehaviour
     private Color ZenithColor;
 
     /// <summary>
-    /// On project start, if controlLights is true, collect all non-directional lights in the current scene and place in a list
+    /// On project start, if controlLights is true, collect all non-directional lights in the currentValue scene and place in a list
     /// </summary>
     private void Start()
     {
@@ -44,7 +44,7 @@ public class LightManager : MonoBehaviour
 
     /// <summary>
     /// This method will not run if there is no preset set
-    /// On each frame, this will calculate the current time of day factoring game time and the time multiplier (1440 is how many minutes exist in a day 24 x 60)
+    /// On each frame, this will calculate the currentValue time of day factoring game time and the time multiplier (1440 is how many minutes exist in a day 24 x 60)
     /// Then send a time percentage to UpdateLighting, to evaluate according to the set preset, what that time of day should look like
     /// </summary>
     private void Update()
@@ -59,8 +59,8 @@ public class LightManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Based on the time percentage recieved, set the current scene's render settings and light coloring to the preset
-    /// In addition, rotate the directional light (the sun) according to the current time
+    /// Based on the time percentage recieved, set the currentValue scene's render settings and light coloring to the preset
+    /// In addition, rotate the directional light (the sun) according to the currentValue time
     /// </summary>
     /// <param name="timePercent"></param>
     private void UpdateLighting(float timePercent)
