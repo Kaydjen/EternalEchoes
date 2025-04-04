@@ -2,5 +2,6 @@
 {
     Undefined,
     HP,
-    Stamina
+    Stamina,
+    Recovery
 }

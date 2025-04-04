@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public class Stamina : Stats
+public class Stamina : Stats, IGameplayModeSwitcher, IUpdate
 {
     [SerializeField] private float _staminaDelay;
     [SerializeField] private float _regenSpeed;
@@ -13,17 +13,6 @@ public class Stamina : Stats
     public override ESliderType Type { get => ESliderType.Stamina; set { } }
     public override event Action<float, float> OnValueChanged;
 
-    private void Update()
-    {
-        if (_lastTimeShot < Time.time && hasShot)
-        {
-            hasShot = false;
-            if (_staminaCoroutine == null)
-            {
-                _staminaCoroutine = StartCoroutine(StaminaAdd());
-            }
-        }
-    }
     public bool SubtractStamina(float value)
     {
         if (currentValue - value < 0) return false;
@@ -49,6 +38,51 @@ public class Stamina : Stats
         currentValue = maxValue;
         _staminaCoroutine = null;
     }
+    public void ForManualMode()
+    {
+        RegisterUpdate();
+    }
+    public void ForAIMode()
+    {
+        UnregisterUpdate();
+    }
+    #region Update
+    public void PerformInitialUpdate()
+    {
+        if (_lastTimeShot < Time.time && hasShot)
+        {
+            hasShot = false;
+            if (_staminaCoroutine == null)
+            {
+                _staminaCoroutine = StartCoroutine(StaminaAdd());
+            }
+        }
+    }
+    public void PerformPreUpdate()
+    {
+        throw new System.NotImplementedException();
+    }
+    public void PerformUpdate()
+    {
+        throw new System.NotImplementedException();
+    }
+    public void PerformFinalUpdate()
+    {
+        throw new System.NotImplementedException();
+    }
+    public void PerformLateUpdate()
+    {
+        throw new System.NotImplementedException();
+    }
+    private void RegisterUpdate()
+    {
+        Updater.Instance.RegisterUpdate(this, Updater.UpdateType.InitialUpdate);
+    }
+    private void UnregisterUpdate()
+    {
+        Updater.Instance.UnregisterUpdate(this, Updater.UpdateType.InitialUpdate);
+    }
+    #endregion
 }
 
 

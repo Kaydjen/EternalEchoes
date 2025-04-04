@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class HP : Stats, IDamageable
@@ -12,5 +13,32 @@ public class HP : Stats, IDamageable
         _aDamage = value * (1f - _armor / 100f);
         currentValue -= _aDamage;
         OnValueChanged?.Invoke(currentValue, maxValue);
+    }
+}
+
+
+
+
+public class HPRecovery : Stats, IGameplayModeSwitcher
+{
+    public override ESliderType Type { get => ESliderType.Recovery; set { } }
+    public override event Action<float, float> OnValueChanged;
+
+    [SerializeField] private List<float> _levels;
+    public void Recovery()
+    {
+
+    }
+    public void Replenish(float value)
+    {
+
+    }
+    public void ForAIMode()
+    {
+
+    }
+    public void ForManualMode()
+    {
+
     }
 }
