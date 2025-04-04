@@ -7,7 +7,7 @@ public class StatsController : MonoBehaviour
 {
     [SerializeField] private List<StatsSerializable> _inspectorSetup = new();
     private Dictionary<ESliderType, StatsComponentsList> _inspectorSetupDictionary = new();
-    private List<IStatsValue> _statsNew = new();
+    private List<Stats> _statsNew = new();
 
     private void Start()
     {
@@ -31,15 +31,15 @@ public class StatsController : MonoBehaviour
             el.Components.Max.text = "";
             el.Components.PartsObj.SetActive(false);
         }
-        _statsNew = PlayerCore.Instance.transform.GetComponents<IStatsValue>().ToList();
+        _statsNew = PlayerCore.Instance.transform.GetComponents<Stats>().ToList();
 
         if (_statsNew.Count == 0)
         {
-            Debug.Log($"No {nameof(IStatsValue)} components found in {this.name}");
+            Debug.Log($"No {nameof(Stats)} components found in {this.name}");
             return;
         }
 
-        foreach (IStatsValue sliderValue in _statsNew)
+        foreach (Stats sliderValue in _statsNew)
         {
             if (_inspectorSetupDictionary.ContainsKey(sliderValue.Type))
             {
@@ -51,7 +51,7 @@ public class StatsController : MonoBehaviour
         UpdateAllSliderValues();
     }
 
-    private Action<float, float> HandleSliderValueChanged(IStatsValue sliderValue)
+    private Action<float, float> HandleSliderValueChanged(Stats sliderValue)
     {
         return (current, max) => // what need to be updated every time values is IStatsValue scripts' were changed
         {
@@ -62,7 +62,7 @@ public class StatsController : MonoBehaviour
 
     private void UpdateAllSliderValues()
     {
-        foreach (IStatsValue sliderValue in _statsNew)
+        foreach (Stats sliderValue in _statsNew)
         {
             if (_inspectorSetupDictionary.ContainsKey(sliderValue.Type)) // what need to be updated every time values is IStatsValue scripts' were changed (the same)
             {

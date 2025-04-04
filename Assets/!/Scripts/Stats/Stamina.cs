@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
@@ -10,7 +9,7 @@ public class Stamina : Stats, IGameplayModeSwitcher, IUpdate
     private float _lastTimeShot;
     private bool hasShot = true;
 
-    public override ESliderType Type { get => ESliderType.Stamina; set { } }
+    public override ESliderType Type { get => ESliderType.Stamina; protected set { } }
 
     public bool SubtractStamina(float value)
     {

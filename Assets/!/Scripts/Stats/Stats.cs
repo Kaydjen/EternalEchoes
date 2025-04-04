@@ -1,15 +1,15 @@
-using System;
+﻿using System;
 using UnityEngine;
 
-public class Stats : MonoBehaviour, IStatsValue
+public class Stats : MonoBehaviour 
 {
     [SerializeField] protected float maxValue;
     [SerializeField] protected float currentValue;
-    public virtual ESliderType Type { get => ESliderType.Undefined; set {} }
+    public virtual ESliderType Type { get => ESliderType.Undefined; protected set {} }
     public virtual float Current 
     {
         get { return currentValue; }
-        set
+        protected set
         {
             currentValue = Mathf.Clamp(value, 0f, maxValue);
             OnValueChanged?.Invoke(currentValue, maxValue);
@@ -18,7 +18,7 @@ public class Stats : MonoBehaviour, IStatsValue
     public virtual float Max 
     {
         get { return maxValue; }
-        set
+        protected set
         {
             maxValue = value;
             OnValueChanged?.Invoke(currentValue, maxValue);
