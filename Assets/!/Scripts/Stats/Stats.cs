@@ -24,7 +24,6 @@ public class Stats : MonoBehaviour
             OnValueChanged?.Invoke(currentValue, maxValue);
         }
     }
-
     public virtual event Action<int, int> OnValueChanged;
     public virtual void Unsubscribe() => OnValueChanged = null;
 }

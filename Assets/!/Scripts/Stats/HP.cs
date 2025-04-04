@@ -23,38 +23,46 @@ public class HP : Stats, IDamageable
 
 
 
-public class HPRecovery : Stats, IGameplayModeSwitcher
+public class HPRecovery : MonoBehaviour, IGameplayModeSwitcher
 {
-    public override ESliderType Type { get => ESliderType.Recovery; protected set { } }
-    public override event Action<int, int> OnValueChanged;
+    public event Action<int> OnCurrentChanged;
 
     [Header("One point = one player hp = enemy soul's cost")]
     [SerializeField] private List<int> _levels = new(); 
-    private int _value;
+    private int _currentValue;
+    private int _currentLevel;
     public void Recovery()
     {
         if(TryGetComponent(out HP hp))
         {
-            hp.GetRecovery(_value);
+
+            hp.GetRecovery(_currentValue);
             
         }
     }
     public void Replenish(int value)
     {
-        if(_value + value > _levels[currentValue])
+        if(_currentValue + value > _levels[_currentLevel]) // hp > maxHP
         {
-            int remainder = currentValue + value - _levels[currentValue];
-            Current++;
-            _value = remainder;
+            int remainder = _currentValue + value - _levels[_currentLevel];
+            _currentLevel++;
+            _currentValue = remainder;
         }
-        else
+        else if(_currentValue + value == _levels[_currentLevel]) // hp == maxHP
         {
-            _value += value;
+            _currentLevel++;
+            _currentValue = 0;
         }
+        else // hp < maxHP
+        {
+            _currentValue += value;
+        }
+        OnCurrentChanged?.Invoke(_currentValue);
     }
+    public List<int> GetLevels() => _levels;
     public void ForAIMode()
     {
-        maxValue = _levels.Count;
+
     }
     public void ForManualMode()
     {
