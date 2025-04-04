@@ -13,7 +13,6 @@ public class Stats : MonoBehaviour, IStatsValue
         {
             currentValue = Mathf.Clamp(value, 0f, maxValue);
             OnValueChanged?.Invoke(currentValue, maxValue);
-            Debug.Log("Blia, i czo nie tak togda");
         }
     }
     public virtual float Max 
