@@ -1,7 +1,8 @@
 ﻿public enum EMenu
 {
     FPVMenu,
-    RTSMenu
+    RTSMenu,
+    Shop
 }
 
 

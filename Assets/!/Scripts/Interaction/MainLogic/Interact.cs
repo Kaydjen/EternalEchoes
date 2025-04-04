@@ -17,7 +17,15 @@ public class Interact : MonoBehaviour, IUpdate
     {
             // it's the worst code ever I wrote, but this line just check if the obj we hitted is a button
         if (Hover.HitedCollider != null && Hover.HitedCollider.CompareTag("Button") && Hover.HitedCollider.TryGetComponent(out Button button))
-                    button.onClick?.Invoke();
+        {
+            button.onClick?.Invoke();
+            return;
+        }
+        if (Hover.HitedCollider.CompareTag("Shop"))
+        {
+            GetComponent<ShopMenu>().EnableMenu();
+            return;
+        }
         if (Hover.HitedCollider == null || !Hover.HitedCollider.TryGetComponent(out IInteractStrategy strategy)) // Если луч не попал, или попал, но обьект не является персонажем 
         {
 
@@ -106,12 +114,6 @@ public class Interact : MonoBehaviour, IUpdate
     }
     #endregion
 }
-
-
-
-
-
-
 
 
 
