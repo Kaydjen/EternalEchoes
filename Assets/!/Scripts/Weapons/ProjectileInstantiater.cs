@@ -4,7 +4,7 @@ using UnityEngine;
 public class ProjectileInstantiater : MonoBehaviour, IAttack
 {
     [SerializeField] private EProjectile _type;
-    [SerializeField] private float _manaCost;
+    [SerializeField] private int _manaCost;
     [SerializeField] private Vector3 _offset = new Vector3(0f,0f,0f);
     private Pool<Transform> _pool;
     private Stamina _stamina;

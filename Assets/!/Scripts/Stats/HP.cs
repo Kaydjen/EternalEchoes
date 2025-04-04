@@ -1,16 +1,22 @@
 using System;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class HP : Stats, IDamageable
 {
     [SerializeField] private int _armor;
-    private float _aDamage;
+    private int _aDamage;
     public override ESliderType Type { get => ESliderType.HP; protected set { } }
-    public void GetDamage(float value)
+    public void GetDamage(int value)
     {
-        _aDamage = value * (1f - _armor / 100f);
+        _aDamage = value * (1 - _armor / 100);
+        Debug.Log("_aDamage class HP = " + _aDamage);
         Current -= _aDamage;
+    }
+    public void GetRecovery(int value)
+    {
+        Current += value;
     }
 }
 
@@ -20,23 +26,35 @@ public class HP : Stats, IDamageable
 public class HPRecovery : Stats, IGameplayModeSwitcher
 {
     public override ESliderType Type { get => ESliderType.Recovery; protected set { } }
-    public override event Action<float, float> OnValueChanged;
+    public override event Action<int, int> OnValueChanged;
 
-    [SerializeField] private List<float> _levels = new();
-
-    public override float Max { get => _levels.Count; protected set { } }
-    public override float Current { get => base.Current; protected set => base.Current = Mathf.Floor(value); }
+    [Header("One point = one player hp = enemy soul's cost")]
+    [SerializeField] private List<int> _levels = new(); 
+    private int _value;
     public void Recovery()
     {
-
+        if(TryGetComponent(out HP hp))
+        {
+            hp.GetRecovery(_value);
+            
+        }
     }
-    public void Replenish(float value)
+    public void Replenish(int value)
     {
-
+        if(_value + value > _levels[currentValue])
+        {
+            int remainder = currentValue + value - _levels[currentValue];
+            Current++;
+            _value = remainder;
+        }
+        else
+        {
+            _value += value;
+        }
     }
     public void ForAIMode()
     {
-
+        maxValue = _levels.Count;
     }
     public void ForManualMode()
     {

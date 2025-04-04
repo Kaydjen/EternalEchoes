@@ -3,19 +3,19 @@ using UnityEngine;
 
 public class Stats : MonoBehaviour 
 {
-    [SerializeField] protected float maxValue;
-    [SerializeField] protected float currentValue;
+    [SerializeField] protected int maxValue;
+    [SerializeField] protected int currentValue;
     public virtual ESliderType Type { get => ESliderType.Undefined; protected set {} }
-    public virtual float Current 
+    public virtual int Current 
     {
         get { return currentValue; }
         protected set
         {
-            currentValue = Mathf.Clamp(value, 0f, maxValue);
+            currentValue = Mathf.Clamp(value, 0, maxValue);
             OnValueChanged?.Invoke(currentValue, maxValue);
         }
     }
-    public virtual float Max 
+    public virtual int Max 
     {
         get { return maxValue; }
         protected set
@@ -25,6 +25,6 @@ public class Stats : MonoBehaviour
         }
     }
 
-    public virtual event Action<float, float> OnValueChanged;
+    public virtual event Action<int, int> OnValueChanged;
     public virtual void Unsubscribe() => OnValueChanged = null;
 }

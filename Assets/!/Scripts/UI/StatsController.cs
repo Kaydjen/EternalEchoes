@@ -43,33 +43,26 @@ public class StatsController : MonoBehaviour
         {
             if (_inspectorSetupDictionary.ContainsKey(sliderValue.Type))
             {
-                sliderValue.OnValueChanged += HandleSliderValueChanged(sliderValue); // what need to be updated when new character 
+                sliderValue.OnValueChanged += (current, max) => UpdateValues(sliderValue, current, max); // what need to be updated when new character 
                 _inspectorSetupDictionary[sliderValue.Type].PartsObj.SetActive(true);
             }
         }
 
         UpdateAllSliderValues();
     }
-
-    private Action<float, float> HandleSliderValueChanged(Stats sliderValue)
-    {
-        return (current, max) => // what need to be updated every time values is IStatsValue scripts' were changed
-        {
-            _inspectorSetupDictionary[sliderValue.Type].Max.text = max.ToString();
-            _inspectorSetupDictionary[sliderValue.Type].Current.text = current.ToString();
-        };
-    }
-
     private void UpdateAllSliderValues()
     {
         foreach (Stats sliderValue in _statsNew)
         {
             if (_inspectorSetupDictionary.ContainsKey(sliderValue.Type)) // what need to be updated every time values is IStatsValue scripts' were changed (the same)
             {
-                _inspectorSetupDictionary[sliderValue.Type].Max.text = sliderValue.Max.ToString();
-                _inspectorSetupDictionary[sliderValue.Type].Current.text = sliderValue.Current.ToString();
-
+                UpdateValues(sliderValue, sliderValue.Current, sliderValue.Max);
             }
         }
+    }
+    private void UpdateValues(Stats sliderValue, int current, int max)
+    {
+        _inspectorSetupDictionary[sliderValue.Type].Max.text = max.ToString();
+        _inspectorSetupDictionary[sliderValue.Type].Current.text = current.ToString();
     }
 }
