@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using System.Runtime.CompilerServices;
+using UnityEngine;
 
-public class CharacterPhysics : MonoBehaviour
+public class CharacterPhysics : MonoBehaviour, ICameraUpdate, IUpdate
 {
     #region Serialize Variables 
     [Header("GroundCheck")]
@@ -8,34 +9,31 @@ public class CharacterPhysics : MonoBehaviour
     [SerializeField] private LayerMask _groundLayerMask; // слой земли (Layer)
     [Tooltip("радиус сферы проверяющей стоит ли плеер на земле")]
     [SerializeField] private float _groundCheckRadius = 0.6f; // радиус сферы проверяющей стоит ли плеер на земле
-    [Tooltip("позиция от куда осузествляеться проверка на землю")]
-    [SerializeField] private Transform _groundCheckPosition; // позиция от куда осузествляеться проверка на землю
 
     [Header("Gravity Settings")]
     [SerializeField] private float _gravity = 10f;
     [SerializeField] private float _mass = 18f;
     [SerializeField] private float _jumpForce = 35f;
     #endregion
-
     #region Private Variables
+    private Transform _groundCheckPosition; // позиция от куда осузествляеться проверка на землю
     private CharacterController _controller;
     private bool _isGrounded; // стоит ли на земле обьект
     private float _verticalVelocity;
     private float _fallAcceleration;
     private bool _isJumping = false;
     #endregion
-
-    #region Help Variables
-    #endregion
-
-    #region MonoBehaviour
-    private void Start()
+    #region PUBLIC
+    public void UpdateNeededComponents()
     {
-        if (!TryGetComponent(out _controller))
+        if (!PlayerCore.Instance.transform.TryGetComponent(out _controller))
             Debug.LogError($"Script MovePlayer | Game obj {gameObject.name} | Missed component CharacterController");
-    }
 
-    private void Update()
+        _groundCheckPosition = PlayerCore.Instance.Component.GetGroundCheck();
+    }
+    #endregion
+    #region Update
+    public void PerformInitialUpdate()
     {
         // check if the player is staing on the ground
         _isGrounded = Physics.CheckSphere(_groundCheckPosition.position, _groundCheckRadius, _groundLayerMask);
@@ -85,6 +83,41 @@ public class CharacterPhysics : MonoBehaviour
 
 
         _controller.Move(new Vector3(0f, _verticalVelocity, 0f) * Time.deltaTime); // apply all physics to the player
+    }
+    public void PerformPreUpdate()
+    {
+        throw new System.NotImplementedException();
+    }
+    public void PerformUpdate()
+    {
+        throw new System.NotImplementedException();
+    }
+    public void PerformFinalUpdate()
+    {
+        throw new System.NotImplementedException();
+    }
+    public void PerformLateUpdate()
+    {
+        throw new System.NotImplementedException();
+    }
+    private void RegisterUpdate()
+    {
+        Updater.Instance.RegisterUpdate(this, Updater.UpdateType.InitialUpdate);
+    }
+    private void UnregisterUpdate()
+    {
+        Updater.Instance.UnregisterUpdate(this, Updater.UpdateType.InitialUpdate);
+    }
+    #endregion
+    #region MONOBEHAVIOUR
+    private void OnEnable()
+    {
+        UpdateNeededComponents();
+        RegisterUpdate();
+    }
+    private void OnDisable()
+    {
+        UnregisterUpdate();
     }
     #endregion
 }

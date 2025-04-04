@@ -1,8 +1,13 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
+[RequireComponent(typeof(ParametersManager))]
 public class PlayerCore : MonoBehaviour
 {
     public static PlayerCore Instance;
+    [NonSerialized] public ParametersManager Component;
+    private void Awake() => Component = GetComponent<ParametersManager>();
+
     private void OnEnable()
     {
         if(Instance == null)
