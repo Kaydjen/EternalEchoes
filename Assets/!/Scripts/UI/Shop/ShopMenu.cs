@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
-public class ShopMenu : MonoBehaviour, IMenu
+public class ShopMenu : MonoBehaviour
 {
     [SerializeField] private Transform _canvas;
     public void DisableMenu()
@@ -12,4 +13,3 @@ public class ShopMenu : MonoBehaviour, IMenu
         _canvas.gameObject.SetActive(true);
     }
 }
-

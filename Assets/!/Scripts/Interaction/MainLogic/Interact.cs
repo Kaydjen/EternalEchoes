@@ -23,7 +23,14 @@ public class Interact : MonoBehaviour, IUpdate
         }
         if (Hover.HitedCollider.CompareTag("Shop"))
         {
-            GetComponent<ShopMenu>().EnableMenu();
+            if(!Hover.HitedCollider.TryGetComponent(out ShopMenu menu))
+            {
+                Debug.Log("Wsm _-_ " + Hover.HitedCollider.name);
+            }
+            else
+            {
+                menu.EnableMenu();    
+            }
             return;
         }
         if (Hover.HitedCollider == null || !Hover.HitedCollider.TryGetComponent(out IInteractStrategy strategy)) // Если луч не попал, или попал, но обьект не является персонажем 
