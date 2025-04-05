@@ -15,7 +15,7 @@ public class AI : MonoBehaviour
     }
     protected void OnDestroy()
     {
-        EnemyRepository.Instance.Unregister(this.GetInstanceID());
+        EnemyRepository.Instance.Unregister(this.GetInstanceID(), this.gameObject);
     }
     protected virtual void OnEnable()
     {

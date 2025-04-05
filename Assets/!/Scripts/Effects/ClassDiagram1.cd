@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="EnemySpawnEffectPool">
-    <Position X="4" Y="1.75" Width="1.5" />
+    <Position X="4" Y="1" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAgACAAAIAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAEA=</HashCode>
       <FileName>Assets\!\Scripts\Effects\EnemySpawnEffectPool.cs</FileName>
@@ -15,10 +15,38 @@
     </TypeIdentifier>
   </Class>
   <Class Name="BulletPool">
-    <Position X="4" Y="6.75" Width="1.5" />
+    <Position X="4" Y="7.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Assets\!\Scripts\Effects\BulletPool.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="FireballPool" Collapsed="true">
+    <Position X="4" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAEA=</HashCode>
+      <FileName>Assets\!\Scripts\Effects\FireballPool.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IciclePool" Collapsed="true">
+    <Position X="4" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAEA=</HashCode>
+      <FileName>Assets\!\Scripts\Effects\IciclePool.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TornadoPool" Collapsed="true">
+    <Position X="8" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAEA=</HashCode>
+      <FileName>Assets\!\Scripts\Effects\TornadoPool.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TornadoPull" Collapsed="true">
+    <Position X="0.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAIAAAgEA=</HashCode>
+      <FileName>Assets\!\Scripts\Effects\TornadoPull.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

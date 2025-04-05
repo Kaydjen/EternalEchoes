@@ -10,15 +10,17 @@ public class EnemyRepository : MonoBehaviour
     public Dictionary<int, GameObject> Items = new();
     public event GameObjectDelegate OnRegister;
     public event IdDelegate OnUnregister;
+    public event GameObjectDelegate OnDeath;
     public void Register(GameObject enemyObj, int id)
     {
         Items.Add(id, enemyObj);
         OnRegister?.Invoke(enemyObj);
     }
-    public void Unregister(int id)
+    public void Unregister(int id, GameObject enemyObj)
     {
         Items.Remove(id);
         OnUnregister?.Invoke(id);
+        OnDeath?.Invoke(enemyObj);
     }
     private void Awake()
     {
