@@ -13,7 +13,12 @@ public class HPRecovery : Stats, IGameplayModeSwitcher
             currentValue = 0;
         }        
     }
-    public int GetAllSouls() => Current;
+    public int GetAllSouls()
+    {
+        int soulsCount = currentValue;
+        Current = 0;
+        return soulsCount;
+    }
     public void Replenish(int value)
     {
         currentValue += value;
