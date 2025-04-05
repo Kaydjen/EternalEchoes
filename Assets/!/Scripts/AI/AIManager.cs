@@ -14,6 +14,7 @@ public class AIManager : MonoBehaviour
     { 
         EnemyRepository.Instance.OnRegister -= obj => StartCoroutine(SpawnEffect(obj.gameObject));
         EnemyRepository.Instance.OnUnregister -= id => Debug.Log($"Enemy with ID {id} just died");
+        EnemyRepository.Instance.OnDeath -= SoulInstallManager;
     }
     private IEnumerator SpawnEffect(GameObject obj)
     {
@@ -25,18 +26,32 @@ public class AIManager : MonoBehaviour
 
     private void SoulInstallManager(AI ai)
     {
-        if (ai.Type == EAIType.Character) return;
+       // if (ai.Type == EAIType.Character) return;
         if(!ai.TryGetComponent(out SoulsLevelsHandler soul)) return;
 
+        Transform installedSoul;
         switch (soul.GetCurrentSoulType())
         {
             case ESoulType.Newborn: 
-                Transform pos = SoulPoolOne.Instance.Get();
-                pos.position = ai.transform.position;
+                installedSoul = SoulPoolOne.Instance.Get();
+                installedSoul.position = ai.transform.position;
+                installedSoul.GetComponent<HomingSoul>().SetDestination(ai.transform.GetComponent<EnemyHP>().GetAttacker().transform);
                 break;
-            case ESoulType.Growing: break;
-            case ESoulType.Fading: break;
-            case ESoulType.Lost: break;
+            case ESoulType.Growing:
+                installedSoul = SoulPoolTwo.Instance.Get();
+                installedSoul.position = ai.transform.position;
+                installedSoul.GetComponent<HomingSoul>().SetDestination(ai.transform.GetComponent<EnemyHP>().GetAttacker().transform); 
+                break;
+            case ESoulType.Fading:
+                installedSoul = SoulPoolThree.Instance.Get();
+                installedSoul.position = ai.transform.position;
+                installedSoul.GetComponent<HomingSoul>().SetDestination(ai.transform.GetComponent<EnemyHP>().GetAttacker().transform); 
+                break;
+            case ESoulType.Lost:
+                installedSoul = SoulPoolFour.Instance.Get();
+                installedSoul.position = ai.transform.position;
+                installedSoul.GetComponent<HomingSoul>().SetDestination(ai.transform.GetComponent<EnemyHP>().GetAttacker().transform); 
+                break;
         }
     }
     #endregion

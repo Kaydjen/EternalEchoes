@@ -1,4 +1,6 @@
-﻿public interface IDamageable
+﻿using UnityEngine;
+
+public interface IDamageable
 {
-    public void GetDamage(int value);
+    public void GetDamage(int value, GameObject attacker);
 }

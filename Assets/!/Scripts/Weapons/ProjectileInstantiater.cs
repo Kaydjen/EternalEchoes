@@ -35,6 +35,7 @@ public class ProjectileInstantiater : MonoBehaviour, IAttack
     {
         if (!_stamina.SubtractStamina(_manaCost)) return;
         Transform bullet = _pool.Get();
+        bullet.GetComponent<IGetAttacker>().SetAttacker(this.gameObject);
         bullet.position = this.transform.position + _offset;
     }
 }

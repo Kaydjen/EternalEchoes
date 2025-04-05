@@ -1,23 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class SoulShotoTam : MonoBehaviour
+public class HomingSoul : MonoBehaviour
 {
-    [SerializeField] private GameObject Sphere;
+    [SerializeField] private Transform _target;
     private Rigidbody rb;
     private Vector3 _targetPos = Vector3.zero;
 
     [SerializeField] private float _moveSpeed;
     [SerializeField] private float _startHeight = 5f;
     private int _currentTime;
-
-    void Start()
+    
+    public void SetDestination(Transform target) => _target = target;
+    void OnEnable()
     {
         rb = GetComponent<Rigidbody>();
         _targetPos = rb.position + new Vector3(0, _startHeight, 0);
     }
-
     void Update()
     {
         _currentTime++;
@@ -29,12 +27,11 @@ public class SoulShotoTam : MonoBehaviour
         }
         else
         {
-            Vector3 targetPos = Sphere.transform.position;
-            Vector3 smoothMove = Vector3.Lerp(rb.position, targetPos, _moveSpeed * Time.deltaTime);
+            Vector3 smoothMove = Vector3.Lerp(rb.position, _target.position, _moveSpeed * Time.deltaTime);
             rb.position = smoothMove;
 
             // ¬иправленн€: перев≥р€Їмо в≥дстань до гравц€, а не до smoothMove
-            if (Vector3.Distance(rb.position, targetPos) <= 0.5f)
+            if (Vector3.Distance(rb.position, _target.position) <= 0.5f)
             {
                 DestroySoul();
             }

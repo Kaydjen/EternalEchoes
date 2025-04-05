@@ -32,7 +32,7 @@ class RayPerformer : MonoBehaviour, IAttack
                     _damage = (int)(Random.Range(_minDamage, _maxDamage) * _critMultiplier);
                 else
                     _damage = Random.Range(_minDamage, _maxDamage);
-                _damageable.GetDamage(_damage);
+                _damageable.GetDamage(_damage, this.gameObject);
 
                 OnHitDamageable?.Invoke(hitInfo);
                 Debug.Log(_damage);

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class TornadoProjectile : MonoBehaviour
+public class TornadoProjectile : MonoBehaviour, IGetAttacker
 {
     private Rigidbody _rb;
     [SerializeField] private float _speed;
@@ -12,6 +12,9 @@ public class TornadoProjectile : MonoBehaviour
 
     private List<IDamageable> _enemies = new List<IDamageable>();
     private Coroutine _korutinaYakaNanositDamagProtivnikam;
+    private GameObject _lastAttacker;
+
+    public void SetAttacker(GameObject attacker) => _lastAttacker = attacker;
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
@@ -40,7 +43,7 @@ public class TornadoProjectile : MonoBehaviour
         yield return new WaitForSeconds(_damageInterval);
         foreach (var enemy in _enemies)
         {
-            enemy.GetDamage(_damage);
+            enemy.GetDamage(_damage, _lastAttacker);
         }
         _korutinaYakaNanositDamagProtivnikam = StartCoroutine(DamageDealer());
     }

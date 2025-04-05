@@ -1,12 +1,13 @@
 using UnityEngine;
 
-public class FireballProjectile : MonoBehaviour
+public class FireballProjectile : MonoBehaviour, IGetAttacker
 {
     private Rigidbody _rb;
     [SerializeField] private float _speed;
     [SerializeField] private int _damage;
+    private GameObject _lastAttacker;
 
-    // Start is called before the first frame update
+    public void SetAttacker(GameObject attacker) => _lastAttacker = attacker;
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>(); 
@@ -23,7 +24,7 @@ public class FireballProjectile : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             IDamageable damageable = other.GetComponent<IDamageable>();
-            damageable.GetDamage(_damage);
+            damageable.GetDamage(_damage, _lastAttacker);
             FireballPool.Instance.Return(this.transform);
         } 
     }
