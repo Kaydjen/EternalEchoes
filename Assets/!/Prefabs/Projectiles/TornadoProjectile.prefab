@@ -98,6 +98,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 5
   _damage: 1
+  _damageInterval: 0.5
 --- !u!199 &6733856313414922335
 ParticleSystemRenderer:
   serializedVersion: 6
