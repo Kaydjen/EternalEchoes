@@ -33881,7 +33881,7 @@ MonoBehaviour:
   DirectionalLight: {fileID: 3386522971466831821}
   DayNightPreset: {fileID: 11400000, guid: d870b1e4aa0d7f3438bb848641560280, type: 2}
   LampPreset: {fileID: 11400000, guid: bf338d0029f05bd489266297219f16b7, type: 2}
-  TimeOfDay: 0
+  TimeOfDay: 360
   SunDirection: 170
   TimeMultiplier: 0
   ControlLights: 0
