@@ -1,15 +1,24 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
+﻿using TMPro;
+using UnityEngine;
+using UnityEngine.Events;
 
 public class ShopMenu : MonoBehaviour
 {
-    [SerializeField] private Transform _canvas;
-    public void DisableMenu()
+    [SerializeField] private TMP_Text _moneyText;
+    [SerializeField] private int _money;
+    public static UnityEvent OnMoneyUpdate = new();
+    public int Money
     {
-        _canvas.gameObject.SetActive(false);
+        get => _money; 
+        protected set
+        {
+            _money = value;
+            _moneyText.text = _money.ToString();
+            OnMoneyUpdate?.Invoke();
+        }
     }
-    public void EnableMenu()
+    public void GetMoneyFromCharacter()
     {
-        _canvas.gameObject.SetActive(true);
+        Money += PlayerCore.Instance.GetComponent<HPRecovery>().GetAllSouls();
     }
 }

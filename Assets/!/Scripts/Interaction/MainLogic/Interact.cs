@@ -24,7 +24,7 @@ public class Interact : MonoBehaviour, IUpdate
         }
         if (Hover.HitedCollider.CompareTag("Shop"))
         {
-            if(!Hover.HitedCollider.TryGetComponent(out ShopMenu menu))
+            if(!Hover.HitedCollider.TryGetComponent(out ShopMenuEnable menu))
             {
                 Debug.Log("Wsm _-_ " + Hover.HitedCollider.name);
             }
