@@ -6,12 +6,13 @@ public class AIManager : MonoBehaviour
     #region PRIVATE 
     private void SubscribeOnEvents()
     {
-        EnemyRepository.Instance.OnRegister += obj => StartCoroutine(SpawnEffect(obj));
+        EnemyRepository.Instance.OnRegister += obj => StartCoroutine(SpawnEffect(obj.gameObject));
         EnemyRepository.Instance.OnUnregister += id => Debug.Log($"Enemy with ID {id} just died");
+        EnemyRepository.Instance.OnDeath += SoulInstallManager;
     }
     private void UnsubscribeOnEvents()
     { 
-        EnemyRepository.Instance.OnRegister -= obj => StartCoroutine(SpawnEffect(obj));
+        EnemyRepository.Instance.OnRegister -= obj => StartCoroutine(SpawnEffect(obj.gameObject));
         EnemyRepository.Instance.OnUnregister -= id => Debug.Log($"Enemy with ID {id} just died");
     }
     private IEnumerator SpawnEffect(GameObject obj)
@@ -20,6 +21,23 @@ public class AIManager : MonoBehaviour
         EnemySpawnEffectPool.Instance.SetEffect(obj.transform.position);
         yield return new WaitForSeconds(3f);
         obj.SetActive(true);
+    }
+
+    private void SoulInstallManager(AI ai)
+    {
+        if (ai.Type == EAIType.Character) return;
+        if(!ai.TryGetComponent(out SoulsLevelsHandler soul)) return;
+
+        switch (soul.GetCurrentSoulType())
+        {
+            case ESoulType.Newborn: 
+                Transform pos = SoulPoolOne.Instance.Get();
+                pos.position = ai.transform.position;
+                break;
+            case ESoulType.Growing: break;
+            case ESoulType.Fading: break;
+            case ESoulType.Lost: break;
+        }
     }
     #endregion
     #region MONOBEHAVIOUR

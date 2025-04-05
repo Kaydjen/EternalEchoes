@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
-class SoulOne : Pool<Transform>
+class SoulPoolOne : Pool<Transform>
 {
-    public static SoulOne Instance;
+    public static SoulPoolOne Instance;
 
     private void Awake()
     {

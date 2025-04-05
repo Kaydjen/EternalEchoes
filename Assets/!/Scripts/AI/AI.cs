@@ -5,17 +5,18 @@ using UnityEngine.AI;
 public class AI : MonoBehaviour
 {
     [SerializeField] protected NavMeshAgent _agent;
+    public EAIType Type;
     protected virtual void SetDestionaiton(Vector3 coordinates)
     {
         _agent.destination = coordinates;
     }
     protected virtual void Awake()
     {
-        EnemyRepository.Instance.Register(this.gameObject, this.GetInstanceID());
+        EnemyRepository.Instance.Register(this, this.GetInstanceID());
     }
     protected void OnDestroy()
     {
-        EnemyRepository.Instance.Unregister(this.GetInstanceID(), this.gameObject);
+        EnemyRepository.Instance.Unregister(this, this.GetInstanceID());
     }
     protected virtual void OnEnable()
     {
