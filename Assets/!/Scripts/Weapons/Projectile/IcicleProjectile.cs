@@ -5,7 +5,8 @@ public class IcicleProjectile : MonoBehaviour
 {
     private Rigidbody _rb;
     [SerializeField] private float _speed;
-    [SerializeField] private float _freezeDuration = 0.5f; // Час заморозки
+    [SerializeField] private float _freezeDuration = 0.5f;
+    [SerializeField] private int _damage;
 
     private void Awake()
     {
@@ -24,6 +25,8 @@ public class IcicleProjectile : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
+            IDamageable damageable = other.GetComponent<IDamageable>();
+            damageable.GetDamage(_damage);
             NavMeshAgent agent = other.GetComponent<NavMeshAgent>();
 
             FreezeCharacter.Instance.Freeze(agent, _freezeDuration);

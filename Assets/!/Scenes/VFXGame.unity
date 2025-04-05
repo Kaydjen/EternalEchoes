@@ -1874,8 +1874,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfc0ec121c2d4ee458f034c6876fbe25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 100
-  _currentHealth: 100
+  maxValue: 0
+  currentValue: 0
   _armor: 50
 --- !u!135 &460798392
 SphereCollider:
@@ -2318,8 +2318,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6597a55619fd2e7478df2ac9fa752ecd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxStamina: 150
-  _currentStamina: 150
+  maxValue: 0
+  currentValue: 0
   _staminaDelay: 5
   _regenSpeed: 0.1
 --- !u!1 &565615007
@@ -5073,9 +5073,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e897995ccb8c5c4b91f7fce39a7d806, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _type: 2
+  _type: 0
   _manaCost: 100
-  _offset: {x: 0, y: -1, z: 0}
+  _offset: {x: 0, y: 0, z: 0}
 --- !u!114 &1134373140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5257,6 +5257,74 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1160259972}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &1199295063
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: c4597ae625669394d8dc0a6fda143f00,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 8.028703
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c4597ae625669394d8dc0a6fda143f00,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.86
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c4597ae625669394d8dc0a6fda143f00,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -5.062543
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c4597ae625669394d8dc0a6fda143f00,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c4597ae625669394d8dc0a6fda143f00,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c4597ae625669394d8dc0a6fda143f00,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c4597ae625669394d8dc0a6fda143f00,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c4597ae625669394d8dc0a6fda143f00,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c4597ae625669394d8dc0a6fda143f00,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c4597ae625669394d8dc0a6fda143f00,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c4597ae625669394d8dc0a6fda143f00,
+        type: 3}
+      propertyPath: m_Name
+      value: brick
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c4597ae625669394d8dc0a6fda143f00, type: 3}
 --- !u!1 &1235871143
 GameObject:
   m_ObjectHideFlags: 0
@@ -5302,6 +5370,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pullSpeed: 5
+  damageInterval: 1
 --- !u!1 &1239390879
 GameObject:
   m_ObjectHideFlags: 0
@@ -33431,8 +33500,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfc0ec121c2d4ee458f034c6876fbe25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 100
-  _currentHealth: 100
+  maxValue: 0
+  currentValue: 0
   _armor: 0
 --- !u!199 &7185350824355282864
 ParticleSystemRenderer:
@@ -35094,8 +35163,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfc0ec121c2d4ee458f034c6876fbe25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 100
-  _currentHealth: 100
+  maxValue: 0
+  currentValue: 0
   _armor: 0
 --- !u!136 &7996292093910299769
 CapsuleCollider:
@@ -35145,8 +35214,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6597a55619fd2e7478df2ac9fa752ecd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxStamina: 9999999
-  _currentStamina: 150
+  maxValue: 103099
+  currentValue: 248269
   _staminaDelay: 1
   _regenSpeed: 0.001
 --- !u!1 &8003012438442542434
@@ -37723,3 +37792,4 @@ SceneRoots:
   - {fileID: 463777603}
   - {fileID: 2056038966}
   - {fileID: 186986203}
+  - {fileID: 1199295063}

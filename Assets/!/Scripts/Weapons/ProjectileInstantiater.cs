@@ -15,12 +15,18 @@ public class ProjectileInstantiater : MonoBehaviour, IAttack
         {
             case EProjectile.Fireball:
                 _pool = FireballPool.Instance;
+                _manaCost = 25;
+                _offset = new Vector3(0f, 0f, 0f);
                 break;
             case EProjectile.Icicle:
                 _pool = IciclePool.Instance;
+                _manaCost = 35;
+                _offset = new Vector3(0f, 0f, 0f);
                 break;
             case EProjectile.Tornado:
                 _pool = TornadoPool.Instance;
+                _manaCost = 100;
+                _offset = new Vector3(0f,-1f,0f);
                 break;
         }
         _stamina = this.transform.root.GetComponent<Stamina>();

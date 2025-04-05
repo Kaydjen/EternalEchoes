@@ -36,7 +36,7 @@ public class AimPlacer : MonoBehaviour, IAim, IUpdate
         _aimTransform.gameObject.SetActive(false);
         GetComponent<AttackHandler>().OnAttack.RemoveListener(DisableAim);
     }
-    public void PerformeRay()
+    public void PerformRay()
     {
         if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out RaycastHit hit, _distance, _layersToAim))
         {
@@ -55,7 +55,7 @@ public class AimPlacer : MonoBehaviour, IAim, IUpdate
     #region UPDATE
     public void PerformInitialUpdate()
     {
-        PerformeRay();
+        PerformRay();
     }
     public void PerformPreUpdate()
     {
