@@ -10,6 +10,7 @@ public class AttackHandler : MonoBehaviour, IGameplayModeSwitcher, IUpdate
     [SerializeField] private EAttackSide _type = EAttackSide.LMB;
     [SerializeField] private float _fireRate = 1f;
     [SerializeField] private bool _isAutomatic;
+    private bool _isManualMode;
     private float _nextFireTime;
     private IAttack _attack;
 
@@ -31,6 +32,12 @@ public class AttackHandler : MonoBehaviour, IGameplayModeSwitcher, IUpdate
     public void ExecuteAttackReleased()
     {
         UnregisterUpdate();
+    }
+    public void ChangeAttackButton(EAttackSide type)
+    {
+        ForAIMode();
+        _type = type;
+        if(this.gameObject.activeSelf && _isManualMode) ForManualMode();
     }
     #endregion    
     #region Update
@@ -82,10 +89,12 @@ public class AttackHandler : MonoBehaviour, IGameplayModeSwitcher, IUpdate
     }
     public void ForManualMode()
     {
-        if(_attackBindSubscribers.TryGetValue(_type, out Action act)) act?.Invoke();        
+        _isManualMode = true;
+        if (_attackBindSubscribers.TryGetValue(_type, out Action act)) act?.Invoke();        
     }
     public void ForAIMode()
     {
+        _isManualMode = false;
         if (_attackBindUnsubscribers.TryGetValue(_type, out Action act)) act?.Invoke();
     }
     #endregion
