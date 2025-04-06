@@ -33,6 +33,7 @@ public class AttackHandler : MonoBehaviour, IGameplayModeSwitcher, IUpdate
     {
         UnregisterUpdate();
     }
+    [ContextMenu("ChangeAttackButton")]
     public void ChangeAttackButton(EAttackSide type)
     {
         ForAIMode();
