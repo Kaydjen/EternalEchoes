@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class SoulsDictionary
+public static class DSouls
 {
     public static readonly Dictionary<ESoulType, Pool<Transform>> List = new()
     {

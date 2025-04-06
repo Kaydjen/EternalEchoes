@@ -13,8 +13,8 @@ namespace ProceduralGeneration.Algorithm
         static public readonly Dictionary<Vector2Int, string> directions = new Dictionary<Vector2Int, string>() {
             { new Vector2Int(0, 1), "Top"  },
             { new Vector2Int(0, -1), "Bottom" },
-            { new Vector2Int(1, 0), "Right" },
-            { new Vector2Int(-1, 0), "Left" },
+            { new Vector2Int(1, 0), "RMB" },
+            { new Vector2Int(-1, 0), "LMB" },
             
         };
 
