@@ -70,6 +70,7 @@ public class InputHandler : MonoBehaviour
     public static UnityEvent OnReload { get; private set; } = new UnityEvent();
     public static UnityEvent OnHPRecovery { get; private set; } = new UnityEvent();
     public static UnityEvent OnJump { get; private set; } = new UnityEvent();
+    public static UnityEvent OnMeleeAttack { get; private set; } = new UnityEvent();
 
     #endregion Static variables
     #region Init methods
@@ -125,89 +126,93 @@ public class InputHandler : MonoBehaviour
         _TopDown.ScreenEdgePanning.canceled += _ => MouseInput = Vector2.zero;
         _Isometric.Mouse.canceled += _ => MouseInput = Vector2.zero;
 
-        _FPV.SwitchCamera.performed += _ => OnCPressed.Invoke();
-        _TopDown.SwitchCamera.performed += _ => OnCPressed.Invoke();
-        _Isometric.SwitchCamera.performed += _ => OnCPressed.Invoke();
+        _FPV.SwitchCamera.performed += _ => OnCPressed?.Invoke();
+        _TopDown.SwitchCamera.performed += _ => OnCPressed?.Invoke();
+        _Isometric.SwitchCamera.performed += _ => OnCPressed?.Invoke();
 
         _TopDown.ZoomCamera.performed += _ => WheelRotate = _.ReadValue<Vector2>();
         _TopDown.ZoomCamera.canceled += _ => WheelRotate = Vector2.zero;
 
-        _TopDown.ZoomCamera.performed += _ => OnWheelRotate.Invoke();
+        _TopDown.ZoomCamera.performed += _ => OnWheelRotate?.Invoke();
 
-        _TopDown.ClickAndDrag.performed += _ => OnWheelPerformed.Invoke();
-        _TopDown.ClickAndDrag.canceled += _ => OnWheelCanceled.Invoke();
+        _TopDown.ClickAndDrag.performed += _ => OnWheelPerformed?.Invoke();
+        _TopDown.ClickAndDrag.canceled += _ => OnWheelCanceled?.Invoke();
 
         #region numbers
-        _DefNumbers.One.performed += _ => OnDefOne.Invoke();
-        _DefNumbers.Two.performed += _ => OnDefTwo.Invoke();
-        _DefNumbers.Three.performed += _ => OnDefThree.Invoke();
-        _DefNumbers.Four.performed += _ => OnDefFour.Invoke();
-        _DefNumbers.Five.performed += _ => OnDefFive.Invoke();
-        _DefNumbers.Six.performed += _ => OnDefSix.Invoke();
-        _DefNumbers.Seven.performed += _ => OnDefSeven.Invoke();
-        _DefNumbers.Eight.performed += _ => OnDefEight.Invoke();
-        _DefNumbers.Nine.performed += _ => OnDefNine.Invoke();
-        _DefNumbers.Zero.performed += _ => OnDefZero.Invoke();
+        _DefNumbers.One.performed += _ => OnDefOne?.Invoke();
+        _DefNumbers.Two.performed += _ => OnDefTwo?.Invoke();
+        _DefNumbers.Three.performed += _ => OnDefThree?.Invoke();
+        _DefNumbers.Four.performed += _ => OnDefFour?.Invoke();
+        _DefNumbers.Five.performed += _ => OnDefFive?.Invoke();
+        _DefNumbers.Six.performed += _ => OnDefSix?.Invoke();
+        _DefNumbers.Seven.performed += _ => OnDefSeven?.Invoke();
+        _DefNumbers.Eight.performed += _ => OnDefEight?.Invoke();
+        _DefNumbers.Nine.performed += _ => OnDefNine?.Invoke();
+        _DefNumbers.Zero.performed += _ => OnDefZero?.Invoke();
 
-        _OptionsNumbers.One.performed += _ => OnOptionsOne.Invoke();
-        _OptionsNumbers.Two.performed += _ => OnOptionsTwo.Invoke();
-        _OptionsNumbers.Three.performed += _ => OnOptionsThree.Invoke();
-        _OptionsNumbers.Four.performed += _ => OnOptionsFour.Invoke();
-        _OptionsNumbers.Five.performed += _ => OnOptionsFive.Invoke();
-        _OptionsNumbers.Six.performed += _ => OnOptionsSix.Invoke();
-        _OptionsNumbers.Seven.performed += _ => OnOptionsSeven.Invoke();
-        _OptionsNumbers.Eight.performed += _ => OnOptionsEight.Invoke();
-        _OptionsNumbers.Nine.performed += _ => OnOptionsNine.Invoke();
-        _OptionsNumbers.Zero.performed += _ => OnOptionsZero.Invoke();
+        _OptionsNumbers.One.performed += _ => OnOptionsOne?.Invoke();
+        _OptionsNumbers.Two.performed += _ => OnOptionsTwo?.Invoke();
+        _OptionsNumbers.Three.performed += _ => OnOptionsThree?.Invoke();
+        _OptionsNumbers.Four.performed += _ => OnOptionsFour?.Invoke();
+        _OptionsNumbers.Five.performed += _ => OnOptionsFive?.Invoke();
+        _OptionsNumbers.Six.performed += _ => OnOptionsSix?.Invoke();
+        _OptionsNumbers.Seven.performed += _ => OnOptionsSeven?.Invoke();
+        _OptionsNumbers.Eight.performed += _ => OnOptionsEight?.Invoke();
+        _OptionsNumbers.Nine.performed += _ => OnOptionsNine?.Invoke();
+        _OptionsNumbers.Zero.performed += _ => OnOptionsZero?.Invoke();
         #endregion
 
-        _FPV.SwitchCharacter.performed += _ => OnGetCharacterInfo.Invoke();
-        _Isometric.SwitchCharacter.performed += _ => OnGetCharacterInfo.Invoke();
-        _TopDown.SwitchCharacter.performed += _ => OnGetCharacterInfo.Invoke();
+        _FPV.SwitchCharacter.performed += _ => OnGetCharacterInfo?.Invoke();
+        _Isometric.SwitchCharacter.performed += _ => OnGetCharacterInfo?.Invoke();
+        _TopDown.SwitchCharacter.performed += _ => OnGetCharacterInfo?.Invoke();
 
         /*        _TopDown.WheelClick.performed += _pool => OnWheelClickPerformed.Invoke();
                 _TopDown.WheelClick.canceled += _pool => OnWheelClickCanceled.Invoke();*/
 
-        _All.AltF.performed += _ => OnAltF.Invoke();
+        _All.AltF.performed += _ => OnAltF?.Invoke();
 
-        _FPV.AttackLMB.started += _ => OnAttackLMB.Invoke();
-        _Isometric.AttackLMB.started += _ => OnAttackLMB.Invoke();
-        _FPV.AttackLMB.performed += _ => OnAttackLMBPerformed.Invoke();
-        _Isometric.AttackLMB.performed += _ => OnAttackLMBPerformed.Invoke();
-        _FPV.AttackLMB.canceled += _ => OnAttackLMBReleased.Invoke();
-        _Isometric.AttackLMB.canceled += _ => OnAttackLMBReleased.Invoke();
+        _FPV.AttackLMB.started += _ => OnAttackLMB?.Invoke();
+        _Isometric.AttackLMB.started += _ => OnAttackLMB?.Invoke();
+        _FPV.AttackLMB.performed += _ => OnAttackLMBPerformed?.Invoke();
+        _Isometric.AttackLMB.performed += _ => OnAttackLMBPerformed?.Invoke();
+        _FPV.AttackLMB.canceled += _ => OnAttackLMBReleased?.Invoke();
+        _Isometric.AttackLMB.canceled += _ => OnAttackLMBReleased?.Invoke();
 
-        _FPV.AttackRMB.started += _ => OnAttackRMB.Invoke();
-        _Isometric.AttackRMB.started += _ => OnAttackRMB.Invoke();
-        _FPV.AttackRMB.performed += _ => OnAttackRMBPerformed.Invoke();
-        _Isometric.AttackRMB.performed += _ => OnAttackRMBPerformed.Invoke();
-        _FPV.AttackRMB.canceled += _ => OnAttackRMBReleased.Invoke();
-        _Isometric.AttackRMB.canceled += _ => OnAttackRMBReleased.Invoke();
+        _FPV.AttackRMB.started += _ => OnAttackRMB?.Invoke();
+        _Isometric.AttackRMB.started += _ => OnAttackRMB?.Invoke();
+        _FPV.AttackRMB.performed += _ => OnAttackRMBPerformed?.Invoke();
+        _Isometric.AttackRMB.performed += _ => OnAttackRMBPerformed?.Invoke();
+        _FPV.AttackRMB.canceled += _ => OnAttackRMBReleased?.Invoke();
+        _Isometric.AttackRMB.canceled += _ => OnAttackRMBReleased?.Invoke();
 
-        _FPV.AimRMB.performed += _ => OnEnterAimingMode.Invoke();
-        _Isometric.AimRMB.performed += _ => OnEnterAimingMode.Invoke();
-        _FPV.AimRMB.canceled += _ => OnExitAimingMode.Invoke();
-        _Isometric.AimRMB.canceled += _ => OnExitAimingMode.Invoke();
+        _FPV.AimRMB.performed += _ => OnEnterAimingMode?.Invoke();
+        _Isometric.AimRMB.performed += _ => OnEnterAimingMode?.Invoke();
+        _FPV.AimRMB.canceled += _ => OnExitAimingMode?.Invoke();
+        _Isometric.AimRMB.canceled += _ => OnExitAimingMode?.Invoke();
 
         #region Interact
-        _FPV.Interaction.performed += _ => OnInteractionPress.Invoke();
-        _TopDown.Interaction.started += _ => OnInteractionPress.Invoke();
-        _Isometric.Interaction.performed += _ => OnInteractionPress.Invoke();
+        _FPV.Interaction.performed += _ => OnInteractionPress?.Invoke();
+        _TopDown.Interaction.started += _ => OnInteractionPress?.Invoke();
+        _Isometric.Interaction.performed += _ => OnInteractionPress?.Invoke();
 
-        _TopDown.Interaction.performed += _ => OnInteractionHoldPerformed.Invoke();
-        _TopDown.Interaction.canceled += _ => OnInteractionHoldReleased.Invoke();
+        _TopDown.Interaction.performed += _ => OnInteractionHoldPerformed?.Invoke();
+        _TopDown.Interaction.canceled += _ => OnInteractionHoldReleased?.Invoke();
         #endregion
 
-        _FPV.Reload.performed += _ => OnReload.Invoke();
-        _Isometric.Reload.performed += _ => OnReload.Invoke();
+        _FPV.Reload.performed += _ => OnReload?.Invoke();
+        _Isometric.Reload.performed += _ => OnReload?.Invoke();
 
-        _FPV.HPRecovery.performed += _ => OnHPRecovery.Invoke();
-        _TopDown.HPRecovery.performed += _ => OnHPRecovery.Invoke();
-        _Isometric.HPRecovery.performed += _ => OnHPRecovery.Invoke();
+        _FPV.HPRecovery.performed += _ => OnHPRecovery?.Invoke();
+        _TopDown.HPRecovery.performed += _ => OnHPRecovery?.Invoke();
+        _Isometric.HPRecovery.performed += _ => OnHPRecovery?.Invoke();
 
         _FPV.Jump.performed += _ => OnJump.Invoke();
-        _TopDown.Jump.performed += _ => OnJump.Invoke();
-        _Isometric.Jump.performed += _ => OnJump.Invoke();
+        _TopDown.Jump.performed += _ => OnJump?.Invoke();
+        _Isometric.Jump.performed += _ => OnJump?.Invoke();
+
+        _FPV.MeleeAttack.performed += _ => OnMeleeAttack?.Invoke();
+        _TopDown.MeleeAttack.performed += _ => OnMeleeAttack?.Invoke();
+        _Isometric.MeleeAttack.performed += _ => OnMeleeAttack?.Invoke();
         // Add here a new one
     }
     #endregion Init methods

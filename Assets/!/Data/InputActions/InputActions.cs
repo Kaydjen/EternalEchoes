@@ -125,6 +125,15 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MeleeAttack"",
+                    ""type"": ""Button"",
+                    ""id"": ""b2fbc329-10be-4820-8336-3ed1268f8883"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -292,6 +301,17 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""492bdc5c-a199-4903-86fe-f5d947dd270b"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MeleeAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -307,6 +327,15 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""MeleeAttack"",
+                    ""type"": ""Button"",
+                    ""id"": ""7de97371-c1a4-485d-8aea-1b7242353022"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 },
                 {
                     ""name"": ""Jump"",
@@ -428,6 +457,17 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""59f1ae59-c99a-42d7-b3fa-5d481f2c3dd2"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MeleeAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""68326760-2e89-44b8-8773-4d79add63379"",
                     ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
@@ -539,6 +579,15 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""MeleeAttack"",
+                    ""type"": ""Button"",
+                    ""id"": ""44d931d1-7ad0-482e-b39f-11d84e311de9"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 },
                 {
                     ""name"": ""Jump"",
@@ -673,6 +722,17 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Mouse"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1a015b64-2004-45b3-9a76-b3ad8b57e875"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MeleeAttack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -1320,9 +1380,11 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         m_FPV_Reload = m_FPV.FindAction("Reload", throwIfNotFound: true);
         m_FPV_HPRecovery = m_FPV.FindAction("HPRecovery", throwIfNotFound: true);
         m_FPV_Jump = m_FPV.FindAction("Jump", throwIfNotFound: true);
+        m_FPV_MeleeAttack = m_FPV.FindAction("MeleeAttack", throwIfNotFound: true);
         // Top-Down
         m_TopDown = asset.FindActionMap("Top-Down", throwIfNotFound: true);
         m_TopDown_ScreenEdgePanning = m_TopDown.FindAction("ScreenEdgePanning", throwIfNotFound: true);
+        m_TopDown_MeleeAttack = m_TopDown.FindAction("MeleeAttack", throwIfNotFound: true);
         m_TopDown_Jump = m_TopDown.FindAction("Jump", throwIfNotFound: true);
         m_TopDown_HPRecovery = m_TopDown.FindAction("HPRecovery", throwIfNotFound: true);
         m_TopDown_KeyboardCameraMovement = m_TopDown.FindAction("KeyboardCameraMovement", throwIfNotFound: true);
@@ -1334,6 +1396,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         // Isometric
         m_Isometric = asset.FindActionMap("Isometric", throwIfNotFound: true);
         m_Isometric_Mouse = m_Isometric.FindAction("Mouse", throwIfNotFound: true);
+        m_Isometric_MeleeAttack = m_Isometric.FindAction("MeleeAttack", throwIfNotFound: true);
         m_Isometric_Jump = m_Isometric.FindAction("Jump", throwIfNotFound: true);
         m_Isometric_HPRecovery = m_Isometric.FindAction("HPRecovery", throwIfNotFound: true);
         m_Isometric_AimRMB = m_Isometric.FindAction("AimRMB", throwIfNotFound: true);
@@ -1457,6 +1520,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_FPV_Reload;
     private readonly InputAction m_FPV_HPRecovery;
     private readonly InputAction m_FPV_Jump;
+    private readonly InputAction m_FPV_MeleeAttack;
     public struct FPVActions
     {
         private @InputActions m_Wrapper;
@@ -1472,6 +1536,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         public InputAction @Reload => m_Wrapper.m_FPV_Reload;
         public InputAction @HPRecovery => m_Wrapper.m_FPV_HPRecovery;
         public InputAction @Jump => m_Wrapper.m_FPV_Jump;
+        public InputAction @MeleeAttack => m_Wrapper.m_FPV_MeleeAttack;
         public InputActionMap Get() { return m_Wrapper.m_FPV; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1514,6 +1579,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @Jump.started += instance.OnJump;
             @Jump.performed += instance.OnJump;
             @Jump.canceled += instance.OnJump;
+            @MeleeAttack.started += instance.OnMeleeAttack;
+            @MeleeAttack.performed += instance.OnMeleeAttack;
+            @MeleeAttack.canceled += instance.OnMeleeAttack;
         }
 
         private void UnregisterCallbacks(IFPVActions instance)
@@ -1551,6 +1619,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @Jump.started -= instance.OnJump;
             @Jump.performed -= instance.OnJump;
             @Jump.canceled -= instance.OnJump;
+            @MeleeAttack.started -= instance.OnMeleeAttack;
+            @MeleeAttack.performed -= instance.OnMeleeAttack;
+            @MeleeAttack.canceled -= instance.OnMeleeAttack;
         }
 
         public void RemoveCallbacks(IFPVActions instance)
@@ -1573,6 +1644,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_TopDown;
     private List<ITopDownActions> m_TopDownActionsCallbackInterfaces = new List<ITopDownActions>();
     private readonly InputAction m_TopDown_ScreenEdgePanning;
+    private readonly InputAction m_TopDown_MeleeAttack;
     private readonly InputAction m_TopDown_Jump;
     private readonly InputAction m_TopDown_HPRecovery;
     private readonly InputAction m_TopDown_KeyboardCameraMovement;
@@ -1586,6 +1658,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         private @InputActions m_Wrapper;
         public TopDownActions(@InputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @ScreenEdgePanning => m_Wrapper.m_TopDown_ScreenEdgePanning;
+        public InputAction @MeleeAttack => m_Wrapper.m_TopDown_MeleeAttack;
         public InputAction @Jump => m_Wrapper.m_TopDown_Jump;
         public InputAction @HPRecovery => m_Wrapper.m_TopDown_HPRecovery;
         public InputAction @KeyboardCameraMovement => m_Wrapper.m_TopDown_KeyboardCameraMovement;
@@ -1606,6 +1679,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @ScreenEdgePanning.started += instance.OnScreenEdgePanning;
             @ScreenEdgePanning.performed += instance.OnScreenEdgePanning;
             @ScreenEdgePanning.canceled += instance.OnScreenEdgePanning;
+            @MeleeAttack.started += instance.OnMeleeAttack;
+            @MeleeAttack.performed += instance.OnMeleeAttack;
+            @MeleeAttack.canceled += instance.OnMeleeAttack;
             @Jump.started += instance.OnJump;
             @Jump.performed += instance.OnJump;
             @Jump.canceled += instance.OnJump;
@@ -1637,6 +1713,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @ScreenEdgePanning.started -= instance.OnScreenEdgePanning;
             @ScreenEdgePanning.performed -= instance.OnScreenEdgePanning;
             @ScreenEdgePanning.canceled -= instance.OnScreenEdgePanning;
+            @MeleeAttack.started -= instance.OnMeleeAttack;
+            @MeleeAttack.performed -= instance.OnMeleeAttack;
+            @MeleeAttack.canceled -= instance.OnMeleeAttack;
             @Jump.started -= instance.OnJump;
             @Jump.performed -= instance.OnJump;
             @Jump.canceled -= instance.OnJump;
@@ -1683,6 +1762,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Isometric;
     private List<IIsometricActions> m_IsometricActionsCallbackInterfaces = new List<IIsometricActions>();
     private readonly InputAction m_Isometric_Mouse;
+    private readonly InputAction m_Isometric_MeleeAttack;
     private readonly InputAction m_Isometric_Jump;
     private readonly InputAction m_Isometric_HPRecovery;
     private readonly InputAction m_Isometric_AimRMB;
@@ -1698,6 +1778,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         private @InputActions m_Wrapper;
         public IsometricActions(@InputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Mouse => m_Wrapper.m_Isometric_Mouse;
+        public InputAction @MeleeAttack => m_Wrapper.m_Isometric_MeleeAttack;
         public InputAction @Jump => m_Wrapper.m_Isometric_Jump;
         public InputAction @HPRecovery => m_Wrapper.m_Isometric_HPRecovery;
         public InputAction @AimRMB => m_Wrapper.m_Isometric_AimRMB;
@@ -1720,6 +1801,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @Mouse.started += instance.OnMouse;
             @Mouse.performed += instance.OnMouse;
             @Mouse.canceled += instance.OnMouse;
+            @MeleeAttack.started += instance.OnMeleeAttack;
+            @MeleeAttack.performed += instance.OnMeleeAttack;
+            @MeleeAttack.canceled += instance.OnMeleeAttack;
             @Jump.started += instance.OnJump;
             @Jump.performed += instance.OnJump;
             @Jump.canceled += instance.OnJump;
@@ -1757,6 +1841,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @Mouse.started -= instance.OnMouse;
             @Mouse.performed -= instance.OnMouse;
             @Mouse.canceled -= instance.OnMouse;
+            @MeleeAttack.started -= instance.OnMeleeAttack;
+            @MeleeAttack.performed -= instance.OnMeleeAttack;
+            @MeleeAttack.canceled -= instance.OnMeleeAttack;
             @Jump.started -= instance.OnJump;
             @Jump.performed -= instance.OnJump;
             @Jump.canceled -= instance.OnJump;
@@ -2145,10 +2232,12 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         void OnReload(InputAction.CallbackContext context);
         void OnHPRecovery(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
+        void OnMeleeAttack(InputAction.CallbackContext context);
     }
     public interface ITopDownActions
     {
         void OnScreenEdgePanning(InputAction.CallbackContext context);
+        void OnMeleeAttack(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnHPRecovery(InputAction.CallbackContext context);
         void OnKeyboardCameraMovement(InputAction.CallbackContext context);
@@ -2161,6 +2250,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     public interface IIsometricActions
     {
         void OnMouse(InputAction.CallbackContext context);
+        void OnMeleeAttack(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnHPRecovery(InputAction.CallbackContext context);
         void OnAimRMB(InputAction.CallbackContext context);
