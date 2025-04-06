@@ -10,7 +10,7 @@ public class LookOrientation : MonoBehaviour, IUpdate
     #endregion
 
     #region PRIVATE METHODS
-    private void UpdateNeededComponents()
+    private void GetPlayer()
     {
         _playerBoth = PlayerCore.Instance.transform.GetChild(Constants.Player.BOTH).transform;
     }
@@ -63,32 +63,35 @@ public class LookOrientation : MonoBehaviour, IUpdate
 
     private void RegisterUpdate()
     {
-        Updater.Instance.RegisterUpdate(this, Updater.UpdateType.PreUpdate);
+        Updater.Instance?.RegisterUpdate(this, Updater.UpdateType.PreUpdate);
     }
 
     private void UnregisterUpdate()
     {
-        Updater.Instance.UnregisterUpdate(this, Updater.UpdateType.PreUpdate);
+        Updater.Instance?.UnregisterUpdate(this, Updater.UpdateType.PreUpdate);
     }
     #endregion
 
     #region MONO METHODS
-    public void Init()
+    public void Start()
     {
-        UpdateNeededComponents();
+        if (PlayerCore.Instance != null) GetPlayer();
+        else InitEvents.OnFirstCharacterInit?.AddListener(GetPlayer);
         Direction = this.transform;
     }
 
     private void OnEnable()
     {
-        RegisterUpdate();
-        GameEvents.OnCharacterChange.AddListener(UpdateNeededComponents);
+        if(Updater.Instance != null) RegisterUpdate();
+        else InitEvents.OnUpdateInit?.AddListener(RegisterUpdate);
+
+        GameEvents.OnCharacterChange?.AddListener(GetPlayer);
     }
 
     private void OnDisable()
     {
         UnregisterUpdate();
-        GameEvents.OnCharacterChange.RemoveListener(UpdateNeededComponents);
+        GameEvents.OnCharacterChange?.RemoveListener(GetPlayer);
     }
     #endregion
 }

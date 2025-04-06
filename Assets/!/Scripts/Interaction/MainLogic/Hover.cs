@@ -163,7 +163,7 @@ public class Hover : MonoBehaviour, ICameraUpdate, IUpdate
     {
         _raycastDistance = Mathf.Clamp(value, 0f, 100f);
     }
-    public void UpdateNeededComponents() // TODO: we dont need to get camera here, it's better to do in Init method
+    public void GetPlayer() // TODO: we dont need to get camera here, it's better to do in Init method
     {
         _camera = this.transform.GetChild(Constants.Player.CAMERA).transform.GetComponent<Camera>();
     }

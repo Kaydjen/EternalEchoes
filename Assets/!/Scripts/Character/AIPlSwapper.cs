@@ -15,6 +15,7 @@ public class AIPlSwapper : MonoBehaviour
     /// </summary>
     public static void ActivateManualControl()
     {
+        if(PlayerCore.Instance == null) Debug.Log(" Is null  PlayerCore.Instance");
         EnabledManual(true);
         EnabledAI(false);
         PlayerCore.Instance.transform.GetComponent<GameplayModeSwitcher>().ManualMode();

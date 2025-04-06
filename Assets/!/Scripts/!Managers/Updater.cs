@@ -25,9 +25,10 @@ public class Updater : MonoBehaviour
     public static Updater Instance { get; set; }
     public enum UpdateType { InitialUpdate, PreUpdate, Update, LateUpdate, FinalUpdate }
 
-    public void Init()
+    public void Start()
     {
         Instance = this;
+        InitEvents.OnUpdateInit?.Invoke();
     }
     private void Update()
     {
