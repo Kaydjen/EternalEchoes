@@ -1,7 +1,8 @@
 public enum EAttackSide
 {
-    Left,
-    Right,
+    LMB,
+    RMB,
+    F
 }
 
 

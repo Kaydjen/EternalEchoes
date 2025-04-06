@@ -70,7 +70,9 @@ public class InputHandler : MonoBehaviour
     public static UnityEvent OnReload { get; private set; } = new UnityEvent();
     public static UnityEvent OnHPRecovery { get; private set; } = new UnityEvent();
     public static UnityEvent OnJump { get; private set; } = new UnityEvent();
-    public static UnityEvent OnMeleeAttack { get; private set; } = new UnityEvent();
+    public static UnityEvent OnAttackF { get; private set; } = new UnityEvent();
+    public static UnityEvent OnAttackFPerformed { get; private set; } = new UnityEvent();
+    public static UnityEvent OnAttackFReleased { get; private set; } = new UnityEvent();
 
     #endregion Static variables
     #region Init methods
@@ -210,9 +212,12 @@ public class InputHandler : MonoBehaviour
         _TopDown.Jump.performed += _ => OnJump?.Invoke();
         _Isometric.Jump.performed += _ => OnJump?.Invoke();
 
-        _FPV.MeleeAttack.performed += _ => OnMeleeAttack?.Invoke();
-        _TopDown.MeleeAttack.performed += _ => OnMeleeAttack?.Invoke();
-        _Isometric.MeleeAttack.performed += _ => OnMeleeAttack?.Invoke();
+        _FPV.MeleeAttack.started += _ => OnAttackF?.Invoke();
+        _Isometric.MeleeAttack.started += _ => OnAttackF?.Invoke();
+        _FPV.MeleeAttack.performed += _ => OnAttackFPerformed?.Invoke();
+        _Isometric.MeleeAttack.performed += _ => OnAttackFPerformed?.Invoke();
+        _FPV.MeleeAttack.canceled += _ => OnAttackFReleased?.Invoke();
+        _Isometric.MeleeAttack.canceled += _ => OnAttackFReleased?.Invoke();
         // Add here a new one
     }
     #endregion Init methods
