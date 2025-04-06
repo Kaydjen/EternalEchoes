@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class AIManager : MonoBehaviour
 {
+
     #region PRIVATE 
     private void SubscribeOnEvents()
     {
@@ -29,29 +30,20 @@ public class AIManager : MonoBehaviour
        // if (ai.Type == EAIType.Character) return;
         if(!ai.TryGetComponent(out SoulsLevelsHandler soul)) return;
 
-        Transform installedSoul;
-        switch (soul.GetCurrentSoulType())
+        ESoulType soulType = soul.GetCurrentSoulType();
+
+        if (SoulsDictionary.List.TryGetValue(soulType, out Pool<Transform> pool))
         {
-            case ESoulType.Newborn: 
-                installedSoul = SoulPoolOne.Instance.Get();
-                installedSoul.position = ai.transform.position;
-                installedSoul.GetComponent<HomingSoul>().SetDestination(ai.transform.GetComponent<EnemyHP>().GetAttacker().transform);
-                break;
-            case ESoulType.Growing:
-                installedSoul = SoulPoolTwo.Instance.Get();
-                installedSoul.position = ai.transform.position;
-                installedSoul.GetComponent<HomingSoul>().SetDestination(ai.transform.GetComponent<EnemyHP>().GetAttacker().transform); 
-                break;
-            case ESoulType.Fading:
-                installedSoul = SoulPoolThree.Instance.Get();
-                installedSoul.position = ai.transform.position;
-                installedSoul.GetComponent<HomingSoul>().SetDestination(ai.transform.GetComponent<EnemyHP>().GetAttacker().transform); 
-                break;
-            case ESoulType.Lost:
-                installedSoul = SoulPoolFour.Instance.Get();
-                installedSoul.position = ai.transform.position;
-                installedSoul.GetComponent<HomingSoul>().SetDestination(ai.transform.GetComponent<EnemyHP>().GetAttacker().transform); 
-                break;
+            Transform installedSoul = pool.Get();
+            installedSoul.position = ai.transform.position;
+
+            if (ai.transform.TryGetComponent(out EnemyHP enemyHP) 
+                && enemyHP.GetAttacker() is { } attacker
+                && installedSoul.TryGetComponent(out HomingSoul homingSoul))
+            {
+                homingSoul.SetDestination(attacker.transform);
+                homingSoul.SetSoulValue(soul.GetSoulValue());
+            }
         }
     }
     #endregion
@@ -66,10 +58,6 @@ public class AIManager : MonoBehaviour
     }
     #endregion
 }
-
-
-
-
 
 
 /*
@@ -106,15 +94,3 @@ public class AIManager : MonoBehaviour
  
  */
 
-
-
-/*public class Repository<T, TKey> where TKey : notnull
-{
-    public Dictionary<TKey, T> Items { get; } = new();
-
-    public void Register(TKey id, T item) => 
-        Items.Add(id, item);
-
-    public void Unregister(TKey id) => 
-        Items.Remove(id);
-}*/

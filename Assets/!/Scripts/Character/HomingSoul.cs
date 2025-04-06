@@ -9,7 +9,9 @@ public class HomingSoul : MonoBehaviour
     [SerializeField] private float _moveSpeed;
     [SerializeField] private float _startHeight = 5f;
     private int _currentTime;
-    
+    private byte _soulValue = 1;
+
+    public void SetSoulValue(byte value) => _soulValue = value;
     public void SetDestination(Transform target) => _target = target;
     void OnEnable()
     {
@@ -40,6 +42,11 @@ public class HomingSoul : MonoBehaviour
 
     private void DestroySoul()
     {
+        if (_target.CompareTag("Enemy") && _target.TryGetComponent(out ISoulsLevelsHandler target))
+            target.IncreaseSoulLevel();
+        else if(_target.TryGetComponent(out HPRecovery characterSoul))
+            characterSoul.Replenish(_soulValue);
+
         Destroy(gameObject);
     }
 

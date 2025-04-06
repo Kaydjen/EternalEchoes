@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [ComponentInfo("", "Use it to set up Enemy stats and levels")]
-public class SoulsLevelsHandler : MonoBehaviour
+public class SoulsLevelsHandler : MonoBehaviour, ISoulsLevelsHandler
 {
     [SerializeField] private byte _currentSoulNumber;
     public SoulScriptableObject Soul1;
@@ -25,6 +25,7 @@ public class SoulsLevelsHandler : MonoBehaviour
         _hp = GetComponent<EnemyHP>();
     }
     public ESoulType GetCurrentSoulType() => _currentSoul.Type;
+    public byte GetSoulValue() => _currentSoul.SoulValue;
     private void SetCurrentSoul()
     {
         switch (_currentSoulNumber)

@@ -368,7 +368,7 @@ public class InputHandler : MonoBehaviour
 
 /* Instruction
  
-*** New Map ***
+*** New List ***
 *Go to r.Maps and add a new one there*
 *Go to f.Init.0 and init there new map as in example*
 *Go to r.Public methods.0 and add here a State for new map* 

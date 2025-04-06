@@ -8,6 +8,7 @@ public class SoulScriptableObject : ScriptableObject
     public int Damage;
     public int Speed;
     public ESoulType Type;
+    public byte SoulValue;
 }
 
 
