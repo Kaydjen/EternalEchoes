@@ -11,7 +11,7 @@ public class PlayerCore : MonoBehaviour
         if (Instance == null)
         {
             OnEnable();
-            InitEvents.OnFirstCharacterInit?.Invoke();
+            InitEvents.OnFirstCharacterReady?.Invoke();
         }
         Component = GetComponent<ParametersManager>();
     }

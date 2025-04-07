@@ -49,7 +49,7 @@ public class DirectControlMovement : MonoBehaviour, IUpdate
             _controller.enabled = true;
 
         if (CameraSwitcher.Instance != null) GetCamera();
-        else InitEvents.OnCameraSwitcherInit?.AddListener(GetCamera);
+        else InitEvents.OnCameraSwitcherReady?.AddListener(GetCamera);
     }
     private void OnEnable()
     {

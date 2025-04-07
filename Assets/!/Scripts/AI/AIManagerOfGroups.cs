@@ -1,123 +1,140 @@
-﻿using UnityEngine;
-using UnityEngine.AI;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using System;
+//// IDEA: можно сделать так, что бы если через допустим 30 чекунд главарь группы все еще был жив, 
+///то он спавнил всех своих воинов наново.
+///
 
-[RequireComponent(typeof(NavMeshAgent))]
-public class AI : MonoBehaviour
+
+public class AIManagerOfGroups : MonoBehaviour
 {
-    [SerializeField] protected NavMeshAgent _agent;
-    public EAIType Type;
-    protected virtual void SetDestionaiton(Vector3 coordinates)
+    public static AIManagerOfGroups Instance;
+    [SerializeField] private float _delayBtwInstantiateGroups = 1f;
+    private Dictionary<EEnemyRank, Action<Tuple<Pool<Transform>, float, Vector3, byte, float>>> _DEnemyRank;
+    private readonly Queue<Tuple<Pool<Transform>, float, Vector3, byte, float>> _subordinatesQueue = new();
+    private readonly Queue<Tuple<Pool<Transform>, float, Vector3, byte, float>> _leadersQueue = new();
+    private bool _isProcessing;
+    private Coroutine _spawningCoroutine;
+    private const EEnemyRank RANK = EEnemyRank.Subordinate;
+    private const float RADIUS = 5f;
+    private const float DELAY = 2f;
+    private void Awake()
     {
-        _agent.destination = coordinates;
+        Instance = this;
+        InitEvents.OnAIManagerOfGroupsReady?.Invoke();
+        InitializeDictionary();
     }
-    protected virtual void Awake()
+    private void InitializeDictionary()
     {
-        EnemyRepository.Register(this, this.GetInstanceID());
-    }
-    protected void OnDestroy()
-    {
-        EnemyRepository.Unregister(this, this.GetInstanceID());
-    }
-    protected virtual void OnEnable()
-    {
-        _agent.enabled = true;
-    }
-    protected virtual void OnDisable()
-    {
-        _agent.enabled = false;
-    }
-}
-
-
-/*
- 
-
-public class AIGroupManager : MonoBehaviour
-{
-    [Space(5)]
-    [Header("Subordinate Enemy")]
-    [SerializeField] private bool _doSpawnSubordinate = true;
-    [SerializeField] private EEnemys _subordinateEnemyType;
-    [SerializeField] private EEnemyRank _subordinateEnemyRank;
-    [SerializeField] private float _subordinateSpawnDelay = 1f;
-    [SerializeField] private byte _subordinatesCount = 8;
-    [Space(5)]
-    [Header("Leader Enemy")]
-    [SerializeField] private bool _doSpawnLeader = true;
-    [SerializeField] private EEnemys _leaderEnemyType;
-    [SerializeField] private EEnemyRank _leaderEnemyRank;
-    [SerializeField] private float _leaderSpawnDelay = 1f;
-    [SerializeField] private byte _leadersCount = 1;
-    [Space(10)]
-    [SerializeField] private float _radiusOfSpawn = 5f;
-
-    // ивент, на который подпишуться все члены группы, и если кто-то из членов группы был ранен -
-    // то все члены группы атакуют нападавшего (тобиж ивент должен передавать параметр Transform attacker
-    // ----
-    // список юнитов для спавна
-    // список главарей для спавна
-    // ----
-    // булевое поле, для того, что бы обозначать, будет главарь или нет,  и нужно ли спавнить его сейчас 
-
-    private void OnEnable()
-    {
-        SpawnGroup(); // запрос в менеджер групп для спавна 
-    }
-    public void SpawnGroup()
-    {
-        if (DEnemys.List == null)
+        _DEnemyRank = new()
         {
-            Debug.Log($"{nameof(DEnemys.List)} is null");
+            { EEnemyRank.Subordinate, _subordinatesQueue.Enqueue },
+            { EEnemyRank.Leader, _leadersQueue.Enqueue },
+        };
+    }
+    /// <summary>
+    /// Use it to add needed group of enemies to spawn queue 
+    /// </summary>
+    /// <param name="pool">The pool of needed enemies</param>
+    /// <param name="countToSpawn">Number of enemies needed to instantiate</param>
+    /// <param name="pivotPosition">Coordinates of point where will spawn group</param>
+    /// <param name="radius">The radius of enemies instantiation (default: 5f)</param>
+    /// <param name="delay">The delay between instantiation of each enemy (default: 2f)</param>
+    /// <param name="rank">The rank of enemies (default: Subordinate)</param>
+    public void AddToQueue(Pool<Transform> pool, byte countToSpawn, Vector3 pivotPosition, float radius = RADIUS,
+        float delay = DELAY, EEnemyRank rank = RANK)
+    {
+        if (_DEnemyRank == null)
+        {
+            Debug.Log($"{nameof(_DEnemyRank)} was null, initializing...");
+            InitializeDictionary();
+        }
+        if (pool == null)
+        {
+            Debug.Log($"{nameof(pool)} in {nameof(AddToQueue)} in {nameof(AIManagerOfGroups)} is null");
             return;
         }
-        if (_doSpawnSubordinate && DEnemys.List.TryGetValue(_subordinateEnemyType, out Pool<Transform> subordinatesPool) && subordinatesPool != null)
+        if (countToSpawn == 0)
         {
-            if (AIManagerOfGroups.Instance == null)
+            Debug.Log($"{nameof(countToSpawn)} in {nameof(AddToQueue)} in {nameof(AIManagerOfGroups)} is 0");
+            return;
+        }
+
+        radius = Mathf.Max(0, radius);
+        delay = Mathf.Max(0, delay);
+
+        var parameters = Tuple.Create(pool, delay, pivotPosition, countToSpawn, radius);
+
+        if (_DEnemyRank.TryGetValue(rank, out var addToConcreteQueue)) 
+            addToConcreteQueue?.Invoke(parameters); 
+        else 
+            Debug.Log($"There is no rank like {nameof(rank)} in {nameof(AddToQueue)}");
+        if (!_isProcessing && this != null && gameObject.activeInHierarchy)
+            _spawningCoroutine = StartCoroutine(InstantiateQueues());        
+    }
+    private IEnumerator InstantiateQueues()
+    {
+        _isProcessing = true;
+        try
+        {
+            while (_subordinatesQueue.Count > 0 || _leadersQueue.Count > 0)
             {
-                if (InitEvents.OnAIManagerOfGroupsReady == null)
-                {
-                    Debug.Log($"{nameof(InitEvents.OnAIManagerOfGroupsReady)} is null");
-                    return;
-                }
-                InitEvents.OnAIManagerOfGroupsReady?.AddListener(
-                    () => AIManagerOfGroups.Instance
-                        .AddToQueue(subordinatesPool, _subordinatesCount, this.transform.position,
-                        _radiusOfSpawn, _subordinateSpawnDelay, _subordinateEnemyRank));
-            }
-            else
-            {
-                AIManagerOfGroups.Instance?.AddToQueue(
-                    subordinatesPool, _subordinatesCount, this.transform.position, _radiusOfSpawn,
-                    _subordinateSpawnDelay, _subordinateEnemyRank);
+                if (_subordinatesQueue.Count > 0)
+                    yield return ProcessOneGroup(_subordinatesQueue);
+
+                if (_leadersQueue.Count > 0)
+                    yield return ProcessOneGroup(_leadersQueue);
+
+                yield return new WaitForSeconds(_delayBtwInstantiateGroups);
             }
         }
-        if (_doSpawnLeader && DEnemys.List.TryGetValue(_leaderEnemyType, out Pool<Transform> leadersPool) && leadersPool != null)
+        finally
         {
-            if (AIManagerOfGroups.Instance == null)
-            {
-                if (InitEvents.OnAIManagerOfGroupsReady == null)
-                {
-                    Debug.Log($"{nameof(InitEvents.OnAIManagerOfGroupsReady)} is null");
-                    return;
-                }
-                InitEvents.OnAIManagerOfGroupsReady?.AddListener(
-                    () => AIManagerOfGroups.Instance
-                        .AddToQueue(leadersPool, _leadersCount, this.transform.position,
-                        _radiusOfSpawn, _leaderSpawnDelay, _leaderEnemyRank));
-            }
-            else
-            {
-                AIManagerOfGroups.Instance?.AddToQueue(
-                    leadersPool, _leadersCount, this.transform.position, _radiusOfSpawn,
-                    _leaderSpawnDelay, _leaderEnemyRank);
-            }
+            _isProcessing = false;
         }
+    }
+
+    private IEnumerator ProcessOneGroup(Queue<Tuple<Pool<Transform>, float, Vector3, byte, float>> queue)
+    {
+        var (pool, delay, pivotPosition, countToSpawn, radius) = queue.Dequeue();
+
+        float angleStep = 360f / countToSpawn;
+
+        float angle, x, z;
+        Vector3 position;
+        Transform enemy;
+        for (int i = 0; i < countToSpawn; i++)
+        {
+            if (pool == null) continue;
+
+            angle = i * angleStep * Mathf.Deg2Rad;
+            x = pivotPosition.x + radius * Mathf.Cos(angle);
+            z = pivotPosition.z + radius * Mathf.Sin(angle);
+            position = new(x, pivotPosition.y, z);
+
+            enemy = pool.Get();
+            if (enemy != null) enemy.position = position;            
+
+            yield return new WaitForSeconds(delay);
+        }
+
+        yield return new WaitForSeconds(_delayBtwInstantiateGroups);        
+    }
+
+    private void OnDisable()
+    {
+        if (_spawningCoroutine != null)
+        {
+            StopCoroutine(_spawningCoroutine);
+            _spawningCoroutine = null;
+        }
+        _isProcessing = false; // ну так, на всякий пожарный
     }
 }
 
- 
- 
- */
+
+
 /*
  
  public class AIManagerOfGroups : MonoBehaviour
@@ -140,7 +157,7 @@ public class AIGroupManager : MonoBehaviour
     /// <summary>
     ///  Use it to add needed group of enemies to spawn queue 
     /// </summary>
-    /// <param name="leadersPool">The leadersPool of needed enemies</param>
+    /// <param name="pool">The pool of needed enemies</param>
     /// <param name="countToSpawn">Number of enemies needed to instantiate</param>
     /// <param name="rank">The rank of enemies</param>
     /// <param name="delay">The delay between instantiation of each enemy</param>
@@ -149,7 +166,7 @@ public class AIGroupManager : MonoBehaviour
     /// <remarks>The defaul rank of enemy is Subordinate(the smallest one)
     /// The default delay is 2f
     /// The default radius is 5f</remarks>
-    public void AddToQueue(Pool<Transform> leadersPool, byte countToSpawn, Vector3 pivotPosition, float radius = 5f, float delay = 2f, EEnemyRank rank = EEnemyRank.Subordinate)
+    public void AddToQueue(Pool<Transform> pool, byte countToSpawn, Vector3 pivotPosition, float radius = 5f, float delay = 2f, EEnemyRank rank = EEnemyRank.Subordinate)
     {
         if (_DEnemyRank == null) 
         {
@@ -158,9 +175,9 @@ public class AIGroupManager : MonoBehaviour
             Awake();
             return;
         }
-        if (leadersPool == null)
+        if (pool == null)
         {
-            Debug.Log($"{nameof(leadersPool)} in {nameof(AddToQueue)} in {nameof(AIManagerOfGroups)} null");
+            Debug.Log($"{nameof(pool)} in {nameof(AddToQueue)} in {nameof(AIManagerOfGroups)} null");
             return;
         }
         if (countToSpawn == 0)
@@ -170,7 +187,7 @@ public class AIGroupManager : MonoBehaviour
         }
 
         Action<Tuple<Pool<Transform>, float, Vector3, byte, float>> addToConcreteQueue;
-        var parameters = Tuple.Create(leadersPool, delay, pivotPosition, countToSpawn, radius);
+        var parameters = Tuple.Create(pool, delay, pivotPosition, countToSpawn, radius);
 
         if (_DEnemyRank.TryGetValue(rank, out addToConcreteQueue)) 
             addToConcreteQueue.Invoke(parameters); // should work
@@ -185,7 +202,7 @@ public class AIGroupManager : MonoBehaviour
         {
             var list = _subordinatesQueue.Dequeue();
             byte countToSpawn = list.Item4;
-            Pool<Transform> leadersPool = list.Item1;
+            Pool<Transform> pool = list.Item1;
 
             float delay = list.Item2;
             float radius = list.Item5;
@@ -207,7 +224,7 @@ public class AIGroupManager : MonoBehaviour
                 x = pivot.x + radius * Mathf.Cos(angle);
                 z = pivot.z + radius * Mathf.Sin(angle);
                 position = new Vector3(x, pivot.y, z);
-                enemy = leadersPool.Get();
+                enemy = pool.Get();
                 enemy.position = position;
                 yield return new WaitForSeconds(_delayBtwInstantiateEachEnemy);
             }
@@ -220,6 +237,7 @@ public class AIGroupManager : MonoBehaviour
  
  
  */
+
 /*
  
  

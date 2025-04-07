@@ -64,22 +64,22 @@ public class LookOrientation : MonoBehaviour, IUpdate
         if (Updater.Instance == null)
         {
             Debug.Log("3");
-            InitEvents.OnUpdateInit?.AddListener(Register);
+            InitEvents.OnUpdateReady?.AddListener(Register);
         }
         if (PlayerCore.Instance == null) 
         {
             Debug.Log("4");
-            InitEvents.OnFirstCharacterInit?.AddListener(Register);
+            InitEvents.OnFirstCharacterReady?.AddListener(Register);
         }
         if (Updater.Instance != null) 
         {
             Debug.Log("5");
-            InitEvents.OnUpdateInit?.RemoveListener(Register);
+            InitEvents.OnUpdateReady?.RemoveListener(Register);
         }
         if (PlayerCore.Instance != null) 
         {
             Debug.Log("6");
-            InitEvents.OnFirstCharacterInit?.RemoveListener(Register);
+            InitEvents.OnFirstCharacterReady?.RemoveListener(Register);
         }
     }
     #endregion
@@ -98,9 +98,9 @@ public class LookOrientation : MonoBehaviour, IUpdate
     private void OnDisable()
     {
         UnregisterUpdate();
-        InitEvents.OnUpdateInit?.RemoveListener(Register);
+        InitEvents.OnUpdateReady?.RemoveListener(Register);
         GameEvents.OnCharacterChange?.RemoveListener(GetPlayer);
-        InitEvents.OnFirstCharacterInit?.RemoveListener(Register);
+        InitEvents.OnFirstCharacterReady?.RemoveListener(Register);
     }
     #endregion
 }
@@ -140,7 +140,7 @@ public class LookOrientation : MonoBehaviour, IUpdate
         }
         else
         {
-            InitEvents.OnFirstCharacterInit?.AddListener(Register);
+            InitEvents.OnFirstCharacterReady?.AddListener(Register);
         }
     }
     #endregion
@@ -163,7 +163,7 @@ public class LookOrientation : MonoBehaviour, IUpdate
         }
         else
         {
-            InitEvents.OnFirstCharacterInit?.AddListener(Initialize);
+            InitEvents.OnFirstCharacterReady?.AddListener(Initialize);
         }
     }
 
@@ -175,7 +175,7 @@ public class LookOrientation : MonoBehaviour, IUpdate
         }
         else
         {
-            InitEvents.OnUpdateInit?.AddListener(() =>
+            InitEvents.OnUpdateReady?.AddListener(() =>
             {
                 if (this != null) Register();
             });
@@ -190,16 +190,16 @@ public class LookOrientation : MonoBehaviour, IUpdate
     private void OnDisable()
     {
         UnregisterUpdate();
-        InitEvents.OnFirstCharacterInit?.RemoveListener(Register);
-        InitEvents.OnUpdateInit?.RemoveListener(Register);
+        InitEvents.OnFirstCharacterReady?.RemoveListener(Register);
+        InitEvents.OnUpdateReady?.RemoveListener(Register);
         GameEvents.OnCharacterChange?.RemoveListener(() => GetPlayer());
     }
 
     private void OnDestroy()
     {
         UnregisterUpdate();
-        InitEvents.OnFirstCharacterInit?.RemoveListener(Register);
-        InitEvents.OnUpdateInit?.RemoveListener(Register);
+        InitEvents.OnFirstCharacterReady?.RemoveListener(Register);
+        InitEvents.OnUpdateReady?.RemoveListener(Register);
         GameEvents.OnCharacterChange?.RemoveListener(() => GetPlayer());
     }
     #endregion
@@ -312,7 +312,7 @@ public class LookOrientation : MonoBehaviour, IUpdate
         }
         else
         {
-            InitEvents.OnFirstCharacterInit?.AddListener(Register);
+            InitEvents.OnFirstCharacterReady?.AddListener(Register);
         }
     }
     #endregion
@@ -335,7 +335,7 @@ public class LookOrientation : MonoBehaviour, IUpdate
         }
         else
         {
-            InitEvents.OnFirstCharacterInit?.AddListener(Initialize);
+            InitEvents.OnFirstCharacterReady?.AddListener(Initialize);
         }
     }
 
@@ -347,7 +347,7 @@ public class LookOrientation : MonoBehaviour, IUpdate
         }
         else
         {
-            InitEvents.OnUpdateInit?.AddListener(() =>
+            InitEvents.OnUpdateReady?.AddListener(() =>
             {
                 if (this != null) Register();
             });
@@ -362,16 +362,16 @@ public class LookOrientation : MonoBehaviour, IUpdate
     private void OnDisable()
     {
         UnregisterUpdate();
-        InitEvents.OnFirstCharacterInit?.RemoveListener(Register);
-        InitEvents.OnUpdateInit?.RemoveListener(Register);
+        InitEvents.OnFirstCharacterReady?.RemoveListener(Register);
+        InitEvents.OnUpdateReady?.RemoveListener(Register);
         GameEvents.OnCharacterChange?.RemoveListener(() => GetPlayer());
     }
 
     private void OnDestroy()
     {
         UnregisterUpdate();
-        InitEvents.OnFirstCharacterInit?.RemoveListener(Register);
-        InitEvents.OnUpdateInit?.RemoveListener(Register);
+        InitEvents.OnFirstCharacterReady?.RemoveListener(Register);
+        InitEvents.OnUpdateReady?.RemoveListener(Register);
         GameEvents.OnCharacterChange?.RemoveListener(() => GetPlayer());
     }
     #endregion

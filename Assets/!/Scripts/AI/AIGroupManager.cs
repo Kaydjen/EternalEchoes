@@ -1,30 +1,86 @@
 ﻿using UnityEngine;
-using UnityEngine.AI;
 
-[RequireComponent(typeof(NavMeshAgent))]
-public class AI : MonoBehaviour
+public class AIGroupManager : MonoBehaviour
 {
-    [SerializeField] protected NavMeshAgent _agent;
-    public EAIType Type;
-    protected virtual void SetDestionaiton(Vector3 coordinates)
+    [Space(5)]
+    [Header("Subordinate Enemy")]
+    [SerializeField] private bool _doSpawnSubordinate = true;
+    [SerializeField] private EEnemys _subordinateEnemyType;
+    [SerializeField] private EEnemyRank _subordinateEnemyRank;
+    [SerializeField] private float _subordinateSpawnDelay = 1f;
+    [SerializeField] private byte _subordinatesCount = 8;
+    [Space(5)]
+    [Header("Leader Enemy")]
+    [SerializeField] private bool _doSpawnLeader = true;
+    [SerializeField] private EEnemys _leaderEnemyType;
+    [SerializeField] private EEnemyRank _leaderEnemyRank;
+    [SerializeField] private float _leaderSpawnDelay = 1f;
+    [SerializeField] private byte _leadersCount = 1;
+    [Space(10)]
+    [SerializeField] private float _radiusOfSpawn = 5f;
+
+    private bool _wasSubscribedOnce;
+
+    // ивент, на который подпишуться все члены группы, и если кто-то из членов группы был ранен -
+    // то все члены группы атакуют нападавшего (тобиж ивент должен передавать параметр Transform attacker
+    // ----
+    // список юнитов для спавна
+    // список главарей для спавна
+    // ----
+    // булевое поле, для того, что бы обозначать, будет главарь или нет,  и нужно ли спавнить его сейчас 
+
+    private void OnEnable()
     {
-        _agent.destination = coordinates;
+        SpawnGroup(); // запрос в менеджер групп для спавна 
     }
-    protected virtual void Awake()
+    public void SpawnGroup()
     {
-        EnemyRepository.Register(this, this.GetInstanceID());
+        if (DEnemys.List == null)
+        {
+            Debug.LogError($"{nameof(DEnemys.List)} is null");
+            return;
+        }
+        if (_radiusOfSpawn <= 0)
+        {
+            Debug.LogError("Spawn radius must be positive");
+            return;
+        }
+        if (_doSpawnSubordinate)
+        {
+            RequestEnemySpawn(_subordinateEnemyType, _subordinatesCount, _subordinateSpawnDelay, _subordinateEnemyRank);
+        }
+        if (_doSpawnLeader)
+        {
+            RequestEnemySpawn(_leaderEnemyType, _leadersCount, _leaderSpawnDelay, _leaderEnemyRank);
+        }
     }
-    protected void OnDestroy()
+    private void RequestEnemySpawn(EEnemys enemyType, byte count, float delay, EEnemyRank rank)
     {
-        EnemyRepository.Unregister(this, this.GetInstanceID());
-    }
-    protected virtual void OnEnable()
-    {
-        _agent.enabled = true;
-    }
-    protected virtual void OnDisable()
-    {
-        _agent.enabled = false;
+        if (count == 0) return;
+        if (!DEnemys.List.TryGetValue(enemyType, out Pool<Transform> pool))
+        {
+            Debug.LogError($"Pool for {enemyType} not found or is null");
+            return;
+        }
+
+        if (AIManagerOfGroups.Instance == null)
+        {
+            if (_wasSubscribedOnce) return;
+            _wasSubscribedOnce = true;
+            if (InitEvents.OnAIManagerOfGroupsReady == null)
+            {
+                Debug.LogError($"{nameof(InitEvents.OnAIManagerOfGroupsReady)} is null");
+                return;
+            }
+            InitEvents.OnAIManagerOfGroupsReady.AddListener(() =>
+                        AIManagerOfGroups.Instance?.AddToQueue(
+                            pool, count, transform.position, _radiusOfSpawn, delay, rank));
+        }
+        else
+        {
+            AIManagerOfGroups.Instance?.AddToQueue(
+            pool, count, transform.position, _radiusOfSpawn, delay, rank);
+        }
     }
 }
 
