@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 [ComponentInfo("PISUN", "Nu, sam poczitaj, mnie len pisat")]
-public class TopDownV : CameraCore, IUpdate, ICameraUpdate, ICamera
+public class TopDownV : CameraCore, IUpdate, ICamera
 {
     #region VARIABLES
     [SerializeField] private Vector3 _cameraDefOffset = new Vector3(0f, 10f, -2f);
@@ -125,7 +125,12 @@ public class TopDownV : CameraCore, IUpdate, ICameraUpdate, ICamera
     /// </summary>
     public void UpdateNeededComponents() // TODO: we dont need to get camera here, it's better to do in Init method
     {
+        if (CheckNull.Player()) return;
+        if (CheckNull.Camera()) return;
+
         _cameraTransform = transform.GetChild(Constants.Player.CAMERA).transform;
+         if(_cameraTransform == null) 
+            Debug.Log($"{nameof(_cameraTransform)} is null in {nameof(TopDownV)}");
     }
     public void ManageScreenСompatibility()
     {
@@ -145,6 +150,7 @@ public class TopDownV : CameraCore, IUpdate, ICameraUpdate, ICamera
     public void ForCharacterSwitch()
     {
         AIPlSwapper.ActivateAIControl();
+        UpdateNeededComponents();
     }
     /// <summary>
     ///  Method, which will be invoked after swapping of character
@@ -166,7 +172,7 @@ public class TopDownV : CameraCore, IUpdate, ICameraUpdate, ICamera
     #region PRIVATE METHODS
     private void DragMouseScreen()
     {
-        this.transform.position += new Vector3(-InputHandler.MouseInput.x, 0f, -InputHandler.MouseInput.y) * Time.deltaTime * _mouseDragSensitivity;
+        this.transform.position += new Vector3(-InputManager.MouseInput.x, 0f, -InputManager.MouseInput.y) * Time.deltaTime * _mouseDragSensitivity;
     }
     private void ChangeScreenPositionMause()
     {
@@ -189,7 +195,7 @@ public class TopDownV : CameraCore, IUpdate, ICameraUpdate, ICamera
 
         transform.position = Vector3.SmoothDamp(
             transform.position,
-            _moveDestination + new Vector3(InputHandler.WASDInput.x, 0f, InputHandler.WASDInput.y),
+            _moveDestination + new Vector3(InputManager.WASDInput.x, 0f, InputManager.WASDInput.y),
             ref _currentMoveVelocity,
             _smoothTime,
             _cameraMoveSensitivity,
@@ -208,7 +214,7 @@ public class TopDownV : CameraCore, IUpdate, ICameraUpdate, ICamera
     }
     private void ZoomCamera()
     {
-        float zoomHeight = Mathf.Clamp(_cameraTransform.localPosition.y + -InputHandler.WheelRotate.y * .01f * _zoomStepSizeY, _minCameraHeight, _maxCameraHeight);
+        float zoomHeight = Mathf.Clamp(_cameraTransform.localPosition.y + -InputManager.WheelRotate.y * .01f * _zoomStepSizeY, _minCameraHeight, _maxCameraHeight);
         _zoomTargetPosition = new Vector3(_cameraTransform.localPosition.x, zoomHeight, _cameraTransform.localPosition.z);
         _zoomTargetPosition -= _zoomStepSizeZ * (zoomHeight - _cameraTransform.localPosition.y) * Vector3.forward;
 
@@ -241,11 +247,11 @@ public class TopDownV : CameraCore, IUpdate, ICameraUpdate, ICamera
     }
     private void RegisterUpdate()
     {
-        Updater.Instance.RegisterUpdate(this, Updater.UpdateType.InitialUpdate);
+        Updater.Instance?.RegisterUpdate(this, Updater.UpdateType.InitialUpdate);
     }
     private void UnregisterUpdate()
     {
-        Updater.Instance.UnregisterUpdate(this, Updater.UpdateType.InitialUpdate);
+        Updater.Instance?.UnregisterUpdate(this, Updater.UpdateType.InitialUpdate);
     }
     #endregion
     #region MONO METHODS
@@ -258,15 +264,17 @@ public class TopDownV : CameraCore, IUpdate, ICameraUpdate, ICamera
     {
         base.ExclusivityСheck();
 
+        CheckNull.Player();
         transform.position = PlayerCore.Instance.transform.position;
         transform.rotation = Quaternion.identity;
 
+        if (_cameraTransform == null) UpdateNeededComponents();
         _cameraTransform.localPosition = _cameraDefOffset;
         _cameraTransform.LookAt(this.transform);
 
-        InputHandler.OnWheelRotate?.AddListener(ZoomCamera);
-        InputHandler.OnWheelPerformed?.AddListener(EnableMouseMove);
-        InputHandler.OnWheelCanceled?.AddListener(DisableMouseMove);
+        InputManager.OnWheelRotate?.AddListener(ZoomCamera);
+        InputManager.OnWheelPerformed?.AddListener(EnableMouseMove);
+        InputManager.OnWheelCanceled?.AddListener(DisableMouseMove);
 
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
@@ -275,9 +283,9 @@ public class TopDownV : CameraCore, IUpdate, ICameraUpdate, ICamera
     }
     private void OnDisable()
     {
-        InputHandler.OnWheelRotate?.RemoveListener(ZoomCamera);
-        InputHandler.OnWheelPerformed?.RemoveListener(EnableMouseMove);
-        InputHandler.OnWheelCanceled?.RemoveListener(DisableMouseMove);
+        InputManager.OnWheelRotate?.RemoveListener(ZoomCamera);
+        InputManager.OnWheelPerformed?.RemoveListener(EnableMouseMove);
+        InputManager.OnWheelCanceled?.RemoveListener(DisableMouseMove);
 
         StopCoroutine(TweenPosition());
         UnregisterUpdate();
@@ -353,7 +361,7 @@ public class TopDownV : CameraCore
     #region private methods
     private void DragMouseScreen()
     {
-        this.transform.position += new Vector3(-InputHandler.MouseInput.x, 0f, -InputHandler.MouseInput.y) * Time.deltaTime * _sensitivityMouseDrag;
+        this.transform.position += new Vector3(-InputManager.MouseInput.x, 0f, -InputManager.MouseInput.y) * Time.deltaTime * _sensitivityMouseDrag;
     }
     private void ChangeScreenPositionMause()
     {
@@ -376,7 +384,7 @@ public class TopDownV : CameraCore
 
         transform.position = Vector3.SmoothDamp(
             transform.position,
-            _moveDestination + new Vector3(InputHandler.WASDInput.x, 0f, InputHandler.WASDInput.y),
+            _moveDestination + new Vector3(InputManager.WASDInput.x, 0f, InputManager.WASDInput.y),
             ref _currentVelocity,
             _smoothTime,
             _sensitivity,
@@ -395,7 +403,7 @@ public class TopDownV : CameraCore
     }
     private void ZoomCamera()
     {
-        float zoomHeight = Mathf.Clamp(_camera.localPosition.y + -InputHandler.WheelRotate.y * .01f * _zoomStepSizeY, _minZoomHeight, _maxZoomHeight);
+        float zoomHeight = Mathf.Clamp(_camera.localPosition.y + -InputManager.WheelRotate.y * .01f * _zoomStepSizeY, _minZoomHeight, _maxZoomHeight);
         _targetPosition = new Vector3(_camera.localPosition.x, zoomHeight, _camera.localPosition.z);
         _targetPosition -= _zoomStepSizeZ * (zoomHeight - _camera.localPosition.y) * Vector3.forward;
 
@@ -414,20 +422,20 @@ public class TopDownV : CameraCore
         _camera.localPosition = _cameraPos;
         _camera.LookAt(this.transform);
 
-        InputHandler.OnWheelRotate.AddListener(ZoomCamera);
+        InputManager.OnWheelRotate.AddListener(ZoomCamera);
 
-        InputHandler.OnRMBPerformed.AddListener(EnableMouseMove);
-        InputHandler.OnRMBCanceled.AddListener(EnableMouse);
+        InputManager.OnRMBPerformed.AddListener(EnableMouseMove);
+        InputManager.OnRMBCanceled.AddListener(EnableMouse);
 
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
     private void OnDisable()
     {
-        InputHandler.OnWheelRotate.RemoveListener(ZoomCamera);
+        InputManager.OnWheelRotate.RemoveListener(ZoomCamera);
 
-        InputHandler.OnRMBPerformed.RemoveListener(EnableMouseMove);
-        InputHandler.OnRMBCanceled.RemoveListener(EnableMouse);
+        InputManager.OnRMBPerformed.RemoveListener(EnableMouseMove);
+        InputManager.OnRMBCanceled.RemoveListener(EnableMouse);
         StopCoroutine(TweenPosition());
     }
     #endregion

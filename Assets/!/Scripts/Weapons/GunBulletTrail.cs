@@ -7,7 +7,7 @@ class GunBulletTrail : MonoBehaviour
     [SerializeField] private float _bulletDist = 50f;
     [SerializeField] private Transform _firePos;
     private WaitForSeconds _trailDelay;
-    [SerializeField] private Pool<TrailRenderer> _pool;
+    private Pool<TrailRenderer> _pool;
     public void SetNewBullet(Pool<TrailRenderer> pool) => _pool = pool;
     private IEnumerator PerformBullet(Vector3 endPos)
     {
@@ -29,9 +29,16 @@ class GunBulletTrail : MonoBehaviour
     private void PerformShootWithTarget(RaycastHit hitInfo) => StartCoroutine(PerformBullet(hitInfo.point));
     private void Awake()
     {
-        GetComponent<AttackHandler>().OnAttack.AddListener(PerformShootDef);
-        GetComponent<RayPerformer>().OnHitSomething += _ => PerformShootWithTarget(_);
-        _trailDelay = new WaitForSeconds(_pool.Get().time);
+        if (!TryGetComponent(out AttackHandler attack)) Debug.Log($"{nameof(attack)} is null in {nameof(GunBulletTrail)}");
+        else attack.OnAttack.AddListener(PerformShootDef);
+
+        if (!TryGetComponent(out RayPerformer ray)) Debug.Log($"{nameof(ray)} is null in {nameof(GunBulletTrail)}");
+        else ray.OnHitSomething += _ => PerformShootWithTarget(_);
+
+        if(BulletPool.Instance == null) Debug.Log($"{nameof(BulletPool.Instance)} is null in {nameof(GunBulletTrail)}");
+        else _pool = BulletPool.Instance;
+        if (_pool == null) Debug.Log($"{nameof(_pool)} is null in {nameof(GunBulletTrail)}");
+        else _trailDelay = new WaitForSeconds(_pool.Get().time);
     }
 }
 /*

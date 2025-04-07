@@ -1,47 +1,60 @@
 ﻿using UnityEngine;
 
-public class AIPlSwapper : MonoBehaviour
+public static class AIPlSwapper
 {
-    #region PUBLIC METHODS
+    #region PUBLIC
     /// <summary>
     /// When a character was changed, we should update its Manual and AI controls
     /// </summary>
     public static void UpdateControls()
     {
-        CameraSwitcher.Instance.UpdateControls();
+        CheckNull.Camera();
+        CameraSwitcher.Instance?.UpdateControls();
     }
     /// <summary> 
     ///  Activate Manual controls on currentValue character (and disable AI)
     /// </summary>
     public static void ActivateManualControl()
     {
+        CheckNull.Player();
         EnabledManual(true);
         EnabledAI(false);
-        PlayerCore.Instance.transform.GetComponent<GameplayModeSwitcher>().ManualMode();
+
+        Transform player = PlayerCore.Instance?.transform;
+        if (player.TryGetComponent(out GameplayModeSwitcher switcher)) 
+            switcher.ManualMode();
+        else Debug.Log($"{nameof(GameplayModeSwitcher)} is null in {nameof(AIPlSwapper)}");
     }
     /// <summary>
     ///  Activate AI controls on currentValue character  (and disable Manual)
     /// </summary>
     public static void ActivateAIControl()
     {
+        CheckNull.Player();
         EnabledManual(false);
         EnabledAI(true);
-        PlayerCore.Instance.transform.GetComponent<GameplayModeSwitcher>().AIMode();
+
+        Transform player = PlayerCore.Instance?.transform;
+        if (player.TryGetComponent(out GameplayModeSwitcher switcher))
+            switcher.AIMode();
+        else Debug.Log($"{nameof(GameplayModeSwitcher)} is null in {nameof(AIPlSwapper)}");
     }
     /// <summary>
     /// Lock character ability to move or do something (Lock both Manual and AI controls)
     /// </summary>
     public static void LockControl()
     {
-        PlayerCore.Instance.transform.GetChild(1).gameObject.SetActive(false);
-        PlayerCore.Instance.transform.GetChild(1).gameObject.SetActive(false);
+        CheckNull.Player();
+        PlayerCore.Instance?.transform.GetChild(1).gameObject.SetActive(false);
+        PlayerCore.Instance?.transform.GetChild(2).gameObject.SetActive(false);
     }
     /// <summary>
     /// Unlock character ability to move or do something (Unlock Manual or AI controls)
     /// </summary>
     public static void UnlockControl()
     {
-        CameraSwitcher.Instance.ManageControl();
+        CheckNull.Camera();
+        CameraSwitcher.Instance?.ManageControl();
     }
     /// <summary>
     /// Enable or disable Manual control of currentValue character
@@ -53,21 +66,19 @@ public class AIPlSwapper : MonoBehaviour
     /// </summary>
     /// <param name="state">True - enable, False - disable</param>
     public static void EnabledAI(bool state) => PlayerCore.Instance.transform.GetChild(2).gameObject.SetActive(state);
-    #endregion
-    #region PRIVATE METHODS
-    #endregion
-    #region MONO METHODS
-    private void OnEnable()
+    public static void SubscribeOnCameraSwitcher()
     {
-        CameraSwitcher.OnFPV_Enable.AddListener(ActivateManualControl);
-        CameraSwitcher.OnIsometricV_Enable.AddListener(ActivateManualControl);
-        CameraSwitcher.OnTopDownV_Enable.AddListener(ActivateAIControl);
+        CheckNull.Camera();
+        CameraSwitcher.OnFPV_Enable?.AddListener(ActivateManualControl);
+        CameraSwitcher.OnIsometricV_Enable?.AddListener(ActivateManualControl);
+        CameraSwitcher.OnTopDownV_Enable?.AddListener(ActivateAIControl);
     }
-    private void OnDisable()
+    public static void UnsubscribeOnCameraSwitcher()
     {
-        CameraSwitcher.OnFPV_Enable.RemoveListener(ActivateManualControl);
-        CameraSwitcher.OnIsometricV_Enable.RemoveListener(ActivateManualControl);
-        CameraSwitcher.OnTopDownV_Enable.RemoveListener(ActivateAIControl);
+        CheckNull.Camera();
+        CameraSwitcher.OnFPV_Enable?.RemoveListener(ActivateManualControl);
+        CameraSwitcher.OnIsometricV_Enable?.RemoveListener(ActivateManualControl);
+        CameraSwitcher.OnTopDownV_Enable?.RemoveListener(ActivateAIControl);
     }
     #endregion
 }

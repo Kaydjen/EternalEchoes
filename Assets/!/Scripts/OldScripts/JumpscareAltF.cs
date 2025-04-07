@@ -17,7 +17,7 @@ public class JumpscareAltF : MonoBehaviour
         CamObj = CameraSwitcher.Instance.transform;
         
         if (Random.Range(50, 75) == 52)
-            InputHandler.OnAltF.AddListener(ShoNibyd);
+            InputManager.OnAltF.AddListener(ShoNibyd);
         else
             Destroy(gameObject);
     }

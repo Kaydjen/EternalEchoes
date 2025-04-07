@@ -32,7 +32,7 @@ public class AIManager : MonoBehaviour
 
         ESoulType soulType = soul.GetCurrentSoulType();
 
-        if (SoulsDictionary.List.TryGetValue(soulType, out Pool<Transform> pool))
+        if (DSouls.List.TryGetValue(soulType, out Pool<Transform> pool))
         {
             Transform installedSoul = pool.Get();
             installedSoul.position = ai.transform.position;

@@ -32,7 +32,7 @@ public class DirectControlMovement : MonoBehaviour, IUpdate
     }
     public void PerformFinalUpdate()
     {
-        _velocity = (_direction.right * InputHandler.WASDInput.x + _direction.forward * InputHandler.WASDInput.y).normalized;
+        _velocity = (_direction.right * InputManager.WASDInput.x + _direction.forward * InputManager.WASDInput.y).normalized;
         _controller.Move(_velocity * _speed * Time.deltaTime);
     }
     public void PerformLateUpdate()
@@ -45,18 +45,28 @@ public class DirectControlMovement : MonoBehaviour, IUpdate
         _controller = this.transform.root.transform.GetComponent<CharacterController>();
         if (_controller == null)
             Debug.LogError($"{gameObject.name}, {this.GetType().Name}, the CharacterController is empty");
-        _controller.enabled = true;
-        _direction = CameraSwitcher.Instance.transform;
+        else
+            _controller.enabled = true;
+
+        if (CameraSwitcher.Instance != null) GetCamera();
+        else InitEvents.OnCameraSwitcherInit?.AddListener(GetCamera);
     }
     private void OnEnable()
     {
         if(_controller != null) _controller.enabled = true;
-        Updater.Instance.RegisterUpdate(this, Updater.UpdateType.FinalUpdate);
+        if(_direction != null)
+            Updater.Instance?.RegisterUpdate(this, Updater.UpdateType.FinalUpdate);
     }
     private void OnDisable()
     {
         if (_controller != null) _controller.enabled = false;
-        Updater.Instance.UnregisterUpdate(this, Updater.UpdateType.FinalUpdate);
+        Updater.Instance?.UnregisterUpdate(this, Updater.UpdateType.FinalUpdate);
+    }
+    private void GetCamera()
+    {
+        _direction = CameraSwitcher.Instance?.transform;
+        // Enable Movement If Can
+        if (this.enabled) Updater.Instance?.RegisterUpdate(this, Updater.UpdateType.FinalUpdate);
     }
 }
 

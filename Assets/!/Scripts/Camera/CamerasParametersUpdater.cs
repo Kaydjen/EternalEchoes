@@ -2,7 +2,7 @@
 
 public class CamerasParametersUpdater : MonoBehaviour
 {
-    public void Init()
+    public void Awake()
     {
         GameEvents.OnCharacterChange.AddListener(ParametersUpdate);
     }

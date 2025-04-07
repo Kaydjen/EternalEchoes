@@ -25,11 +25,11 @@ public class HPRecovery : Stats, IGameplayModeSwitcher
     }
     public void ForAIMode()
     {
-        InputHandler.OnHPRecovery.AddListener(Recovery);
+        InputManager.OnHPRecovery.AddListener(Recovery);
     }
     public void ForManualMode()
     {
-        InputHandler.OnHPRecovery.RemoveListener(Recovery);
+        InputManager.OnHPRecovery.RemoveListener(Recovery);
     }
     private void Start()
     {

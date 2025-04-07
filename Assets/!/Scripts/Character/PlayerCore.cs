@@ -6,12 +6,21 @@ public class PlayerCore : MonoBehaviour
 {
     public static PlayerCore Instance;
     [NonSerialized] public ParametersManager Component;
-    private void Awake() => Component = GetComponent<ParametersManager>();
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            OnEnable();
+            InitEvents.OnFirstCharacterInit?.Invoke();
+        }
+        Component = GetComponent<ParametersManager>();
+    }
 
     private void OnEnable()
     {
-        if(Instance == null)
+        if (Instance == null)
         {
+            AIPlSwapper.SubscribeOnCameraSwitcher(); // set up for the first activate
             Instance = this;
             AIPlSwapper.ActivateManualControl();
         }
@@ -25,6 +34,7 @@ public class PlayerCore : MonoBehaviour
             Instance = this;
             AIPlSwapper.UpdateControls();
         }
+        Debug.Log("OnEnable PlayerCore end");
         GameEvents.OnCharacterChange?.Invoke();
     }
 }

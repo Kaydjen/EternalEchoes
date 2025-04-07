@@ -30433,7 +30433,19 @@ MonoBehaviour:
   _duration: 2
   OnSceneLoad:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1836199190}
+        m_TargetAssemblyTypeName: GameHandler, Assembly-CSharp
+        m_MethodName: GenerateWorld
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1567372385
 GameObject:
   m_ObjectHideFlags: 0
@@ -36045,6 +36057,53 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1473460156}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1836199189
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1836199191}
+  - component: {fileID: 1836199190}
+  m_Layer: 0
+  m_Name: Generator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1836199190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1836199189}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f7d9f88db190f542b8a5b8063fe84c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  path: Example/Worlds
+  seed: 1
+  trigger: {fileID: 8500831945908467060, guid: 92b4b338b104d754fae0e3c28451f48e, type: 3}
+--- !u!4 &1836199191
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1836199189}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.4611568, y: -0.24474621, z: -1.229742}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1843133247
 GameObject:
   m_ObjectHideFlags: 0
@@ -37685,3 +37744,4 @@ SceneRoots:
   - {fileID: 1219577807}
   - {fileID: 1678018198}
   - {fileID: 503960227}
+  - {fileID: 1836199191}

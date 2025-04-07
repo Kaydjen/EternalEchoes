@@ -28,18 +28,25 @@ public class AimDirection : MonoBehaviour, IUpdate
     }
     private void RegisterFPVUpdate()
     {
-        Updater.Instance.RegisterUpdate(this, Updater.UpdateType.PreUpdate);
-        Updater.Instance.UnregisterUpdate(this, Updater.UpdateType.Update);
+        Updater.Instance?.RegisterUpdate(this, Updater.UpdateType.PreUpdate);
+        Updater.Instance?.UnregisterUpdate(this, Updater.UpdateType.Update);
     }
     private void RegisterIsometricVUpdate()
     {
-        Updater.Instance.UnregisterUpdate(this, Updater.UpdateType.PreUpdate);
-        Updater.Instance.RegisterUpdate(this, Updater.UpdateType.Update);
+        Updater.Instance?.UnregisterUpdate(this, Updater.UpdateType.PreUpdate);
+        Updater.Instance?.RegisterUpdate(this, Updater.UpdateType.Update);
+    }
+    private void UnregisterAll()
+    {
+        Updater.Instance?.UnregisterUpdate(this, Updater.UpdateType.Update);
+        Updater.Instance?.UnregisterUpdate(this, Updater.UpdateType.PreUpdate);
     }
     #endregion
     private void OnEnable()
     {
-        RegisterFPVUpdate();
+        if (Updater.Instance == null) InitEvents.OnUpdateInit?.AddListener(RegisterFPVUpdate);
+        else RegisterFPVUpdate();
+
         CameraSwitcher.OnFPV_Enable.AddListener(RegisterFPVUpdate);
         CameraSwitcher.OnIsometricV_Enable.AddListener(RegisterIsometricVUpdate);
         _camera = this.transform.root.GetChild(0);
@@ -47,6 +54,8 @@ public class AimDirection : MonoBehaviour, IUpdate
     }
     private void OnDisable()
     {
-        RegisterIsometricVUpdate();
+        UnregisterAll();
+        CameraSwitcher.OnFPV_Enable.RemoveListener(RegisterFPVUpdate);
+        CameraSwitcher.OnIsometricV_Enable.RemoveListener(RegisterIsometricVUpdate);
     }
 }

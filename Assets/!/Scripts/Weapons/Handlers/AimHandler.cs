@@ -22,14 +22,14 @@ public class AimHandler : MonoBehaviour, IGameplayModeSwitcher
     }
     public void ForManualMode()
     {
-        InputHandler.OnEnterAimingMode.AddListener(StartAim);
-        InputHandler.OnExitAimingMode.AddListener(StopAim);
+        InputManager.OnEnterAimingMode.AddListener(StartAim);
+        InputManager.OnExitAimingMode.AddListener(StopAim);
     }
 
     public void ForAIMode()
     {
-        InputHandler.OnEnterAimingMode.RemoveListener(StartAim);
-        InputHandler.OnExitAimingMode.RemoveListener(StopAim);
+        InputManager.OnEnterAimingMode.RemoveListener(StartAim);
+        InputManager.OnExitAimingMode.RemoveListener(StopAim);
     }
     #endregion
 }

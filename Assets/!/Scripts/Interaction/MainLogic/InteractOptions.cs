@@ -13,13 +13,13 @@ public class InteractOptions : MonoBehaviour, IMenu
         if(Hover.HitedCollider.TryGetComponent(out IInteractStrategy strategy))
             _context = strategy;
         GetComponent<Tabs>().CreateTabs(_context.GetData());
-        InputHandler.Instance.ActivateOptionsNumbersMap();
+        InputManager.ActivateOptionsNumbersMap();
         _manu.SetActive(true);
         DisableComponents();
     }
     public void DisableMenu()
     {
-        InputHandler.Instance.ActivateDefNumbersMap();
+        InputManager.ActivateDefNumbersMap();
         _manu.SetActive(false);
         ActivateComponents();
     }
@@ -54,11 +54,11 @@ public class InteractOptions : MonoBehaviour, IMenu
     #region PRIVATE METHODS
     private void DisableComponents()
     {
-        InputHandler.Instance.SetAllAim(false);
-        InputHandler.Instance.SetAllAttack(false);
-        InputHandler.Instance.SetAllMovement(false);
-        InputHandler.Instance.SetAllInteract(false);
-        InputHandler.Instance.SetUIState(true); 
+        InputManager.SetAllAim(false);
+        InputManager.SetAllAttack(false);
+        InputManager.SetAllMovement(false);
+        InputManager.SetAllInteract(false);
+        InputManager.SetUIState(true); 
 
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
@@ -68,11 +68,11 @@ public class InteractOptions : MonoBehaviour, IMenu
     }
     private void ActivateComponents()
     {
-        InputHandler.Instance.SetAllAim(true);
-        InputHandler.Instance.SetAllAttack(true);
-        InputHandler.Instance.SetAllMovement(true);
-        InputHandler.Instance.SetAllInteract(true);
-        InputHandler.Instance.SetUIState(false);
+        InputManager.SetAllAim(true);
+        InputManager.SetAllAttack(true);
+        InputManager.SetAllMovement(true);
+        InputManager.SetAllInteract(true);
+        InputManager.SetUIState(false);
 
         if (!CameraSwitcher.Instance.IsCurrentViewEnabled()) CameraSwitcher.Instance.EnableCurrentView();
         AIPlSwapper.UnlockControl();
@@ -83,21 +83,21 @@ public class InteractOptions : MonoBehaviour, IMenu
     {
         Instance = this;
 
-        InputHandler.OnOptionsOne.AddListener(Action1);
-        InputHandler.OnOptionsTwo.AddListener(Action2);
-        InputHandler.OnOptionsThree.AddListener(Action3);
-        InputHandler.OnOptionsFour.AddListener(Action4);
-        InputHandler.OnOptionsFive.AddListener(Action5);
+        InputManager.OnOptionsOne.AddListener(Action1);
+        InputManager.OnOptionsTwo.AddListener(Action2);
+        InputManager.OnOptionsThree.AddListener(Action3);
+        InputManager.OnOptionsFour.AddListener(Action4);
+        InputManager.OnOptionsFive.AddListener(Action5);
 
         GetComponent<Tabs>().InitButtonMethods(new System.Action[] { Action1, Action2, Action3, Action4, Action5 });
     }
     private void OnEnable()
     {
-        DynamicMenuManagerContext.Instance.RegisterMenu(EMenu.FPVMenu, this);
+        DynamicMenuManagerContext.RegisterMenu(EMenu.FPVMenu, this);
     }
     private void OnDisable()
     {
-        DynamicMenuManagerContext.Instance.UnregisterMenu(EMenu.FPVMenu, this);
+        DynamicMenuManagerContext.UnregisterMenu(EMenu.FPVMenu, this);
     }
     #endregion
 }
@@ -129,13 +129,13 @@ public class InteractOptions : MonoBehaviour, IMenu
         if(Hover.HitedCollider.TryGetComponent(out IInteractStrategy strategy))
             _context = strategy;
         GetComponent<Tabs>().CreateTabs(_context.GetData());
-        InputHandler.Instance.ActivateOptionsNumbersMap();
+        InputManager.Instance.ActivateOptionsNumbersMap();
         _manu.SetActive(true);
         DisableComponents();
     }
     public void DisableMenu()
     {
-        InputHandler.Instance.ActivateDefNumbersMap();
+        InputManager.Instance.ActivateDefNumbersMap();
         _manu.SetActive(false);
         ActivateComponents();
     }
@@ -170,11 +170,11 @@ public class InteractOptions : MonoBehaviour, IMenu
     #region PRIVATE METHODS
     private void DisableComponents()
     {
-        InputHandler.Instance.SetAllAim(false);
-        InputHandler.Instance.SetAllAttack(false);
-        InputHandler.Instance.SetAllMovement(false);
-        InputHandler.Instance.SetAllInteract(false);
-        InputHandler.Instance.SetUIState(true); 
+        InputManager.Instance.SetAllAim(false);
+        InputManager.Instance.SetAllAttack(false);
+        InputManager.Instance.SetAllMovement(false);
+        InputManager.Instance.SetAllInteract(false);
+        InputManager.Instance.SetUIState(true); 
 
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
@@ -184,11 +184,11 @@ public class InteractOptions : MonoBehaviour, IMenu
     }
     private void ActivateComponents()
     {
-        InputHandler.Instance.SetAllAim(true);
-        InputHandler.Instance.SetAllAttack(true);
-        InputHandler.Instance.SetAllMovement(true);
-        InputHandler.Instance.SetAllInteract(true);
-        InputHandler.Instance.SetUIState(false);
+        InputManager.Instance.SetAllAim(true);
+        InputManager.Instance.SetAllAttack(true);
+        InputManager.Instance.SetAllMovement(true);
+        InputManager.Instance.SetAllInteract(true);
+        InputManager.Instance.SetUIState(false);
 
         if (!CameraSwitcher.Instance.IsCurrentViewEnabled()) CameraSwitcher.Instance.EnableCurrentView();
         AIPlSwapper.UnlockControl();
@@ -199,11 +199,11 @@ public class InteractOptions : MonoBehaviour, IMenu
     {
         Instance = this;
 
-        InputHandler.OnOptionsOne.AddListener(Action1);
-        InputHandler.OnOptionsTwo.AddListener(Action2);
-        InputHandler.OnOptionsThree.AddListener(Action3);
-        InputHandler.OnOptionsFour.AddListener(Action4);
-        InputHandler.OnOptionsFive.AddListener(Action5);
+        InputManager.OnOptionsOne.AddListener(Action1);
+        InputManager.OnOptionsTwo.AddListener(Action2);
+        InputManager.OnOptionsThree.AddListener(Action3);
+        InputManager.OnOptionsFour.AddListener(Action4);
+        InputManager.OnOptionsFive.AddListener(Action5);
 
         GetComponent<Tabs>().InitButtonMethods(new System.Action[] { Action1, Action2, Action3, Action4, Action5 });
     }

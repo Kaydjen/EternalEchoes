@@ -18,27 +18,52 @@ public class OBJOptionsManu : MonoBehaviour, IMenu
     #region actions
     public void ExecuteAction1() 
     {
-        _context.Action1();
+        if(_context != null) _context?.Action1();
+        else
+        {
+            Debug.Log($"{nameof(_context)} is null");
+            return;
+        }
         DisableMenu();
     }
     public void ExecuteAction2()
     {
-        _context.Action2();
+        if (_context != null) _context?.Action2();
+        else
+        {
+            Debug.Log($"{nameof(_context)} is null");
+            return;
+        }
         DisableMenu();
     }
     public void ExecuteAction3()
     {
-        _context.Action3();
+        if (_context != null) _context?.Action3();
+        else
+        {
+            Debug.Log($"{nameof(_context)} is null");
+            return;
+        }
         DisableMenu();
     }
     public void ExecuteAction4()
     {
-        _context.Action4();
+        if (_context != null) _context?.Action4();
+        else
+        {
+            Debug.Log($"{nameof(_context)} is null");
+            return;
+        }
         DisableMenu();
     }
     public void ExecuteAction5()
     {
-        _context.Action5();
+        if (_context != null) _context?.Action5();
+        else
+        {
+            Debug.Log($"{nameof(_context)} is null");
+            return;
+        }
         DisableMenu();
     }
     #endregion
@@ -48,18 +73,27 @@ public class OBJOptionsManu : MonoBehaviour, IMenu
     {
         if (Hover.HitedCollider.TryGetComponent(out IInteractStrategy strategy))
             _context = strategy;
+        else
+            Debug.Log($"{nameof(_context)} is null in {nameof(SetContext)} method of {nameof(OBJOptionsManu)}");
     }
     protected virtual void CreateTabs()
     {
-        GetComponent<Tabs>().InitButtonMethods(new System.Action[] { ExecuteAction1, ExecuteAction2, ExecuteAction3, ExecuteAction4, ExecuteAction5 });
+        if(TryGetComponent(out Tabs tabs))
+            tabs.InitButtonMethods(new System.Action[] { ExecuteAction1, ExecuteAction2, ExecuteAction3, ExecuteAction4, ExecuteAction5 });
+        else
+            Debug.Log($"{nameof(tabs)} is null in {nameof(CreateTabs)} method of {nameof(OBJOptionsManu)}");
     }
     protected virtual void SetTabs()
     {
-        GetComponent<Tabs>().CreateTabs(_context.GetData());
+        if (TryGetComponent(out Tabs tabs))
+            tabs.CreateTabs(_context.GetData());
+        else
+            Debug.Log($"{nameof(tabs)} is null in {nameof(SetTabs)} method of {nameof(OBJOptionsManu)}");
     }
     protected virtual void SetMenuPanelState(bool state)
     {
-        _manu.SetActive(state);
+        if(_manu != null) _manu.SetActive(state);
+        else Debug.Log($"{nameof(_manu)} is null in {nameof(SetMenuPanelState)} method of {nameof(OBJOptionsManu)}");
     }
     #endregion
     #region MONOBEHAVIOUR
@@ -97,13 +131,13 @@ public class InteractOptions : MonoBehaviour, IMenu
         if(Hover.HitedCollider.TryGetComponent(out IInteractStrategy strategy))
             _context = strategy;
         GetComponent<Tabs>().CreateTabs(_context.GetData());
-        InputHandler.Instance.ActivateOptionsNumbersMap();
+        InputManager.Instance.ActivateOptionsNumbersMap();
         _manu.SetActive(true);
         DisableComponents();
     }
     public void DisableMenu()
     {
-        InputHandler.Instance.ActivateDefNumbersMap();
+        InputManager.Instance.ActivateDefNumbersMap();
         _manu.SetActive(false);
         ActivateComponents();
     }
@@ -138,11 +172,11 @@ public class InteractOptions : MonoBehaviour, IMenu
     #region PRIVATE METHODS
     private void DisableComponents()
     {
-        InputHandler.Instance.SetAllAim(false);
-        InputHandler.Instance.SetAllAttack(false);
-        InputHandler.Instance.SetAllMovement(false);
-        InputHandler.Instance.SetAllInteract(false);
-        InputHandler.Instance.SetUIState(true); 
+        InputManager.Instance.SetAllAim(false);
+        InputManager.Instance.SetAllAttack(false);
+        InputManager.Instance.SetAllMovement(false);
+        InputManager.Instance.SetAllInteract(false);
+        InputManager.Instance.SetUIState(true); 
 
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
@@ -152,11 +186,11 @@ public class InteractOptions : MonoBehaviour, IMenu
     }
     private void ActivateComponents()
     {
-        InputHandler.Instance.SetAllAim(true);
-        InputHandler.Instance.SetAllAttack(true);
-        InputHandler.Instance.SetAllMovement(true);
-        InputHandler.Instance.SetAllInteract(true);
-        InputHandler.Instance.SetUIState(false);
+        InputManager.Instance.SetAllAim(true);
+        InputManager.Instance.SetAllAttack(true);
+        InputManager.Instance.SetAllMovement(true);
+        InputManager.Instance.SetAllInteract(true);
+        InputManager.Instance.SetUIState(false);
 
         if (!CameraSwitcher.Instance.IsCurrentViewEnabled()) CameraSwitcher.Instance.EnableCurrentView();
         AIPlSwapper.UnlockControl();
@@ -167,11 +201,11 @@ public class InteractOptions : MonoBehaviour, IMenu
     {
         Instance = this;
 
-        InputHandler.OnOptionsOne.AddListener(Action1);
-        InputHandler.OnOptionsTwo.AddListener(Action2);
-        InputHandler.OnOptionsThree.AddListener(Action3);
-        InputHandler.OnOptionsFour.AddListener(Action4);
-        InputHandler.OnOptionsFive.AddListener(Action5);
+        InputManager.OnOptionsOne.AddListener(Action1);
+        InputManager.OnOptionsTwo.AddListener(Action2);
+        InputManager.OnOptionsThree.AddListener(Action3);
+        InputManager.OnOptionsFour.AddListener(Action4);
+        InputManager.OnOptionsFive.AddListener(Action5);
 
         GetComponent<Tabs>().InitButtonMethods(new System.Action[] { Action1, Action2, Action3, Action4, Action5 });
     }

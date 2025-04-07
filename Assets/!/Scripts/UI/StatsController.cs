@@ -11,7 +11,7 @@ public class StatsController : MonoBehaviour
 
     private void Start()
     {
-        GameEvents.OnCharacterChange.AddListener(UpdateParameters);
+        GameEvents.OnCharacterChange?.AddListener(UpdateParameters);
 
         foreach (StatsSerializable el in _inspectorSetup)
         {
@@ -22,6 +22,7 @@ public class StatsController : MonoBehaviour
 
     private void UpdateParameters()
     {
+        if (CheckNull.Player()) return;
         foreach (var el in _statsNew) 
             el.Unsubscribe();
         _statsNew.Clear();

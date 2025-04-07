@@ -25,7 +25,7 @@ public class CameraSwitcher : MonoBehaviour
     private TopDownV _TopDownV;
     #endregion
     #region Methods
-    public void Init()
+    public void Awake()
     {
         #region Singleton
         if (Instance == null)
@@ -37,15 +37,18 @@ public class CameraSwitcher : MonoBehaviour
             if (Instance == this) return;
             Destroy(this);
         }
+        InitEvents.OnCameraSwitcherInit?.Invoke();
         DontDestroyOnLoad(gameObject);
         #endregion Singleton
 
-        _FPV = GetComponent<FPV>();
-        _IsometricV = GetComponent<IsometricV>();
-        _TopDownV = GetComponent<TopDownV>();
+        if (!TryGetComponent(out _FPV)) Debug.LogError($"{nameof(_FPV)} wasn't got in {nameof(CameraSwitcher)}");
+        if (!TryGetComponent(out _IsometricV)) Debug.LogError($"{nameof(_IsometricV)} wasn't got in {nameof(CameraSwitcher)}");
+        if (!TryGetComponent(out _TopDownV)) Debug.LogError($"{nameof(_TopDownV)} wasn't got in {nameof(CameraSwitcher)}");
 
-        InputHandler.OnCPressed.AddListener(Switcher);
-        GameEvents.OnCharacterChange.AddListener(FirstEnable);
+        InputManager.Init();
+        if (InputManager.OnCPressed == null) Debug.LogError($"{nameof(InputManager.OnCPressed)} wasn't got in {nameof(CameraSwitcher)} because it's not initialized");
+        InputManager.OnCPressed?.AddListener(Switcher);
+        GameEvents.OnCharacterChange?.AddListener(FirstEnable);
     }
     /// <summary>
     /// Этот метод создан для одиночного срабатывания за всю игру, в момент когда появляется первый персонаж и мы на него переключаемся
@@ -53,9 +56,9 @@ public class CameraSwitcher : MonoBehaviour
     private void FirstEnable()
     {
         SwitchToFPV();
-        OnFPV_Enable.Invoke();
+        OnFPV_Enable?.Invoke();
         _index++;
-        GameEvents.OnCharacterChange.RemoveListener(FirstEnable);
+        GameEvents.OnCharacterChange?.RemoveListener(FirstEnable);
     }
     /// <summary>
     /// It swaps between Views in order by pressing C button 
@@ -83,23 +86,23 @@ public class CameraSwitcher : MonoBehaviour
     #region Switch methods
     public void SwitchToFPV()
     {
-        InputHandler.Instance.SetFPVState(true);
+        InputManager.SetFPVState(true);
         _FPV.enabled = true;
-        OnFPV_Enable.Invoke();
+        OnFPV_Enable?.Invoke();
         _currentView = _FPV;
     }
     public void SwitchToIsometricV()
     {
-        InputHandler.Instance.SetIsometricState(true);
+        InputManager.SetIsometricState(true);
         _IsometricV.enabled = true;
-        OnIsometricV_Enable.Invoke();
+        OnIsometricV_Enable?.Invoke();
         _currentView = _IsometricV;
     }
     public void SwitchToTopDownV()
     {
-        InputHandler.Instance.SetTopDownState(true);
+        InputManager.SetTopDownState(true);
         _TopDownV.enabled = true;
-        OnTopDownV_Enable.Invoke();
+        OnTopDownV_Enable?.Invoke();
         _currentView = _TopDownV;
     }
     /// <summary>
@@ -108,7 +111,7 @@ public class CameraSwitcher : MonoBehaviour
     public void DisableCurrentView()
     {
         _currentView.Disable();
-        InputHandler.OnCPressed.RemoveListener(Switcher);
+        InputManager.OnCPressed?.RemoveListener(Switcher);
     }
     /// <summary>
     /// Enable currentValue camera View and add listener to switch button
@@ -116,7 +119,7 @@ public class CameraSwitcher : MonoBehaviour
     public void EnableCurrentView()
     {
         _currentView.Enable();
-        InputHandler.OnCPressed.AddListener(Switcher);
+        InputManager.OnCPressed?.AddListener(Switcher);
     }
     /// <summary>
     ///  It used when character was switched and we want to be sure currentValue player controls were switched correctly
@@ -126,6 +129,7 @@ public class CameraSwitcher : MonoBehaviour
     /// </summary>
     public void UpdateControls()
     {
+        if (_currentView == null) Debug.Log($"{nameof(_currentView)} is null");
         _currentView.ForCharacterSwitch();
     }
     /// <summary>

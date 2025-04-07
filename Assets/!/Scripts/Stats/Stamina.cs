@@ -72,11 +72,11 @@ public class Stamina : Stats, IGameplayModeSwitcher, IUpdate
     }
     private void RegisterUpdate()
     {
-        Updater.Instance.RegisterUpdate(this, Updater.UpdateType.InitialUpdate);
+        Updater.Instance!.RegisterUpdate(this, Updater.UpdateType.InitialUpdate);
     }
     private void UnregisterUpdate()
     {
-        Updater.Instance.UnregisterUpdate(this, Updater.UpdateType.InitialUpdate);
+        Updater.Instance!.UnregisterUpdate(this, Updater.UpdateType.InitialUpdate);
     }
     #endregion
 }

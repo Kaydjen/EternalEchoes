@@ -22,7 +22,8 @@ public class Hover : MonoBehaviour, ICameraUpdate, IUpdate
     }
     public void UpdateNeededComponents() // TODO: we dont need to get camera here, it's better to do in Init method
     {
-        _camera = this.transform.GetChild(Constants.Player.CAMERA).transform.GetComponent<Camera>();
+        _camera = this.transform.root.transform.GetChild(Constants.Player.CAMERA).transform.GetComponent<Camera>();
+        if (_camera == null) Debug.Log($"{nameof(_camera)} is null is {nameof(Hover)}");
     }
     public void Enable()
     {
@@ -56,7 +57,6 @@ public class Hover : MonoBehaviour, ICameraUpdate, IUpdate
             ResetLastInteractibleObj();
         }
     }
-
     private void ResetLastInteractibleObj()
     {
         if (_lastInteractibleObj is null) return;
@@ -73,20 +73,28 @@ public class Hover : MonoBehaviour, ICameraUpdate, IUpdate
     }
     private void OnEnable()
     {
-        //InputHandler.OnInteraction.AddListener(Interact);
-        RegisterUpdate();
+        if (Updater.Instance != null)
+        {
+            RegisterUpdate();
+        }
+        else
+        {
+            InitEvents.OnUpdateInit?.AddListener(RegisterUpdate);
+            Debug.Log("Update is null");
+        }
+
+        UpdateNeededComponents();
         _standartRayDist = _FPVRayDist;
-        CameraSwitcher.OnFPV_Enable.AddListener(() => _standartRayDist = _FPVRayDist);
-        CameraSwitcher.OnIsometricV_Enable.AddListener(() => _standartRayDist = _IsometricRayDist);
-        CameraSwitcher.OnTopDownV_Enable.AddListener(() => _standartRayDist = _TopDownRayDist);
+        CameraSwitcher.OnFPV_Enable?.AddListener(() => _standartRayDist = _FPVRayDist);
+        CameraSwitcher.OnIsometricV_Enable?.AddListener(() => _standartRayDist = _IsometricRayDist);
+        CameraSwitcher.OnTopDownV_Enable?.AddListener(() => _standartRayDist = _TopDownRayDist);
     }
     private void OnDisable()
     {
-        //InputHandler.OnInteraction.RemoveListener(Interact);
         UnregisterUpdate();
-        CameraSwitcher.OnFPV_Enable.RemoveListener(() => _standartRayDist = _FPVRayDist);
-        CameraSwitcher.OnIsometricV_Enable.RemoveListener(() => _standartRayDist = _IsometricRayDist);
-        CameraSwitcher.OnTopDownV_Enable.RemoveListener(() => _standartRayDist = _TopDownRayDist);
+        CameraSwitcher.OnFPV_Enable?.RemoveListener(() => _standartRayDist = _FPVRayDist);
+        CameraSwitcher.OnIsometricV_Enable?.RemoveListener(() => _standartRayDist = _IsometricRayDist);
+        CameraSwitcher.OnTopDownV_Enable?.RemoveListener(() => _standartRayDist = _TopDownRayDist);
     }
     #endregion
     #region Update
@@ -94,29 +102,17 @@ public class Hover : MonoBehaviour, ICameraUpdate, IUpdate
     {
         CheckForInteractable();
     }
-    public void PerformPreUpdate()
-    {
-        throw new System.NotImplementedException();
-    }
-    public void PerformUpdate()
-    {
-        throw new System.NotImplementedException();
-    }
-    public void PerformFinalUpdate()
-    {
-        throw new System.NotImplementedException();
-    }
-    public void PerformLateUpdate()
-    {
-        throw new System.NotImplementedException();
-    }
+    public void PerformPreUpdate(){}
+    public void PerformUpdate() {}
+    public void PerformFinalUpdate(){}
+    public void PerformLateUpdate(){}
     private void RegisterUpdate()
     {
-        Updater.Instance.RegisterUpdate(this, Updater.UpdateType.InitialUpdate);
+        Updater.Instance?.RegisterUpdate(this, Updater.UpdateType.InitialUpdate);
     }
     private void UnregisterUpdate()
     {
-        Updater.Instance.UnregisterUpdate(this, Updater.UpdateType.InitialUpdate);
+        Updater.Instance?.UnregisterUpdate(this, Updater.UpdateType.InitialUpdate);
     }
     #endregion
 }
@@ -163,7 +159,7 @@ public class Hover : MonoBehaviour, ICameraUpdate, IUpdate
     {
         _raycastDistance = Mathf.Clamp(value, 0f, 100f);
     }
-    public void UpdateNeededComponents() // TODO: we dont need to get camera here, it's better to do in Init method
+    public void GetPlayer() // TODO: we dont need to get camera here, it's better to do in Init method
     {
         _camera = this.transform.GetChild(Constants.Player.CAMERA).transform.GetComponent<Camera>();
     }
@@ -216,12 +212,12 @@ public class Hover : MonoBehaviour, ICameraUpdate, IUpdate
     #region MONO METHODS
     private void OnEnable()
     {
-        //InputHandler.OnInteraction.AddListener(Interact);
+        //InputManager.OnInteraction.AddListener(Interact);
         RegisterUpdate();
     }
     private void OnDisable()
     {
-        //InputHandler.OnInteraction.RemoveListener(Interact);
+        //InputManager.OnInteraction.RemoveListener(Interact);
         UnregisterUpdate();
     }
     #endregion

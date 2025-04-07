@@ -6,7 +6,7 @@ using UnityEngine;
     "Інтерпретує введення з миші для керування обертами камери. " +
     "Містить механізми для налаштування позицій камери та об'єкта гравця, а також для оновлення кожного кадру. " +
     "Підтримує підключення до системи оновлень.")]
-public class FPV : CameraCore, IUpdate, ICameraUpdate, ICamera
+public class FPV : CameraCore, IUpdate, ICamera
 {
     #region VARIABLES
     [SerializeField] private Transform _lookOrientation;
@@ -42,6 +42,8 @@ public class FPV : CameraCore, IUpdate, ICameraUpdate, ICamera
     /// </summary>
     public void UpdateNeededComponents()
     {
+        if(CheckNull.Player()) return;
+        if(CheckNull.Camera()) return;
         _player = PlayerCore.Instance.transform;
         if (CameraSwitcher.Instance.GetViewType() == this as ICamera) // TODO: хз, немного костыльно, мб когда-то переделаю на что-то более адекватное, а пока пусть так будет
         {
@@ -56,6 +58,7 @@ public class FPV : CameraCore, IUpdate, ICameraUpdate, ICamera
     public void ForCharacterSwitch()
     {
         AIPlSwapper.ActivateManualControl();
+        UpdateNeededComponents();
     }
     /// <summary>
     ///  Method, which will be invoked after swapping of character
@@ -78,8 +81,8 @@ public class FPV : CameraCore, IUpdate, ICameraUpdate, ICamera
     public void PerformInitialUpdate()
     {
         // Manage Input
-        _y -= InputHandler.MouseInput.y * _sensitivity * Time.deltaTime;
-        _x += InputHandler.MouseInput.x * _sensitivity * Time.deltaTime;
+        _y -= InputManager.MouseInput.y * _sensitivity * Time.deltaTime;
+        _x += InputManager.MouseInput.x * _sensitivity * Time.deltaTime;
         _y = Mathf.Clamp(_y, _minHeadRotation, _maxHeadRotation);
 
         // Manage Rotation
@@ -106,25 +109,36 @@ public class FPV : CameraCore, IUpdate, ICameraUpdate, ICamera
     }
     private void RegisterUpdate()
     {
-        Updater.Instance.RegisterUpdate(this, Updater.UpdateType.InitialUpdate);
-        Updater.Instance.RegisterUpdate(this, Updater.UpdateType.LateUpdate);
+        Updater.Instance?.RegisterUpdate(this, Updater.UpdateType.InitialUpdate);
+        Updater.Instance?.RegisterUpdate(this, Updater.UpdateType.LateUpdate);
     }
     private void UnregisterUpdate()
     {
-        Updater.Instance.UnregisterUpdate(this, Updater.UpdateType.InitialUpdate);
-        Updater.Instance.UnregisterUpdate(this, Updater.UpdateType.LateUpdate);
+        Updater.Instance?.UnregisterUpdate(this, Updater.UpdateType.InitialUpdate);
+        Updater.Instance?.UnregisterUpdate(this, Updater.UpdateType.LateUpdate);
     }
     #endregion
     #region MONO METHODS
     private void Awake()
     {
         _camera = transform.GetChild(Constants.Player.CAMERA).transform;
+        if(_camera == null) Debug.Log($"{nameof(_camera)} is null in {nameof(FPV)}");
     }
     private void OnEnable()
     {
         base.ExclusivityСheck();
 
-        // Camera Hub Position
+        if(_player == null && !CheckNull.Player())
+        {
+            _player = PlayerCore.Instance.transform;
+        }
+        else
+        {
+            Debug.Log($"{nameof(_player)} is null in {nameof(FPV)}");
+            return;
+        }
+
+            // Camera Hub Position
         transform.position = _player.position;
         transform.rotation = _player.GetChild(Constants.Player.BOTH).transform.localRotation;
 
@@ -135,7 +149,8 @@ public class FPV : CameraCore, IUpdate, ICameraUpdate, ICamera
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
-        RegisterUpdate();
+        if (Updater.Instance != null) RegisterUpdate();
+        else InitEvents.OnUpdateInit?.AddListener(RegisterUpdate);
     }
     private void OnDisable()
     {

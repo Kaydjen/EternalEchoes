@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Runtime.InteropServices.WindowsRuntime;
+using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -16,13 +17,14 @@ public class Interact : MonoBehaviour, IUpdate
     #region PRIVETE METHODS
     private void TryOpenManu() // TODO: тут вырубать можно не опять с помощью пкм, а с помощью например Esc, надо спросить у Димы
     {
-            // it's the worst code ever I wrote, but this line just check if the obj we hitted is a button
-        if (Hover.HitedCollider != null && Hover.HitedCollider.CompareTag("Button") && Hover.HitedCollider.TryGetComponent(out Button button))
+        bool isHitted = Hover.HitedCollider ? true : false; //  != null
+         // it's the worst code ever I wrote, but this line just check if the obj we hitted is a button
+        if (isHitted && Hover.HitedCollider.CompareTag("Button") && Hover.HitedCollider.TryGetComponent(out Button button))
         {
             button.onClick?.Invoke();
             return;
         }
-        if (Hover.HitedCollider.CompareTag("Shop"))
+        if (isHitted && Hover.HitedCollider.CompareTag("Shop"))
         {
             if(!Hover.HitedCollider.TryGetComponent(out ShopMenuEnable menu))
             {
@@ -34,38 +36,64 @@ public class Interact : MonoBehaviour, IUpdate
             }
             return;
         }
-        if (Hover.HitedCollider == null || !Hover.HitedCollider.TryGetComponent(out IInteractStrategy strategy)) // Если луч не попал, или попал, но обьект не является персонажем 
+        if (!isHitted || !Hover.HitedCollider.TryGetComponent(out IInteractStrategy strategy)) // Если луч не попал, или попал, но обьект не является персонажем 
         {
 
             if (_isMenuActivated) // если меню активированно - вырубаем
             {
-                DynamicMenuManagerContext.Instance.DisableMenu(MenuModeManager.MenuType);
+                 DynamicMenuManagerContext.DisableMenu(MenuModeManager.MenuType);
                 _isMenuActivated = false;
             }
         }
         else // если попал по персонажу
         {
-            DynamicMenuManagerContext.Instance.EnableMenu(MenuModeManager.MenuType); // врубаем новое меню
+            DynamicMenuManagerContext.EnableMenu(MenuModeManager.MenuType); // врубаем новое меню
             _isMenuActivated = true;
         }
         _zona.position = Hover.HitInfo.point;
     }
     private void HoldPerformed() // Эту логику можно было бы вынести в другой скрипт
     {
+        if(_zona == null)
+        {
+            Debug.Log($"{nameof(_zona)} is null");
+            return;
+        }
         if (_zona.position == Vector3.zero) return;
-        _zona.gameObject.SetActive(true);
+        if (Hover.Instance != null)
+        {
+            Hover.Instance?.Disable();
+        }
+        else
+        {
+            Debug.Log($"{nameof(Hover.Instance)} is null");
+            return;
+        }
+
+        _zona.gameObject?.SetActive(true);
         _initialCorner = _zona.position;
-        Hover.Instance.Disable();
         _isHighlighted = true;
         RegisterUpdate();
     }
     private void HoldReleased()
     {
         if (!_isHighlighted) return;
-        _isHighlighted = false;
-
-        _zona.gameObject.SetActive(false);
-        Hover.Instance.Enable();
+        else _isHighlighted = false;
+        if (_zona == null)
+        {
+            Debug.Log($"{nameof(_zona)} is null");
+            return;
+        }
+        if (Hover.Instance != null)
+        {
+            Hover.Instance?.Enable();
+        }
+        else
+        {
+            Debug.Log($"{nameof(Hover.Instance)} is null");
+            return;
+        }
+        _zona.gameObject?.SetActive(false);
         UnregisterUpdate();
     }
     private void ResizeZona()
@@ -82,41 +110,29 @@ public class Interact : MonoBehaviour, IUpdate
     }
     #endregion
     #region Update
-    public void PerformInitialUpdate()
-    {
-        ResizeZona();
-    }
-    public void PerformPreUpdate()
-    {
-        throw new System.NotImplementedException();
-    }
-    public void PerformUpdate()
-    {
-        throw new System.NotImplementedException();
-    }
-    public void PerformFinalUpdate()
-    {
-        throw new System.NotImplementedException();
-    }
-    public void PerformLateUpdate()
-    {
-        throw new System.NotImplementedException();
-    }
+    public void PerformInitialUpdate() { ResizeZona(); }
+    public void PerformPreUpdate() { }
+    public void PerformUpdate() { }
+    public void PerformFinalUpdate() { }
+    public void PerformLateUpdate() { }
+    #endregion
+    #region Registration
     private void RegisterUpdate()
     {
-        Updater.Instance.RegisterUpdate(this, Updater.UpdateType.InitialUpdate);
+        Updater.Instance?.RegisterUpdate(this, Updater.UpdateType.InitialUpdate);
     }
     private void UnregisterUpdate()
     {
-        Updater.Instance.UnregisterUpdate(this, Updater.UpdateType.InitialUpdate);
+        Updater.Instance?.UnregisterUpdate(this, Updater.UpdateType.InitialUpdate);
     }
+    private void Register() { }
     #endregion
     #region MONOBEHAVIOUR
-    public void Init()
+    public void Start()
     {
-        InputHandler.OnInteractionPress.AddListener(TryOpenManu);
-        InputHandler.OnInteractionHoldPerformed.AddListener(HoldPerformed);
-        InputHandler.OnInteractionHoldReleased.AddListener(HoldReleased);
+        InputManager.OnInteractionPress?.AddListener(TryOpenManu);
+        InputManager.OnInteractionHoldPerformed?.AddListener(HoldPerformed);
+        InputManager.OnInteractionHoldReleased?.AddListener(HoldReleased);
         _zona = Instantiate(_zonaPref).transform;
         _zona.gameObject.SetActive(false);
     }
