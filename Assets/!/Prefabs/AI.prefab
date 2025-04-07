@@ -145,6 +145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _agent: {fileID: 8279881001786788082}
+  Type: 0
   _target: {fileID: 0}
 --- !u!195 &8279881001786788082
 NavMeshAgent:
