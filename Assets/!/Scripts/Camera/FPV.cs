@@ -148,7 +148,8 @@ public class FPV : CameraCore, IUpdate, ICameraUpdate, ICamera
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
-        RegisterUpdate();
+        if (Updater.Instance != null) RegisterUpdate();
+        else InitEvents.OnUpdateInit?.AddListener(RegisterUpdate);
     }
     private void OnDisable()
     {

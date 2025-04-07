@@ -150,6 +150,38 @@ public class Updater : MonoBehaviour
         RemoveUpdatesFromQueue(ref LateUpdateRemovalQueue, ref LateUpdateQueue);
     }
 }
+
+
+
+
+
+
+
+/*
+ 
+ 
+     #region Update
+    public void PerformInitialUpdate() { }
+    public void PerformPreUpdate(){ }
+    public void PerformUpdate() { }
+    public void PerformFinalUpdate() { }
+    public void PerformLateUpdate() { }
+    #endregion
+    #region Registration
+    private void RegisterUpdate()
+    {
+        Updater.Instance?.RegisterUpdate(this, Updater.UpdateType.);
+    }
+
+    private void UnregisterUpdate()
+    {
+        Updater.Instance?.UnregisterUpdate(this, Updater.UpdateType.);
+    }
+    private void Register(){}
+    #endregion
+ 
+ 
+ */
 /*
  
     #region Update
