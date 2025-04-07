@@ -1,6 +1,6 @@
 ﻿using UnityEngine; 
 
-public class IsometricV : CameraCore, IUpdate, ICameraUpdate, ICamera
+public class IsometricV : CameraCore, IUpdate, ICamera
 {
     #region VARIABLES
     [SerializeField] private Transform _lookOrientation;
@@ -46,6 +46,7 @@ public class IsometricV : CameraCore, IUpdate, ICameraUpdate, ICamera
     public void ForCharacterSwitch()
     {
         AIPlSwapper.ActivateManualControl();
+        UpdateNeededComponents();
     }
     /// <summary>
     /// Disable script

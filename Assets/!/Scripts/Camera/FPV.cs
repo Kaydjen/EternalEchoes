@@ -6,7 +6,7 @@ using UnityEngine;
     "Інтерпретує введення з миші для керування обертами камери. " +
     "Містить механізми для налаштування позицій камери та об'єкта гравця, а також для оновлення кожного кадру. " +
     "Підтримує підключення до системи оновлень.")]
-public class FPV : CameraCore, IUpdate, ICameraUpdate, ICamera
+public class FPV : CameraCore, IUpdate, ICamera
 {
     #region VARIABLES
     [SerializeField] private Transform _lookOrientation;
@@ -58,6 +58,7 @@ public class FPV : CameraCore, IUpdate, ICameraUpdate, ICamera
     public void ForCharacterSwitch()
     {
         AIPlSwapper.ActivateManualControl();
+        UpdateNeededComponents();
     }
     /// <summary>
     ///  Method, which will be invoked after swapping of character

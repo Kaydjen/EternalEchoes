@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 [ComponentInfo("PISUN", "Nu, sam poczitaj, mnie len pisat")]
-public class TopDownV : CameraCore, IUpdate, ICameraUpdate, ICamera
+public class TopDownV : CameraCore, IUpdate, ICamera
 {
     #region VARIABLES
     [SerializeField] private Vector3 _cameraDefOffset = new Vector3(0f, 10f, -2f);
@@ -150,6 +150,7 @@ public class TopDownV : CameraCore, IUpdate, ICameraUpdate, ICamera
     public void ForCharacterSwitch()
     {
         AIPlSwapper.ActivateAIControl();
+        UpdateNeededComponents();
     }
     /// <summary>
     ///  Method, which will be invoked after swapping of character

@@ -129,7 +129,7 @@ public class CameraSwitcher : MonoBehaviour
     /// </summary>
     public void UpdateControls()
     {
-        if (_currentView == null) Debug.Log("Jest ze");
+        if (_currentView == null) Debug.Log($"{nameof(_currentView)} is null");
         _currentView.ForCharacterSwitch();
     }
     /// <summary>
