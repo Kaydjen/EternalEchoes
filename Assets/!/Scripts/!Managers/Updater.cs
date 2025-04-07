@@ -29,6 +29,7 @@ public class Updater : MonoBehaviour
     {
         Instance = this;
         InitEvents.OnUpdateInit?.Invoke();
+        Debug.Log("Update initialized");
     }
     private void Update()
     {

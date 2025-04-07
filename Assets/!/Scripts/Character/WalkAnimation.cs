@@ -45,11 +45,11 @@ public class WalkAnimation : MonoBehaviour, IUpdate
     }
     private void OnEnable()
     {
-        Updater.Instance.RegisterUpdate(this, Updater.UpdateType.Update);
+        Updater.Instance?.RegisterUpdate(this, Updater.UpdateType.Update);
     }
     private void OnDisable()
     {
-        Updater.Instance.UnregisterUpdate(this, Updater.UpdateType.Update);
+        Updater.Instance?.UnregisterUpdate(this, Updater.UpdateType.Update);
         _animator.SetFloat(Constants.Player.Animations.Z_AXIS, 0f);
         _animator.SetFloat(Constants.Player.Animations.X_AXIS, 0f);
     }

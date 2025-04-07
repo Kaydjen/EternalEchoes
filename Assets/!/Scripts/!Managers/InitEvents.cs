@@ -5,12 +5,12 @@ using UnityEngine.Events;
 public class InitEvents : MonoBehaviour
 {
     [SerializeField] private float _autoCleanupDelay = 5f;
-    public static UnityEvent OnUpdateInit;
-    public static UnityEvent OnFirstCharacterInit;
-    public static UnityEvent OnCameraSwitcherInit;
-    private void Start()
+    public static UnityEvent OnUpdateInit = new UnityEvent();
+    public static UnityEvent OnFirstCharacterInit = new UnityEvent();
+    public static UnityEvent OnCameraSwitcherInit = new UnityEvent();
+    private void Awake()
     {
-        InitAll();
+        ReInitAll();
         if (_autoCleanupDelay > 0)
             StartCoroutine(WaitinigCoroutine());        
     }
@@ -23,7 +23,7 @@ public class InitEvents : MonoBehaviour
     {
         ClearAll();
     }
-    private void InitAll()
+    private void ReInitAll()
     {
         if (OnUpdateInit == null)
             OnUpdateInit = new UnityEvent();
