@@ -444,7 +444,7 @@ GameObject:
   - component: {fileID: 160047075}
   - component: {fileID: 160047076}
   m_Layer: 0
-  m_Name: 6) Soul One
+  m_Name: 1. Soul One
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -458,12 +458,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 160047074}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 205032564}
+  m_Father: {fileID: 1817499348}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &160047076
 MonoBehaviour:
@@ -474,11 +474,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 160047074}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5b081af50c3d078438249891979fdcd2, type: 3}
+  m_Script: {fileID: 11500000, guid: 47e5a7a32b4d77a48bcbdf552fda0498, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _prefab: {fileID: 8227173516584387167, guid: dbd7114741a94b245b6ee3d07410d11b, type: 3}
-  _initialPoolSize: 9
+  _initialPoolSize: 6
 --- !u!1 &202147083
 GameObject:
   m_ObjectHideFlags: 0
@@ -489,7 +489,7 @@ GameObject:
   m_Component:
   - component: {fileID: 202147084}
   m_Layer: 0
-  m_Name: 0) None
+  m_Name: 0. None
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -540,18 +540,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 202147084}
-  - {fileID: 1667674268}
-  - {fileID: 1773828267}
-  - {fileID: 815137878}
-  - {fileID: 1919134929}
-  - {fileID: 1535785878}
-  - {fileID: 160047075}
-  - {fileID: 205115865}
-  - {fileID: 287771897}
-  - {fileID: 690978738}
-  - {fileID: 1736198485}
-  - {fileID: 828738761}
-  - {fileID: 872515131}
+  - {fileID: 292704002}
+  - {fileID: 1817499348}
+  - {fileID: 1445706870}
   m_Father: {fileID: 209172950}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &205115864
@@ -565,7 +556,7 @@ GameObject:
   - component: {fileID: 205115865}
   - component: {fileID: 205115866}
   m_Layer: 0
-  m_Name: 7) Soul Two
+  m_Name: 2. Soul Two
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -579,12 +570,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 205115864}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 205032564}
+  m_Father: {fileID: 1817499348}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &205115866
 MonoBehaviour:
@@ -595,11 +586,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 205115864}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d046f047b651c142b753342722710fd, type: 3}
+  m_Script: {fileID: 11500000, guid: 2b876f1dd0e6cae4188422797dda1154, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _prefab: {fileID: 1889673045694591082, guid: 0dfcdccfca1abc843a8a4e0e17bfe3bc, type: 3}
-  _initialPoolSize: 9
+  _initialPoolSize: 4
 --- !u!1 &209172949
 GameObject:
   m_ObjectHideFlags: 0
@@ -708,7 +699,7 @@ GameObject:
   - component: {fileID: 287771897}
   - component: {fileID: 287771898}
   m_Layer: 0
-  m_Name: 8) Soul Three
+  m_Name: 3. Soul Three
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -722,12 +713,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 287771896}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 205032564}
+  m_Father: {fileID: 1817499348}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &287771898
 MonoBehaviour:
@@ -738,11 +729,46 @@ MonoBehaviour:
   m_GameObject: {fileID: 287771896}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce046cbfab41e6146a524a6e2210f920, type: 3}
+  m_Script: {fileID: 11500000, guid: afba558bc543613469dbaf59769cfa4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _prefab: {fileID: 1401962252260575361, guid: dbf8aa2b45fe6be4f8d75b8c7526b56a, type: 3}
-  _initialPoolSize: 9
+  _initialPoolSize: 1
+--- !u!1 &292704001
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 292704002}
+  m_Layer: 0
+  m_Name: 1) Bullets
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &292704002
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 292704001}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1667674268}
+  - {fileID: 815137878}
+  - {fileID: 1919134929}
+  - {fileID: 1535785878}
+  m_Father: {fileID: 205032564}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &520979222
 GameObject:
   m_ObjectHideFlags: 0
@@ -799,7 +825,7 @@ GameObject:
   - component: {fileID: 690978738}
   - component: {fileID: 690978739}
   m_Layer: 0
-  m_Name: 9) Soul Four
+  m_Name: 4. Soul Four
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -813,12 +839,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 690978737}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 205032564}
+  m_Father: {fileID: 1817499348}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &690978739
 MonoBehaviour:
@@ -829,11 +855,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 690978737}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7c5dba4a1d819c4abf99246dc0f10b5, type: 3}
+  m_Script: {fileID: 11500000, guid: 7caa27df43e44214780541b335574168, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _prefab: {fileID: 8097944167107821122, guid: 368483884cc535245a8583be744199c3, type: 3}
-  _initialPoolSize: 9
+  _initialPoolSize: 1
 --- !u!1 &766321192
 GameObject:
   m_ObjectHideFlags: 0
@@ -889,7 +915,7 @@ GameObject:
   - component: {fileID: 815137878}
   - component: {fileID: 815137879}
   m_Layer: 0
-  m_Name: 3) Fireball
+  m_Name: 2. Fireball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -903,12 +929,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 815137877}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 205032564}
+  m_Father: {fileID: 292704002}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &815137879
 MonoBehaviour:
@@ -919,7 +945,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 815137877}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae7e0f2fa8c9bd840b048c740ec329c6, type: 3}
+  m_Script: {fileID: 11500000, guid: 86201e2478fd93d4e90bacc0bdf76808, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _prefab: {fileID: 6365208044616084469, guid: 492ecda1c38acc84d9f11b631720bf47, type: 3}
@@ -933,13 +959,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 828738761}
+  - component: {fileID: 828738762}
   m_Layer: 0
-  m_Name: 11)
+  m_Name: 2. Enemy Tir 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &828738761
 Transform:
   m_ObjectHideFlags: 0
@@ -948,13 +975,27 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 828738760}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 205032564}
+  m_Father: {fileID: 1445706870}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &828738762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 828738760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c781007adc82ea7498f63cdf8ab2c7d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _prefab: {fileID: 0}
+  _initialPoolSize: 10
 --- !u!1 &863821492
 GameObject:
   m_ObjectHideFlags: 0
@@ -1070,13 +1111,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 872515131}
+  - component: {fileID: 872515132}
   m_Layer: 0
-  m_Name: 12)
+  m_Name: 3. Enemy Tir 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &872515131
 Transform:
   m_ObjectHideFlags: 0
@@ -1085,13 +1127,27 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 872515130}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 205032564}
+  m_Father: {fileID: 1445706870}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &872515132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 872515130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87f375cc8cb05eb4e940e58ecfcf7ac9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _prefab: {fileID: 0}
+  _initialPoolSize: 10
 --- !u!1 &992329977
 GameObject:
   m_ObjectHideFlags: 0
@@ -1184,6 +1240,88 @@ MonoBehaviour:
   DelayBeforeInstantiate: 1
   Character1: {fileID: 9005463367488759697, guid: 8dc339c13c8ca5f46a6001bd470df04d,
     type: 3}
+--- !u!1 &1298042555
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1298042556}
+  - component: {fileID: 1298042557}
+  m_Layer: 0
+  m_Name: 4. Enemy Tir 4
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1298042556
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1298042555}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1445706870}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1298042557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1298042555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9b7ea83810ba864393cdcb65a59c52c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _prefab: {fileID: 0}
+  _initialPoolSize: 10
+--- !u!1 &1445706869
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1445706870}
+  m_Layer: 0
+  m_Name: 3) Enemies
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &1445706870
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1445706869}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1773828267}
+  - {fileID: 1736198485}
+  - {fileID: 828738761}
+  - {fileID: 872515131}
+  - {fileID: 1298042556}
+  m_Father: {fileID: 205032564}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1535785877
 GameObject:
   m_ObjectHideFlags: 0
@@ -1195,7 +1333,7 @@ GameObject:
   - component: {fileID: 1535785878}
   - component: {fileID: 1535785879}
   m_Layer: 0
-  m_Name: 5) Tornado
+  m_Name: 4.  Tornado
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1209,12 +1347,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1535785877}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 205032564}
+  m_Father: {fileID: 292704002}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1535785879
 MonoBehaviour:
@@ -1225,11 +1363,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1535785877}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46141c547d1d68a4eb86fc4b7a000008, type: 3}
+  m_Script: {fileID: 11500000, guid: 20944953e1b86614ea06b0c6fba16175, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _prefab: {fileID: 6687308887161260807, guid: 0204cd36cca5e6441a73ffdde2d233f5, type: 3}
-  _initialPoolSize: 4
+  _initialPoolSize: 10
 --- !u!1 &1568901779
 GameObject:
   m_ObjectHideFlags: 0
@@ -1307,7 +1445,7 @@ GameObject:
   - component: {fileID: 1667674268}
   - component: {fileID: 1667674269}
   m_Layer: 0
-  m_Name: 1) Bullet
+  m_Name: 1. Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1321,12 +1459,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1667674267}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 205032564}
+  m_Father: {fileID: 292704002}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1667674269
 MonoBehaviour:
@@ -1337,11 +1475,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1667674267}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c30ff4bae79dcd4180da9a62bb4f46a, type: 3}
+  m_Script: {fileID: 11500000, guid: 05f54b18f7dce9d4f8f4d98e184b9a26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _prefab: {fileID: 1308410512577313372, guid: 8c8639bc67053664e96fc9870ca48262, type: 3}
-  _initialPoolSize: 20
+  _initialPoolSize: 10
 --- !u!1 &1736198484
 GameObject:
   m_ObjectHideFlags: 0
@@ -1351,13 +1489,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1736198485}
+  - component: {fileID: 1736198486}
   m_Layer: 0
-  m_Name: 10)
+  m_Name: 1. Enemy Tir 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1736198485
 Transform:
   m_ObjectHideFlags: 0
@@ -1366,13 +1505,27 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1736198484}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 205032564}
+  m_Father: {fileID: 1445706870}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1736198486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1736198484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce39e5cb54187834dac438b359ec162f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _prefab: {fileID: 0}
+  _initialPoolSize: 10
 --- !u!1 &1773828266
 GameObject:
   m_ObjectHideFlags: 0
@@ -1384,12 +1537,12 @@ GameObject:
   - component: {fileID: 1773828267}
   - component: {fileID: 1773828268}
   m_Layer: 0
-  m_Name: 2) Enemy Spawn Effect
+  m_Name: 0) Enemy Spawn Effect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1773828267
 Transform:
   m_ObjectHideFlags: 0
@@ -1398,12 +1551,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1773828266}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 205032564}
+  m_Father: {fileID: 1445706870}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1773828268
 MonoBehaviour:
@@ -1414,12 +1567,47 @@ MonoBehaviour:
   m_GameObject: {fileID: 1773828266}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26c1b0698edb7a8489346e2bbd6923de, type: 3}
+  m_Script: {fileID: 11500000, guid: 61da3710f3a509d4792338299a9f917f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _prefab: {fileID: 1208825480842771416, guid: c1eff285ae8887149beb8da1dea162cc, type: 3}
-  _initialPoolSize: 9
+  _initialPoolSize: 10
   _defSize: {x: 1.5, y: 1.5, z: 1.5}
+--- !u!1 &1817499347
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1817499348}
+  m_Layer: 0
+  m_Name: 2) Souls
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1817499348
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1817499347}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 160047075}
+  - {fileID: 205115865}
+  - {fileID: 287771897}
+  - {fileID: 690978738}
+  m_Father: {fileID: 205032564}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1919134928
 GameObject:
   m_ObjectHideFlags: 0
@@ -1431,7 +1619,7 @@ GameObject:
   - component: {fileID: 1919134929}
   - component: {fileID: 1919134930}
   m_Layer: 0
-  m_Name: 4) Icicle
+  m_Name: 3. Icicle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1445,12 +1633,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1919134928}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 205032564}
+  m_Father: {fileID: 292704002}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1919134930
 MonoBehaviour:
@@ -1461,7 +1649,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1919134928}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d23a2a1d8340754a84fc67ba5032afc, type: 3}
+  m_Script: {fileID: 11500000, guid: 969d37ff1632af7438852fa2608a0bcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _prefab: {fileID: 1118465459460670197, guid: 4579a9df4a4263c40b663c9b10d3af30, type: 3}

@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent))]
@@ -32,6 +31,36 @@ public class AI : MonoBehaviour
 
 public class AIGroupManager : MonoBehaviour
 {
+    [SerializeField] private EEnemys _subordinateEnemyType;
+    [SerializeField] private EEnemys _leaderEnemyType;
+    [SerializeField] private byte _subordinatesCount = 8;
+    [SerializeField] private byte _leadersCount = 1;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     // ивент, на который подпишуться все члены группы, и если кто-то из членов группы был ранен -
     // то все члены группы атакуют нападавшего (тобиж ивент должен передавать параметр Transform attacker)
     // ----
@@ -72,24 +101,11 @@ public class AIManagerOfGroups : MonoBehaviour
         while()
     }*/
 
-}
+
+    
+
+   
 
 
-public static class DEnemys
-{
-    public static readonly Dictionary<EEnemys, Pool<Transform>> List = new()
-    {
-        { EEnemys.Tir1, SoulPoolOne.Instance },
-        { EEnemys.Tir2, SoulPoolTwo.Instance },
-        { EEnemys.Tir3, SoulPoolThree.Instance },
-        { EEnemys.Tir4, SoulPoolFour.Instance }
-    };
-}
 
-public enum EEnemys
-{
-    Tir1,
-    Tir2,
-    Tir3,
-    Tir4,
 }
