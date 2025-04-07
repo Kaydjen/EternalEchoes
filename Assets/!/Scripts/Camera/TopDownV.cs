@@ -124,8 +124,10 @@ public class TopDownV : CameraCore, IUpdate, ICameraUpdate, ICamera
     /// 
     /// </summary>
     public void UpdateNeededComponents() // TODO: we dont need to get camera here, it's better to do in Init method
-    {
+    { 
         _cameraTransform = transform.GetChild(Constants.Player.CAMERA).transform;
+         if(_cameraTransform == null) 
+            Debug.Log($"{nameof(_cameraTransform)} is null in {nameof(TopDownV)}");
     }
     public void ManageScreenСompatibility()
     {
@@ -241,11 +243,11 @@ public class TopDownV : CameraCore, IUpdate, ICameraUpdate, ICamera
     }
     private void RegisterUpdate()
     {
-        Updater.Instance.RegisterUpdate(this, Updater.UpdateType.InitialUpdate);
+        Updater.Instance?.RegisterUpdate(this, Updater.UpdateType.InitialUpdate);
     }
     private void UnregisterUpdate()
     {
-        Updater.Instance.UnregisterUpdate(this, Updater.UpdateType.InitialUpdate);
+        Updater.Instance?.UnregisterUpdate(this, Updater.UpdateType.InitialUpdate);
     }
     #endregion
     #region MONO METHODS
@@ -258,9 +260,11 @@ public class TopDownV : CameraCore, IUpdate, ICameraUpdate, ICamera
     {
         base.ExclusivityСheck();
 
+        CheckNull.Player();
         transform.position = PlayerCore.Instance.transform.position;
         transform.rotation = Quaternion.identity;
 
+        if (_cameraTransform == null) UpdateNeededComponents();
         _cameraTransform.localPosition = _cameraDefOffset;
         _cameraTransform.LookAt(this.transform);
 

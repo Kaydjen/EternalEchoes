@@ -33,8 +33,11 @@ public class IsometricV : CameraCore, IUpdate, ICameraUpdate, ICamera
     }
     public void UpdateNeededComponents()// TODO: we dont need to get camera here, it's better to do in Init method
     {
-        _camera = this.transform.GetChild(Constants.Player.CAMERA).transform.GetComponent<Camera>();
-        _player = PlayerCore.Instance.transform;
+        if (!this.transform.GetChild(Constants.Player.CAMERA).transform.TryGetComponent(out _camera))
+            Debug.Log($"{nameof(_camera)} is null in {nameof(IsometricV)}");
+
+        CheckNull.Player();
+        _player = PlayerCore.Instance?.transform;
     }
     /// <summary>
     ///  Method, which will be invoked after swapping of character
@@ -96,13 +99,13 @@ public class IsometricV : CameraCore, IUpdate, ICameraUpdate, ICamera
     }
     private void RegisterUpdate()
     {
-        Updater.Instance.RegisterUpdate(this, Updater.UpdateType.InitialUpdate);
-        Updater.Instance.RegisterUpdate(this, Updater.UpdateType.LateUpdate);
+        Updater.Instance?.RegisterUpdate(this, Updater.UpdateType.InitialUpdate);
+        Updater.Instance?.RegisterUpdate(this, Updater.UpdateType.LateUpdate);
     }
     private void UnregisterUpdate()
     {
-        Updater.Instance.UnregisterUpdate(this, Updater.UpdateType.InitialUpdate);
-        Updater.Instance.UnregisterUpdate(this, Updater.UpdateType.LateUpdate);
+        Updater.Instance?.UnregisterUpdate(this, Updater.UpdateType.InitialUpdate);
+        Updater.Instance?.UnregisterUpdate(this, Updater.UpdateType.LateUpdate);
     }
     #endregion
     #region MONO METHODS
@@ -110,13 +113,15 @@ public class IsometricV : CameraCore, IUpdate, ICameraUpdate, ICamera
     {
         base.ExclusivityСheck();
 
+        if (_camera == null) UpdateNeededComponents();
+
         // Set Camera Hub Position
         transform.position = _lookOrientation.position;
         transform.rotation = Quaternion.identity;
 
         // Set Camera Position
-        transform.GetChild(Constants.Player.CAMERA).transform.localPosition = _cameraOffset;
-        transform.GetChild(Constants.Player.CAMERA).transform.LookAt(this.transform);
+        _camera.transform.localPosition = _cameraOffset;
+        _camera.transform.LookAt(this.transform);
         //transform.GetChild(Constants.Player.CAMERA).GetComponent<Camera>().orthographic = true;
 
         Cursor.lockState = CursorLockMode.None;
@@ -126,7 +131,7 @@ public class IsometricV : CameraCore, IUpdate, ICameraUpdate, ICamera
     }
     private void OnDisable()
     {
-        transform.GetChild(Constants.Player.CAMERA).GetComponent<Camera>().orthographic = false;
+       // transform.GetChild(Constants.Player.CAMERA).GetComponent<Camera>().orthographic = false;
         UnregisterUpdate();
     }
     #endregion

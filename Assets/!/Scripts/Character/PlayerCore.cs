@@ -18,9 +18,9 @@ public class PlayerCore : MonoBehaviour
 
     private void OnEnable()
     {
-        Debug.Log("OnEnable PlayerCore start");
         if (Instance == null)
         {
+            AIPlSwapper.SubscribeOnCameraSwitcher(); // set up for the first activate
             Instance = this;
             AIPlSwapper.ActivateManualControl();
         }
