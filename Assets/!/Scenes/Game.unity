@@ -780,6 +780,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4103008288953312866, guid: 8dc339c13c8ca5f46a6001bd470df04d,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 6604847585228803124, guid: 8dc339c13c8ca5f46a6001bd470df04d,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.45
+      objectReference: {fileID: 0}
     - target: {fileID: 8150114155832770970, guid: 8dc339c13c8ca5f46a6001bd470df04d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -834,6 +844,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Character
+      objectReference: {fileID: 0}
+    - target: {fileID: 9005463367488759697, guid: 8dc339c13c8ca5f46a6001bd470df04d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -974,7 +989,6 @@ GameObject:
   - component: {fileID: 863821497}
   - component: {fileID: 863821496}
   - component: {fileID: 863821495}
-  - component: {fileID: 863821494}
   m_Layer: 0
   m_Name: ----CameraHub----
   m_TagString: Untagged
@@ -982,18 +996,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &863821494
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 863821492}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19a0265dcb0c3de4c81dc7de137db285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &863821495
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1045,7 +1047,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lookOrientation: {fileID: 520979224}
-  _cameraOffset: {x: 0, y: 0.7, z: 0.3}
+  _cameraOffset: {x: 0, y: 0.7, z: 0.6}
   _sensitivity: 35
   _minHeadRotation: -80
   _maxHeadRotation: 80
