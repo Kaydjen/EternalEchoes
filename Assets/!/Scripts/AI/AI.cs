@@ -1,4 +1,8 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Cryptography;
+using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent))]
@@ -36,31 +40,6 @@ public class AIGroupManager : MonoBehaviour
     [SerializeField] private byte _subordinatesCount = 8;
     [SerializeField] private byte _leadersCount = 1;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     // ивент, на который подпишуться все члены группы, и если кто-то из членов группы был ранен -
     // то все члены группы атакуют нападавшего (тобиж ивент должен передавать параметр Transform attacker)
     // ----
@@ -90,22 +69,131 @@ public class AIGroupManager : MonoBehaviour
 
 public class AIManagerOfGroups : MonoBehaviour
 {
-    // здесь должен быть метод подписки на спавн
-    // ----
-    // должна быть корутина, которая будет ждать, пока не заспавняться вся группа, и только тогда спавнить следующую группу
-    // время на ожидание = 
-
-
-/*    private IEnumerator SpawnCoroutine()
+    [SerializeField] private float _delayBtwInstantiateEachEnemy = 1f;
+    [SerializeField] private float _delayBtwInstantiateGroups = 1f;
+    private Queue<Transform[]> _subordinatesQueue = new();
+    private Queue<Transform[]> _leadersQueue = new();
+    private bool _isProcessing;
+    public void AddToSubordinatesQueue(Pool<Transform> pool, byte countToSpawn)
     {
-        while()
-    }*/
+        if (pool == null)
+        {
+            Debug.Log($"{nameof(pool)} in {nameof(AddToSubordinatesQueue)} in {nameof(AIGroupManager)} null");
+            return;
+        }
+        if (countToSpawn == 0)
+        {
+            Debug.Log($"{nameof(countToSpawn)} in {nameof(AddToSubordinatesQueue)} in {nameof(AIGroupManager)} null");
+            return;
+        }
 
+        Transform[] subordinates = new Transform[countToSpawn];
+        for (int i = 0; i < countToSpawn; i++) subordinates[i] = pool.Get();
+        
+        _subordinatesQueue.Enqueue(subordinates);
+        if(!_isProcessing) StartCoroutine(InstantiateQueue());
+    }
+    public void AddToLeadersQueue(Pool<Transform> pool, byte countToSpawn)
+    {
+        if (pool == null)
+        {
+            Debug.Log($"{nameof(pool)} in {nameof(AddToSubordinatesQueue)} in {nameof(AIGroupManager)} null");
+            return;
+        }
+        if (countToSpawn == 0)
+        {
+            Debug.Log($"{nameof(countToSpawn)} in {nameof(AddToSubordinatesQueue)} in {nameof(AIGroupManager)} null");
+            return;
+        }
 
-    
+        Transform[] leaders = new Transform[countToSpawn];
+        for (int i = 0; i < countToSpawn; i++) leaders[i] = pool.Get();
 
-   
+        _leadersQueue.Enqueue(leaders);
+        if (!_isProcessing) StartCoroutine(InstantiateQueue());
+    }
+    private IEnumerator InstantiateQueue()
+    {
+        _isProcessing = true;
+        while (_subordinatesQueue.Count > 0)
+        {
+            Transform[] subordinatesList = _subordinatesQueue.Dequeue();
+            Transform[] leadersList = _leadersQueue.Dequeue();
+            for (int i = 0; i < subordinatesList.Length; i++)
+            {
 
-
-
+                // через гет пулла получать врагов нужного типа...
+                yield return new WaitForSeconds(_delayBtwInstantiateEachEnemy);
+            }
+            for (int i = 0; i < leadersList.Length; i++)
+            {
+                yield return new WaitForSeconds(_delayBtwInstantiateEachEnemy);
+            }
+            yield return new WaitForSeconds(_delayBtwInstantiateGroups);
+        }
+        _isProcessing = false;
+    }
 }
+
+
+/*
+ 
+ 
+ 
+ 
+ 
+ public class AIManagerOfGroups : MonoBehaviour
+{
+    [SerializeField] private float _delayBtwInstantiateEachEnemy = 1f;
+    [SerializeField] private float _delayBtwInstantiateGroups = 1f;
+    private Queue<Transform[]> _subordinatesQueue = new();
+    private Queue<Transform[]> _leadersQueue = new();
+    private bool _isProcessing;
+    public void AddToSubordinatesQueue(params Transform[] list)
+    {
+        if (list.Length == 0)
+        {
+            Debug.Log($"{nameof(list)} in {nameof(AddToSubordinatesQueue)} in {nameof(AIGroupManager)}");
+            return;
+        }
+        _subordinatesQueue.Enqueue(list);
+        if(!_isProcessing) StartCoroutine(InstantiateQueue());
+    }
+    public void AddToLeadersQueue(params Transform[] list)
+    {
+        if (list.Length == 0)
+        {
+            Debug.Log($"{nameof(list)} in {nameof(AddToLeadersQueue)} in {nameof(AIGroupManager)}");
+            return;
+        }
+        _leadersQueue.Enqueue(list);
+        if (!_isProcessing) StartCoroutine(InstantiateQueue());
+    }
+    private IEnumerator InstantiateQueue()
+    {
+        _isProcessing = true;
+        while (_subordinatesQueue.Count > 0)
+        {
+            Transform[] subordinatesList = _subordinatesQueue.Dequeue();
+            Transform[] leadersList = _leadersQueue.Dequeue();
+            for (int i = 0; i < subordinatesList.Length; i++)
+            {
+
+                // через гет пулла получать врагов нужного типа...
+                yield return new WaitForSeconds(_delayBtwInstantiateEachEnemy);
+            }
+            for (int i = 0; i < leadersList.Length; i++)
+            {
+                yield return new WaitForSeconds(_delayBtwInstantiateEachEnemy);
+            }
+            yield return new WaitForSeconds(_delayBtwInstantiateGroups);
+        }
+        _isProcessing = false;
+    }
+}
+ 
+ 
+ 
+ 
+ 
+ */
