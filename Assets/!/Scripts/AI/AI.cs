@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent))]
@@ -64,4 +65,31 @@ public class AIManagerOfGroups : MonoBehaviour
     // ----
     // должна быть корутина, которая будет ждать, пока не заспавняться вся группа, и только тогда спавнить следующую группу
     // время на ожидание = 
+
+
+/*    private IEnumerator SpawnCoroutine()
+    {
+        while()
+    }*/
+
+}
+
+
+public static class DEnemys
+{
+    public static readonly Dictionary<EEnemys, Pool<Transform>> List = new()
+    {
+        { EEnemys.Tir1, SoulPoolOne.Instance },
+        { EEnemys.Tir2, SoulPoolTwo.Instance },
+        { EEnemys.Tir3, SoulPoolThree.Instance },
+        { EEnemys.Tir4, SoulPoolFour.Instance }
+    };
+}
+
+public enum EEnemys
+{
+    Tir1,
+    Tir2,
+    Tir3,
+    Tir4,
 }
