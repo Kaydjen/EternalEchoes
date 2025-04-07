@@ -36,34 +36,18 @@ public class Interact : MonoBehaviour, IUpdate
             }
             return;
         }
-        if (isHitted || !Hover.HitedCollider.TryGetComponent(out IInteractStrategy strategy)) // Если луч не попал, или попал, но обьект не является персонажем 
+        if (!isHitted || !Hover.HitedCollider.TryGetComponent(out IInteractStrategy strategy)) // Если луч не попал, или попал, но обьект не является персонажем 
         {
 
             if (_isMenuActivated) // если меню активированно - вырубаем
             {
-                if (DynamicMenuManagerContext.Instance == null)
-                {
-                    Debug.Log($"{nameof(DynamicMenuManagerContext.Instance)} is null");
-                    return;
-                }
-                else 
-                {
-                    DynamicMenuManagerContext.Instance?.DisableMenu(MenuModeManager.MenuType);
-                }
+                 DynamicMenuManagerContext.DisableMenu(MenuModeManager.MenuType);
                 _isMenuActivated = false;
             }
         }
         else // если попал по персонажу
         {
-            if (DynamicMenuManagerContext.Instance == null)
-            {
-                Debug.Log($"{nameof(DynamicMenuManagerContext.Instance)} is null");
-                return;
-            }
-            else
-            {
-                DynamicMenuManagerContext.Instance?.EnableMenu(MenuModeManager.MenuType); // врубаем новое меню
-            }
+            DynamicMenuManagerContext.EnableMenu(MenuModeManager.MenuType); // врубаем новое меню
             _isMenuActivated = true;
         }
         _zona.position = Hover.HitInfo.point;

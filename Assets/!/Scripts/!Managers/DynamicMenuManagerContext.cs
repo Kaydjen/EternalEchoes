@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class DynamicMenuManagerContext : MonoBehaviour
+public static class DynamicMenuManagerContext
 {
-    public static DynamicMenuManagerContext Instance;
-    private Dictionary<EMenu, List<IMenu>> _menuList = new();
+    private static Dictionary<EMenu, List<IMenu>> _menuList = new();
 
-    public void EnableMenu(EMenu type)
+    public static void EnableMenu(EMenu type)
     {
         if (_menuList.ContainsKey(type))
         {
@@ -16,8 +14,12 @@ public class DynamicMenuManagerContext : MonoBehaviour
                 item.EnableMenu();
             }
         }
+        else
+        {
+            Debug.Log($"{nameof(_menuList)} doesn't contain a key of type {nameof(type)} in method {nameof(EnableMenu)} (in script {nameof(DynamicMenuManagerContext)}");
+        }
     }
-    public void DisableMenu(EMenu type)
+    public static void DisableMenu(EMenu type)
     {
         if (_menuList.ContainsKey(type))
         {
@@ -26,17 +28,25 @@ public class DynamicMenuManagerContext : MonoBehaviour
                 item.DisableMenu();
             }
         }
+        else
+        {
+            Debug.Log($"{nameof(_menuList)} doesn't contain a key of type {nameof(type)} in method {nameof(DisableMenu)} (in script {nameof(DynamicMenuManagerContext)}");
+        }
     }
-    public void RegisterMenu(EMenu menuType, IMenu logic) 
+    public static void RegisterMenu(EMenu menuType, IMenu logic) 
     {
         if (!_menuList.ContainsKey(menuType))        
             _menuList.Add(menuType, new List<IMenu>());
 
         _menuList[menuType].Add(logic);
     }
-    public void UnregisterMenu(EMenu menuType, IMenu logic = null)
+    public static void UnregisterMenu(EMenu menuType, IMenu logic = null)
     {
-        if (!_menuList.ContainsKey(menuType)) return;
+        if (!_menuList.ContainsKey(menuType))
+        {
+            Debug.Log($"{nameof(_menuList)} doesn't contain a key of type {nameof(menuType)} in method {nameof(UnregisterMenu)} (in script {nameof(DynamicMenuManagerContext)}");
+            return;
+        }
         if (logic == null)
         {
             _menuList.Remove(menuType);
@@ -46,10 +56,6 @@ public class DynamicMenuManagerContext : MonoBehaviour
             _menuList[menuType].Remove(logic);
             if(_menuList[menuType].Count == 0) _menuList.Remove(menuType);
         }
-    }
-    public void Init()
-    {
-        Instance = this;
     }
 }
 

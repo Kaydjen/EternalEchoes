@@ -18,27 +18,52 @@ public class OBJOptionsManu : MonoBehaviour, IMenu
     #region actions
     public void ExecuteAction1() 
     {
-        _context.Action1();
+        if(_context != null) _context?.Action1();
+        else
+        {
+            Debug.Log($"{nameof(_context)} is null");
+            return;
+        }
         DisableMenu();
     }
     public void ExecuteAction2()
     {
-        _context.Action2();
+        if (_context != null) _context?.Action2();
+        else
+        {
+            Debug.Log($"{nameof(_context)} is null");
+            return;
+        }
         DisableMenu();
     }
     public void ExecuteAction3()
     {
-        _context.Action3();
+        if (_context != null) _context?.Action3();
+        else
+        {
+            Debug.Log($"{nameof(_context)} is null");
+            return;
+        }
         DisableMenu();
     }
     public void ExecuteAction4()
     {
-        _context.Action4();
+        if (_context != null) _context?.Action4();
+        else
+        {
+            Debug.Log($"{nameof(_context)} is null");
+            return;
+        }
         DisableMenu();
     }
     public void ExecuteAction5()
     {
-        _context.Action5();
+        if (_context != null) _context?.Action5();
+        else
+        {
+            Debug.Log($"{nameof(_context)} is null");
+            return;
+        }
         DisableMenu();
     }
     #endregion
@@ -48,18 +73,27 @@ public class OBJOptionsManu : MonoBehaviour, IMenu
     {
         if (Hover.HitedCollider.TryGetComponent(out IInteractStrategy strategy))
             _context = strategy;
+        else
+            Debug.Log($"{nameof(_context)} is null in {nameof(SetContext)} method of {nameof(OBJOptionsManu)}");
     }
     protected virtual void CreateTabs()
     {
-        GetComponent<Tabs>().InitButtonMethods(new System.Action[] { ExecuteAction1, ExecuteAction2, ExecuteAction3, ExecuteAction4, ExecuteAction5 });
+        if(TryGetComponent(out Tabs tabs))
+            tabs.InitButtonMethods(new System.Action[] { ExecuteAction1, ExecuteAction2, ExecuteAction3, ExecuteAction4, ExecuteAction5 });
+        else
+            Debug.Log($"{nameof(tabs)} is null in {nameof(CreateTabs)} method of {nameof(OBJOptionsManu)}");
     }
     protected virtual void SetTabs()
     {
-        GetComponent<Tabs>().CreateTabs(_context.GetData());
+        if (TryGetComponent(out Tabs tabs))
+            tabs.CreateTabs(_context.GetData());
+        else
+            Debug.Log($"{nameof(tabs)} is null in {nameof(SetTabs)} method of {nameof(OBJOptionsManu)}");
     }
     protected virtual void SetMenuPanelState(bool state)
     {
-        _manu.SetActive(state);
+        if(_manu != null) _manu.SetActive(state);
+        else Debug.Log($"{nameof(_manu)} is null in {nameof(SetMenuPanelState)} method of {nameof(OBJOptionsManu)}");
     }
     #endregion
     #region MONOBEHAVIOUR

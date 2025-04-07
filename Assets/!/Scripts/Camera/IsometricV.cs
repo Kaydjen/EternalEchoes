@@ -33,10 +33,11 @@ public class IsometricV : CameraCore, IUpdate, ICameraUpdate, ICamera
     }
     public void UpdateNeededComponents()// TODO: we dont need to get camera here, it's better to do in Init method
     {
+        if (CheckNull.Player()) return;
+        if (CheckNull.Camera()) return;
         if (!this.transform.GetChild(Constants.Player.CAMERA).transform.TryGetComponent(out _camera))
             Debug.Log($"{nameof(_camera)} is null in {nameof(IsometricV)}");
 
-        CheckNull.Player();
         _player = PlayerCore.Instance?.transform;
     }
     /// <summary>

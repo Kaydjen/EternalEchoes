@@ -172,7 +172,6 @@ public class Updater : MonoBehaviour
     {
         Updater.Instance?.RegisterUpdate(this, Updater.UpdateType.);
     }
-
     private void UnregisterUpdate()
     {
         Updater.Instance?.UnregisterUpdate(this, Updater.UpdateType.);

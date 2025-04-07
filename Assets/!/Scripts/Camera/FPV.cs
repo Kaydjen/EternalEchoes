@@ -42,8 +42,8 @@ public class FPV : CameraCore, IUpdate, ICameraUpdate, ICamera
     /// </summary>
     public void UpdateNeededComponents()
     {
-        CheckNull.Player();
-        CheckNull.Camera();
+        if(CheckNull.Player()) return;
+        if(CheckNull.Camera()) return;
         _player = PlayerCore.Instance.transform;
         if (CameraSwitcher.Instance.GetViewType() == this as ICamera) // TODO: хз, немного костыльно, мб когда-то переделаю на что-то более адекватное, а пока пусть так будет
         {
@@ -129,7 +129,7 @@ public class FPV : CameraCore, IUpdate, ICameraUpdate, ICamera
 
         if(_player == null && !CheckNull.Player())
         {
-                _player = PlayerCore.Instance.transform;
+            _player = PlayerCore.Instance.transform;
         }
         else
         {

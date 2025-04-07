@@ -1,16 +1,16 @@
 ﻿using UnityEngine;
-
+// :)
 public class RotateMenuOnCharacter : MonoBehaviour, IUpdate
 {
-    public Transform targetC;  // Объект, на который нужно навестись
-    public Transform childB;   // Дочерний объект B (должен быть дочерним к A в иерархии)
-    private Transform _pos;
+    [SerializeField] private Transform _canvas; // child obj
+    private Transform _character;  // Target the menu will rotate to
+    private Transform _pos; // the current position of menu 
     #region Update
-    public void PerformInitialUpdate()
+    public void PerformInitialUpdate() 
     {
         transform.position = _pos.position;
 
-        Vector3 directionToTarget = targetC.position - childB.position;
+        Vector3 directionToTarget = _character.position - _canvas.position;
         directionToTarget.y = 0;
 
         if (directionToTarget.sqrMagnitude > 0.001f)
@@ -24,34 +24,25 @@ public class RotateMenuOnCharacter : MonoBehaviour, IUpdate
             );
         }
     }
-    public void PerformPreUpdate()
-    {
-        throw new System.NotImplementedException();
-    }
-    public void PerformUpdate()
-    {
-        throw new System.NotImplementedException();
-    }
-    public void PerformFinalUpdate()
-    {
-        throw new System.NotImplementedException();
-    }
-    public void PerformLateUpdate()
-    {
-        throw new System.NotImplementedException();
-    }
+    public void PerformPreUpdate() { }
+    public void PerformUpdate() { }
+    public void PerformFinalUpdate() { }
+    public void PerformLateUpdate() { }
+    #endregion
+    #region Registration
     private void RegisterUpdate()
     {
-        Updater.Instance.RegisterUpdate(this, Updater.UpdateType.InitialUpdate);
+        Updater.Instance?.RegisterUpdate(this, Updater.UpdateType.InitialUpdate);
     }
     private void UnregisterUpdate()
     {
-        Updater.Instance.UnregisterUpdate(this, Updater.UpdateType.InitialUpdate);
+        Updater.Instance?.UnregisterUpdate(this, Updater.UpdateType.InitialUpdate);
     }
+    private void Register() { }
     #endregion
-    public void Enable(Transform traget, Transform pos)
+    public void Enable(Transform target, Transform pos)
     {
-        targetC = traget;
+        _character = target;
         _pos = pos;
         RegisterUpdate();
     }

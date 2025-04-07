@@ -1,8 +1,17 @@
 ﻿public static class CheckNull
 {
-    public static void Camera()
+    /// <summary>
+    ///  If null - return true
+    /// </summary>
+    /// <returns></returns>
+    public static bool Camera()
     {
-        if (CameraSwitcher.Instance == null) UnityEngine.Debug.Log($"{nameof(CameraSwitcher.Instance)} is null");
+        if (CameraSwitcher.Instance == null)
+        {
+            UnityEngine.Debug.Log($"{nameof(CameraSwitcher.Instance)} is null");
+            return true;
+        }
+        else return false;
     }
     /// <summary>
     ///  If null - return true

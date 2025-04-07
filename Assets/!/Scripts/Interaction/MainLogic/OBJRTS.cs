@@ -28,7 +28,7 @@ public class OBJRTS: OBJOptionsManu
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 
-        CameraSwitcher.Instance.DisableCurrentView();
+        if(!CheckNull.Camera()) CameraSwitcher.Instance?.DisableCurrentView();
         AIPlSwapper.LockControl();
     }
     protected virtual void ActivateComponents()
@@ -46,17 +46,17 @@ public class OBJRTS: OBJOptionsManu
     #region MONOBEHAVIOUR
     protected virtual void OnEnable()
     {
-        DynamicMenuManagerContext.Instance.RegisterMenu(EMenu.RTSMenu, this);
+        DynamicMenuManagerContext.RegisterMenu(EMenu.RTSMenu, this);
 
-        InputManager.OnOptionsOne.AddListener  (ExecuteAction1);
-        InputManager.OnOptionsTwo.AddListener  (ExecuteAction2);
-        InputManager.OnOptionsThree.AddListener(ExecuteAction3);
-        InputManager.OnOptionsFour.AddListener (ExecuteAction4);
-        InputManager.OnOptionsFive.AddListener (ExecuteAction5);
+        InputManager.OnOptionsOne?.AddListener  (ExecuteAction1);
+        InputManager.OnOptionsTwo?.AddListener  (ExecuteAction2);
+        InputManager.OnOptionsThree?.AddListener(ExecuteAction3);
+        InputManager.OnOptionsFour?.AddListener(ExecuteAction4);
+        InputManager.OnOptionsFive?.AddListener(ExecuteAction5);
     }
     protected virtual void OnDisable()
     {
-        DynamicMenuManagerContext.Instance.UnregisterMenu(EMenu.RTSMenu, this);
+        DynamicMenuManagerContext.UnregisterMenu(EMenu.RTSMenu, this);
     }
     #endregion
 }

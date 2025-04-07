@@ -124,7 +124,10 @@ public class TopDownV : CameraCore, IUpdate, ICameraUpdate, ICamera
     /// 
     /// </summary>
     public void UpdateNeededComponents() // TODO: we dont need to get camera here, it's better to do in Init method
-    { 
+    {
+        if (CheckNull.Player()) return;
+        if (CheckNull.Camera()) return;
+
         _cameraTransform = transform.GetChild(Constants.Player.CAMERA).transform;
          if(_cameraTransform == null) 
             Debug.Log($"{nameof(_cameraTransform)} is null in {nameof(TopDownV)}");

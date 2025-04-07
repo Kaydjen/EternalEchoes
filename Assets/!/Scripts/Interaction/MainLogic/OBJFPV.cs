@@ -5,22 +5,24 @@
     {
         base.EnableMenu();
         // Enable behaviour of FPV manu 
-        GetComponent<RotateMenuOnCharacter>().Enable(PlayerCore.Instance.transform, Hover.HitedCollider.transform);
+        if (TryGetComponent(out RotateMenuOnCharacter rotator))
+            rotator.Enable(PlayerCore.Instance.transform, Hover.HitedCollider.transform);
+        else
+            UnityEngine.Debug.Log($"{nameof(rotator)} is null in {nameof(EnableMenu)} method of {nameof(OBJFPV)}");
     }
     public override void DisableMenu()
     {
         base.DisableMenu();
     }
-
     #endregion
     #region MONOBEHAVIOUR
     protected void OnEnable()
     {
-        DynamicMenuManagerContext.Instance.RegisterMenu(EMenu.FPVMenu, this);
+        DynamicMenuManagerContext.RegisterMenu(EMenu.FPVMenu, this);
     }
     protected void OnDisable()
     {
-        DynamicMenuManagerContext.Instance.UnregisterMenu(EMenu.FPVMenu, this);
+        DynamicMenuManagerContext.UnregisterMenu(EMenu.FPVMenu, this);
     }
     #endregion
 }

@@ -93,11 +93,11 @@ public class InteractOptions : MonoBehaviour, IMenu
     }
     private void OnEnable()
     {
-        DynamicMenuManagerContext.Instance.RegisterMenu(EMenu.FPVMenu, this);
+        DynamicMenuManagerContext.RegisterMenu(EMenu.FPVMenu, this);
     }
     private void OnDisable()
     {
-        DynamicMenuManagerContext.Instance.UnregisterMenu(EMenu.FPVMenu, this);
+        DynamicMenuManagerContext.UnregisterMenu(EMenu.FPVMenu, this);
     }
     #endregion
 }
