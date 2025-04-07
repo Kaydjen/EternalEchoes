@@ -9,4 +9,3 @@ public class TornadoPool : Pool<Transform>
         Instance = this;
     }
 }
-

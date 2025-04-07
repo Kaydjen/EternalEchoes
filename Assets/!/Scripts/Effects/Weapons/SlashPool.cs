@@ -9,4 +9,3 @@ public class SlashPool : Pool<Transform>
         Instance = this;
     }
 }
-

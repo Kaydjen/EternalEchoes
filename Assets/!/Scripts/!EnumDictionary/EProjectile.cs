@@ -2,5 +2,6 @@
 {
     Fireball,
     Icicle,
-    Tornado
+    Tornado,
+    Slash
 }

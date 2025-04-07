@@ -28,6 +28,11 @@ public class ProjectileInstantiater : MonoBehaviour, IAttack
                 _manaCost = 100;
                 _offset = new Vector3(0f,-1f,0f);
                 break;
+            case EProjectile.Slash:
+                _pool = SlashPool.Instance;
+                _manaCost = 0;
+                _offset = new Vector3(0f, 0, 0f);
+                break;
         }
         _stamina = this.transform.root.GetComponent<Stamina>();
     }
