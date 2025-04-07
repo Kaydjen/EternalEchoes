@@ -45,8 +45,9 @@ public class CameraSwitcher : MonoBehaviour
         if (!TryGetComponent(out _IsometricV)) Debug.LogError($"{nameof(_IsometricV)} wasn't got in {nameof(CameraSwitcher)}");
         if (!TryGetComponent(out _TopDownV)) Debug.LogError($"{nameof(_TopDownV)} wasn't got in {nameof(CameraSwitcher)}");
 
-        if (InputHandler.OnCPressed == null) Debug.LogError($"{nameof(InputHandler.OnCPressed)} wasn't got in {nameof(CameraSwitcher)} because it's not initialized");
-        InputHandler.OnCPressed?.AddListener(Switcher);
+        InputManager.Init();
+        if (InputManager.OnCPressed == null) Debug.LogError($"{nameof(InputManager.OnCPressed)} wasn't got in {nameof(CameraSwitcher)} because it's not initialized");
+        InputManager.OnCPressed?.AddListener(Switcher);
         GameEvents.OnCharacterChange?.AddListener(FirstEnable);
     }
     /// <summary>
@@ -85,21 +86,21 @@ public class CameraSwitcher : MonoBehaviour
     #region Switch methods
     public void SwitchToFPV()
     {
-        InputHandler.Instance?.SetFPVState(true);
+        InputManager.SetFPVState(true);
         _FPV.enabled = true;
         OnFPV_Enable?.Invoke();
         _currentView = _FPV;
     }
     public void SwitchToIsometricV()
     {
-        InputHandler.Instance?.SetIsometricState(true);
+        InputManager.SetIsometricState(true);
         _IsometricV.enabled = true;
         OnIsometricV_Enable?.Invoke();
         _currentView = _IsometricV;
     }
     public void SwitchToTopDownV()
     {
-        InputHandler.Instance?.SetTopDownState(true);
+        InputManager.SetTopDownState(true);
         _TopDownV.enabled = true;
         OnTopDownV_Enable?.Invoke();
         _currentView = _TopDownV;
@@ -110,7 +111,7 @@ public class CameraSwitcher : MonoBehaviour
     public void DisableCurrentView()
     {
         _currentView.Disable();
-        InputHandler.OnCPressed?.RemoveListener(Switcher);
+        InputManager.OnCPressed?.RemoveListener(Switcher);
     }
     /// <summary>
     /// Enable currentValue camera View and add listener to switch button
@@ -118,7 +119,7 @@ public class CameraSwitcher : MonoBehaviour
     public void EnableCurrentView()
     {
         _currentView.Enable();
-        InputHandler.OnCPressed?.AddListener(Switcher);
+        InputManager.OnCPressed?.AddListener(Switcher);
     }
     /// <summary>
     ///  It used when character was switched and we want to be sure currentValue player controls were switched correctly

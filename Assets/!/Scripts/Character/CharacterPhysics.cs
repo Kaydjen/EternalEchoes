@@ -111,13 +111,13 @@ public class CharacterPhysics : MonoBehaviour, ICameraUpdate, IUpdate
     #region MONOBEHAVIOUR
     private void OnEnable()
     {
-        InputHandler.OnJump.AddListener(Jump);
+        InputManager.OnJump.AddListener(Jump);
         UpdateNeededComponents();
         RegisterUpdate();
     }
     private void OnDisable()
     {
-        InputHandler.OnJump.RemoveListener(Jump);
+        InputManager.OnJump.RemoveListener(Jump);
         UnregisterUpdate();
     }
     #endregion

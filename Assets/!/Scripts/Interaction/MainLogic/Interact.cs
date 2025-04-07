@@ -114,9 +114,9 @@ public class Interact : MonoBehaviour, IUpdate
     #region MONOBEHAVIOUR
     public void Init()
     {
-        InputHandler.OnInteractionPress.AddListener(TryOpenManu);
-        InputHandler.OnInteractionHoldPerformed.AddListener(HoldPerformed);
-        InputHandler.OnInteractionHoldReleased.AddListener(HoldReleased);
+        InputManager.OnInteractionPress.AddListener(TryOpenManu);
+        InputManager.OnInteractionHoldPerformed.AddListener(HoldPerformed);
+        InputManager.OnInteractionHoldReleased.AddListener(HoldReleased);
         _zona = Instantiate(_zonaPref).transform;
         _zona.gameObject.SetActive(false);
     }

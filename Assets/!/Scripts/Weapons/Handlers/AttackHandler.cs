@@ -102,51 +102,51 @@ public class AttackHandler : MonoBehaviour, IGameplayModeSwitcher, IUpdate
     #region PRIVATE
     private void SubscribeOnLBM()
     {
-        InputHandler.OnAttackLMB.AddListener(ExecuteAttack);
+        InputManager.OnAttackLMB.AddListener(ExecuteAttack);
 
         if (!_isAutomatic) return;
-        InputHandler.OnAttackLMBPerformed.AddListener(ExecuteAttackPerformed);
-        InputHandler.OnAttackLMBReleased.AddListener(ExecuteAttackReleased);
+        InputManager.OnAttackLMBPerformed.AddListener(ExecuteAttackPerformed);
+        InputManager.OnAttackLMBReleased.AddListener(ExecuteAttackReleased);
     }
     private void SubscribeOnRBM()
     {
-        InputHandler.OnAttackRMB.AddListener(ExecuteAttack);
+        InputManager.OnAttackRMB.AddListener(ExecuteAttack);
 
         if (!_isAutomatic) return;
-        InputHandler.OnAttackRMBPerformed.AddListener(ExecuteAttackPerformed);
-        InputHandler.OnAttackRMBReleased.AddListener(ExecuteAttackReleased);
+        InputManager.OnAttackRMBPerformed.AddListener(ExecuteAttackPerformed);
+        InputManager.OnAttackRMBReleased.AddListener(ExecuteAttackReleased);
     }
     private void SubscribeOnF()
     {
-        InputHandler.OnAttackF.AddListener(ExecuteAttack);
+        InputManager.OnAttackF.AddListener(ExecuteAttack);
 
         if (!_isAutomatic) return;
-        InputHandler.OnAttackFPerformed.AddListener(ExecuteAttackPerformed);
-        InputHandler.OnAttackFReleased.AddListener(ExecuteAttackReleased);
+        InputManager.OnAttackFPerformed.AddListener(ExecuteAttackPerformed);
+        InputManager.OnAttackFReleased.AddListener(ExecuteAttackReleased);
     }
     private void UnsubscribeOnLBM()
     {
-        InputHandler.OnAttackLMB.RemoveListener(ExecuteAttack);
+        InputManager.OnAttackLMB.RemoveListener(ExecuteAttack);
 
         if (!_isAutomatic) return;
-        InputHandler.OnAttackLMBPerformed.RemoveListener(ExecuteAttackPerformed);
-        InputHandler.OnAttackLMBReleased.RemoveListener(ExecuteAttackReleased);
+        InputManager.OnAttackLMBPerformed.RemoveListener(ExecuteAttackPerformed);
+        InputManager.OnAttackLMBReleased.RemoveListener(ExecuteAttackReleased);
     }
     private void UnsubscribeOnRBM()
     {
-        InputHandler.OnAttackRMB.RemoveListener(ExecuteAttack);
+        InputManager.OnAttackRMB.RemoveListener(ExecuteAttack);
 
         if (!_isAutomatic) return;
-        InputHandler.OnAttackRMBPerformed.RemoveListener(ExecuteAttackPerformed);
-        InputHandler.OnAttackRMBReleased.RemoveListener(ExecuteAttackReleased);
+        InputManager.OnAttackRMBPerformed.RemoveListener(ExecuteAttackPerformed);
+        InputManager.OnAttackRMBReleased.RemoveListener(ExecuteAttackReleased);
     }
     private void UnsubscribebeOnF()
     {
-        InputHandler.OnAttackF.RemoveListener(ExecuteAttack);
+        InputManager.OnAttackF.RemoveListener(ExecuteAttack);
 
         if (!_isAutomatic) return;
-        InputHandler.OnAttackFPerformed.RemoveListener(ExecuteAttackPerformed);
-        InputHandler.OnAttackFReleased.RemoveListener(ExecuteAttackReleased);
+        InputManager.OnAttackFPerformed.RemoveListener(ExecuteAttackPerformed);
+        InputManager.OnAttackFReleased.RemoveListener(ExecuteAttackReleased);
     }
     #endregion
 }

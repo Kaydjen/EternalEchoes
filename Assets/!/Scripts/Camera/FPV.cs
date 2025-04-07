@@ -80,8 +80,8 @@ public class FPV : CameraCore, IUpdate, ICameraUpdate, ICamera
     public void PerformInitialUpdate()
     {
         // Manage Input
-        _y -= InputHandler.MouseInput.y * _sensitivity * Time.deltaTime;
-        _x += InputHandler.MouseInput.x * _sensitivity * Time.deltaTime;
+        _y -= InputManager.MouseInput.y * _sensitivity * Time.deltaTime;
+        _x += InputManager.MouseInput.x * _sensitivity * Time.deltaTime;
         _y = Mathf.Clamp(_y, _minHeadRotation, _maxHeadRotation);
 
         // Manage Rotation

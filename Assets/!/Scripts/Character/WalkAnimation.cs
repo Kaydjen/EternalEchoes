@@ -72,7 +72,7 @@ public class WalkAnimation : MonoBehaviour, IUpdate
     }
     private void Update()
     {
-        _newVelocity = new Vector2(InputHandler.WASDInput.x, InputHandler.WASDInput.y).normalized;
+        _newVelocity = new Vector2(InputManager.WASDInput.x, InputManager.WASDInput.y).normalized;
         _currentVelocity = Vector2.SmoothDamp(_currentVelocity, _newVelocity, ref _velocity, _smoothTime, _maxSpeed);
 
         float z = Mathf.Clamp(_currentVelocity.y, -1, 1);
@@ -106,7 +106,7 @@ _playerSpine = this.transform.GetChild(0).transform.GetChild(1).transform.transf
     }
     private void Update()
 {
-    _y = InputHandler.MouseInput.x * 3f * Time.deltaTime;
+    _y = InputManager.MouseInput.x * 3f * Time.deltaTime;
 
     if (_playerNeck.localEulerAngles.y + _y < 25f || _playerNeck.localEulerAngles.y + _y > 335f)
     {
@@ -132,7 +132,7 @@ _playerSpine = this.transform.GetChild(0).transform.GetChild(1).transform.transf
 /*
  
          _oldVelocity = _newVelocity;
-        _newVelocity = new Vector2(InputHandler.WASDInput.x, InputHandler.WASDInput.y).normalized;
+        _newVelocity = new Vector2(InputManager.WASDInput.x, InputManager.WASDInput.y).normalized;
 
         _currentVelocity = Vector2.SmoothDamp(_oldVelocity, _newVelocity, ref _velocity, _smoothTime, _maxSpeed);
         _currentVelocity = _currentVelocity.normalized;

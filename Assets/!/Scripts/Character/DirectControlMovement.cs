@@ -32,7 +32,7 @@ public class DirectControlMovement : MonoBehaviour, IUpdate
     }
     public void PerformFinalUpdate()
     {
-        _velocity = (_direction.right * InputHandler.WASDInput.x + _direction.forward * InputHandler.WASDInput.y).normalized;
+        _velocity = (_direction.right * InputManager.WASDInput.x + _direction.forward * InputManager.WASDInput.y).normalized;
         _controller.Move(_velocity * _speed * Time.deltaTime);
     }
     public void PerformLateUpdate()

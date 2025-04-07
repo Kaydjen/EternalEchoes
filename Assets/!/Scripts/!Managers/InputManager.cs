@@ -1,27 +1,23 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
 
-[ComponentInfo("Player input manager",
-    "Handles player input across multiple control schemes, " +
-    "processes movement and camera actions, and invokes relevant events.")]
-public class InputHandler : MonoBehaviour
+public static class InputManager 
 {
     // Reference to the main input actions asset that contains all input mappings
-    private InputActions _asset;
-    // Instance of class
-    public static InputHandler Instance;
+    private static InputActions _asset;
 
     #region Maps 
-    private InputActions.FPVActions _FPV;
-    private InputActions.TopDownActions _TopDown;
-    private InputActions.IsometricActions _Isometric;
-    private InputActions.DefNumbersActions _DefNumbers;
-    private InputActions.OptionsNumbersActions _OptionsNumbers;
-    private InputActions.AllActions _All;
-    private InputActions.UIActions _UI;
+    private static InputActions.FPVActions _FPV;
+    private static InputActions.TopDownActions _TopDown;
+    private static InputActions.IsometricActions _Isometric;
+    private static InputActions.DefNumbersActions _DefNumbers;
+    private static InputActions.OptionsNumbersActions _OptionsNumbers;
+    private static InputActions.AllActions _All;
+    private static InputActions.UIActions _UI;
 
     #endregion Maps
     #region Static variables
+    private static bool _wasInitialized;
     public static Vector2 WASDInput { get; private set; } // Movement
     public static Vector2 MouseInput { get; private set; } // Mouse movement
     public static UnityEvent OnInteractionPress { get; private set; } = new UnityEvent(); // E - Interaction
@@ -76,9 +72,10 @@ public class InputHandler : MonoBehaviour
 
     #endregion Static variables
     #region Init methods
-    public void Init()
+    public static void Init()
     {
-        ExclusivityСheck(); // singlton
+        if(_wasInitialized) return;
+        _wasInitialized = true;
         _asset = new InputActions();
 
         // 0
@@ -96,20 +93,7 @@ public class InputHandler : MonoBehaviour
         ActivateDefNumbersMap();
         SetAllState(true);
     }
-    private void ExclusivityСheck()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        else
-        {
-            if (Instance == this) return;
-            Destroy(this);
-        }
-        DontDestroyOnLoad(gameObject);
-    }
-    private void SubscribeToInputActions()    
+    private static void SubscribeToInputActions()    
     {
         // Subscribes to various actions
         _FPV.Movement.performed += _ => WASDInput = _.ReadValue<Vector2>();
@@ -228,7 +212,7 @@ public class InputHandler : MonoBehaviour
     ///  Enable or disable the First-Person View input map
     /// </summary>
     /// <param name="state"> true - enable, false - disable</param>
-    public void SetFPVState(bool state)
+    public static void SetFPVState(bool state)
     {
         DisableAllMaps();
         if (state) _FPV.Enable();
@@ -238,7 +222,7 @@ public class InputHandler : MonoBehaviour
     ///  Enable or disable the Top-Down View input map
     /// </summary>
     /// <param name="state"> true - enable, false - disable</param>
-    public void SetTopDownState(bool state)
+    public static void SetTopDownState(bool state)
     {
         DisableAllMaps();
         if (state) _TopDown.Enable();
@@ -248,7 +232,7 @@ public class InputHandler : MonoBehaviour
     ///  Enable or disable the Isometric View input map
     /// </summary>
     /// <param name="state"> true - enable, false - disable</param>
-    public void SetIsometricState(bool state)
+    public static void SetIsometricState(bool state)
     {
         DisableAllMaps();
         if (state) _Isometric.Enable();
@@ -257,7 +241,7 @@ public class InputHandler : MonoBehaviour
     /// <summary>
     ///  Enable the DefNumbers input map
     /// </summary>
-    public void ActivateDefNumbersMap()
+    public static void ActivateDefNumbersMap()
     {
         _DefNumbers.Enable();
         _OptionsNumbers.Disable();
@@ -265,7 +249,7 @@ public class InputHandler : MonoBehaviour
     /// <summary>
     ///  Enable the OptionsNumbers input map
     /// </summary>
-    public void ActivateOptionsNumbersMap()
+    public static void ActivateOptionsNumbersMap()
     {
         _OptionsNumbers.Enable();
         _DefNumbers.Disable();
@@ -274,7 +258,7 @@ public class InputHandler : MonoBehaviour
     ///   Enable or disable the movements of all input maps 
     /// </summary>
     /// <param name="state">true - enable, false - disable</param>
-    public void SetAllMovement(bool state)
+    public static void SetAllMovement(bool state)
     {
         if (state)
         {
@@ -293,7 +277,7 @@ public class InputHandler : MonoBehaviour
     ///   Enable or disable the attack's ability of all input maps 
     /// </summary>
     /// <param name="state">true - enable, false - disable</param>
-    public void SetAllAttack(bool state)
+    public static void SetAllAttack(bool state)
     {
         if (state)
         {
@@ -310,7 +294,7 @@ public class InputHandler : MonoBehaviour
     ///   Enable or disable the aim's ability of all input maps 
     /// </summary>
     /// <param name="state">true - enable, false - disable</param>
-    public void SetAllAim(bool state)
+    public static void SetAllAim(bool state)
     {
         if (state)
         {
@@ -327,7 +311,7 @@ public class InputHandler : MonoBehaviour
     ///   Enable or disable the aim's ability of all input maps 
     /// </summary>
     /// <param name="state">true - enable, false - disable</param>
-    public void SetAllInteract(bool state)
+    public static void SetAllInteract(bool state)
     {
         if (state)
         {
@@ -349,7 +333,7 @@ public class InputHandler : MonoBehaviour
     ///  Enable or disable the All View input map
     /// </summary>
     /// <param name="state"> true - enable, false - disable</param>
-    public void SetAllState(bool state)
+    public static void SetAllState(bool state)
     {
         if (state) _All.Enable();
         else _All.Disable();
@@ -358,14 +342,14 @@ public class InputHandler : MonoBehaviour
     ///  Enable or disable the UI input map
     /// </summary>
     /// <param name="state"> true - enable, false - disable</param>
-    public void SetUIState(bool state)
+    public static void SetUIState(bool state)
     {
         if (state) _UI.Enable();
         else _UI.Disable();
     }
     // add here new map's State...
     #endregion
-    private void DisableAllMaps()
+    private static void DisableAllMaps()
     {
         _FPV.Disable();
         _TopDown.Disable();

@@ -73,7 +73,7 @@ public class Hover : MonoBehaviour, ICameraUpdate, IUpdate
     }
     private void OnEnable()
     {
-        //InputHandler.OnInteraction.AddListener(Interact);
+        //InputManager.OnInteraction.AddListener(Interact);
         RegisterUpdate();
         _standartRayDist = _FPVRayDist;
         CameraSwitcher.OnFPV_Enable.AddListener(() => _standartRayDist = _FPVRayDist);
@@ -82,7 +82,7 @@ public class Hover : MonoBehaviour, ICameraUpdate, IUpdate
     }
     private void OnDisable()
     {
-        //InputHandler.OnInteraction.RemoveListener(Interact);
+        //InputManager.OnInteraction.RemoveListener(Interact);
         UnregisterUpdate();
         CameraSwitcher.OnFPV_Enable.RemoveListener(() => _standartRayDist = _FPVRayDist);
         CameraSwitcher.OnIsometricV_Enable.RemoveListener(() => _standartRayDist = _IsometricRayDist);
@@ -216,12 +216,12 @@ public class Hover : MonoBehaviour, ICameraUpdate, IUpdate
     #region MONO METHODS
     private void OnEnable()
     {
-        //InputHandler.OnInteraction.AddListener(Interact);
+        //InputManager.OnInteraction.AddListener(Interact);
         RegisterUpdate();
     }
     private void OnDisable()
     {
-        //InputHandler.OnInteraction.RemoveListener(Interact);
+        //InputManager.OnInteraction.RemoveListener(Interact);
         UnregisterUpdate();
     }
     #endregion
