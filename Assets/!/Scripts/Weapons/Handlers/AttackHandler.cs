@@ -91,11 +91,13 @@ public class AttackHandler : MonoBehaviour, IGameplayModeSwitcher, IUpdate
     public void ForManualMode()
     {
         _isManualMode = true;
-       // if (_attackBindSubscribers.TryGetValue(_type, out Action act)) act?.Invoke();        
+        if (_attackBindSubscribers == null) Awake();
+        if (_attackBindSubscribers.TryGetValue(_type, out Action act)) act?.Invoke();        
     }
     public void ForAIMode()
     {
         _isManualMode = false;
+        if (_attackBindSubscribers == null) Awake();
         if (_attackBindUnsubscribers.TryGetValue(_type, out Action act)) act?.Invoke();
     }
     #endregion
