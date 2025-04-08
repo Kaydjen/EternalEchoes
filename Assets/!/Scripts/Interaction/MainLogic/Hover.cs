@@ -79,7 +79,7 @@ public class Hover : MonoBehaviour, ICameraUpdate, IUpdate
         }
         else
         {
-            InitEvents.OnUpdateInit?.AddListener(RegisterUpdate);
+            InitEvents.OnUpdateReady?.AddListener(RegisterUpdate);
             Debug.Log("Update is null");
         }
 

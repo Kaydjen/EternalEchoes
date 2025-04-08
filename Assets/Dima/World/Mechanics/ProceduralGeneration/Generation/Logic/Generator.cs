@@ -69,7 +69,7 @@ namespace ProceduralGeneration.Logic
         {
             if (world == null) return null;
 
-            SeriazableWorld seriazableWorld = Database.seriazableWorlds[Database.worlds.IndexOf(world)];
+            SeriazableWorld seriazableWorld = Database.seriazableWorlds[Database.GetWorldIndex(world)];
 
             if (seriazableWorld == null) return null;
 
@@ -99,7 +99,7 @@ namespace ProceduralGeneration.Logic
         {
             if (world == null) return null;
 
-            return new Location(GetRandomLocation(Database.seriazableWorlds[Database.worlds.IndexOf(world)],
+            return new Location(GetRandomLocation(Database.seriazableWorlds[Database.GetWorldIndex(world)],
                 x => !x.type.Equals("Corridor") && !x.GetType().Equals(typeof(SeriazableDungeon))), 
                 world, grid);
         }
@@ -199,7 +199,7 @@ namespace ProceduralGeneration.Logic
         {
             if (world == null) return null;
 
-            return new Location(GetRandomLocation(Database.seriazableWorlds[Database.worlds.IndexOf(world)], x => x.type.Equals("Corridor")), world, grid);
+            return new Location(GetRandomLocation(Database.seriazableWorlds[Database.GetWorldIndex(world)], x => x.type.Equals("Corridor")), world, grid);
         }
         static private void CreateCorridors(in World world, Vector2Int position, in int corridorCount, out HashSet<Vector2Int> potenialLocationPositions)
         {
@@ -273,8 +273,7 @@ namespace ProceduralGeneration.Logic
         static public float RandomNext(float max) => RandomNext(0, max);
         static public World CreateWorld(int index)
         {
-            Database.CreateWorld(index);
-            World world = Database.worlds[index];
+            World world = Database.CreateWorld(index);
 
             GenerateWorld(world);
 

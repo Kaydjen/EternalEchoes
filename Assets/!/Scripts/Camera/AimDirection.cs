@@ -44,7 +44,7 @@ public class AimDirection : MonoBehaviour, IUpdate
     #endregion
     private void OnEnable()
     {
-        if (Updater.Instance == null) InitEvents.OnUpdateInit?.AddListener(RegisterFPVUpdate);
+        if (Updater.Instance == null) InitEvents.OnUpdateReady?.AddListener(RegisterFPVUpdate);
         else RegisterFPVUpdate();
 
         CameraSwitcher.OnFPV_Enable.AddListener(RegisterFPVUpdate);

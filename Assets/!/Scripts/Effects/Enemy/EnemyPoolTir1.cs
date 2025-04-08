@@ -1,11 +1,18 @@
 ﻿using UnityEngine;
 
-public class EnemyPoolTir1 : Pool<Transform>
+public class EnemyPoolTir1 : EnemyPool
 {
-    public static EnemyPoolTir1 Instance;
-
-    private void Awake()
+    private static EnemyPoolTir1 _instance;
+    public static EnemyPoolTir1 Instance
     {
-        Instance = this;
+        get
+        {
+            if (_instance == null)
+            {
+                Debug.Log("EnemyPoolTir1.Instance is being initialized!");
+                _instance = FindObjectOfType<EnemyPoolTir1>();
+            }
+            return _instance;
+        }
     }
 }

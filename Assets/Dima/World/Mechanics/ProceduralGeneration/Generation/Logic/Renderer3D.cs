@@ -177,10 +177,9 @@ namespace ProceduralGeneration.Logic
             {
                 Transform propType = gameObjects.Find(prop.Type + 's');
                 if (propType == null) { propType = new GameObject(prop.Type + 's').transform; propType.parent = gameObjects; }
+                if (prop.prefab == null) continue;
 
-                if (prop.GameObject == null) continue;
-
-                Create(prop.GameObject, propType, new Vector3(prop.pivot.x, 0, prop.pivot.y) * scale, prop.rotation);
+                prop.GameObject = Create(prop.prefab, propType, new Vector3(prop.pivot.x, 0, prop.pivot.y) * scale, prop.rotation);
             }
         }
 
@@ -204,6 +203,8 @@ namespace ProceduralGeneration.Logic
                 yield return RenderGrid(location, locationObject, trigger);
                 yield return RenderProps(location, locationObject.parent);
             }
+
+            yield return new WaitForSeconds(10);
 
             callback?.Invoke();
         }

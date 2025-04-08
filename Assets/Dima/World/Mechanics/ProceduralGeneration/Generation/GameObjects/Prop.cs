@@ -1,26 +1,27 @@
 ﻿using ProceduralGeneration.SeriazableObjects;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace ProceduralGeneration.GameObjects
 {
     public class Prop : GenerationObject
     {
-        protected GameObject gameObejct;
+        protected GameObject gameObject;
         public GameObject GameObject
         {
-            get => gameObejct;
+            get => gameObject;
             set
             {
-                gameObejct = value;
-                OnDestroyHandler onDestroyHandler = gameObejct.GetComponent<OnDestroyHandler>();
+                if (value == null || gameObject != null) return;
 
-                if (onDestroyHandler == null) onDestroyHandler = gameObejct.AddComponent<OnDestroyHandler>();
-
-                //onDestroyHandler.OnDestroyEvent.AddListener(() => );
+                gameObject = value;
+                gameObject.AddComponent<OnDestroyHandler>().onDestroyEvent.AddListener(Destroy);
             }
         }
+
+        public GameObject prefab;
 
         public Vector2 pivot;
         public Vector3 rotation;
@@ -36,7 +37,7 @@ namespace ProceduralGeneration.GameObjects
             return count == prop.Grid.Count;
         }, grid, true)
         {
-            gameObejct = prop.gameObject;
+            prefab = prop.prefab;
 
             this.pivot = pivot;
         }

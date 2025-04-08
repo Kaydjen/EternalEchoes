@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7053954968655039069}
   - component: {fileID: 4082897524343499126}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: 2) VisibleRadius
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62,7 +62,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5807215544371793828}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: 1) Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 6505912543595973772}
   - component: {fileID: 2295386300593286724}
   - component: {fileID: 6543753692182813994}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -177,7 +177,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5678851355379126563}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: 5) Weapons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -213,7 +213,7 @@ GameObject:
   - component: {fileID: 3934917051029810271}
   - component: {fileID: 8756727855962244366}
   - component: {fileID: 7639306860100643990}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: 1. LMB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -315,7 +315,7 @@ GameObject:
   - component: {fileID: 3630644935990130140}
   - component: {fileID: 1520816769352732477}
   - component: {fileID: 7988623034979876737}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: 1. Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -397,7 +397,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4539017464063581534}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: 1. Both
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -433,7 +433,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 437536770525199429}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: 3. AI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -466,7 +466,7 @@ GameObject:
   - component: {fileID: 5100379587846929088}
   - component: {fileID: 2979272773309373543}
   - component: {fileID: 7590773269309144322}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: 3) Highlighter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -547,7 +547,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6720095959630562941}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: 2) Animations
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -578,7 +578,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 224085980213541839}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: 4) GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -609,7 +609,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2472080916910638202}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: 2. Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -643,7 +643,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3035367022156534740}
   - component: {fileID: 7220967007786291916}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: 1) Controls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -678,6 +678,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 7
+  _controller: {fileID: 6604847585228803124}
 --- !u!1 &9005463367488759697
 GameObject:
   m_ObjectHideFlags: 0
@@ -697,9 +698,9 @@ GameObject:
   - component: {fileID: 6524710563093434183}
   - component: {fileID: 6604847585228803124}
   - component: {fileID: 4103008288953312866}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Character
-  m_TagString: Damageable
+  m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

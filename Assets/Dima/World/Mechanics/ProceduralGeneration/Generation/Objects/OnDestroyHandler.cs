@@ -5,6 +5,6 @@ using UnityEngine.Events;
 
 public class OnDestroyHandler : MonoBehaviour
 {
-    public UnityEvent OnDestroyEvent;
-    private void OnDestroy() => OnDestroyEvent.Invoke();
+    public UnityEvent onDestroyEvent = new();
+    private void OnDestroy() => onDestroyEvent.Invoke();
 }

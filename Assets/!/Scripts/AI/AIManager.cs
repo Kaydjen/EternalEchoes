@@ -3,26 +3,26 @@ using UnityEngine;
 
 public class AIManager : MonoBehaviour
 {
-
     #region PRIVATE 
     private void SubscribeOnEvents()
     {
-        EnemyRepository.Instance.OnRegister += obj => StartCoroutine(SpawnEffect(obj.gameObject));
-        EnemyRepository.Instance.OnUnregister += id => Debug.Log($"Enemy with ID {id} just died");
-        EnemyRepository.Instance.OnDeath += SoulInstallManager;
+        AIRepository.OnInstantiate += ai => ai.gameObject.SetActive(true);
+        AIRepository.OnRegister += ai => StartCoroutine(SpawnEffect(ai));
+        AIRepository.OnUnregister += id => Debug.Log($"Enemy with ID {id} just died");
+        AIRepository.OnDeath += SoulInstallManager;
     }
     private void UnsubscribeOnEvents()
     { 
-        EnemyRepository.Instance.OnRegister -= obj => StartCoroutine(SpawnEffect(obj.gameObject));
-        EnemyRepository.Instance.OnUnregister -= id => Debug.Log($"Enemy with ID {id} just died");
-        EnemyRepository.Instance.OnDeath -= SoulInstallManager;
+        AIRepository.OnRegister -= ai => StartCoroutine(SpawnEffect(ai));
+        AIRepository.OnUnregister -= id => Debug.Log($"Enemy with ID {id} just died");
+        AIRepository.OnDeath -= SoulInstallManager;
     }
-    private IEnumerator SpawnEffect(GameObject obj)
+    private IEnumerator SpawnEffect(AI ai)
     {
-        obj.SetActive(false);
-        EnemySpawnEffectPool.Instance.SetEffect(obj.transform.position);
-        yield return new WaitForSeconds(3f);
-        obj.SetActive(true);
+        yield return null;
+        EnemySpawnEffectPool.Instance.SetEffect(ai.transform.position);
+        yield return new WaitForSeconds(4.3f);
+        AIRepository.InvokeOnInstantiate(ai);
     }
 
     private void SoulInstallManager(AI ai)
@@ -60,37 +60,5 @@ public class AIManager : MonoBehaviour
 }
 
 
-/*
-     #region Update
-    public void PerformInitialUpdate()
-    {
-        throw new System.NotImplementedException();
-    }
-    public void PerformPreUpdate()
-    {
-        throw new System.NotImplementedException();
-    }
-    public void PerformUpdate()
-    {
-        throw new System.NotImplementedException();
-    }
-    public void PerformFinalUpdate()
-    {
-        throw new System.NotImplementedException();
-    }
-    public void PerformLateUpdate()
-    {
-        throw new System.NotImplementedException();
-    }
-    protected virtual void RegisterUpdate()
-    {
-        Updater.Instance.RegisterUpdate(this, Updater.UpdateType.InitialUpdate);
-    }
-    protected virtual void UnregisterUpdate()
-    {
-        Updater.Instance.UnregisterUpdate(this, Updater.UpdateType.InitialUpdate);
-    }
-    #endregion
- 
- */
+
 

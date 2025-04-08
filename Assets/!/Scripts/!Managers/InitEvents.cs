@@ -5,9 +5,11 @@ using UnityEngine.Events;
 public class InitEvents : MonoBehaviour
 {
     [SerializeField] private float _autoCleanupDelay = 5f;
-    public static UnityEvent OnUpdateInit = new UnityEvent();
-    public static UnityEvent OnFirstCharacterInit = new UnityEvent();
-    public static UnityEvent OnCameraSwitcherInit = new UnityEvent();
+    public static UnityEvent OnUpdateReady = new UnityEvent();
+    public static UnityEvent OnFirstCharacterReady = new UnityEvent();
+    public static UnityEvent OnCameraSwitcherReady = new UnityEvent();
+    public static UnityEvent OnAIManagerOfGroupsReady = new UnityEvent();
+    public static UnityEvent OnEnemiesPoolsReady = new UnityEvent();
     private void Awake()
     {
         ReInitAll();
@@ -25,24 +27,36 @@ public class InitEvents : MonoBehaviour
     }
     private void ReInitAll()
     {
-        if (OnUpdateInit == null)
-            OnUpdateInit = new UnityEvent();
+        if (OnUpdateReady == null)
+            OnUpdateReady = new UnityEvent();
 
-        if (OnFirstCharacterInit == null)
-            OnFirstCharacterInit = new UnityEvent();
+        if (OnFirstCharacterReady == null)
+            OnFirstCharacterReady = new UnityEvent();
 
-        if (OnCameraSwitcherInit == null)
-            OnCameraSwitcherInit = new UnityEvent();
+        if (OnCameraSwitcherReady == null)
+            OnCameraSwitcherReady = new UnityEvent();
+
+        if (OnAIManagerOfGroupsReady == null)
+            OnAIManagerOfGroupsReady = new UnityEvent();
+
+        if (OnEnemiesPoolsReady == null)
+            OnEnemiesPoolsReady = new UnityEvent();
     }
     private void ClearAll()
     {
-        OnUpdateInit?.RemoveAllListeners();
-        OnUpdateInit = null;
+        OnUpdateReady?.RemoveAllListeners();
+        OnUpdateReady = null;
 
-        OnFirstCharacterInit?.RemoveAllListeners();
-        OnFirstCharacterInit = null;
+        OnFirstCharacterReady?.RemoveAllListeners();
+        OnFirstCharacterReady = null;
 
-        OnCameraSwitcherInit?.RemoveAllListeners();
-        OnCameraSwitcherInit = null;
+        OnCameraSwitcherReady?.RemoveAllListeners();
+        OnCameraSwitcherReady = null;
+
+        OnAIManagerOfGroupsReady?.RemoveAllListeners();
+        OnAIManagerOfGroupsReady = null;
+
+        OnEnemiesPoolsReady?.RemoveAllListeners();
+        OnEnemiesPoolsReady = null;
     }
 }

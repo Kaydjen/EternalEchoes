@@ -28,7 +28,7 @@ public class Updater : MonoBehaviour
     public void Start()
     {
         Instance = this;
-        InitEvents.OnUpdateInit?.Invoke();
+        InitEvents.OnUpdateReady?.Invoke();
         Debug.Log("Update initialized");
     }
     private void Update()

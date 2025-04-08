@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: NewProp
   m_EditorClassIdentifier: 
   type: Unknown
-  gameObject: {fileID: 5714949299443536829, guid: d97708696eb3cec4aac41ce3d966b79c,
-    type: 3}
+  prefab: {fileID: 5714949299443536829, guid: d97708696eb3cec4aac41ce3d966b79c, type: 3}
   pivot: {x: 1, y: 1}
   hitbox: "\u25A0\u25A0\u25A0\u25A0\n\u25A0\u25A0\u25A0\u25A0\n\u25A0\u25A0\u25A0\u25A0\n\u25A0\u25A0\u25A0"
