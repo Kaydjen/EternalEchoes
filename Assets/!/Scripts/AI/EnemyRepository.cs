@@ -3,7 +3,7 @@ using System.Collections.Generic;
 public delegate void AIDelegate(AI obj);
 public delegate void IdDelegate(int id);
 
-public class EnemyRepository
+public static class EnemyRepository
 {
     public static Dictionary<int, AI> Items = new();
     public static event AIDelegate OnRegister;

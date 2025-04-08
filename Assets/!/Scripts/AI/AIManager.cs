@@ -7,18 +7,19 @@ public class AIManager : MonoBehaviour
     #region PRIVATE 
     private void SubscribeOnEvents()
     {
-        EnemyRepository.OnRegister += obj => StartCoroutine(SpawnEffect(obj.gameObject));
+        EnemyRepository.OnRegister += obj => StartCoroutine(SpawnEffect(obj.transform));
         EnemyRepository.OnUnregister += id => Debug.Log($"Enemy with ID {id} just died");
         EnemyRepository.OnDeath += SoulInstallManager;
     }
     private void UnsubscribeOnEvents()
     { 
-        EnemyRepository.OnRegister -= obj => StartCoroutine(SpawnEffect(obj.gameObject));
+        EnemyRepository.OnRegister -= obj => StartCoroutine(SpawnEffect(obj.transform));
         EnemyRepository.OnUnregister -= id => Debug.Log($"Enemy with ID {id} just died");
         EnemyRepository.OnDeath -= SoulInstallManager;
     }
-    private IEnumerator SpawnEffect(GameObject obj)
+    private IEnumerator SpawnEffect(Transform obj)
     {
+        yield return null;
         EnemySpawnEffectPool.Instance.SetEffect(obj.transform.position);
         yield return new WaitForSeconds(2f);
     }
