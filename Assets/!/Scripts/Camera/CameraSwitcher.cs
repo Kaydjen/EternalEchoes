@@ -37,7 +37,7 @@ public class CameraSwitcher : MonoBehaviour
             if (Instance == this) return;
             Destroy(this);
         }
-        InitEvents.OnCameraSwitcherInit?.Invoke();
+        InitEvents.OnCameraSwitcherReady?.Invoke();
         DontDestroyOnLoad(gameObject);
         #endregion Singleton
 

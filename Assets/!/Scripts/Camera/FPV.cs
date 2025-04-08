@@ -150,7 +150,7 @@ public class FPV : CameraCore, IUpdate, ICamera
         Cursor.visible = false;
 
         if (Updater.Instance != null) RegisterUpdate();
-        else InitEvents.OnUpdateInit?.AddListener(RegisterUpdate);
+        else InitEvents.OnUpdateReady?.AddListener(RegisterUpdate);
     }
     private void OnDisable()
     {

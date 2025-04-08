@@ -1,39 +1,24 @@
 using System.Collections.Generic;
-using UnityEngine;
 
 public delegate void AIDelegate(AI obj);
 public delegate void IdDelegate(int id);
 
-public class EnemyRepository : MonoBehaviour
+public class EnemyRepository
 {
-    public static EnemyRepository Instance;
-    public Dictionary<int, AI> Items = new();
-    public event AIDelegate OnRegister;
-    public event IdDelegate OnUnregister;
-    public event AIDelegate OnDeath;
-    public void Register(AI enemyObj, int id)
+    public static Dictionary<int, AI> Items = new();
+    public static event AIDelegate OnRegister;
+    public static event IdDelegate OnUnregister;
+    public static event AIDelegate OnDeath;
+    public static void Register(AI enemyObj, int id)
     {
         Items.Add(id, enemyObj);
         OnRegister?.Invoke(enemyObj);
     }
-    public void Unregister(AI enemyObj, int id)
+    public static void Unregister(AI enemyObj, int id)
     {
         Items.Remove(id);
         OnUnregister?.Invoke(id);
         OnDeath?.Invoke(enemyObj);
-    }
-    private void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        else
-        {
-            if (Instance == this) return;
-            Destroy(this);
-        }
-        DontDestroyOnLoad(gameObject);
     }
 }
 
