@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: CharacterInit
   m_EditorClassIdentifier: 
   type: Character
-  gameObject: {fileID: 9005463367488759697, guid: 8dc339c13c8ca5f46a6001bd470df04d,
-    type: 3}
+  prefab: {fileID: 9005463367488759697, guid: 8dc339c13c8ca5f46a6001bd470df04d, type: 3}
   pivot: {x: 0, y: 0}
   hitbox: "\u25A0"
