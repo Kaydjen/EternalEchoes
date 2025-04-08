@@ -2,14 +2,21 @@ using UnityEngine;
 
 public class EnemySpawnEffectPool : Pool<Transform>
 {
-    public static EnemySpawnEffectPool Instance;
+    private static EnemySpawnEffectPool _instance;
+    public static EnemySpawnEffectPool Instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                Debug.Log("EnemySpawnEffectPool.Instance is being initialized!");
+                _instance = FindObjectOfType<EnemySpawnEffectPool>();
+            }
+            return _instance;
+        }
+    }
     [SerializeField] private Vector3 _defSize;
     private const float DURATION = 10f;
-
-    private void Awake()
-    {
-        Instance = this;
-    }
     public void SetEffect(Vector3 position, Vector3 scale, float duration = DURATION)
     {
         Transform effect = base.Get();

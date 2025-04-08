@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.UIElements;
 //// IDEA: можно сделать так, что бы если через допустим 30 чекунд главарь группы все еще был жив, 
 ///то он спавнил всех своих воинов наново.
 ///
@@ -11,9 +12,9 @@ public class AIManagerOfGroups : MonoBehaviour
 {
     public static AIManagerOfGroups Instance;
     [SerializeField] private float _delayBtwInstantiateGroups = 1f;
-    private Dictionary<EEnemyRank, Action<Tuple<Pool<Transform>, float, Vector3, byte, float>>> _DEnemyRank;
-    private readonly Queue<Tuple<Pool<Transform>, float, Vector3, byte, float>> _subordinatesQueue = new();
-    private readonly Queue<Tuple<Pool<Transform>, float, Vector3, byte, float>> _leadersQueue = new();
+    private Dictionary<EEnemyRank, Action<Tuple<EnemyPool, float, Vector3, byte, float>>> _DEnemyRank;
+    private readonly Queue<Tuple<EnemyPool, float, Vector3, byte, float>> _subordinatesQueue = new();
+    private readonly Queue<Tuple<EnemyPool, float, Vector3, byte, float>> _leadersQueue = new();
     private bool _isProcessing;
     private Coroutine _spawningCoroutine;
     private const EEnemyRank RANK = EEnemyRank.Subordinate;
@@ -42,7 +43,7 @@ public class AIManagerOfGroups : MonoBehaviour
     /// <param name="radius">The radius of enemies instantiation (default: 5f)</param>
     /// <param name="delay">The delay between instantiation of each enemy (default: 2f)</param>
     /// <param name="rank">The rank of enemies (default: Subordinate)</param>
-    public void AddToQueue(Pool<Transform> pool, byte countToSpawn, Vector3 pivotPosition, float radius = RADIUS,
+    public void AddToQueue(EnemyPool pool, byte countToSpawn, Vector3 pivotPosition, float radius = RADIUS,
         float delay = DELAY, EEnemyRank rank = RANK)
     {
         if (_DEnemyRank == null)
@@ -95,7 +96,7 @@ public class AIManagerOfGroups : MonoBehaviour
         }
     }
 
-    private IEnumerator ProcessOneGroup(Queue<Tuple<Pool<Transform>, float, Vector3, byte, float>> queue)
+    private IEnumerator ProcessOneGroup(Queue<Tuple<EnemyPool, float, Vector3, byte, float>> queue)
     {
         var (pool, delay, pivotPosition, countToSpawn, radius) = queue.Dequeue();
 
@@ -106,14 +107,22 @@ public class AIManagerOfGroups : MonoBehaviour
         Transform enemy;
         for (int i = 0; i < countToSpawn; i++)
         {
-            Debug.Log("spawned");
             if (pool == null) Debug.LogWarning("POOL IS NULL");
             angle = i * angleStep * Mathf.Deg2Rad;
             x = pivotPosition.x + radius * Mathf.Cos(angle);
             z = pivotPosition.z + radius * Mathf.Sin(angle);
             position = new(x, pivotPosition.y, z);
 
-            enemy = pool.Get();
+            enemy = pool.GetEnemy();
+            if (enemy.TryGetComponent(out AI ai))
+            {
+                ai.Register();
+            }
+            else
+            {
+                Debug.Log($"{nameof(ai)} can't be getted from {nameof(enemy)} in {nameof(AIManagerOfGroups)}");
+                continue;
+            }
             if (enemy != null) enemy.position = position;
             else Debug.LogWarning("ENEMY IS NULL");
             yield return new WaitForSeconds(delay);

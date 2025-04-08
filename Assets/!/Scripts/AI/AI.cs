@@ -16,25 +16,21 @@ public class AI : MonoBehaviour
     }
     protected virtual void OnEnable()
     {
-        Register();
-        Debug.Log("Enable");
 /*        if (_agent != null) _agent.enabled = true;
         else Debug.Log($"{nameof(_agent)} is null");*/
     }
     protected virtual void OnDisable()
     {
-        Debug.Log("Disable");
-        Unregister();
 /*        if (_agent != null) _agent.enabled = false;
         else Debug.Log($"{nameof(_agent)} is null");*/
     }
-    protected virtual void Register()
+    public virtual void Register()
     {
-        EnemyRepository.Register(this, this.GetInstanceID());
+        AIRepository.Register(this, this.GetInstanceID());
     }
-    protected virtual void Unregister()
+    public virtual void Unregister()
     {
-        EnemyRepository.Unregister(this, this.GetInstanceID());
+        AIRepository.Unregister(this, this.GetInstanceID());
     }
 }
 

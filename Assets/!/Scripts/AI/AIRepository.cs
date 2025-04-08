@@ -1,25 +1,28 @@
+using System;
 using System.Collections.Generic;
 
-public delegate void AIDelegate(AI obj);
+public delegate void AIDelegate(AI ai);
 public delegate void IdDelegate(int id);
 
-public static class EnemyRepository
+public static class AIRepository
 {
     public static Dictionary<int, AI> Items = new();
     public static event AIDelegate OnRegister;
     public static event IdDelegate OnUnregister;
     public static event AIDelegate OnDeath;
-    public static void Register(AI enemyObj, int id)
+    public static event AIDelegate OnInstantiate;
+    public static void Register(AI ai, int id)
     {
-        Items.Add(id, enemyObj);
-        OnRegister?.Invoke(enemyObj);
+        Items.Add(id, ai);
+        OnRegister?.Invoke(ai);
     }
-    public static void Unregister(AI enemyObj, int id)
+    public static void Unregister(AI ai, int id)
     {
         Items.Remove(id);
         OnUnregister?.Invoke(id);
-        OnDeath?.Invoke(enemyObj);
+        OnDeath?.Invoke(ai);
     }
+    public static void InvokeOnInstantiate(AI ai)=> OnInstantiate?.Invoke(ai);
 }
 
 

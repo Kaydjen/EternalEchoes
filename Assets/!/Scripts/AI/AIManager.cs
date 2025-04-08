@@ -3,26 +3,26 @@ using UnityEngine;
 
 public class AIManager : MonoBehaviour
 {
-
     #region PRIVATE 
     private void SubscribeOnEvents()
     {
-        EnemyRepository.OnRegister += obj => StartCoroutine(SpawnEffect(obj.transform));
-        EnemyRepository.OnUnregister += id => Debug.Log($"Enemy with ID {id} just died");
-        EnemyRepository.OnDeath += SoulInstallManager;
+        AIRepository.OnInstantiate += ai => ai.gameObject.SetActive(true);
+        AIRepository.OnRegister += ai => StartCoroutine(SpawnEffect(ai));
+        AIRepository.OnUnregister += id => Debug.Log($"Enemy with ID {id} just died");
+        AIRepository.OnDeath += SoulInstallManager;
     }
     private void UnsubscribeOnEvents()
     { 
-        EnemyRepository.OnRegister -= obj => StartCoroutine(SpawnEffect(obj.transform));
-        EnemyRepository.OnUnregister -= id => Debug.Log($"Enemy with ID {id} just died");
-        EnemyRepository.OnDeath -= SoulInstallManager;
+        AIRepository.OnRegister -= ai => StartCoroutine(SpawnEffect(ai));
+        AIRepository.OnUnregister -= id => Debug.Log($"Enemy with ID {id} just died");
+        AIRepository.OnDeath -= SoulInstallManager;
     }
-    private IEnumerator SpawnEffect(Transform obj)
+    private IEnumerator SpawnEffect(AI ai)
     {
-        Debug.Log("SpawnEffect AIManager");
         yield return null;
-        EnemySpawnEffectPool.Instance.SetEffect(obj.transform.position);
-        yield return new WaitForSeconds(2f);
+        EnemySpawnEffectPool.Instance.SetEffect(ai.transform.position);
+        yield return new WaitForSeconds(4.3f);
+        AIRepository.InvokeOnInstantiate(ai);
     }
 
     private void SoulInstallManager(AI ai)

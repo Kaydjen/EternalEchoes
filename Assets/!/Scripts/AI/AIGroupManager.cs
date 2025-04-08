@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Rendering;
 
 public class AIGroupManager : MonoBehaviour
 {
@@ -19,20 +20,19 @@ public class AIGroupManager : MonoBehaviour
     [SerializeField] private byte _leadersCount = 1;
     [SerializeField] private float _leadersRadiusOfSpawn = 5f;
 
-
     private bool _wasSubscribedOnce;
-
+    private bool _wasInitialized;
     // ивент, на который подпишуться все члены группы, и если кто-то из членов группы был ранен -
     // то все члены группы атакуют нападавшего (тобиж ивент должен передавать параметр Transform attacker
-    // ----
-    // список юнитов для спавна
-    // список главарей для спавна
-    // ----
-    // булевое поле, для того, что бы обозначать, будет главарь или нет,  и нужно ли спавнить его сейчас 
 
     private void OnEnable()
     {
-        RequestEnemySpawn(); // запрос в менеджер групп для спавна 
+        if (_wasInitialized) RequestEnemySpawn(); // запрос в менеджер групп для спавна 
+        else
+        {
+            Invoke(nameof(RequestEnemySpawn), 1f);
+            _wasInitialized = true;
+        }
     }
     public void RequestEnemySpawn()
     {
@@ -58,7 +58,7 @@ public class AIGroupManager : MonoBehaviour
     private void SpawnGroup(EEnemys enemyType, byte count, float delay, EEnemyRank rank, float radius)
     {
         if (count == 0) return;
-        if (!DEnemys.List.TryGetValue(enemyType, out Pool<Transform> pool))
+        if (!DEnemys.List.TryGetValue(enemyType, out EnemyPool pool))
         {
             Debug.LogError($"Pool for {enemyType} not found [Time: {Time.time}]");
             return;

@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class EnemyPoolTir1 : Pool<Transform>
+public class EnemyPoolTir1 : EnemyPool
 {
     private static EnemyPoolTir1 _instance;
     public static EnemyPoolTir1 Instance
