@@ -111,21 +111,21 @@ namespace Minimap
 
                 Vector2Int currentPosition = minimapObjects[iMinimapObject].GetCurrentPosition(world.Scale) - world.Grid.Min;
 
-                if (minimapObjects[iMinimapObject].lastPosition != currentPosition)
-                {
-                    Color lastColor = map.GetPixel(currentPosition.x, currentPosition.y);
-                    minimapObjects[iMinimapObject].lastColor = lastColor;
-                }
-
                 if (!(currentPosition.x > map.width || currentPosition.x < 0 || currentPosition.y > map.height || currentPosition.y < 0))
                 {
                     if (current.ContainsKey(currentPosition)) current[currentPosition] = minimapObjects[iMinimapObject].color;
                     else current.Add(currentPosition, minimapObjects[iMinimapObject].color);
+                }
 
+                if (minimapObjects[iMinimapObject].lastPosition != currentPosition)
+                {
                     if (!last.ContainsKey(minimapObjects[iMinimapObject].lastPosition)) last.Add(minimapObjects[iMinimapObject].lastPosition, minimapObjects[iMinimapObject].lastColor);
 
-                    minimapObjects[iMinimapObject].lastPosition = currentPosition;
+                    Color lastColor = map.GetPixel(currentPosition.x, currentPosition.y);
+                    minimapObjects[iMinimapObject].lastColor = lastColor;
                 }
+
+                minimapObjects[iMinimapObject].lastPosition = currentPosition;
             }
 
             return (current, last);
@@ -135,8 +135,8 @@ namespace Minimap
         {
             (Dictionary<Vector2Int, Color> current, Dictionary<Vector2Int, Color> last) = GetPositions();
 
-            List<Vector2Int> toColorBack = last.Keys.ToList(),
-                toColor = current.Keys.ToList();
+            List<Vector2Int> toColor = current.Keys.ToList(), toColorBack = last.Keys.Except(toColor).ToList();
+                
 
             for (int iPos = 0; iPos < toColorBack.Count; iPos++) map.SetPixel(toColorBack[iPos].x, toColorBack[iPos].y, last[toColorBack[iPos]]);
 

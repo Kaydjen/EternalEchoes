@@ -21,16 +21,14 @@ public class GenerationHandler : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    public void GenerateWorld(int ind = 0)
+    private void CreateWorld(int ind = 0)
     {
-        SceneManager.LoadScene("Loading");
-
         GameObject parent = new GameObject("Game");
         parent.SetActive(false);
         DontDestroyOnLoad(parent);
 
         Generator.Seed = seed;
-        ProceduralGeneration.GameObjects.World world = Generator.CreateWorld(0);
+        ProceduralGeneration.GameObjects.World world = Generator.CreateWorld(ind);
 
         StartCoroutine(ProceduralGeneration.Logic.Renderer3D.Render(world, parent.transform, () => {
             StartCoroutine(LoadScene("Game", () => {
@@ -38,27 +36,35 @@ public class GenerationHandler : MonoBehaviour
                 SceneManager.MoveGameObjectToScene(parent, SceneManager.GetSceneByName("Game"));
             }));
         }, trigger));
-
-        
+    }
+    public void GenerateWorld(int ind = 0)
+    {
+        StartCoroutine(LoadScene("Loading", () => CreateWorld(ind)));
     }
 
     private IEnumerator LoadScene(string sceneName, Action callback = null)
     {
+        yield return Transition.instance.PlayTransition(0f, 1f);
+
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName);
 
-        while (!asyncLoad.isDone)
-            yield return null;
+        yield return new WaitWhile(() => !asyncLoad.isDone);
 
         callback?.Invoke();
+
+        yield return Transition.instance.PlayTransition(1f, 0f);
     }
 
-    private IEnumerator LoadScene(int sceneIndex, Action callback)
+    private IEnumerator LoadScene(int sceneIndex, Action callback = null)
     {
+        yield return Transition.instance.PlayTransition(0f, 1f);
+
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneIndex);
 
-        while (!asyncLoad.isDone)
-            yield return null;
+        yield return new WaitWhile(() => !asyncLoad.isDone);
 
-        callback.Invoke();
+        callback?.Invoke();
+
+        yield return Transition.instance.PlayTransition(1f, 0f);
     }
 }

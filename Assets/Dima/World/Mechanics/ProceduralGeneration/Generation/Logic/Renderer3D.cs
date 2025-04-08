@@ -204,6 +204,8 @@ namespace ProceduralGeneration.Logic
                 yield return RenderProps(location, locationObject.parent);
             }
 
+            yield return new WaitForSeconds(10);
+
             callback?.Invoke();
         }
     }
