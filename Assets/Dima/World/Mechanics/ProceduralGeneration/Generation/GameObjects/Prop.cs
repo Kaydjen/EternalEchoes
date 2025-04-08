@@ -14,10 +14,10 @@ namespace ProceduralGeneration.GameObjects
             get => gameObject;
             set
             {
-                if (value == null && gameObject == null) return;
+                if (value == null || gameObject != null) return;
 
                 gameObject = value;
-                gameObject.AddComponent<OnDestroyHandler>().OnDestroyEvent.AddListener(Destroy);
+                gameObject.AddComponent<OnDestroyHandler>().onDestroyEvent.AddListener(Destroy);
             }
         }
 

@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.Events;
 using UnityEngine.Rendering;
 
@@ -9,7 +10,7 @@ public class Transition : MonoBehaviour
 
     [SerializeField] private Volume _volume;
     [SerializeField] private float _duration = 1;
-    //public UnityEvent OnSceneLoad = new();
+    [SerializeField] private AudioMixerGroup audioMixerGroup;
 
     private Coroutine coroutine;
 
@@ -26,6 +27,9 @@ public class Transition : MonoBehaviour
         {
             elapsedTime += Time.deltaTime;
             _volume.weight = Mathf.Lerp(start, end, elapsedTime / _duration);
+
+            audioMixerGroup.audioMixer.SetFloat(audioMixerGroup.name+"Volume",
+                Mathf.Log10(Mathf.Max(Mathf.Lerp(end, start, elapsedTime / _duration), 0.01f))*20);
             yield return null;
         }
 

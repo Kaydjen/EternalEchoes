@@ -43,7 +43,7 @@ TagManager:
   - 
   - 
   - 
-  - PostProcess
+  - PostProcessing
   - Test
   m_SortingLayers:
   - name: Default

@@ -30488,6 +30488,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _volume: {fileID: 222082937}
   _duration: 2
+  audioMixerGroup: {fileID: 7996207422788858827, guid: 01e4ae05d92d47449b34aaf46b23d537,
+    type: 2}
 --- !u!1 &1567372385
 GameObject:
   m_ObjectHideFlags: 0
