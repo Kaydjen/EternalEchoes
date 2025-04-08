@@ -1,6 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.Rendering;
-
 public class AIGroupManager : MonoBehaviour
 {
     [Space(5)]
@@ -19,7 +17,7 @@ public class AIGroupManager : MonoBehaviour
     [SerializeField] private float _leaderSpawnDelay = 1f;
     [SerializeField] private byte _leadersCount = 1;
     [SerializeField] private float _leadersRadiusOfSpawn = 5f;
-
+    
     private bool _wasSubscribedOnce;
     private bool _wasInitialized;
     // ивент, на который подпишуться все члены группы, и если кто-то из членов группы был ранен -
