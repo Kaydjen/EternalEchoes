@@ -9,6 +9,7 @@ public class InitEvents : MonoBehaviour
     public static UnityEvent OnFirstCharacterReady = new UnityEvent();
     public static UnityEvent OnCameraSwitcherReady = new UnityEvent();
     public static UnityEvent OnAIManagerOfGroupsReady = new UnityEvent();
+    public static UnityEvent OnEnemiesPoolsReady = new UnityEvent();
     private void Awake()
     {
         ReInitAll();
@@ -37,6 +38,9 @@ public class InitEvents : MonoBehaviour
 
         if (OnAIManagerOfGroupsReady == null)
             OnAIManagerOfGroupsReady = new UnityEvent();
+
+        if (OnEnemiesPoolsReady == null)
+            OnEnemiesPoolsReady = new UnityEvent();
     }
     private void ClearAll()
     {
@@ -51,5 +55,8 @@ public class InitEvents : MonoBehaviour
 
         OnAIManagerOfGroupsReady?.RemoveAllListeners();
         OnAIManagerOfGroupsReady = null;
+
+        OnEnemiesPoolsReady?.RemoveAllListeners();
+        OnEnemiesPoolsReady = null;
     }
 }

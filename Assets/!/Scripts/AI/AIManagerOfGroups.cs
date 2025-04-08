@@ -104,18 +104,17 @@ public class AIManagerOfGroups : MonoBehaviour
         float angle, x, z;
         Vector3 position;
         Transform enemy;
-        for (int i = 0; i < countToSpawn; i++)
+        for (int i = 0; i < countToSpawn + 1; i++)
         {
-            if (pool == null) continue;
-
+            if (pool == null) Debug.LogWarning("POOL IS NULL");
             angle = i * angleStep * Mathf.Deg2Rad;
             x = pivotPosition.x + radius * Mathf.Cos(angle);
             z = pivotPosition.z + radius * Mathf.Sin(angle);
             position = new(x, pivotPosition.y, z);
 
             enemy = pool.Get();
-            if (enemy != null) enemy.position = position;            
-
+            if (enemy != null) enemy.position = position;
+            else Debug.LogWarning("ENEMY IS NULL");
             yield return new WaitForSeconds(delay);
         }
 

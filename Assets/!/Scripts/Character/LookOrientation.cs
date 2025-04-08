@@ -54,31 +54,25 @@ public class LookOrientation : MonoBehaviour, IUpdate
     }
     private void Register()
     {
-        Debug.Log("1");
         if(Updater.Instance != null && PlayerCore.Instance != null)
         {
-            Debug.Log("2");
             GetPlayer();
             RegisterUpdate();            
         }
         if (Updater.Instance == null)
         {
-            Debug.Log("3");
             InitEvents.OnUpdateReady?.AddListener(Register);
         }
         if (PlayerCore.Instance == null) 
         {
-            Debug.Log("4");
             InitEvents.OnFirstCharacterReady?.AddListener(Register);
         }
         if (Updater.Instance != null) 
         {
-            Debug.Log("5");
             InitEvents.OnUpdateReady?.RemoveListener(Register);
         }
         if (PlayerCore.Instance != null) 
         {
-            Debug.Log("6");
             InitEvents.OnFirstCharacterReady?.RemoveListener(Register);
         }
     }

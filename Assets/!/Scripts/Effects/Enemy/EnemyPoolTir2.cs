@@ -2,10 +2,17 @@
 
 public class EnemyPoolTir2 : Pool<Transform>
 {
-    public static EnemyPoolTir2 Instance;
-
-    private void Awake()
+    private static EnemyPoolTir2 _instance;
+    public static EnemyPoolTir2 Instance
     {
-        Instance = this;
+        get
+        {
+            if (_instance == null)
+            {
+                Debug.Log("EnemyPoolTir1.Instance is being initialized!");
+                _instance = FindObjectOfType<EnemyPoolTir2>();
+            }
+            return _instance;
+        }
     }
 }

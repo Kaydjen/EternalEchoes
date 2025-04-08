@@ -7,5 +7,6 @@ public class EnemyPoolTir4 : Pool<Transform>
     private void Awake()
     {
         Instance = this;
+        InitEvents.OnEnemiesPoolsReady?.Invoke();
     }
 }

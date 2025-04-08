@@ -19,10 +19,8 @@ public class AIManager : MonoBehaviour
     }
     private IEnumerator SpawnEffect(GameObject obj)
     {
-        obj.SetActive(false);
         EnemySpawnEffectPool.Instance.SetEffect(obj.transform.position);
-        yield return new WaitForSeconds(3f);
-        obj.SetActive(true);
+        yield return new WaitForSeconds(2f);
     }
 
     private void SoulInstallManager(AI ai)

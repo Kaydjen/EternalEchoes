@@ -10,21 +10,31 @@ public class AI : MonoBehaviour
     {
         _agent.destination = coordinates;
     }
-    protected virtual void Awake()
-    {
-        EnemyRepository.Register(this, this.GetInstanceID());
-    }
     protected void OnDestroy()
     {
-        EnemyRepository.Unregister(this, this.GetInstanceID());
+        Unregister();
     }
     protected virtual void OnEnable()
     {
-        _agent.enabled = true;
+        Register();
+        Debug.Log("Enable");
+/*        if (_agent != null) _agent.enabled = true;
+        else Debug.Log($"{nameof(_agent)} is null");*/
     }
     protected virtual void OnDisable()
     {
-        _agent.enabled = false;
+        Debug.Log("Disable");
+        Unregister();
+/*        if (_agent != null) _agent.enabled = false;
+        else Debug.Log($"{nameof(_agent)} is null");*/
+    }
+    protected virtual void Register()
+    {
+        EnemyRepository.Register(this, this.GetInstanceID());
+    }
+    protected virtual void Unregister()
+    {
+        EnemyRepository.Unregister(this, this.GetInstanceID());
     }
 }
 
@@ -61,9 +71,9 @@ public class AIGroupManager : MonoBehaviour
 
     private void OnEnable()
     {
-        SpawnGroup(); // запрос в менеджер групп для спавна 
+        RequestEnemySpawn(); // запрос в менеджер групп для спавна 
     }
-    public void SpawnGroup()
+    public void RequestEnemySpawn()
     {
         if (DEnemys.List == null)
         {

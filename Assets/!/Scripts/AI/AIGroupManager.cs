@@ -9,6 +9,7 @@ public class AIGroupManager : MonoBehaviour
     [SerializeField] private EEnemyRank _subordinateEnemyRank;
     [SerializeField] private float _subordinateSpawnDelay = 1f;
     [SerializeField] private byte _subordinatesCount = 8;
+    [SerializeField] private float _subordinatesRadiusOfSpawn = 5f;
     [Space(5)]
     [Header("Leader Enemy")]
     [SerializeField] private bool _doSpawnLeader = true;
@@ -16,8 +17,8 @@ public class AIGroupManager : MonoBehaviour
     [SerializeField] private EEnemyRank _leaderEnemyRank;
     [SerializeField] private float _leaderSpawnDelay = 1f;
     [SerializeField] private byte _leadersCount = 1;
-    [Space(10)]
-    [SerializeField] private float _radiusOfSpawn = 5f;
+    [SerializeField] private float _leadersRadiusOfSpawn = 5f;
+
 
     private bool _wasSubscribedOnce;
 
@@ -31,38 +32,42 @@ public class AIGroupManager : MonoBehaviour
 
     private void OnEnable()
     {
-        SpawnGroup(); // запрос в менеджер групп для спавна 
+        RequestEnemySpawn(); // запрос в менеджер групп для спавна 
     }
-    public void SpawnGroup()
+    public void RequestEnemySpawn()
     {
         if (DEnemys.List == null)
         {
             Debug.LogError($"{nameof(DEnemys.List)} is null");
             return;
         }
-        if (_radiusOfSpawn <= 0)
+        if (_subordinatesRadiusOfSpawn < 0 || _leadersRadiusOfSpawn < 0)
         {
             Debug.LogError("Spawn radius must be positive");
             return;
         }
         if (_doSpawnSubordinate)
         {
-            RequestEnemySpawn(_subordinateEnemyType, _subordinatesCount, _subordinateSpawnDelay, _subordinateEnemyRank);
+            SpawnGroup(_subordinateEnemyType, _subordinatesCount, _subordinateSpawnDelay, _subordinateEnemyRank, _subordinatesRadiusOfSpawn);
         }
         if (_doSpawnLeader)
         {
-            RequestEnemySpawn(_leaderEnemyType, _leadersCount, _leaderSpawnDelay, _leaderEnemyRank);
+            SpawnGroup(_leaderEnemyType, _leadersCount, _leaderSpawnDelay, _leaderEnemyRank, _leadersRadiusOfSpawn);
         }
     }
-    private void RequestEnemySpawn(EEnemys enemyType, byte count, float delay, EEnemyRank rank)
+    private void SpawnGroup(EEnemys enemyType, byte count, float delay, EEnemyRank rank, float radius)
     {
         if (count == 0) return;
         if (!DEnemys.List.TryGetValue(enemyType, out Pool<Transform> pool))
         {
-            Debug.LogError($"Pool for {enemyType} not found or is null");
+            Debug.LogError($"Pool for {enemyType} not found [Time: {Time.time}]");
             return;
         }
-
+        if (pool == null)
+        {
+            Debug.LogError($"Pool for {enemyType} is null (but key exists!) [Time: {Time.time}]");
+            return;
+        }
         if (AIManagerOfGroups.Instance == null)
         {
             if (_wasSubscribedOnce) return;
@@ -74,12 +79,12 @@ public class AIGroupManager : MonoBehaviour
             }
             InitEvents.OnAIManagerOfGroupsReady.AddListener(() =>
                         AIManagerOfGroups.Instance?.AddToQueue(
-                            pool, count, transform.position, _radiusOfSpawn, delay, rank));
+                            pool, count, transform.position, radius, delay, rank));
         }
         else
         {
             AIManagerOfGroups.Instance?.AddToQueue(
-            pool, count, transform.position, _radiusOfSpawn, delay, rank);
+            pool, count, transform.position, radius, delay, rank);
         }
     }
 }
@@ -117,9 +122,9 @@ public class AIGroupManager : MonoBehaviour
 
     private void OnEnable()
     {
-        SpawnGroup(); // запрос в менеджер групп для спавна 
+        RequestEnemySpawn(); // запрос в менеджер групп для спавна 
     }
-    public void SpawnGroup()
+    public void RequestEnemySpawn()
     {
         if (DEnemys.List == null)
         {

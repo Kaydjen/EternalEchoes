@@ -477,8 +477,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47e5a7a32b4d77a48bcbdf552fda0498, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 8227173516584387167, guid: dbd7114741a94b245b6ee3d07410d11b, type: 3}
-  _initialPoolSize: 6
 --- !u!1 &202147083
 GameObject:
   m_ObjectHideFlags: 0
@@ -589,8 +587,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b876f1dd0e6cae4188422797dda1154, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 1889673045694591082, guid: 0dfcdccfca1abc843a8a4e0e17bfe3bc, type: 3}
-  _initialPoolSize: 4
 --- !u!1 &209172949
 GameObject:
   m_ObjectHideFlags: 0
@@ -732,8 +728,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afba558bc543613469dbaf59769cfa4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 1401962252260575361, guid: dbf8aa2b45fe6be4f8d75b8c7526b56a, type: 3}
-  _initialPoolSize: 1
 --- !u!1 &292704001
 GameObject:
   m_ObjectHideFlags: 0
@@ -823,7 +817,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 690978738}
-  - component: {fileID: 690978739}
   m_Layer: 0
   m_Name: 4. Soul Four
   m_TagString: Untagged
@@ -846,20 +839,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1817499348}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &690978739
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 690978737}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7caa27df43e44214780541b335574168, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _prefab: {fileID: 8097944167107821122, guid: 368483884cc535245a8583be744199c3, type: 3}
-  _initialPoolSize: 1
 --- !u!1 &766321192
 GameObject:
   m_ObjectHideFlags: 0
@@ -948,8 +927,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86201e2478fd93d4e90bacc0bdf76808, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 6365208044616084469, guid: 492ecda1c38acc84d9f11b631720bf47, type: 3}
-  _initialPoolSize: 10
 --- !u!1 &828738760
 GameObject:
   m_ObjectHideFlags: 0
@@ -966,7 +943,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &828738761
 Transform:
   m_ObjectHideFlags: 0
@@ -994,8 +971,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c781007adc82ea7498f63cdf8ab2c7d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 0}
-  _initialPoolSize: 10
+  _prefab: {fileID: 9052703876386554768, guid: 4ee509dbfeac7d4429a23e827dfb0d8b, type: 3}
+  _initialPoolSize: 0
 --- !u!1 &863821492
 GameObject:
   m_ObjectHideFlags: 0
@@ -1192,7 +1169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81b859e945053384ab0ea91332669ec7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _autoCleanupDelay: 5
+  _autoCleanupDelay: 60
 --- !u!1 &1048513344
 GameObject:
   m_ObjectHideFlags: 0
@@ -1301,7 +1278,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1445706870
 Transform:
   m_ObjectHideFlags: 0
@@ -1366,8 +1343,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20944953e1b86614ea06b0c6fba16175, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 6687308887161260807, guid: 0204cd36cca5e6441a73ffdde2d233f5, type: 3}
-  _initialPoolSize: 10
 --- !u!1 &1568901779
 GameObject:
   m_ObjectHideFlags: 0
@@ -1478,8 +1453,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05f54b18f7dce9d4f8f4d98e184b9a26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 1308410512577313372, guid: 8c8639bc67053664e96fc9870ca48262, type: 3}
-  _initialPoolSize: 10
 --- !u!1 &1736198484
 GameObject:
   m_ObjectHideFlags: 0
@@ -1496,7 +1469,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1736198485
 Transform:
   m_ObjectHideFlags: 0
@@ -1524,8 +1497,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce39e5cb54187834dac438b359ec162f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 0}
-  _initialPoolSize: 10
+  _prefab: {fileID: 4746804854151861065, guid: be5c71cd68bd04146b3f6df5a70ec460, type: 3}
+  _initialPoolSize: 0
 --- !u!1 &1773828266
 GameObject:
   m_ObjectHideFlags: 0
@@ -1542,7 +1515,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1773828267
 Transform:
   m_ObjectHideFlags: 0
@@ -1571,7 +1544,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _prefab: {fileID: 1208825480842771416, guid: c1eff285ae8887149beb8da1dea162cc, type: 3}
-  _initialPoolSize: 10
+  _initialPoolSize: 0
   _defSize: {x: 1.5, y: 1.5, z: 1.5}
 --- !u!1 &1817499347
 GameObject:
@@ -1652,8 +1625,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 969d37ff1632af7438852fa2608a0bcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 1118465459460670197, guid: 4579a9df4a4263c40b663c9b10d3af30, type: 3}
-  _initialPoolSize: 10
 --- !u!1 &1962038269
 GameObject:
   m_ObjectHideFlags: 0
