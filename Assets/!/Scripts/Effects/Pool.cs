@@ -11,6 +11,8 @@ public class Pool<T> : MonoBehaviour where T : Component
 
     protected virtual void Start()
     {
+        Debug.Log("Pool<T> start");
+        if (_initialPoolSize == 0) return;
         for (int i = 0; i < _initialPoolSize; i++)
         {
             CreateNew();
@@ -24,7 +26,13 @@ public class Pool<T> : MonoBehaviour where T : Component
             obj.gameObject.SetActive(true);
             return obj;
         }
-        return CreateNew();
+        else
+        {
+            T obj = Instantiate(_prefab);
+            obj.gameObject.SetActive(true);
+            obj.transform.SetParent(transform);
+            return obj;
+        }
     }
     public virtual void Return(T obj)
     {

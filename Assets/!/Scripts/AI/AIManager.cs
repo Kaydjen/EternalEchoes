@@ -19,6 +19,7 @@ public class AIManager : MonoBehaviour
     }
     private IEnumerator SpawnEffect(Transform obj)
     {
+        Debug.Log("SpawnEffect AIManager");
         yield return null;
         EnemySpawnEffectPool.Instance.SetEffect(obj.transform.position);
         yield return new WaitForSeconds(2f);

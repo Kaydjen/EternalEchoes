@@ -104,8 +104,9 @@ public class AIManagerOfGroups : MonoBehaviour
         float angle, x, z;
         Vector3 position;
         Transform enemy;
-        for (int i = 0; i < countToSpawn + 1; i++)
+        for (int i = 0; i < countToSpawn; i++)
         {
+            Debug.Log("spawned");
             if (pool == null) Debug.LogWarning("POOL IS NULL");
             angle = i * angleStep * Mathf.Deg2Rad;
             x = pivotPosition.x + radius * Mathf.Cos(angle);
