@@ -5,6 +5,7 @@ using UnityEngine.AI;
 public class FreezeCharacter : MonoBehaviour
 {
     public static FreezeCharacter Instance;
+    private Transform _effect;
     private void Awake()
     {
         Instance = this;
@@ -12,6 +13,14 @@ public class FreezeCharacter : MonoBehaviour
     public void Freeze(NavMeshAgent agent, float duration)
     {
         StartCoroutine(FreezeCoroutine(agent, duration));
+        _effect = FreezeAuraPool.Instance.Get();
+        var particleSystem = _effect.GetComponent<ParticleSystem>();
+        var main = particleSystem.main;
+        particleSystem.Stop();
+        main.duration = duration;
+        _effect.SetParent(agent.transform);
+        _effect.localPosition = Vector3.zero;
+        particleSystem.Play();
     }
     private IEnumerator FreezeCoroutine(NavMeshAgent agent, float duration)
     {
@@ -24,3 +33,4 @@ public class FreezeCharacter : MonoBehaviour
         agent.enabled = true;
     }
 }
+

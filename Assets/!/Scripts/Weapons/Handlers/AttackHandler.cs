@@ -40,6 +40,11 @@ public class AttackHandler : MonoBehaviour, IGameplayModeSwitcher, IUpdate
         _type = type;
         if(this.gameObject.activeSelf && _isManualMode) ForManualMode();
     }
+
+    public void SetNewFireRate(float value)
+    {
+        _fireRate = value;
+    }
     #endregion    
     #region Update
     public void PerformInitialUpdate()

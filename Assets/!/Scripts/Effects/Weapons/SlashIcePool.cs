@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 
-public class SlashPool : Pool<Transform>
+public class SlashIcePool : Pool<Transform>
 {
-    public static SlashPool Instance;
+    public static SlashIcePool Instance;
 
     private void Awake()
     {
