@@ -14,7 +14,7 @@ namespace ProceduralGeneration.SeriazableObjects
         public string type = "Unknown";
 
         [Space(5), Header("Visualization")]
-        public GameObject gameObject;
+        public GameObject prefab;
         public Vector2 pivot = new Vector2(2, 2);
 
         [TextArea(1, int.MaxValue)]
@@ -67,7 +67,7 @@ namespace ProceduralGeneration.SeriazableObjects
                     Transform parent = new GameObject(target.name).transform;
     
                     Logic.Renderer3D.RenderGrid(Grid2Int.StringToGrid(prop.hitbox, Vector2Int.zero), tilePrefab, parent, scale);
-                    Logic.Renderer3D.Create(prop.gameObject, parent, new Vector3(prop.pivot.x, 0, prop.pivot.y)*scale);
+                    Logic.Renderer3D.Create(prop.prefab, parent, new Vector3(prop.pivot.x, 0, prop.pivot.y)*scale);
                 }
             }
             if (serializedObject.hasModifiedProperties) serializedObject.ApplyModifiedProperties();

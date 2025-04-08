@@ -32,7 +32,7 @@ public class GenerationHandler : MonoBehaviour
         Generator.Seed = seed;
         ProceduralGeneration.GameObjects.World world = Generator.CreateWorld(0);
 
-        StartCoroutine(ProceduralGeneration.Logic.Renderer3D.Render(Database.worlds[0], parent.transform, () => {
+        StartCoroutine(ProceduralGeneration.Logic.Renderer3D.Render(world, parent.transform, () => {
             StartCoroutine(LoadScene("Game", () => {
                 parent.SetActive(true);
                 SceneManager.MoveGameObjectToScene(parent, SceneManager.GetSceneByName("Game"));

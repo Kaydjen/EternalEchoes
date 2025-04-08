@@ -6893,7 +6893,7 @@ PrefabInstance:
     - target: {fileID: 1526577371813485064, guid: fc36e326b60254040ac9827a7ee19329,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6123588090074504356, guid: fc36e326b60254040ac9827a7ee19329,
         type: 3}
@@ -17647,7 +17647,7 @@ PrefabInstance:
     - target: {fileID: 1526577371813485064, guid: fc36e326b60254040ac9827a7ee19329,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6123588090074504356, guid: fc36e326b60254040ac9827a7ee19329,
         type: 3}
@@ -19258,6 +19258,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Panel
+      objectReference: {fileID: 0}
+    - target: {fileID: 1526577371813485064, guid: fc36e326b60254040ac9827a7ee19329,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6875582888022407607, guid: fc36e326b60254040ac9827a7ee19329,
         type: 3}
@@ -30244,6 +30249,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Panel
       objectReference: {fileID: 0}
+    - target: {fileID: 1526577371813485064, guid: fc36e326b60254040ac9827a7ee19329,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6123588090074504356, guid: fc36e326b60254040ac9827a7ee19329,
         type: 3}
       propertyPath: m_text
@@ -37662,6 +37672,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Panel
+      objectReference: {fileID: 0}
+    - target: {fileID: 1526577371813485064, guid: fc36e326b60254040ac9827a7ee19329,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4401243572234540377, guid: fc36e326b60254040ac9827a7ee19329,
         type: 3}

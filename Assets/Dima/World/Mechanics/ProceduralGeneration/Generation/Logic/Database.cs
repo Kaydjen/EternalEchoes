@@ -10,12 +10,19 @@ namespace ProceduralGeneration.Logic
 {
     public class Database
     {
-        static public List<World> worlds = new List<World>();
+        static protected List<World> worlds = new List<World>();
         static public List<SeriazableWorld> seriazableWorlds = new List<SeriazableWorld>();
 
         static public SeriazableLocation GetLocation(SeriazableWorld world, Predicate<SeriazableLocation> predicate) => world.possibleLocations.Find(predicate);
         static public List<SeriazableLocation> GetLocations(SeriazableWorld world, Predicate<SeriazableLocation> predicate) => world.possibleLocations.FindAll(predicate);
 
+        static public int GetWorldIndex(World world) => worlds.IndexOf(world);
+        static public World GetWorld(int index = 0)
+        {
+            if (index < 0 || index >= worlds.Count) return null;
+
+            return worlds[index];
+        }
         static public void InitSerialzableWorlds(string path)
         {
             SeriazableWorld[] worlds = Resources.LoadAll<SeriazableWorld>(path);
