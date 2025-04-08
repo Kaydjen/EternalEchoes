@@ -3,7 +3,7 @@
 public class DirectControlMovement : MonoBehaviour, IUpdate
 {
     [SerializeField] private float _speed = 7f;
-    private CharacterController _controller;
+    [SerializeField] private CharacterController _controller;
     private Transform _direction;
     private Vector3 _velocity;
     public float Speed
@@ -42,7 +42,6 @@ public class DirectControlMovement : MonoBehaviour, IUpdate
     #endregion
     public void Awake()
     {
-        _controller = this.transform.root.transform.GetComponent<CharacterController>();
         if (_controller == null)
             Debug.LogError($"{gameObject.name}, {this.GetType().Name}, the CharacterController is empty");
         else
