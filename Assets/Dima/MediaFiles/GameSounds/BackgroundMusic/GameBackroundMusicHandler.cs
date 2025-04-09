@@ -41,7 +41,7 @@ public class GameBackroundMusicHandler : MonoBehaviour
         if (!audioSource.isPlaying) audioSource.Play();
         StopAllCoroutines();
 
-        StartCoroutine(ClipAnimation(0.25f, .75f));
+        StartCoroutine(ClipAnimation(0.25f, 1f));
     }
 
     void OnLocationExit(Location location, Collider collider)
