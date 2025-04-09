@@ -7,8 +7,8 @@ using UnityEngine.Events;
 namespace Optimization {
     public class ChunkHandler : MonoBehaviour
     {
-        static public UnityEvent<Location, Collider> onChunkEnter = new(), onChunkExit = new(),
-            onChunkStay = new();
+        public delegate void ChunkDelegate(Location location, Collider collider);
+        static public event ChunkDelegate onChunkEnter, onChunkExit, onChunkStay; 
 
         [NonSerialized] public List<GameObject> colliders;
         private GameObject tiles;

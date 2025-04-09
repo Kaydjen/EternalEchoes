@@ -17,8 +17,8 @@ public class GameBackroundMusicHandler : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
 
-        ChunkHandler.onChunkEnter.AddListener(OnLocationEnter);
-        ChunkHandler.onChunkExit.AddListener(OnLocationExit);
+        ChunkHandler.onChunkEnter += OnLocationEnter;
+        ChunkHandler.onChunkExit += OnLocationExit;
     }
 
     private void Update() { 
