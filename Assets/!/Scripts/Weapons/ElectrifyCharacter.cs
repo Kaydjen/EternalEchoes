@@ -6,7 +6,7 @@ public class ElectrifyCharacter : MonoBehaviour
 {
     public static ElectrifyCharacter Instance;
     private Transform _effect;
-    private ParticleSystem particleSystem;
+    private ParticleSystem partocleSystem;
 
     private void Awake()
     {
@@ -15,9 +15,9 @@ public class ElectrifyCharacter : MonoBehaviour
     public void Electrify(NavMeshAgent agent, float duration)
     {
         _effect = ElectricityAuraPool.Instance.Get();
-        particleSystem = _effect.GetComponent<ParticleSystem>();
-        ParticleSystem.MainModule main = particleSystem.main;
-        particleSystem.Stop();
+        partocleSystem = _effect.GetComponent<ParticleSystem>();
+        ParticleSystem.MainModule main = partocleSystem.main;
+        partocleSystem.Stop();
         main.duration = duration;
         _effect.SetParent(agent.transform);
         _effect.localPosition = Vector3.zero;
@@ -31,9 +31,9 @@ public class ElectrifyCharacter : MonoBehaviour
         for (int i = 0; i < 4; i++)
         {
             agent.enabled = false;
-            particleSystem.Play();
+            partocleSystem.Play();
             yield return new WaitForSeconds(duration);
-            particleSystem.Stop();
+            partocleSystem.Stop();
             agent.enabled = true;
             yield return new WaitForSeconds(duration);
         }
