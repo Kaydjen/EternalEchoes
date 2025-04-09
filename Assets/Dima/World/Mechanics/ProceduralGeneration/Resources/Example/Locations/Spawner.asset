@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Spawner
   m_EditorClassIdentifier: 
   type: Spawner
-  prefab: {fileID: 5714949299443536829, guid: d97708696eb3cec4aac41ce3d966b79c, type: 3}
+  prefab: {fileID: 5971546604103875208, guid: 6a6394fe9a394004d95df4cf7b0982da, type: 3}
   pivot: {x: 1, y: 1}
-  hitbox: "\u25A0\u25A0\u25A0\u25A0\n\u25A0\u25A0\u25A0\u25A0\n\u25A0\u25A0\u25A0\u25A0\n\u25A0\u25A0\u25A0"
+  hitbox: "\u25A0\u25A0\u25A0\n\u25A0\u25A0\u25A0\n\u25A0\u25A0\u25A0"

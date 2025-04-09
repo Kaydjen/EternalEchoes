@@ -939,76 +939,6 @@ Transform:
   - {fileID: 1962038270}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &679814899
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 679814900}
-  - component: {fileID: 679814902}
-  - component: {fileID: 679814901}
-  m_Layer: 0
-  m_Name: EnemiesGroup
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &679814900
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 679814899}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.61, y: 0, z: -21.65}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &679814901
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 679814899}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1275f5f86defdf64cb849f620e5b38f5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &679814902
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 679814899}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a3651b5b873ee74a98bbd2ce5e3915e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _doSpawnSubordinate: 1
-  _subordinateEnemyType: 0
-  _subordinateEnemyRank: 0
-  _subordinateSpawnDelay: 1
-  _subordinatesCount: 8
-  _subordinatesRadiusOfSpawn: 5
-  _doSpawnLeader: 1
-  _leaderEnemyType: 0
-  _leaderEnemyRank: 0
-  _leaderSpawnDelay: 1
-  _leadersCount: 1
-  _leadersRadiusOfSpawn: 5
-  _aiGroupManager: {fileID: 679814901}
 --- !u!1 &690978737
 GameObject:
   m_ObjectHideFlags: 0
@@ -1599,6 +1529,7 @@ GameObject:
   - component: {fileID: 963638737}
   - component: {fileID: 963638739}
   - component: {fileID: 963638738}
+  - component: {fileID: 963638740}
   m_Layer: 0
   m_Name: --------AIManager--------
   m_TagString: Untagged
@@ -1644,6 +1575,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 636e19aa5d60f9648bf81bf665dc0ee1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &963638740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963638736}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b797e76236552643a0da756eeac6a1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &992329977
@@ -26008,4 +25951,3 @@ SceneRoots:
   - {fileID: 1967254588}
   - {fileID: 448552476752014000}
   - {fileID: 297319559}
-  - {fileID: 679814900}

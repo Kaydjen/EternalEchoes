@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using Optimization;
+using ProceduralGeneration.GameObjects;
+using UnityEngine;
 public class AISpawnCoordinator : MonoBehaviour
 {
     [Space(5)]
@@ -21,9 +23,9 @@ public class AISpawnCoordinator : MonoBehaviour
     [Space(10)]
     [SerializeField] private AIGroupManager _aiGroupManager;
     private bool _wasSubscribedOnce;
-    private bool _wasInitialized;
+   // private bool _wasInitialized;
 
-    private void OnEnable()
+/*    private void Start()
     {
         if (_wasInitialized) RequestEnemySpawn(); // запрос в менеджер групп для спавна 
         else
@@ -31,7 +33,7 @@ public class AISpawnCoordinator : MonoBehaviour
             Invoke(nameof(RequestEnemySpawn), 1f);
             _wasInitialized = true;
         }
-    }
+    }*/
     public void RequestEnemySpawn()
     {
         if (DEnemys.List == null)

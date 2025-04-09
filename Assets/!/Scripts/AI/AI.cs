@@ -1,29 +1,23 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(NavMeshAgent))]
 public class AI : MonoBehaviour
 {
     [SerializeField] protected NavMeshAgent _agent;
+    [NonSerialized] public UnityEvent<GameObject> OnFirstHit; // gameobject - attacker
+    [NonSerialized] public UnityEvent OnDeah;
+    public HashSet<IRule> Rules = new();
     public EAIType Type;
-    protected virtual void SetDestionaiton(Vector3 coordinates)
+    public virtual void SetDestionaiton(Vector3 coordinates)
     {
         _agent.destination = coordinates;
     }
-    protected void OnDestroy()
-    {
-        Unregister();
-    }
-    protected virtual void OnEnable()
-    {
-/*        if (_agent != null) _agent.enabled = true;
-        else Debug.Log($"{nameof(_agent)} is null");*/
-    }
-    protected virtual void OnDisable()
-    {
-/*        if (_agent != null) _agent.enabled = false;
-        else Debug.Log($"{nameof(_agent)} is null");*/
-    }
+    #region PUBLIC
     public virtual void Register()
     {
         AIRepository.Register(this);
@@ -32,7 +26,65 @@ public class AI : MonoBehaviour
     {
         AIRepository.Unregister(this);
     }
+    public virtual void ClearAllSubcribers()
+    {
+        OnFirstHit?.RemoveAllListeners();
+        OnDeah?.RemoveAllListeners();
+    }
+    public virtual void CheckRules()
+    {
+        if(Rules.Count == 0) return;
+        foreach (var rule in Rules)
+        {
+            if(rule.CanExecute())
+            {
+                rule.Execute();
+            }
+        }
+    }
+    #endregion
+    #region MONOBEHAIVOUR
+    private void Awake()
+    {
+        Rules = GetComponents<IRule>().ToHashSet();
+        if(Rules.Count == 0) Debug.Log("There are no rules on AI");
+    }
+    protected void OnDestroy()
+    {
+        Unregister();
+    }
+    protected virtual void OnEnable()
+    {
+        /*        if (_agent != null) _agent.enabled = true;
+                else Debug.Log($"{nameof(_agent)} is null");*/
+    }
+    protected virtual void OnDisable()
+    {
+        ClearAllSubcribers();
+        /*        if (_agent != null) _agent.enabled = false;
+                else Debug.Log($"{nameof(_agent)} is null");*/
+    }
+    #endregion
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /*
