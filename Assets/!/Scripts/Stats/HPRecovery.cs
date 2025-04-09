@@ -33,6 +33,6 @@ public class HPRecovery : Stats, IGameplayModeSwitcher
     }
     private void Start()
     {
-        if (!TryGetComponent(out _hp)) Debug.Log($"HPRecovery couldn't get HP component");
+        if (!TryGetComponent(out _hp)) Debug.Log($"HPRecovery couldn't get _hp component");
     }
 }

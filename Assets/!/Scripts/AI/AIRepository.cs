@@ -6,20 +6,35 @@ public delegate void IdDelegate(int id);
 
 public static class AIRepository
 {
-    public static Dictionary<int, AI> Items = new();
+    public static HashSet<AI> Enemies = new();
+    public static HashSet<AI> Characters = new();
     public static event AIDelegate OnRegister;
-    public static event IdDelegate OnUnregister;
+    public static event AIDelegate OnUnregister;
     public static event AIDelegate OnDeath;
     public static event AIDelegate OnInstantiate;
-    public static void Register(AI ai, int id)
+    public static void Register(AI ai)
     {
-        Items.Add(id, ai);
+        if(ai.Type == EAIType.Character)
+        {
+            Characters.Add(ai);
+        }
+        else if(ai.Type == EAIType.Enemy)
+        {
+            Enemies.Add(ai);
+        }
         OnRegister?.Invoke(ai);
     }
-    public static void Unregister(AI ai, int id)
+    public static void Unregister(AI ai)
     {
-        Items.Remove(id);
-        OnUnregister?.Invoke(id);
+        if(ai.Type == EAIType.Character)
+        {
+            Characters.Remove(ai);
+        }
+        else if(ai.Type == EAIType.Enemy)
+        {
+            Enemies.Remove(ai);
+        }
+        OnUnregister?.Invoke(ai);
         OnDeath?.Invoke(ai);
     }
     public static void InvokeOnInstantiate(AI ai)=> OnInstantiate?.Invoke(ai);

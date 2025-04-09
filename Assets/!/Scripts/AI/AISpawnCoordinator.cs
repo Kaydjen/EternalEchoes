@@ -1,91 +1,93 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Optimization;
+using ProceduralGeneration.GameObjects;
 using UnityEngine;
-using UnityEngine.AI;
-using UnityEngine.Events;
-
-[RequireComponent(typeof(NavMeshAgent))]
-public class AI : MonoBehaviour
+public class AISpawnCoordinator : MonoBehaviour
 {
-    [SerializeField] protected NavMeshAgent _agent;
-    [NonSerialized] public UnityEvent<GameObject> OnFirstHit; // gameobject - attacker
-    [NonSerialized] public UnityEvent OnDeah;
-    public HashSet<IRule> Rules = new();
-    public EAIType Type;
-    public virtual void SetDestionaiton(Vector3 coordinates)
+    [Space(5)]
+    [Header("Subordinate Enemy")]
+    [SerializeField] private bool _doSpawnSubordinate = true;
+    [SerializeField] private EEnemys _subordinateEnemyType;
+    [SerializeField] private EEnemyRank _subordinateEnemyRank;
+    [SerializeField] private float _subordinateSpawnDelay = 1f;
+    [SerializeField] private byte _subordinatesCount = 8;
+    [SerializeField] private float _subordinatesRadiusOfSpawn = 5f;
+    [Space(5)]
+    [Header("Leader Enemy")]
+    [SerializeField] private bool _doSpawnLeader = true;
+    [SerializeField] private EEnemys _leaderEnemyType;
+    [SerializeField] private EEnemyRank _leaderEnemyRank;
+    [SerializeField] private float _leaderSpawnDelay = 1f;
+    [SerializeField] private byte _leadersCount = 1;
+    [SerializeField] private float _leadersRadiusOfSpawn = 5f;
+
+    [Space(10)]
+    [SerializeField] private AIGroupManager _aiGroupManager;
+    private bool _wasSubscribedOnce;
+   // private bool _wasInitialized;
+
+/*    private void Start()
     {
-        _agent.destination = coordinates;
-    }
-    #region PUBLIC
-    public virtual void Register()
-    {
-        AIRepository.Register(this);
-    }
-    public virtual void Unregister()
-    {
-        AIRepository.Unregister(this);
-    }
-    public virtual void ClearAllSubcribers()
-    {
-        OnFirstHit?.RemoveAllListeners();
-        OnDeah?.RemoveAllListeners();
-    }
-    public virtual void CheckRules()
-    {
-        if(Rules.Count == 0) return;
-        foreach (var rule in Rules)
+        if (_wasInitialized) RequestEnemySpawn(); // запрос в менеджер групп для спавна 
+        else
         {
-            if(rule.CanExecute())
-            {
-                rule.Execute();
-            }
+            Invoke(nameof(RequestEnemySpawn), 1f);
+            _wasInitialized = true;
+        }
+    }*/
+    public void RequestEnemySpawn()
+    {
+        if (DEnemys.List == null)
+        {
+            Debug.LogError($"{nameof(DEnemys.List)} is null");
+            return;
+        }
+        if (_subordinatesRadiusOfSpawn < 0 || _leadersRadiusOfSpawn < 0)
+        {
+            Debug.LogError("Spawn radius must be positive");
+            return;
+        }
+        if (_doSpawnSubordinate)
+        {
+            SpawnGroup(_subordinateEnemyType, _subordinatesCount, _subordinateSpawnDelay, _subordinateEnemyRank, _subordinatesRadiusOfSpawn);
+        }
+        if (_doSpawnLeader) 
+        {
+            SpawnGroup(_leaderEnemyType, _leadersCount, _leaderSpawnDelay, _leaderEnemyRank, _leadersRadiusOfSpawn);
         }
     }
-    #endregion
-    #region MONOBEHAIVOUR
-    private void Awake()
+    private void SpawnGroup(EEnemys enemyType, byte count, float delay, EEnemyRank rank, float radius)
     {
-        Rules = GetComponents<IRule>().ToHashSet();
-        if(Rules.Count == 0) Debug.Log("There are no rules on AI");
+        if (count == 0) return;
+        if (!DEnemys.List.TryGetValue(enemyType, out EnemyPool pool))
+        {
+            Debug.LogError($"Pool for {enemyType} not found [Time: {Time.time}]");
+            return;
+        }
+        if (pool == null)
+        {
+            Debug.LogError($"Pool for {enemyType} is null (but key exists!) [Time: {Time.time}]");
+            return;
+        }
+        if (AIManagerOfGroups.Instance == null)
+        {
+            if (_wasSubscribedOnce) return;
+            _wasSubscribedOnce = true;
+            if (InitEvents.OnAIManagerOfGroupsReady == null)
+            {
+                Debug.LogError($"{nameof(InitEvents.OnAIManagerOfGroupsReady)} is null");
+                return;
+            }
+            InitEvents.OnAIManagerOfGroupsReady.AddListener(() =>
+                        AIManagerOfGroups.Instance?.AddToQueue(
+                            pool, _aiGroupManager.ReturnMembers, count, transform.position, radius, delay, rank));
+        }
+        else
+        {
+            AIManagerOfGroups.Instance?.AddToQueue(
+            pool, _aiGroupManager.ReturnMembers, count, transform.position, radius, delay, rank);
+        }
     }
-    protected void OnDestroy()
-    {
-        Unregister();
-    }
-    protected virtual void OnEnable()
-    {
-        /*        if (_agent != null) _agent.enabled = true;
-                else Debug.Log($"{nameof(_agent)} is null");*/
-    }
-    protected virtual void OnDisable()
-    {
-        ClearAllSubcribers();
-        /*        if (_agent != null) _agent.enabled = false;
-                else Debug.Log($"{nameof(_agent)} is null");*/
-    }
-    #endregion
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /*
  
