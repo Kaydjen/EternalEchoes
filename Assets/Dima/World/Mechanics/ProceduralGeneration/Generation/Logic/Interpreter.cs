@@ -85,7 +85,7 @@ namespace ProceduralGeneration.Logic
         }
         static public float DeepestCoordinate(GameObject gameObject)
         {
-            float deepestCoordinate = gameObject.transform.position.y - 1f;
+            float deepestCoordinate = gameObject.transform.position.y;
             Renderer[] renderers = gameObject.GetComponentsInChildren<UnityEngine.Renderer>();
 
             for (int iRenderers = 0; iRenderers < renderers.Length; iRenderers++)

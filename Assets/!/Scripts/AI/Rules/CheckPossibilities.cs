@@ -15,8 +15,12 @@ public class CheckPossibilities : MonoBehaviour
     public (bool, Transform) IsInFollowRange() =>  FindNearestTargetInRange(_followRange);
 
     private (bool, Transform) FindNearestTargetInRange(float range)
-    {
-        if(_ai.Targets.Count == 0) return (false, null);
+    {   
+        if(_ai.Targets.Count == 0)
+        {
+            Debug.Log($"{nameof(_ai.Targets.Count)} count = 0");
+            return (false, null);
+        }
 
         _nearestTarget = null;
         _nearestDist = float.MaxValue;

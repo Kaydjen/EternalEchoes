@@ -13,6 +13,7 @@ public class RuleFollowEnemy : MonoBehaviour, IRule
     }
     public void Execute()
     {
+        Debug.Log("I follow you");
         _ai.SetDestination(_target);
     }
 }

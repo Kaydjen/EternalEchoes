@@ -10,8 +10,7 @@ public class AIGroupManager : MonoBehaviour, IUpdate
     public void AddNewTarget(Transform target)
     {
         _targets.Add(target);
-        foreach(AI ai in _group)
-            ai.SetNewTargetList(_targets);
+        UpdateTargets();
     }
     public void ReturnMembers(HashSet<AI> members)
     {
@@ -20,6 +19,7 @@ public class AIGroupManager : MonoBehaviour, IUpdate
             ai.OnFirstHit?.AddListener(FirstHit);
             _group.Add(ai);
         }
+        UpdateTargets();
     }
     private void FirstHit(GameObject attacker)
     {
@@ -35,6 +35,11 @@ public class AIGroupManager : MonoBehaviour, IUpdate
             RegisterUpdate();
             _wasInitialized = true;
         }
+    }
+    private void UpdateTargets()
+    {
+        foreach(AI ai in _group)
+            ai.SetNewTargetList(_targets);
     }
     #region Update
     public void PerformInitialUpdate() 

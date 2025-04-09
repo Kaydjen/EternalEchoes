@@ -12,7 +12,7 @@ public class AI : MonoBehaviour
     [NonSerialized] public UnityEvent<GameObject> OnFirstHit; // gameobject - attacker
     [NonSerialized] public UnityEvent OnDeah;
     public HashSet<IRule> Rules = new();
-    public HashSet<Transform> Targets;
+    public HashSet<Transform> Targets = new();
     public EAIType Type;
 
     #region PUBLIC
@@ -26,7 +26,11 @@ public class AI : MonoBehaviour
     }
     public virtual void CheckRules()
     {
-        if(Rules.Count == 0) return;
+        if(Rules.Count == 0)
+        {
+            Debug.Log($"{nameof(Rules.Count)} count = 0");
+            return;
+        }
         foreach (var rule in Rules)
         {
             if(rule.CanExecute())
@@ -35,7 +39,11 @@ public class AI : MonoBehaviour
             }
         }
     }
-    public virtual void SetNewTargetList(HashSet<Transform> newTargets) => Targets = newTargets;
+    public virtual void SetNewTargetList(HashSet<Transform> newTargets)
+    {
+        Targets.Clear();
+        foreach (var target in newTargets) Targets.Add(target);
+    }
     public virtual void SetDestination(Transform transform) => _agent.destination = transform.position;
     #endregion
     #region MONOBEHAIVOUR

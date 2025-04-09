@@ -20,6 +20,10 @@ public class SpawnHandler : MonoBehaviour
                 groupManager.AddNewTarget(collider.transform);
                 groupManager.StartLogic();
             }
+            else
+            {
+                Debug.Log("Can't get prop.GameObject.TryGetComponent(out AIGroupManager groupManager)");
+            }
         }
     }
 }

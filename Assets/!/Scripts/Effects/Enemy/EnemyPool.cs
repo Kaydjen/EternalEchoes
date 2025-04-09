@@ -12,9 +12,9 @@ public class EnemyPool : Pool<Transform>
         }
         else
         {
-            Transform obj = Instantiate(_prefab);
+            Transform obj = Instantiate(_prefab, PlayerCore.Instance.transform.position, Quaternion.identity);
             obj.gameObject.SetActive(state);
-            obj.transform.SetParent(transform);
+            //obj.transform.SetParent(transform);
             return obj;
         }
     }

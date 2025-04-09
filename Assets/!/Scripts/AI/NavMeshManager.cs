@@ -2,10 +2,12 @@ using Unity.AI.Navigation;
 using UnityEngine;
 using UnityEngine.AI;
 
+public delegate void Baked();
 [RequireComponent(typeof(NavMeshSurface))]
 public class NavMeshManager : MonoBehaviour
 {
-    public static NavMeshManager Instance;
+    public static event Baked OnBaked;
+    
     private NavMeshSurface _surface;
     private NavMeshData _data;
     public void BakeNavMesh()
@@ -14,6 +16,7 @@ public class NavMeshManager : MonoBehaviour
         _surface.AddData();
         _surface.BuildNavMesh();
         _data = _surface.navMeshData;
+        OnBaked?.Invoke();
     }
     public void UpdateNavMesh()
     {
@@ -21,7 +24,6 @@ public class NavMeshManager : MonoBehaviour
     }
     private void Start()
     {
-        Instance = this;
-        Invoke(nameof(BakeNavMesh), 5f);
+        Invoke(nameof(BakeNavMesh), 1f);
     }
 }

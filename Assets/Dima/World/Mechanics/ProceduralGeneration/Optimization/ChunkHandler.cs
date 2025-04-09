@@ -10,7 +10,7 @@ namespace Optimization {
         public delegate void ChunkDelegate(Location location, Collider collider);
         static public event ChunkDelegate onChunkEnter, onChunkExit, onChunkStay; 
 
-        [NonSerialized] public List<GameObject> colliders;
+        [NonSerialized] public List<GameObject> colliders = new();
         private GameObject tiles;
 
         [NonSerialized] private Location location;
@@ -30,13 +30,12 @@ namespace Optimization {
 
         private void Start()
         {
-            colliders = new List<GameObject>();
-            tiles = transform.Find("Tiles").gameObject;
-
+            NavMeshManager.OnBaked += () =>  tiles = transform.Find("Tiles").gameObject;
         }
 
         private void FixedUpdate()
         {
+            if(tiles == null) return;
             if (colliders.Count > 0) tiles.SetActive(true);
             else tiles.SetActive(false);
         }
