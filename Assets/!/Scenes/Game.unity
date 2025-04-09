@@ -350,8 +350,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47e5a7a32b4d77a48bcbdf552fda0498, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 0}
-  _initialPoolSize: 10
 --- !u!1 &202147083
 GameObject:
   m_ObjectHideFlags: 0
@@ -462,8 +460,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b876f1dd0e6cae4188422797dda1154, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 0}
-  _initialPoolSize: 10
 --- !u!1 &209172949
 GameObject:
   m_ObjectHideFlags: 0
@@ -739,8 +735,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afba558bc543613469dbaf59769cfa4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 0}
-  _initialPoolSize: 10
 --- !u!1 &292704001
 GameObject:
   m_ObjectHideFlags: 0
@@ -954,6 +948,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 679814900}
+  - component: {fileID: 679814902}
   - component: {fileID: 679814901}
   m_Layer: 0
   m_Name: EnemiesGroup
@@ -986,7 +981,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 679814899}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 323a82e06ad17b34eb5dbb19af582814, type: 3}
+  m_Script: {fileID: 11500000, guid: 1275f5f86defdf64cb849f620e5b38f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &679814902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 679814899}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a3651b5b873ee74a98bbd2ce5e3915e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _doSpawnSubordinate: 1
@@ -996,11 +1003,12 @@ MonoBehaviour:
   _subordinatesCount: 8
   _subordinatesRadiusOfSpawn: 5
   _doSpawnLeader: 1
-  _leaderEnemyType: 1
-  _leaderEnemyRank: 1
+  _leaderEnemyType: 0
+  _leaderEnemyRank: 0
   _leaderSpawnDelay: 1
   _leadersCount: 1
-  _leadersRadiusOfSpawn: 0
+  _leadersRadiusOfSpawn: 5
+  _aiGroupManager: {fileID: 679814901}
 --- !u!1 &690978737
 GameObject:
   m_ObjectHideFlags: 0
@@ -1045,8 +1053,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7caa27df43e44214780541b335574168, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 0}
-  _initialPoolSize: 10
 --- !u!1 &766321192
 GameObject:
   m_ObjectHideFlags: 0
@@ -1384,8 +1390,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86201e2478fd93d4e90bacc0bdf76808, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 0}
-  _initialPoolSize: 10
 --- !u!1 &828738760
 GameObject:
   m_ObjectHideFlags: 0
@@ -1979,8 +1983,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20944953e1b86614ea06b0c6fba16175, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 0}
-  _initialPoolSize: 10
 --- !u!1 &1568901779
 GameObject:
   m_ObjectHideFlags: 0
@@ -2119,8 +2121,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05f54b18f7dce9d4f8f4d98e184b9a26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 0}
-  _initialPoolSize: 10
 --- !u!1 &1736198484
 GameObject:
   m_ObjectHideFlags: 0
@@ -2293,8 +2293,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 969d37ff1632af7438852fa2608a0bcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 0}
-  _initialPoolSize: 10
 --- !u!1 &1962038269
 GameObject:
   m_ObjectHideFlags: 0

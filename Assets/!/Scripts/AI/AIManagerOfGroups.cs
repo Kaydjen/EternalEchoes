@@ -12,9 +12,9 @@ public class AIManagerOfGroups : MonoBehaviour
 {
     public static AIManagerOfGroups Instance;
     [SerializeField] private float _delayBtwInstantiateGroups = 1f;
-    private Dictionary<EEnemyRank, Action<Tuple<EnemyPool, float, Vector3, byte, float>>> _DEnemyRank;
-    private readonly Queue<Tuple<EnemyPool, float, Vector3, byte, float>> _subordinatesQueue = new();
-    private readonly Queue<Tuple<EnemyPool, float, Vector3, byte, float>> _leadersQueue = new();
+    private Dictionary< EEnemyRank, Action<Tuple<EnemyPool, float, Vector3, byte, float, Action<HashSet<AI>>>> > _DEnemyRank;
+    private readonly Queue< Tuple<EnemyPool, float, Vector3, byte, float, Action<HashSet<AI>>> > _subordinatesQueue = new();
+    private readonly Queue< Tuple<EnemyPool, float, Vector3, byte, float, Action<HashSet<AI>>> > _leadersQueue = new();
     private bool _isProcessing;
     private Coroutine _spawningCoroutine;
     private const EEnemyRank RANK = EEnemyRank.Subordinate;
@@ -43,7 +43,7 @@ public class AIManagerOfGroups : MonoBehaviour
     /// <param name="radius">The radius of enemies instantiation (default: 5f)</param>
     /// <param name="delay">The delay between instantiation of each enemy (default: 2f)</param>
     /// <param name="rank">The rank of enemies (default: Subordinate)</param>
-    public void AddToQueue(EnemyPool pool, byte countToSpawn, Vector3 pivotPosition, float radius = RADIUS,
+    public void AddToQueue(EnemyPool pool, Action<HashSet<AI>> callback, byte countToSpawn, Vector3 pivotPosition,float radius = RADIUS,
         float delay = DELAY, EEnemyRank rank = RANK)
     {
         if (_DEnemyRank == null)
@@ -65,7 +65,7 @@ public class AIManagerOfGroups : MonoBehaviour
         radius = Mathf.Max(0, radius);
         delay = Mathf.Max(0, delay);
 
-        var parameters = Tuple.Create(pool, delay, pivotPosition, countToSpawn, radius);
+        var parameters = Tuple.Create(pool, delay, pivotPosition, countToSpawn, radius, callback);
 
         if (_DEnemyRank.TryGetValue(rank, out var addToConcreteQueue)) 
             addToConcreteQueue?.Invoke(parameters); 
@@ -96,11 +96,11 @@ public class AIManagerOfGroups : MonoBehaviour
         }
     }
 
-    private IEnumerator ProcessOneGroup(Queue<Tuple<EnemyPool, float, Vector3, byte, float>> queue)
+    private IEnumerator ProcessOneGroup(Queue<Tuple<EnemyPool, float, Vector3, byte, float, Action<HashSet<AI>>>> queue)
     {
-        var (pool, delay, pivotPosition, countToSpawn, radius) = queue.Dequeue();
-
+        var (pool, delay, pivotPosition, countToSpawn, radius, callback) = queue.Dequeue();
         float angleStep = 360f / countToSpawn;
+        HashSet<AI> _group = new();
 
         float angle, x, z;
         Vector3 position;
@@ -117,6 +117,7 @@ public class AIManagerOfGroups : MonoBehaviour
             if (enemy.TryGetComponent(out AI ai))
             {
                 ai.Register();
+                _group.Add(ai);
             }
             else
             {
@@ -127,7 +128,12 @@ public class AIManagerOfGroups : MonoBehaviour
             else Debug.LogWarning("ENEMY IS NULL");
             yield return new WaitForSeconds(delay);
         }
-
+        if(_group.Count > 0)
+        {
+            if(callback == null) Debug.Log($"{nameof(callback)} is null in {nameof(ProcessOneGroup)}  in {nameof(AIManagerOfGroups)}");
+            callback?.Invoke(_group);
+            _group.Clear();
+        }
         yield return new WaitForSeconds(_delayBtwInstantiateGroups);        
     }
 
@@ -264,7 +270,7 @@ public class AIManagerOfGroups : MonoBehaviour
     {
         if (list.Length == 0)
         {
-            Debug.Log($"{nameof(list)} in {nameof(AddToSubordinatesQueue)} in {nameof(AIGroupManager)}");
+            Debug.Log($"{nameof(list)} in {nameof(AddToSubordinatesQueue)} in {nameof(AISpawnCoordinator)}");
             return;
         }
         _subordinatesQueue.Enqueue(list);
@@ -274,7 +280,7 @@ public class AIManagerOfGroups : MonoBehaviour
     {
         if (list.Length == 0)
         {
-            Debug.Log($"{nameof(list)} in {nameof(AddToLeadersQueue)} in {nameof(AIGroupManager)}");
+            Debug.Log($"{nameof(list)} in {nameof(AddToLeadersQueue)} in {nameof(AISpawnCoordinator)}");
             return;
         }
         _leadersQueue.Enqueue(list);
