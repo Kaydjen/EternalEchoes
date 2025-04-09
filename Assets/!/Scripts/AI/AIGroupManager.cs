@@ -1,11 +1,18 @@
 ﻿using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class AIGroupManager : MonoBehaviour, IUpdate
 {
-    private HashSet<AI> _group = new HashSet<AI>();
+    private HashSet<AI> _group = new();
+    private HashSet<Transform> _targets = new();
     private bool _wasInitialized;
+
+    public void AddNewTarget(Transform target)
+    {
+        _targets.Add(target);
+        foreach(AI ai in _group)
+            ai.SetNewTargetList(_targets);
+    }
     public void ReturnMembers(HashSet<AI> members)
     {
         foreach (AI ai in members) 
@@ -14,11 +21,19 @@ public class AIGroupManager : MonoBehaviour, IUpdate
             _group.Add(ai);
         }
     }
-    public void FirstHit(GameObject attacker)
+    private void FirstHit(GameObject attacker)
     {
         foreach(AI ai in _group)
         {
 
+        }
+    }
+    public void StartLogic()
+    {
+        if(!_wasInitialized)
+        {
+            RegisterUpdate();
+            _wasInitialized = true;
         }
     }
     #region Update
@@ -52,16 +67,11 @@ public class AIGroupManager : MonoBehaviour, IUpdate
         Updater.Instance?.UnregisterUpdate(this, Updater.UpdateType.InitialUpdate);
     }
     #endregion
-    private void OnEnable()
-    {
-        if(_wasInitialized) RegisterUpdate(); // запрос в менеджер групп для спавна 
-        else
-        {
-            Invoke(nameof(RegisterUpdate), 1f);
-            _wasInitialized = true;
-        }
-    }
     private void OnDisable()
+    {
+        UnregisterUpdate();
+    }
+    private void OnDestroy()
     {
         UnregisterUpdate();
     }

@@ -2,6 +2,7 @@ using Unity.AI.Navigation;
 using UnityEngine;
 using UnityEngine.AI;
 
+[RequireComponent(typeof(NavMeshSurface))]
 public class NavMeshManager : MonoBehaviour
 {
     public static NavMeshManager Instance;
@@ -18,9 +19,9 @@ public class NavMeshManager : MonoBehaviour
     {
         _surface.UpdateNavMesh(_data);
     }
-    private void Awake()
+    private void Start()
     {
         Instance = this;
-        BakeNavMesh();
+        Invoke(nameof(BakeNavMesh), 5f);
     }
 }

@@ -146,7 +146,7 @@ public class CameraMenuRotate : MonoBehaviour
         Transform nearestTarget = null;
         float minAngle = float.MaxValue;
 
-        foreach (Transform target in _targets)
+        foreach (Transform target in Targets)
         {
             if (target == null) continue;
 

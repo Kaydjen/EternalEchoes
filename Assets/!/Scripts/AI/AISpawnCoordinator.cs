@@ -23,18 +23,11 @@ public class AISpawnCoordinator : MonoBehaviour
     [Space(10)]
     [SerializeField] private AIGroupManager _aiGroupManager;
     private bool _wasSubscribedOnce;
-   // private bool _wasInitialized;
-
-/*    private void Start()
-    {
-        if (_wasInitialized) RequestEnemySpawn(); // запрос в менеджер групп для спавна 
-        else
-        {
-            Invoke(nameof(RequestEnemySpawn), 1f);
-            _wasInitialized = true;
-        }
-    }*/
-    public void RequestEnemySpawn()
+    /// <summary>
+    ///  Use it to requst units spawn into the spawn manager
+    /// </summary>
+    /// <param name="isOnce"> if true - than it will spawn it will destroy spawner after spawn request</param>
+    public void RequestEnemySpawn(bool isOnce = false)
     {
         if (DEnemys.List == null)
         {
@@ -54,6 +47,7 @@ public class AISpawnCoordinator : MonoBehaviour
         {
             SpawnGroup(_leaderEnemyType, _leadersCount, _leaderSpawnDelay, _leaderEnemyRank, _leadersRadiusOfSpawn);
         }
+        if(isOnce) Destroy(this);
     }
     private void SpawnGroup(EEnemys enemyType, byte count, float delay, EEnemyRank rank, float radius)
     {

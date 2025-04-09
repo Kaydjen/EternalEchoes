@@ -12,11 +12,9 @@ public class AI : MonoBehaviour
     [NonSerialized] public UnityEvent<GameObject> OnFirstHit; // gameobject - attacker
     [NonSerialized] public UnityEvent OnDeah;
     public HashSet<IRule> Rules = new();
+    public HashSet<Transform> Targets;
     public EAIType Type;
-    public virtual void SetDestionaiton(Vector3 coordinates)
-    {
-        _agent.destination = coordinates;
-    }
+
     #region PUBLIC
     public virtual void Register()
     {
@@ -25,11 +23,6 @@ public class AI : MonoBehaviour
     public virtual void Unregister()
     {
         AIRepository.Unregister(this);
-    }
-    public virtual void ClearAllSubcribers()
-    {
-        OnFirstHit?.RemoveAllListeners();
-        OnDeah?.RemoveAllListeners();
     }
     public virtual void CheckRules()
     {
@@ -41,6 +34,80 @@ public class AI : MonoBehaviour
                 rule.Execute();
             }
         }
+    }
+    public virtual void SetNewTargetList(HashSet<Transform> newTargets) => Targets = newTargets;
+    public virtual void SetDestionaiton(Vector3 coordinates) => _agent.destination = coordinates;
+    #endregion
+    #region MONOBEHAIVOUR
+    private void Awake()
+    {
+        Rules = GetComponents<IRule>().ToHashSet();
+        if(Rules.Count == 0) Debug.Log("There are no rules on AI");
+    }
+    protected void OnDestroy()
+    {
+        Unregister();
+    }
+    protected virtual void OnEnable()
+    {
+        if (_agent != null) _agent.enabled = true;
+        else Debug.Log($"{nameof(_agent)} is null");
+    }
+    protected virtual void OnDisable()
+    {
+        ClearAllSubcribers();
+        if(_agent != null) _agent.enabled = false;
+        else Debug.Log($"{nameof(_agent)} is null");
+    }
+    protected virtual void ClearAllSubcribers()
+    {
+        OnFirstHit?.RemoveAllListeners();
+        OnDeah?.RemoveAllListeners();
+    }
+    #endregion
+}
+
+
+
+
+
+
+
+/*
+ 
+ 
+[RequireComponent(typeof(NavMeshAgent))]
+public class AI : MonoBehaviour
+{
+    [SerializeField] protected NavMeshAgent _agent;
+    [NonSerialized] public UnityEvent<GameObject> OnFirstHit; // gameobject - attacker
+    [NonSerialized] public UnityEvent OnDeah;
+    public HashSet<IRule> Rules = new();
+    public EAIType Type;
+
+    #region PUBLIC
+    public virtual void Register()
+    {
+        AIRepository.Register(this);
+    }
+    public virtual void Unregister()
+    {
+        AIRepository.Unregister(this);
+    }
+    public virtual void CheckRules()
+    {
+        if(Rules.Count == 0) return;
+        foreach (var rule in Rules)
+        {
+            if(rule.CanExecute())
+            {
+                rule.Execute();
+            }
+        }
+    }
+    public virtual void SetDestionaiton(Vector3 coordinates)
+    {
+        _agent.destination = coordinates;
     }
     #endregion
     #region MONOBEHAIVOUR
@@ -55,38 +122,26 @@ public class AI : MonoBehaviour
     }
     protected virtual void OnEnable()
     {
-        /*        if (_agent != null) _agent.enabled = true;
-                else Debug.Log($"{nameof(_agent)} is null");*/
+        if (_agent != null) _agent.enabled = true;
+        else Debug.Log($"{nameof(_agent)} is null");
     }
     protected virtual void OnDisable()
     {
         ClearAllSubcribers();
-        /*        if (_agent != null) _agent.enabled = false;
-                else Debug.Log($"{nameof(_agent)} is null");*/
+        if(_agent != null) _agent.enabled = false;
+        else Debug.Log($"{nameof(_agent)} is null");
+    }
+    protected virtual void ClearAllSubcribers()
+    {
+        OnFirstHit?.RemoveAllListeners();
+        OnDeah?.RemoveAllListeners();
     }
     #endregion
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ 
+ 
+ */
 /*
  
 

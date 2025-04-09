@@ -41,19 +41,19 @@ namespace Optimization {
             else tiles.SetActive(false);
         }
 
-        private void OnTriggerStay(Collider other) => onChunkStay.Invoke(location, other);
+        private void OnTriggerStay(Collider other) => onChunkStay?.Invoke(location, other);
 
         private void OnTriggerEnter(Collider other)
         {
             if (colliders.Contains(other.gameObject)) return;
-            onChunkEnter.Invoke(location, other);
+            onChunkEnter?.Invoke(location, other);
             colliders.Add(other.gameObject);
         }
 
         private void OnTriggerExit(Collider other)
         {
             if (!colliders.Contains(other.gameObject)) return;
-            onChunkExit.Invoke(location, other);
+            onChunkExit?.Invoke(location, other);
             colliders.Remove(other.gameObject);
         }
     }
