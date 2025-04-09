@@ -66,3 +66,7 @@ public class AIGroupManager : MonoBehaviour, IUpdate
         UnregisterUpdate();
     }
 }
+
+
+
+
