@@ -12,14 +12,13 @@ public class GameBackroundMusicHandler : MonoBehaviour
     private int locationsCount = 0;
     private bool toChangeMusic = false;
 
-
     public List<AudioClip> clips = new List<AudioClip>();
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
 
-        ChunkHandler.onChunkEnter.AddListener(OnLocationEnter);
-        ChunkHandler.onChunkExit.AddListener(OnLocationExit);
+        ChunkHandler.onChunkEnter += OnLocationEnter;
+        ChunkHandler.onChunkExit += OnLocationExit;
     }
 
     private void Update() { 
@@ -35,19 +34,19 @@ public class GameBackroundMusicHandler : MonoBehaviour
     }
     void OnLocationEnter(Location location, Collider collider)
     {
-        if (!collider.tag.Equals("Character") || location.Type == "Corridor") return;
+        if (!collider.tag.Equals("Character") || location.Type != "Location") return;
 
         locationsCount++;
 
         if (!audioSource.isPlaying) audioSource.Play();
         StopAllCoroutines();
 
-        StartCoroutine(ClipAnimation(0.25f, 1));
+        StartCoroutine(ClipAnimation(0.25f, 1f));
     }
 
     void OnLocationExit(Location location, Collider collider)
     {
-        if (!collider.tag.Equals("Character") || location.Type == "Corridor") return;
+        if (!collider.tag.Equals("Character") || location.Type != "Location") return;
 
         locationsCount--;
 
@@ -69,6 +68,8 @@ public class GameBackroundMusicHandler : MonoBehaviour
             currentTime += Time.deltaTime;
             yield return null;
         }
+
+        audioSource.volume = target;
 
         callback?.Invoke();
     }

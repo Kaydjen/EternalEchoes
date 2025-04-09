@@ -9,7 +9,7 @@ public class HP : Stats, IDamageable
     public void GetDamage(int value, GameObject attacker)
     {
         _aDamage = value * (1 - _armor / 100);
-        Debug.Log("_aDamage class HP = " + _aDamage);
+        Debug.Log("_aDamage class _hp = " + _aDamage);
         Current -= _aDamage;
         _lastAttacker = attacker;
     }

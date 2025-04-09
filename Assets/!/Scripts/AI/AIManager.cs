@@ -8,13 +8,13 @@ public class AIManager : MonoBehaviour
     {
         AIRepository.OnInstantiate += ai => ai.gameObject.SetActive(true);
         AIRepository.OnRegister += ai => StartCoroutine(SpawnEffect(ai));
-        AIRepository.OnUnregister += id => Debug.Log($"Enemy with ID {id} just died");
+        AIRepository.OnUnregister += ai => Debug.Log($"Enemy with ID {ai.gameObject.GetInstanceID()} just died");
         AIRepository.OnDeath += SoulInstallManager;
     }
     private void UnsubscribeOnEvents()
     { 
         AIRepository.OnRegister -= ai => StartCoroutine(SpawnEffect(ai));
-        AIRepository.OnUnregister -= id => Debug.Log($"Enemy with ID {id} just died");
+        AIRepository.OnUnregister -= ai => Debug.Log($"Enemy with ID {ai.gameObject.GetInstanceID()} just died");
         AIRepository.OnDeath -= SoulInstallManager;
     }
     private IEnumerator SpawnEffect(AI ai)

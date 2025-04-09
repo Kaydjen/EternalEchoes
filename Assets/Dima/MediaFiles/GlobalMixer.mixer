@@ -30,12 +30,17 @@ AudioMixerController:
   m_EnableSuspend: 1
   m_UpdateMode: 0
   m_ExposedParameters:
+  - guid: 1af033c81c57d9b47aa9ecc9f19f6542
+    name: MasterVolume
   - guid: 6fcbc7568b138bc45bfb80f743d5b85e
     name: MusicVolume
+  - guid: b2423bea9de199e4f9eb8cb7c168fadf
+    name: SFXVolume
   m_AudioMixerGroupViews:
   - guids:
     - d07e718cecb90044db8aafe4b5871d88
     - 99049ea04e906834aaf5f941b03e6a96
+    - 06fcd0470b4699a428830a173ccc1e3f
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500006}
@@ -50,6 +55,7 @@ AudioMixerGroupController:
   m_GroupID: d07e718cecb90044db8aafe4b5871d88
   m_Children:
   - {fileID: 7996207422788858827}
+  - {fileID: 7688797335547517996}
   m_Volume: 1af033c81c57d9b47aa9ecc9f19f6542
   m_Pitch: 35332379338a09a46bbecfc4591cb131
   m_Send: 00000000000000000000000000000000
@@ -85,6 +91,39 @@ AudioMixerSnapshotController:
   m_FloatValues:
     6fcbc7568b138bc45bfb80f743d5b85e: 0
   m_TransitionOverrides: {}
+--- !u!244 &2283147917067740288
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 51774ae97e145614091210de64fac527
+  m_EffectName: Attenuation
+  m_MixLevel: 2e11114c0bf934b4caf31dae0aed28c2
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
+--- !u!243 &7688797335547517996
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: SFX
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: 06fcd0470b4699a428830a173ccc1e3f
+  m_Children: []
+  m_Volume: b2423bea9de199e4f9eb8cb7c168fadf
+  m_Pitch: 00e281c2201bb1449a4a6702abf08924
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: 2283147917067740288}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
 --- !u!243 &7996207422788858827
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
