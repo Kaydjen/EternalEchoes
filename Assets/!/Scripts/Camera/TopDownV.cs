@@ -330,7 +330,7 @@ public class TopDownV : CameraCore
     private int _edgeToleranceDown;
     private int _edgeToleranceUp;
 
-    private Vector3 _targetPosition;
+    private Vector3 _target;
     private bool _isStarted = false;
     private Vector3 _zoomCurrentVelocity = Vector3.zero;
 
@@ -393,9 +393,9 @@ public class TopDownV : CameraCore
     private IEnumerator TweenPosition()
     {
         _isStarted = true;
-        while (Vector3.Distance(_targetPosition, _camera.localPosition) > 0.01f && _isStarted)
+        while (Vector3.Distance(_target, _camera.localPosition) > 0.01f && _isStarted)
         {
-            _camera.localPosition = Vector3.SmoothDamp(_camera.localPosition, _targetPosition, ref _zoomCurrentVelocity, .3f);
+            _camera.localPosition = Vector3.SmoothDamp(_camera.localPosition, _target, ref _zoomCurrentVelocity, .3f);
             _camera.LookAt(this.transform);
             yield return null;
         }
@@ -404,8 +404,8 @@ public class TopDownV : CameraCore
     private void ZoomCamera()
     {
         float zoomHeight = Mathf.Clamp(_camera.localPosition.y + -InputManager.WheelRotate.y * .01f * _zoomStepSizeY, _minZoomHeight, _maxZoomHeight);
-        _targetPosition = new Vector3(_camera.localPosition.x, zoomHeight, _camera.localPosition.z);
-        _targetPosition -= _zoomStepSizeZ * (zoomHeight - _camera.localPosition.y) * Vector3.forward;
+        _target = new Vector3(_camera.localPosition.x, zoomHeight, _camera.localPosition.z);
+        _target -= _zoomStepSizeZ * (zoomHeight - _camera.localPosition.y) * Vector3.forward;
 
         if (!_isStarted) StartCoroutine(TweenPosition());
     }

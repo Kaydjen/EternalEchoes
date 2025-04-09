@@ -36,7 +36,7 @@ public class AI : MonoBehaviour
         }
     }
     public virtual void SetNewTargetList(HashSet<Transform> newTargets) => Targets = newTargets;
-    public virtual void SetDestionaiton(Vector3 coordinates) => _agent.destination = coordinates;
+    public virtual void SetDestination(Transform transform) => _agent.destination = transform.position;
     #endregion
     #region MONOBEHAIVOUR
     private void Awake()
@@ -105,7 +105,7 @@ public class AI : MonoBehaviour
             }
         }
     }
-    public virtual void SetDestionaiton(Vector3 coordinates)
+    public virtual void SetDestination(Vector3 coordinates)
     {
         _agent.destination = coordinates;
     }

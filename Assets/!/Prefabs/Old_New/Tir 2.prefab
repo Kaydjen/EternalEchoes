@@ -15,6 +15,9 @@ GameObject:
   - component: {fileID: 2406988124842547427}
   - component: {fileID: 9066732059246056977}
   - component: {fileID: 1797876317492239477}
+  - component: {fileID: 5652902988134219484}
+  - component: {fileID: 8558964234117013931}
+  - component: {fileID: 6933912866224016514}
   m_Layer: 0
   m_Name: Tir 2
   m_TagString: Untagged
@@ -159,4 +162,47 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hpMax: 500
+  _ai: {fileID: 9066732059246056977}
+--- !u!114 &5652902988134219484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8482653916050732138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a7ecfbafef31374abc57b5467f003a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _ai: {fileID: 9066732059246056977}
+  _attackRange: 2
+  _followRange: 10
+--- !u!114 &8558964234117013931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8482653916050732138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: daf74dea040b5534db455d176c364732, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _possibilities: {fileID: 5652902988134219484}
+  _ai: {fileID: 9066732059246056977}
+--- !u!114 &6933912866224016514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8482653916050732138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6406b1cb1022524b934a5e18efcf647, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _possibilities: {fileID: 5652902988134219484}
   _ai: {fileID: 9066732059246056977}

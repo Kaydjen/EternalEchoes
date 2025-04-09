@@ -6,11 +6,11 @@ public class ArtificialBackwardness : AI
     protected override void OnEnable()
     {
         base.OnEnable();
-        base.SetDestionaiton(_target.position);
+       // base.SetDestination(_target.position);
     }
 
     private void Update()
     {
-        //base.SetDestionaiton(_target.position);
+        //base.SetDestination(_target.position);
     }
 }
