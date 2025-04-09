@@ -23,15 +23,7 @@ namespace Minimap
         [NonSerialized] public Vector2Int lastPosition;
         [NonSerialized] public Color lastColor = Color.black;
 
-        static public Vector2Int ToGridPosition(Vector3 position, float scale = 1f)
-        {
-            if (scale <= 0f) return Vector2Int.zero;
-
-            Vector3 positionV3 = position / scale;
-            return Vector2Int.RoundToInt(new Vector2(positionV3.x, positionV3.z));
-        }
-
-        public Vector2Int GetCurrentPosition(float scale = 1f) => ToGridPosition(transform.position, scale);
+        public Vector2Int GetCurrentPosition(float scale = 1f) => Grid2Int.ToGridPosition(transform.position, scale);
 
         public MoveableMinimapObject(Transform transform, int layer = 0, Color color = default)
         {
@@ -76,16 +68,25 @@ namespace Minimap
             content.texture = map;
 
             Color[] pixels = new Color[map.width * map.height];
-            for (int i = 0; i < pixels.Length; i++) pixels[i] = Color.black;
+            for (int i = 0; i < pixels.Length; i++) {
+                if (world.Grid.Contains(new Vector2Int(i % map.height, i / map.height) + world.Grid.Min)) pixels[i] = Color.grey;
+                else pixels[i] = Color.black;
+            }
                 
             map.SetPixels(pixels);
 
-            for (int iPosition = 0; iPosition < world.Grid.Count; iPosition++)
-                map.SetPixel(world.Grid[iPosition].x - world.Grid.Min.x, world.Grid[iPosition].y - world.Grid.Min.y, Color.grey);
+            foreach (var prop in world.GetDescedants<Prop>((x)=> x.Type.ToLower() == "spawner"))
+            {
+                for (int iPos = 0; iPos < prop.Grid.Count; iPos++)
+                    map.SetPixel(prop.Grid[iPos].x - world.Grid.Min.x, prop.Grid[iPos].y - world.Grid.Min.y, Color.red);
 
-            foreach (var prop in world.GetDescedants<Prop>())
-                foreach (Vector2Int position in prop.Grid)
-                    map.SetPixel(position.x - world.Grid.Min.x, position.y - world.Grid.Min.y, Color.red);
+                prop.onDestroy.AddListener(() =>
+                {
+                    for (int iPos = 0; iPos < prop.Grid.Count; iPos++)
+                        map.SetPixel(prop.Grid[iPos].x - world.Grid.Min.x, prop.Grid[iPos].y - world.Grid.Min.y, Color.grey);
+                });
+            }
+                
 
             minimapObjects = minimapObjects.Union(serializedMinimapObjects).ToList();
             Sort();
@@ -118,12 +119,11 @@ namespace Minimap
                 }
 
                 if (minimapObjects[iMinimapObject].lastPosition != currentPosition)
-                {
-                    if (!last.ContainsKey(minimapObjects[iMinimapObject].lastPosition)) last.Add(minimapObjects[iMinimapObject].lastPosition, minimapObjects[iMinimapObject].lastColor);
+                    if (!last.ContainsKey(minimapObjects[iMinimapObject].lastPosition)) 
+                        last.Add(minimapObjects[iMinimapObject].lastPosition, minimapObjects[iMinimapObject].lastColor);
 
-                    Color lastColor = map.GetPixel(currentPosition.x, currentPosition.y);
-                    minimapObjects[iMinimapObject].lastColor = lastColor;
-                }
+                if (map.GetPixel(currentPosition.x, currentPosition.y) != minimapObjects[iMinimapObject].color)
+                    minimapObjects[iMinimapObject].lastColor = map.GetPixel(currentPosition.x, currentPosition.y);
 
                 minimapObjects[iMinimapObject].lastPosition = currentPosition;
             }
@@ -157,7 +157,9 @@ namespace Minimap
 
         private void SetOffset()
         {
-            Vector2Int currentPosition = MoveableMinimapObject.ToGridPosition(mainCamera.position, world.Scale) - world.Grid.Min;
+            if (mainCamera == null) return;
+
+            Vector2Int currentPosition = Grid2Int.ToGridPosition(mainCamera.position, world.Scale) - world.Grid.Min;
 
             float uvX = Mathf.Clamp((currentPosition.x - ((map.width) * content.uvRect.width) / 2) / map.width, 0, 1-content.uvRect.width),
                 uvY = Mathf.Clamp((currentPosition.y - ((map.height) * content.uvRect.height) / 2) / map.height, 0, 1-content.uvRect.height);

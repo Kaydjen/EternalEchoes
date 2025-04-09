@@ -7,7 +7,8 @@ using UnityEngine.Events;
 namespace Optimization {
     public class ChunkHandler : MonoBehaviour
     {
-        static public UnityEvent<Location, Collider> onChunkEnter = new UnityEvent<Location, Collider>(), onChunkExit = new UnityEvent<Location, Collider>();
+        static public UnityEvent<Location, Collider> onChunkEnter = new(), onChunkExit = new(),
+            onChunkStay = new();
 
         [NonSerialized] public List<GameObject> colliders;
         private GameObject tiles;
@@ -39,6 +40,8 @@ namespace Optimization {
             if (colliders.Count > 0) tiles.SetActive(true);
             else tiles.SetActive(false);
         }
+
+        private void OnTriggerStay(Collider other) => onChunkStay.Invoke(location, other);
 
         private void OnTriggerEnter(Collider other)
         {

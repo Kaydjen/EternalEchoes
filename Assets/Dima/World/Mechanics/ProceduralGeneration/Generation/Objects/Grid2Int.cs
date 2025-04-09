@@ -6,8 +6,6 @@ using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
-
-
 public class Grid2Int : IEnumerable<Vector2Int>
 {
     private HashSet<Vector2Int> set = new HashSet<Vector2Int>();
@@ -51,6 +49,24 @@ public class Grid2Int : IEnumerable<Vector2Int>
             Update(other.max);
             changed.Invoke();
         }
+    }
+
+    static public Vector2Int ToGridPosition(Vector3 position, float? scale)
+    {
+        if (scale == null) return Vector2Int.zero;
+        if (scale <= 0f) return Vector2Int.zero;
+
+        Vector3 positionV3 = position / (float)scale;
+        return Vector2Int.RoundToInt(new Vector2(positionV3.x, positionV3.z));
+    }
+
+    public bool TryParseToGridPosition(in Vector3 position, float? scale) => Contains(ToGridPosition(position, scale));
+
+    public bool TryParseToGridPosition(in Vector3 position, float? scale, out Vector2Int parsedPosition)
+    {
+        parsedPosition = ToGridPosition(position, scale);
+
+        return Contains(parsedPosition);
     }
 
     public Vector2Int Min { get { return min; } }
