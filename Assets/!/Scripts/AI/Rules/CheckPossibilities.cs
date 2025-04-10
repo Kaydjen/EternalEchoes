@@ -4,10 +4,10 @@ using static UnityEngine.GraphicsBuffer;
 
 public class CheckPossibilities : MonoBehaviour
 {
-    [SerializeField] private AI _ai;
     [SerializeField] private float _attackRange;
     [SerializeField] private float _followRange;
     private Transform _nearestTarget;
+    private AI _ai;
     private float _currentDistance;
     private float _nearestDist;
 
@@ -47,4 +47,12 @@ public class CheckPossibilities : MonoBehaviour
             : (false, null);
     }
     private float DistTo(Vector3 target) => Vector3.Distance(this.transform.position, target);
+    private void Awake()
+    {
+        if(!TryGetComponent(out _ai))
+        {
+            Debug.Log($"{nameof(_ai)} is null in {this.name}");
+            return;
+        }
+    }
 }

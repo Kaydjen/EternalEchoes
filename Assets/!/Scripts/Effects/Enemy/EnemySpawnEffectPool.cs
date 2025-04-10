@@ -28,7 +28,6 @@ public class EnemySpawnEffectPool : Pool<Transform>
     public void SetEffect(Vector3 position, float duration = DURATION)
     {
         Transform effect = base.Get();
-        Debug.Log("EnemySpawnEffectPool in pos: " + position);
         effect.transform.position = position;
         effect.transform.localScale = _defSize;
         base.StartCoroutine(DelayedReturn(effect, duration));
