@@ -3440,6 +3440,7 @@ GameObject:
   - component: {fileID: 2176554818712242533}
   - component: {fileID: 4383067366805584003}
   - component: {fileID: 1281052313626559050}
+  - component: {fileID: 5596643585679848854}
   m_Layer: 7
   m_Name: Flame_TIR1
   m_TagString: Enemy
@@ -3636,6 +3637,24 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   _position: {fileID: 6579923644856540980}
+  _player: {fileID: 0}
+--- !u!114 &5596643585679848854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7848179689184481440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2012e5b75e0af14488f57c0685c7571e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _currentSoulNumber: 1
+  Soul1: {fileID: 11400000, guid: cefd4b3c75e7f5a4d820265803e9d849, type: 2}
+  Soul2: {fileID: 11400000, guid: 408f57de0c1053a4e9adde12158abe80, type: 2}
+  Soul3: {fileID: 11400000, guid: cefd4b3c75e7f5a4d820265803e9d849, type: 2}
+  Soul4: {fileID: 11400000, guid: cefd4b3c75e7f5a4d820265803e9d849, type: 2}
 --- !u!1 &7950304924695220111
 GameObject:
   m_ObjectHideFlags: 0

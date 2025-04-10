@@ -120,12 +120,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3520981731890205819}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a39579c953122de478135ad77e7227ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Sphere: {fileID: 0}
+  _target: {fileID: 0}
   _moveSpeed: 2
   _startHeight: 5
 --- !u!54 &5900633166153271929

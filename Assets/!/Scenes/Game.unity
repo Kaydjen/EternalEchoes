@@ -3893,20 +3893,6 @@ MonoBehaviour:
   MainIconPressed: {fileID: 2485770662770728845}
   Button: {fileID: 2216518507631087635}
   MainIcon: {fileID: 6899204025202618863}
---- !u!114 &100590371710876629
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5378665417080880205}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47e5a7a32b4d77a48bcbdf552fda0498, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _prefab: {fileID: 8227173516584387167, guid: dbd7114741a94b245b6ee3d07410d11b, type: 3}
-  _initialPoolSize: 6
 --- !u!1 &109904406975897060
 GameObject:
   m_ObjectHideFlags: 0
@@ -5810,20 +5796,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
---- !u!114 &987924382518172209
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3822053483855210365}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b876f1dd0e6cae4188422797dda1154, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _prefab: {fileID: 1889673045694591082, guid: 0dfcdccfca1abc843a8a4e0e17bfe3bc, type: 3}
-  _initialPoolSize: 4
 --- !u!1 &989454655410767261
 GameObject:
   m_ObjectHideFlags: 0
@@ -6881,7 +6853,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 555749626834441373}
-  - component: {fileID: 2541692222178837769}
   m_Layer: 0
   m_Name: 4. Soul Four
   m_TagString: Untagged
@@ -7932,18 +7903,18 @@ MonoBehaviour:
   _inspectorSetup:
   - Type: 1
     Components:
-      Max: {fileID: 1526969151}
-      Current: {fileID: 387270946}
+      Max: {fileID: 387270946}
+      Current: {fileID: 1526969151}
       PartsObj: {fileID: 7101070906181697024}
   - Type: 2
     Components:
-      Max: {fileID: 713870047}
-      Current: {fileID: 309200769}
+      Max: {fileID: 309200769}
+      Current: {fileID: 713870047}
       PartsObj: {fileID: 1766282155}
   - Type: 3
     Components:
-      Max: {fileID: 309679596}
-      Current: {fileID: 883489606}
+      Max: {fileID: 883489606}
+      Current: {fileID: 309679596}
       PartsObj: {fileID: 191437859}
 --- !u!114 &2003544545431851743
 MonoBehaviour:
@@ -9351,20 +9322,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2541692222178837769
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1424419695265320675}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7caa27df43e44214780541b335574168, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _prefab: {fileID: 8097944167107821122, guid: 368483884cc535245a8583be744199c3, type: 3}
-  _initialPoolSize: 1
 --- !u!222 &2545354571994150363
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11867,7 +11824,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6144082768555294943}
-  - component: {fileID: 987924382518172209}
   m_Layer: 0
   m_Name: 2. Soul Two
   m_TagString: Untagged
@@ -15472,7 +15428,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 977367148042269531}
-  - component: {fileID: 100590371710876629}
+  - component: {fileID: 5378665417080880206}
   m_Layer: 0
   m_Name: 1. Soul One
   m_TagString: Untagged
@@ -15480,6 +15436,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &5378665417080880206
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5378665417080880205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbdc6a914cbc9654b94035d8b95f63bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _prefab: {fileID: 8227173516584387167, guid: dbd7114741a94b245b6ee3d07410d11b, type: 3}
+  _initialPoolSize: 10
 --- !u!222 &5383557536745690251
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -18552,20 +18522,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!114 &6524629481590998754
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8022846565376597748}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: afba558bc543613469dbaf59769cfa4b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _prefab: {fileID: 1401962252260575361, guid: dbf8aa2b45fe6be4f8d75b8c7526b56a, type: 3}
-  _initialPoolSize: 1
 --- !u!1 &6527834660257982991
 GameObject:
   m_ObjectHideFlags: 0
@@ -22398,7 +22354,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2636780327263229125}
-  - component: {fileID: 6524629481590998754}
   m_Layer: 0
   m_Name: 3. Soul Three
   m_TagString: Untagged

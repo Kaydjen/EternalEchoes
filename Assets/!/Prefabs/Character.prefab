@@ -145,7 +145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e897995ccb8c5c4b91f7fce39a7d806, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _type: 1
+  _type: 0
   _manaCost: 0
   _offset: {x: 0, y: 0, z: 0}
   _areaDist: 0
@@ -328,7 +328,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e897995ccb8c5c4b91f7fce39a7d806, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _type: 3
+  _type: 1
   _manaCost: 0
   _offset: {x: 0, y: 0, z: 0}
   _areaDist: 0
@@ -769,7 +769,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42f3abb88c6ee5a4889280129433877a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _type: 0
+  _type: 2
+  _player: {fileID: 9005463367488759697}
 --- !u!1 &9005463367488759697
 GameObject:
   m_ObjectHideFlags: 0
@@ -876,7 +877,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxValue: 1000
-  currentValue: 100
+  currentValue: 52
 --- !u!114 &8799881780892347544
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -905,7 +906,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxValue: 100
-  currentValue: 10
+  currentValue: 100
   _staminaDelay: 2
   _regenSpeed: 1
 --- !u!114 &6524710563093434183
