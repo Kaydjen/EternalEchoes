@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using Optimization;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -7,6 +8,7 @@ public class RuleAttackEnemy : MonoBehaviour, IRule
 {
     [SerializeField] private AnimationClip _attackAnimation;
     private CheckPossibilities _possibilities;
+    private bool _isAttacking = false;  // Дополнительный флаг для надежности
     private Animator _animator;
     private Transform _target;
     private AI _ai;
@@ -20,6 +22,7 @@ public class RuleAttackEnemy : MonoBehaviour, IRule
         if(statement.Item1 && statement2.Item1)
         {
             _target = statement.Item2;
+            Debug.Log("Attack true");
             return true;
         }
         else
@@ -29,17 +32,25 @@ public class RuleAttackEnemy : MonoBehaviour, IRule
     }
     public void Execute()
     {
-        if(_agent.isStopped) return;
+        if(_agent.isStopped || _isAttacking || _coroutine != null) return;
+
+        Debug.Log("Attack Execute");
         _coroutine = StartCoroutine(Attack());
     }
     private IEnumerator Attack()
     {
+        Debug.Log("Attack started");
+        _isAttacking = true;
         _agent.isStopped = true;
         _animator.SetTrigger("DidAttack");
-        this.transform.LookAt(_target);
-        //_attackAnimation.Play();
+        transform.LookAt(_target);
+
         yield return new WaitForSeconds(_attackAnimation.length);
+
         _agent.isStopped = false;
+        _isAttacking = false;
+        _coroutine = null;
+        Debug.Log("Attack finished");
     }
     private void Awake()
     {
