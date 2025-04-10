@@ -132,7 +132,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _type: 1
   _fireRate: 1
-  _isAutomatic: 0
+  _isAutomatic: 1
 --- !u!114 &375598875363687431
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -890,8 +890,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfc0ec121c2d4ee458f034c6876fbe25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxValue: 1000
-  currentValue: 1000
+  maxValue: 100
+  currentValue: 100
   _armor: 0
 --- !u!114 &9190902522046598202
 MonoBehaviour:
@@ -905,10 +905,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6597a55619fd2e7478df2ac9fa752ecd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxValue: 100
-  currentValue: 100
+  maxValue: 150
+  currentValue: 150
   _staminaDelay: 2
-  _regenSpeed: 1
+  _regenSpeed: 0.5
 --- !u!114 &6524710563093434183
 MonoBehaviour:
   m_ObjectHideFlags: 0
