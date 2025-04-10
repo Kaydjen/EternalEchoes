@@ -25,7 +25,6 @@ public class SoulsBank : Stats, IGameplayModeSwitcher
     }
     public void ForAIMode()
     {
-        InputManager.OnHPRecovery.RemoveListener(Recovery);
         InputManager.OnHPRecovery.AddListener(Recovery);
     }
     public void ForManualMode()

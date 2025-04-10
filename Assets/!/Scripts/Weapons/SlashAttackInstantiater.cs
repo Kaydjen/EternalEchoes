@@ -31,4 +31,9 @@ public class SlashAttackInstantiater : MonoBehaviour, IAttack
         slash.GetComponent<IGetAttacker>().SetAttacker(_player);
         slash.position = this.transform.position;
     }
+
+    public void ChangeWeapon(ESlashAttack type)
+    {
+        _type = type;
+    }
 }

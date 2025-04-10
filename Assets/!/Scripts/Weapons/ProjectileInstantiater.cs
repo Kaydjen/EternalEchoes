@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 [RequireComponent(typeof(AttackHandler))]
@@ -11,6 +12,10 @@ public class ProjectileInstantiater : MonoBehaviour, IAttack
     [SerializeField] private Stamina _stamina;
     [SerializeField] private bool _areaProjectile;
 
+    public void ChangeWeapon(EProjectile type)
+    {
+        _type = type;
+    }
     private void Update()
     {
         switch (_type)
