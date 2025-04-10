@@ -11,7 +11,7 @@ public class ProjectileInstantiater : MonoBehaviour, IAttack
     private Stamina _stamina;
     [SerializeField] private bool _areaProjectile;
 
-    private void Update()
+    private void Start()
     {
         switch (_type)
         {
@@ -48,8 +48,8 @@ public class ProjectileInstantiater : MonoBehaviour, IAttack
     }
     public void Attack()
     {
-        
-        if(_areaProjectile == true)
+        if (!_stamina.SubtractStamina(_manaCost)) return;
+        if (_areaProjectile == true)
         {
             RaycastHit hit;
             if(Physics.Raycast(AimDirection.Direction.position, AimDirection.Direction.forward, out hit, _areaDist))
@@ -68,7 +68,6 @@ public class ProjectileInstantiater : MonoBehaviour, IAttack
         }
         else
         {
-            if (!_stamina.SubtractStamina(_manaCost)) return;
             Transform bullet = _pool.Get();
             bullet.GetComponent<IGetAttacker>().SetAttacker(this.gameObject);
             bullet.position = this.transform.position + _offset;
