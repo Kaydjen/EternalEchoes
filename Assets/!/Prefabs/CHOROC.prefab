@@ -473,6 +473,7 @@ MonoBehaviour:
   _type: 1
   _manaCost: 0
   _offset: {x: 0, y: 0, z: 0}
+  _areaDist: 0
 --- !u!1 &4687375862740198621
 GameObject:
   m_ObjectHideFlags: 0
@@ -799,6 +800,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 7
+  _controller: {fileID: 0}
 --- !u!1 &6299442364152188652
 GameObject:
   m_ObjectHideFlags: 0
@@ -859,9 +861,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e897995ccb8c5c4b91f7fce39a7d806, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _type: 0
+  _type: 3
   _manaCost: 0
   _offset: {x: 0, y: 0, z: 0}
+  _areaDist: 0
 --- !u!1 &7336827440501634221
 GameObject:
   m_ObjectHideFlags: 0
