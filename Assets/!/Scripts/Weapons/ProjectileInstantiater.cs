@@ -36,40 +36,54 @@ public class ProjectileInstantiater : MonoBehaviour, IAttack
                 _offset = new Vector3(0f,-1f,0f);
                 _areaProjectile = false;
                 break;
-            case EProjectile.MeteorShower:
+            /*case EProjectile.MeteorShower:
                 _pool = MeteorShowerPool.Instance;
                 _manaCost = 1;
                 GetComponent<AttackHandler>().SetNewFireRate(0f);
                 _offset = new Vector3(0f, 0f, 0f);
                 _areaProjectile = true;
-                break;
+                break;*/
         }
     }
     public void Attack()
     {
-        if (_areaProjectile == false)
+        if (!_stamina.SubtractStamina(_manaCost)) return;
+        Transform bullet = _pool.Get();
+        bullet.GetComponent<IGetAttacker>().SetAttacker(_stamina.gameObject);
+        bullet.position = this.transform.position + _offset;
+        /*if (_areaProjectile == false)
         {
-            if (!_stamina.SubtractStamina(_manaCost)) return;
-            Transform bullet = _pool.Get();
-            bullet.GetComponent<IGetAttacker>().SetAttacker(_stamina.gameObject);
-            bullet.position = this.transform.position + _offset;
+            
         }
         else
         {
             Debug.Log("Ray start");
+            Vector3 rayStart = AimDirection.Direction.position;
+            Vector3 rayDir = AimDirection.Direction.forward * _areaDist;
+            Debug.DrawRay(rayStart, rayDir, Color.red, 2f); // Візуалізація
+
             RaycastHit hit;
-            if (Physics.Raycast(AimDirection.Direction.position, AimDirection.Direction.forward, out hit, _areaDist))
+            if (Physics.Raycast(rayStart, rayDir, out hit, _areaDist, 6))
             {
-                if (hit.collider.CompareTag("Ground"))
+                Debug.Log($"Hit: {hit.collider?.name ?? "null"}"); // Перевірка об'єкта
+                if (hit.collider != null *//*&& hit.collider.CompareTag("Ground")*//*)
                 {
-                    if (!_stamina.SubtractStamina(_manaCost)) return;
-                    Debug.Log("Ray rgthfytdgrftyghftgrfwetyujtyhtgrewtukh");
+                    if (!_stamina.SubtractStamina(_manaCost))
+                    {
+                        Debug.Log("Недостатньо мани!");
+                        return;
+                    }
+
+                    Debug.Log("Створюємо снаряд");
                     Transform bullet = _pool.Get();
                     bullet.GetComponent<IGetAttacker>().SetAttacker(_stamina.gameObject);
-                    // Використовуємо hit.point замість hit.transform.position
-                    bullet.position = hit.point + _offset; // Додайте _offset, якщо потрібно
+                    bullet.position = hit.point + _offset;
                 }
             }
-        }
+            else
+            {
+                Debug.Log("Промінь нічого не влучив");
+            }
+        }*/
     }
 }
