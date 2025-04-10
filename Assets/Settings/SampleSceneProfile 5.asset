@@ -129,16 +129,16 @@ MonoBehaviour:
     m_Value: -1
   contrast:
     m_OverrideState: 1
-    m_Value: 100
+    m_Value: 0
   colorFilter:
     m_OverrideState: 1
     m_Value: {r: 0, g: 0, b: 0, a: 1}
   hueShift:
     m_OverrideState: 1
-    m_Value: 180
+    m_Value: 0
   saturation:
     m_OverrideState: 1
-    m_Value: 100
+    m_Value: 0
 --- !u!114 &-1519682116797482411
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -274,7 +274,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb60a22f311433c4c962b888d1393f88, type: 3}
   m_Name: PaniniProjection
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   distance:
     m_OverrideState: 1
     m_Value: 1
@@ -351,7 +351,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97c23e3b12dc18c42a140437e53d3951, type: 3}
   m_Name: Tonemapping
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   mode:
     m_OverrideState: 1
     m_Value: 2

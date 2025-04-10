@@ -21,7 +21,6 @@ namespace Minimap
         public int layer;
         public Color color;
         [NonSerialized] public Vector2Int lastPosition;
-        [NonSerialized] public Color lastColor = Color.black;
 
         public Vector2Int GetCurrentPosition(float scale = 1f) => Grid2Int.ToGridPosition(transform.position, scale);
 
@@ -39,9 +38,11 @@ namespace Minimap
         [NonSerialized] public World world;
         
         static private List<MoveableMinimapObject> minimapObjects = new List<MoveableMinimapObject>();
-        [SerializeField] private Transform mainCamera; 
+        [SerializeField] private Transform mainCamera;
 
-        private Texture2D map;
+        private Texture2D map, historyMap;
+
+        private Dictionary<Vector2Int, Color> history = new Dictionary<Vector2Int, Color>();
 
         static public void Add(MoveableMinimapObject minimapObject)
         {
@@ -66,6 +67,13 @@ namespace Minimap
 
             map = new Texture2D(Mathf.Max(size.x, size.y) + 1, Mathf.Max(size.x, size.y) + 1);
             map.filterMode = FilterMode.Point;
+            map.wrapMode = TextureWrapMode.Clamp;
+
+            historyMap = new Texture2D(Mathf.Max(size.x, size.y) + 1, Mathf.Max(size.x, size.y) + 1);
+            historyMap.filterMode = FilterMode.Point;
+            historyMap.wrapMode = TextureWrapMode.Clamp;
+
+
             content.texture = map;
 
             Color[] pixels = new Color[map.width * map.height];
@@ -93,11 +101,15 @@ namespace Minimap
             Sort();
 
             map.Apply();
+
+            historyMap.SetPixels(map.GetPixels());
+            historyMap.Apply();
         }
 
-        private (Dictionary<Vector2Int, Color>, Dictionary<Vector2Int, Color>) GetPositions()
+        private Dictionary<Vector2Int, Color> GetPositions(out HashSet<Vector2Int> last)
         {
-            Dictionary<Vector2Int, Color> current = new Dictionary<Vector2Int, Color>(), last = new Dictionary<Vector2Int, Color>();
+            Dictionary<Vector2Int, Color> current = new Dictionary<Vector2Int, Color>();
+            last = new HashSet<Vector2Int>();
 
             for (int iMinimapObject = 0; iMinimapObject < minimapObjects.Count; iMinimapObject++)
             {
@@ -119,31 +131,28 @@ namespace Minimap
                     else current.Add(currentPosition, minimapObjects[iMinimapObject].color);
                 }
 
-                if (minimapObjects[iMinimapObject].lastPosition != currentPosition)
-                    if (!last.ContainsKey(minimapObjects[iMinimapObject].lastPosition)) 
-                        last.Add(minimapObjects[iMinimapObject].lastPosition, minimapObjects[iMinimapObject].lastColor);
-
-                if (map.GetPixel(currentPosition.x, currentPosition.y) != minimapObjects[iMinimapObject].color)
-                    minimapObjects[iMinimapObject].lastColor = map.GetPixel(currentPosition.x, currentPosition.y);
+                last.Add(minimapObjects[iMinimapObject].lastPosition);
 
                 minimapObjects[iMinimapObject].lastPosition = currentPosition;
             }
 
-            return (current, last);
+            return current;
         }
 
         private void ColorPixels()
         {
-            (Dictionary<Vector2Int, Color> current, Dictionary<Vector2Int, Color> last) = GetPositions();
+            Dictionary<Vector2Int, Color> current = GetPositions(out HashSet<Vector2Int> last);
 
-            List<Vector2Int> toColor = current.Keys.ToList(), toColorBack = last.Keys.Except(toColor).ToList();
+            List<Vector2Int> toColor = current.Keys.ToList();
                 
-
-            for (int iPos = 0; iPos < toColorBack.Count; iPos++) map.SetPixel(toColorBack[iPos].x, toColorBack[iPos].y, last[toColorBack[iPos]]);
-
+            for (int iPos = 0; iPos < last.Count; iPos++)
+            {
+                Vector2Int position = last.ElementAt(iPos);
+                map.SetPixel(position.x, position.y, historyMap.GetPixel(position.x, position.y));
+            }
+                
             for (int iPos = 0; iPos < toColor.Count; iPos++)
                 map.SetPixel(toColor[iPos].x, toColor[iPos].y, current[toColor[iPos]]);
-
 
             map.Apply();
         }
