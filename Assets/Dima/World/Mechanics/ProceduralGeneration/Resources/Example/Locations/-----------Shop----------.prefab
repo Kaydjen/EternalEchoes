@@ -424,7 +424,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Tir 1
+  m_text: fireball
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1273,6 +1273,7 @@ GameObject:
   - component: {fileID: 9201465949912827788}
   - component: {fileID: 2364861734059249544}
   - component: {fileID: 6898629709941564215}
+  - component: {fileID: 6586452997611661979}
   m_Layer: 0
   m_Name: ShopButton (3)
   m_TagString: Button
@@ -1300,10 +1301,10 @@ RectTransform:
   - {fileID: 6320433094563398439}
   m_Father: {fileID: 3074216045208901617}
   m_LocalEulerAnglesHint: {x: 0, y: -10, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 25, y: -77}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4102414453089081288
 CanvasRenderer:
@@ -1369,6 +1370,30 @@ MonoBehaviour:
           m_StringArgument: Enable
           m_BoolArgument: 1
         m_CallState: 1
+      - m_Target: {fileID: 7686768380444297815}
+        m_TargetAssemblyTypeName: HideQuestionOnButton, Assembly-CSharp
+        m_MethodName: DisableQuestion
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 6586452997611661979}
+        m_TargetAssemblyTypeName: BuyNewWeapon, Assembly-CSharp
+        m_MethodName: BuyIcicle
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &7686768380444297815
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1430,6 +1455,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 262cb2a5e1b445642a550d7d91f8f6e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6586452997611661979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1442085243051399914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10bc11d4ce6a124498166786216f94b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1593641941869773384
@@ -2600,7 +2637,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 69
+  m_text: None
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3328,7 +3365,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Tir 1
+  m_text: 'none
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3509,6 +3548,7 @@ GameObject:
   - component: {fileID: 2866426021818387108}
   - component: {fileID: 7038255187935697322}
   - component: {fileID: 41614509283347568}
+  - component: {fileID: 5561887006827252832}
   m_Layer: 0
   m_Name: ShopButton (8)
   m_TagString: Button
@@ -3536,10 +3576,10 @@ RectTransform:
   - {fileID: 2511941002329195462}
   m_Father: {fileID: 3074216045208901617}
   m_LocalEulerAnglesHint: {x: 0, y: 10, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 129, y: -129}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5098454666791549541
 CanvasRenderer:
@@ -3680,6 +3720,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 262cb2a5e1b445642a550d7d91f8f6e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5561887006827252832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2915405048578140975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10bc11d4ce6a124498166786216f94b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2944091826711842079
 GameObject:
   m_ObjectHideFlags: 0
@@ -3695,6 +3747,7 @@ GameObject:
   - component: {fileID: 3870709788647754102}
   - component: {fileID: 6438277576347891335}
   - component: {fileID: 1628733650680379068}
+  - component: {fileID: 8291505042568842908}
   m_Layer: 0
   m_Name: ShopButton
   m_TagString: Button
@@ -3722,10 +3775,10 @@ RectTransform:
   - {fileID: 6288731824956640352}
   m_Father: {fileID: 3074216045208901617}
   m_LocalEulerAnglesHint: {x: 0, y: -10, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 25, y: -25}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4241660112194824087
 CanvasRenderer:
@@ -3791,6 +3844,30 @@ MonoBehaviour:
           m_StringArgument: Enable
           m_BoolArgument: 1
         m_CallState: 1
+      - m_Target: {fileID: 7879342127000794505}
+        m_TargetAssemblyTypeName: HideQuestionOnButton, Assembly-CSharp
+        m_MethodName: DisableQuestion
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 8291505042568842908}
+        m_TargetAssemblyTypeName: BuyNewWeapon, Assembly-CSharp
+        m_MethodName: BuyFireball
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &7879342127000794505
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3854,6 +3931,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 262cb2a5e1b445642a550d7d91f8f6e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8291505042568842908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2944091826711842079}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10bc11d4ce6a124498166786216f94b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2958752689692799495
 GameObject:
   m_ObjectHideFlags: 0
@@ -3869,6 +3958,7 @@ GameObject:
   - component: {fileID: 251594717788872190}
   - component: {fileID: 7508801671713817392}
   - component: {fileID: 2777717199438201425}
+  - component: {fileID: 2971088296073730575}
   m_Layer: 0
   m_Name: ShopButton (1)
   m_TagString: Button
@@ -3896,10 +3986,10 @@ RectTransform:
   - {fileID: 7521404628872745456}
   m_Father: {fileID: 3074216045208901617}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 77, y: -25}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7676682814080092100
 CanvasRenderer:
@@ -3965,6 +4055,30 @@ MonoBehaviour:
           m_StringArgument: Enable
           m_BoolArgument: 1
         m_CallState: 1
+      - m_Target: {fileID: 8480588641504758330}
+        m_TargetAssemblyTypeName: HideQuestionOnButton, Assembly-CSharp
+        m_MethodName: DisableQuestion
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 2971088296073730575}
+        m_TargetAssemblyTypeName: BuyNewWeapon, Assembly-CSharp
+        m_MethodName: BuyElectricity
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &8480588641504758330
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4026,6 +4140,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 262cb2a5e1b445642a550d7d91f8f6e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2971088296073730575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2958752689692799495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10bc11d4ce6a124498166786216f94b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2960950933146124932
@@ -4262,6 +4388,7 @@ GameObject:
   - component: {fileID: 3263540236745067957}
   - component: {fileID: 4485575420255838400}
   - component: {fileID: 4594378037955817427}
+  - component: {fileID: 8511901187204359117}
   m_Layer: 0
   m_Name: ShopButton (6)
   m_TagString: Button
@@ -4289,10 +4416,10 @@ RectTransform:
   - {fileID: 23760712635537277}
   m_Father: {fileID: 3074216045208901617}
   m_LocalEulerAnglesHint: {x: 0, y: -10, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 25, y: -129}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4761158079294226967
 CanvasRenderer:
@@ -4431,6 +4558,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 262cb2a5e1b445642a550d7d91f8f6e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8511901187204359117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3117712877396637737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10bc11d4ce6a124498166786216f94b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &3139993048447611193
@@ -5482,6 +5621,7 @@ GameObject:
   - component: {fileID: 6905939409654164760}
   - component: {fileID: 3945694384768508810}
   - component: {fileID: 3297933382031196733}
+  - component: {fileID: 7181109814171448392}
   m_Layer: 0
   m_Name: ShopButton (5)
   m_TagString: Button
@@ -5509,10 +5649,10 @@ RectTransform:
   - {fileID: 1016924984213670866}
   m_Father: {fileID: 3074216045208901617}
   m_LocalEulerAnglesHint: {x: 0, y: 10, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 129, y: -77}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1687698659646434619
 CanvasRenderer:
@@ -5578,6 +5718,18 @@ MonoBehaviour:
           m_StringArgument: Enable
           m_BoolArgument: 1
         m_CallState: 1
+      - m_Target: {fileID: 3889264047594347450}
+        m_TargetAssemblyTypeName: HideQuestionOnButton, Assembly-CSharp
+        m_MethodName: DisableQuestion
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &3889264047594347450
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5639,6 +5791,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 262cb2a5e1b445642a550d7d91f8f6e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7181109814171448392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3943606773939319768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10bc11d4ce6a124498166786216f94b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &3995535801490240638
@@ -6545,7 +6709,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Nuclear
+  m_text: None
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6629,6 +6793,7 @@ GameObject:
   - component: {fileID: 7787890248416862211}
   - component: {fileID: 8770704184895131183}
   - component: {fileID: 7478953882006367660}
+  - component: {fileID: 2029014888724710043}
   m_Layer: 0
   m_Name: ShopButton (4)
   m_TagString: Button
@@ -6656,10 +6821,10 @@ RectTransform:
   - {fileID: 8888900594172138383}
   m_Father: {fileID: 3074216045208901617}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 77, y: -77}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7401702521812446253
 CanvasRenderer:
@@ -6725,6 +6890,30 @@ MonoBehaviour:
           m_StringArgument: Enable
           m_BoolArgument: 1
         m_CallState: 1
+      - m_Target: {fileID: 97063420762590632}
+        m_TargetAssemblyTypeName: HideQuestionOnButton, Assembly-CSharp
+        m_MethodName: DisableQuestion
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 2029014888724710043}
+        m_TargetAssemblyTypeName: BuyNewWeapon, Assembly-CSharp
+        m_MethodName: BuyTornado
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &97063420762590632
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6786,6 +6975,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 262cb2a5e1b445642a550d7d91f8f6e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2029014888724710043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5421159051481065640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10bc11d4ce6a124498166786216f94b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &5549571543068387843
@@ -7753,6 +7954,7 @@ GameObject:
   - component: {fileID: 4832709159120447787}
   - component: {fileID: 5615949359256713670}
   - component: {fileID: 4725624007830953751}
+  - component: {fileID: 173573326041726196}
   m_Layer: 0
   m_Name: ShopButton (7)
   m_TagString: Button
@@ -7780,10 +7982,10 @@ RectTransform:
   - {fileID: 5015295398633296704}
   m_Father: {fileID: 3074216045208901617}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 77, y: -129}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2852010245213857830
 CanvasRenderer:
@@ -7922,6 +8124,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 262cb2a5e1b445642a550d7d91f8f6e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &173573326041726196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6361664783940094248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10bc11d4ce6a124498166786216f94b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &6479631987615451999
@@ -9107,7 +9321,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Tir 1
+  m_text: Tornado
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -9556,6 +9770,7 @@ GameObject:
   - component: {fileID: 5388169410371303762}
   - component: {fileID: 954125151892922727}
   - component: {fileID: 4869371952299269876}
+  - component: {fileID: 3070419198024250335}
   m_Layer: 0
   m_Name: ShopButton (2)
   m_TagString: Button
@@ -9583,10 +9798,10 @@ RectTransform:
   - {fileID: 2014558987178089479}
   m_Father: {fileID: 3074216045208901617}
   m_LocalEulerAnglesHint: {x: 0, y: 10, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 129, y: -25}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8618871899111074394
 CanvasRenderer:
@@ -9652,6 +9867,30 @@ MonoBehaviour:
           m_StringArgument: Enable
           m_BoolArgument: 1
         m_CallState: 1
+      - m_Target: {fileID: 1706450572452999444}
+        m_TargetAssemblyTypeName: HideQuestionOnButton, Assembly-CSharp
+        m_MethodName: DisableQuestion
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 3070419198024250335}
+        m_TargetAssemblyTypeName: BuyNewWeapon, Assembly-CSharp
+        m_MethodName: BuyIce
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &1706450572452999444
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9713,6 +9952,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 262cb2a5e1b445642a550d7d91f8f6e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3070419198024250335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8005301330829907596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10bc11d4ce6a124498166786216f94b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &8021964979002192212
@@ -10161,7 +10412,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Tir 1
+  m_text: Electricity
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -10224,7 +10475,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: -2.5427475, y: 0, z: -1.822752, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -10429,7 +10680,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Tir 1
+  m_text: ice
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -10647,7 +10898,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 52
+  m_text: none
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -11065,7 +11316,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Tir 1
+  m_text: icicle
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

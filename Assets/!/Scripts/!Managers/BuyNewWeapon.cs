@@ -2,7 +2,7 @@
 
 public class BuyNewWeapon : MonoBehaviour
 {
-    public void BuySlash(ESlashAttack tupe)
+    public void BuyElectricity()
     {
         var weapon = PlayerCore.Instance.transform.GetComponentInChildren<SlashAttackInstantiater>();
         if(weapon == null)
@@ -10,9 +10,19 @@ public class BuyNewWeapon : MonoBehaviour
             Debug.Log("weapon");
             return;
         }
-        weapon.ChangeWeapon(tupe);
+        weapon.ChangeWeapon(ESlashAttack.Electricity);
     }
-    public void BuyProge(EProjectile tupe)
+    public void BuyIce()
+    {
+        var weapon = PlayerCore.Instance.transform.GetComponentInChildren<SlashAttackInstantiater>();
+        if(weapon == null)
+        {
+            Debug.Log("weapon");
+            return;
+        }
+        weapon.ChangeWeapon(ESlashAttack.Ice);
+    }
+    public void BuyFireball()
     {
         var weapon = PlayerCore.Instance.transform.GetComponentInChildren<ProjectileInstantiater>();
         if(weapon == null)
@@ -20,6 +30,26 @@ public class BuyNewWeapon : MonoBehaviour
             Debug.Log("weapon");
             return;
         }
-        weapon.ChangeWeapon(tupe);
+        weapon.ChangeWeapon(EProjectile.Fireball);
+    }
+    public void BuyIcicle()
+    {
+        var weapon = PlayerCore.Instance.transform.GetComponentInChildren<ProjectileInstantiater>();
+        if(weapon == null)
+        {
+            Debug.Log("weapon");
+            return;
+        }
+        weapon.ChangeWeapon(EProjectile.Icicle);
+    }
+    public void BuyTornado()
+    {
+        var weapon = PlayerCore.Instance.transform.GetComponentInChildren<ProjectileInstantiater>();
+        if(weapon == null)
+        {
+            Debug.Log("weapon");
+            return;
+        }
+        weapon.ChangeWeapon(EProjectile.Tornado);
     }
 }
