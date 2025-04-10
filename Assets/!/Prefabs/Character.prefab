@@ -452,8 +452,58 @@ Transform:
   - {fileID: 5100379587846929088}
   - {fileID: 224085980213541839}
   - {fileID: 1459336446347347928}
+  - {fileID: 8057758730329903788}
   m_Father: {fileID: 8150114155832770970}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5455779650988261147
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8057758730329903788}
+  - component: {fileID: 7693073170699791982}
+  m_Layer: 30
+  m_Name: DamageVolume
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8057758730329903788
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5455779650988261147}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -1, z: -2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4539017464063581534}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7693073170699791982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5455779650988261147}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IsGlobal: 1
+  priority: 1
+  blendDistance: 0
+  weight: 0
+  sharedProfile: {fileID: 11400000, guid: 1e79170b46759e147be9c9e8fd0cfe79, type: 2}
 --- !u!1 &5807676170493482100
 GameObject:
   m_ObjectHideFlags: 0
@@ -790,6 +840,7 @@ GameObject:
   - component: {fileID: 6524710563093434183}
   - component: {fileID: 6604847585228803124}
   - component: {fileID: 4103008288953312866}
+  - component: {fileID: 6798367423529244573}
   m_Layer: 7
   m_Name: Character
   m_TagString: Character
@@ -971,3 +1022,19 @@ CapsuleCollider:
   m_Height: 1.8274542
   m_Direction: 1
   m_Center: {x: 0, y: -0.035383284, z: 0}
+--- !u!114 &6798367423529244573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9005463367488759697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb3d3348676688a4ebfa7eeb0f02dc9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _volume: {fileID: 7693073170699791982}
+  _startDuration: 0.5
+  _endDuration: 2
+  _showDuration: 1

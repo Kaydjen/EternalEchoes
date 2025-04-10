@@ -12,8 +12,6 @@ public class Transition : MonoBehaviour
     [SerializeField] private float _duration = 1;
     [SerializeField] private AudioMixerGroup audioMixerGroup;
 
-    private Coroutine coroutine;
-
     public void Awake()
     {
         instance = this;

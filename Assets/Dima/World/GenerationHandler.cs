@@ -6,6 +6,9 @@ using System;
 
 public class GenerationHandler : MonoBehaviour
 {
+    static public GenerationHandler instance;
+    private bool isLoading = false;
+
     #region Generation
 
     [Header("Generation")]
@@ -19,6 +22,8 @@ public class GenerationHandler : MonoBehaviour
     {
         Database.InitSerialzableWorlds(path);
         DontDestroyOnLoad(gameObject);
+
+        instance = this;
     }
 
     private void CreateWorld(int ind = 0)
@@ -42,8 +47,18 @@ public class GenerationHandler : MonoBehaviour
         StartCoroutine(LoadScene("Loading", () => CreateWorld(ind)));
     }
 
-    private IEnumerator LoadScene(string sceneName, Action callback = null)
+    public void Load(string sceneName, Action callback = null)
     {
+        if (!isLoading)
+        StartCoroutine(LoadScene(sceneName, callback));
+    }
+
+     public IEnumerator LoadScene(string sceneName, Action callback = null)
+    {
+        yield return new WaitWhile(() => isLoading);
+
+        isLoading = true;
+
         yield return Transition.instance.PlayTransition(0f, 1f);
 
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneName);
@@ -53,10 +68,16 @@ public class GenerationHandler : MonoBehaviour
         callback?.Invoke();
 
         yield return Transition.instance.PlayTransition(1f, 0f);
+
+        isLoading = false;
     }
 
-    private IEnumerator LoadScene(int sceneIndex, Action callback = null)
+    public IEnumerator LoadScene(int sceneIndex, Action callback = null)
     {
+        yield return new WaitWhile(() => isLoading);
+
+        isLoading = true;
+
         yield return Transition.instance.PlayTransition(0f, 1f);
 
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneIndex);
@@ -66,5 +87,7 @@ public class GenerationHandler : MonoBehaviour
         callback?.Invoke();
 
         yield return Transition.instance.PlayTransition(1f, 0f);
+
+        isLoading = false;
     }
 }
