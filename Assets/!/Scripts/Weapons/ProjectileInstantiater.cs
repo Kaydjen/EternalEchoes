@@ -36,23 +36,24 @@ public class ProjectileInstantiater : MonoBehaviour, IAttack
                 _offset = new Vector3(0f,-1f,0f);
                 _areaProjectile = false;
                 break;
-            case EProjectile.MeteorShower:
+            /*case EProjectile.MeteorShower:
                 _pool = MeteorShowerPool.Instance;
                 _manaCost = 1;
                 GetComponent<AttackHandler>().SetNewFireRate(0f);
                 _offset = new Vector3(0f, 0f, 0f);
                 _areaProjectile = true;
-                break;
+                break;*/
         }
     }
     public void Attack()
     {
-        if (_areaProjectile == false)
+        if (!_stamina.SubtractStamina(_manaCost)) return;
+        Transform bullet = _pool.Get();
+        bullet.GetComponent<IGetAttacker>().SetAttacker(_stamina.gameObject);
+        bullet.position = this.transform.position + _offset;
+        /*if (_areaProjectile == false)
         {
-            if (!_stamina.SubtractStamina(_manaCost)) return;
-            Transform bullet = _pool.Get();
-            bullet.GetComponent<IGetAttacker>().SetAttacker(_stamina.gameObject);
-            bullet.position = this.transform.position + _offset;
+            
         }
         else
         {
@@ -65,7 +66,7 @@ public class ProjectileInstantiater : MonoBehaviour, IAttack
             if (Physics.Raycast(rayStart, rayDir, out hit, _areaDist, 6))
             {
                 Debug.Log($"Hit: {hit.collider?.name ?? "null"}"); // Перевірка об'єкта
-                if (hit.collider != null && hit.collider.CompareTag("Ground"))
+                if (hit.collider != null *//*&& hit.collider.CompareTag("Ground")*//*)
                 {
                     if (!_stamina.SubtractStamina(_manaCost))
                     {
@@ -83,6 +84,6 @@ public class ProjectileInstantiater : MonoBehaviour, IAttack
             {
                 Debug.Log("Промінь нічого не влучив");
             }
-        }
+        }*/
     }
 }
