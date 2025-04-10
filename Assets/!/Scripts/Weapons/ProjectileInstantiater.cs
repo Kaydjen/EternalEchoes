@@ -47,29 +47,29 @@ public class ProjectileInstantiater : MonoBehaviour, IAttack
     }
     public void Attack()
     {
-        if (!_stamina.SubtractStamina(_manaCost)) return;
-        if (_areaProjectile == true)
+        if (_areaProjectile == false)
         {
-            RaycastHit hit;
-            if(Physics.Raycast(AimDirection.Direction.position, AimDirection.Direction.forward, out hit, _areaDist))
-            {
-                Debug.Log("grthfgdrfewtyjuhytgrf");
-                if (hit.collider.CompareTag("Ground"))
-                {
-                    if (!_stamina.SubtractStamina(_manaCost)) return;
-                    Debug.DrawRay(AimDirection.Direction.position, AimDirection.Direction.forward, Color.red, _areaDist);
-                    Debug.Log("Ybababa");
-                    Transform bullet = _pool.Get();
-                    bullet.GetComponent<IGetAttacker>().SetAttacker(this.gameObject);
-                    bullet.position = hit.transform.position;
-                }
-            }
-        }
-        else
-        {
+            if (!_stamina.SubtractStamina(_manaCost)) return;
             Transform bullet = _pool.Get();
             bullet.GetComponent<IGetAttacker>().SetAttacker(this.gameObject);
             bullet.position = this.transform.position + _offset;
+        }
+        else
+        {
+            Debug.Log("Ray start");
+            RaycastHit hit;
+            if (Physics.Raycast(AimDirection.Direction.position, AimDirection.Direction.forward, out hit, _areaDist))
+            {
+                if (hit.collider.CompareTag("Ground"))
+                {
+                    if (!_stamina.SubtractStamina(_manaCost)) return;
+                    Debug.Log("Ray rgthfytdgrftyghftgrfwetyujtyhtgrewtukh");
+                    Transform bullet = _pool.Get();
+                    bullet.GetComponent<IGetAttacker>().SetAttacker(this.gameObject);
+                    // Використовуємо hit.point замість hit.transform.position
+                    bullet.position = hit.point + _offset; // Додайте _offset, якщо потрібно
+                }
+            }
         }
     }
 }
