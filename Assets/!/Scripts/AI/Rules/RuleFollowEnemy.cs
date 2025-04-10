@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
+using UnityEngine.AI;
+using static UnityEngine.GraphicsBuffer;
 
 public class RuleFollowEnemy : MonoBehaviour, IRule
 {
@@ -6,6 +9,9 @@ public class RuleFollowEnemy : MonoBehaviour, IRule
     private Animator _animator;
     private Transform _target;
     private AI _ai;
+    private NavMeshAgent _agent;
+    private NavMeshPath cachedPath;
+
     public bool CanExecute()
     {
         var statement = _possibilities.IsInAttackRange();
@@ -17,14 +23,12 @@ public class RuleFollowEnemy : MonoBehaviour, IRule
         }
         else
         {
-            _animator.SetBool("IsFollowing", false);
             return false;
         }
     }
     public void Execute()
     {
-        _ai.SetDestination(_target);
-        _animator.SetBool("IsFollowing", true);
+        if(_agent.isOnNavMesh && !_agent.isStopped) _ai.SetDestination(_target);
     }
     private void Awake()
     {
@@ -41,6 +45,11 @@ public class RuleFollowEnemy : MonoBehaviour, IRule
         if(!TryGetComponent(out _animator))
         {
             Debug.Log($"{nameof(_animator)} is null in {this.name}");
+            return;
+        }
+        if(!TryGetComponent(out _agent))
+        {
+            Debug.Log($"{nameof(_agent)} is null in {this.name}");
             return;
         }
     }

@@ -47,6 +47,7 @@ namespace Minimap
         {
             if (minimapObjects.Contains(minimapObject)) return;
             minimapObjects.Add(minimapObject);
+            Sort(); // bad idea
         }
 
         static public void Sort() => minimapObjects.Sort((x, y) => x.layer.CompareTo(y.layer));

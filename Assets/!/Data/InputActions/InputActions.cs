@@ -109,7 +109,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""HPRecovery"",
+                    ""name"": ""SoulsBank"",
                     ""type"": ""Button"",
                     ""id"": ""5b128459-6d1b-45d6-a5a1-a0d8abbb2b3b"",
                     ""expectedControlType"": """",
@@ -287,7 +287,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""HPRecovery"",
+                    ""action"": ""SoulsBank"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -347,7 +347,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""HPRecovery"",
+                    ""name"": ""SoulsBank"",
                     ""type"": ""Button"",
                     ""id"": ""51418ea9-f003-4d18-9dae-1c776a8f82d0"",
                     ""expectedControlType"": """",
@@ -484,7 +484,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""HPRecovery"",
+                    ""action"": ""SoulsBank"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -599,7 +599,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""HPRecovery"",
+                    ""name"": ""SoulsBank"",
                     ""type"": ""Button"",
                     ""id"": ""88e76ace-ffa5-4cff-ab3b-b4a011f1f391"",
                     ""expectedControlType"": """",
@@ -754,7 +754,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""HPRecovery"",
+                    ""action"": ""SoulsBank"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -1378,7 +1378,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         m_FPV_AttackRMB = m_FPV.FindAction("AttackRMB", throwIfNotFound: true);
         m_FPV_AimRMB = m_FPV.FindAction("AimRMB", throwIfNotFound: true);
         m_FPV_Reload = m_FPV.FindAction("Reload", throwIfNotFound: true);
-        m_FPV_HPRecovery = m_FPV.FindAction("HPRecovery", throwIfNotFound: true);
+        m_FPV_HPRecovery = m_FPV.FindAction("SoulsBank", throwIfNotFound: true);
         m_FPV_Jump = m_FPV.FindAction("Jump", throwIfNotFound: true);
         m_FPV_MeleeAttack = m_FPV.FindAction("MeleeAttack", throwIfNotFound: true);
         // Top-Down
@@ -1386,7 +1386,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         m_TopDown_ScreenEdgePanning = m_TopDown.FindAction("ScreenEdgePanning", throwIfNotFound: true);
         m_TopDown_MeleeAttack = m_TopDown.FindAction("MeleeAttack", throwIfNotFound: true);
         m_TopDown_Jump = m_TopDown.FindAction("Jump", throwIfNotFound: true);
-        m_TopDown_HPRecovery = m_TopDown.FindAction("HPRecovery", throwIfNotFound: true);
+        m_TopDown_HPRecovery = m_TopDown.FindAction("SoulsBank", throwIfNotFound: true);
         m_TopDown_KeyboardCameraMovement = m_TopDown.FindAction("KeyboardCameraMovement", throwIfNotFound: true);
         m_TopDown_ClickAndDrag = m_TopDown.FindAction("ClickAndDrag", throwIfNotFound: true);
         m_TopDown_ZoomCamera = m_TopDown.FindAction("ZoomCamera", throwIfNotFound: true);
@@ -1398,7 +1398,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         m_Isometric_Mouse = m_Isometric.FindAction("Mouse", throwIfNotFound: true);
         m_Isometric_MeleeAttack = m_Isometric.FindAction("MeleeAttack", throwIfNotFound: true);
         m_Isometric_Jump = m_Isometric.FindAction("Jump", throwIfNotFound: true);
-        m_Isometric_HPRecovery = m_Isometric.FindAction("HPRecovery", throwIfNotFound: true);
+        m_Isometric_HPRecovery = m_Isometric.FindAction("SoulsBank", throwIfNotFound: true);
         m_Isometric_AimRMB = m_Isometric.FindAction("AimRMB", throwIfNotFound: true);
         m_Isometric_Reload = m_Isometric.FindAction("Reload", throwIfNotFound: true);
         m_Isometric_Interaction = m_Isometric.FindAction("Interaction", throwIfNotFound: true);
