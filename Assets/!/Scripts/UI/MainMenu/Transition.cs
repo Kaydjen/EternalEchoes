@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.Events;
@@ -11,11 +11,16 @@ public class Transition : MonoBehaviour
     [SerializeField] private Volume _volume;
     [SerializeField] private float _duration = 1;
     [SerializeField] private AudioMixerGroup audioMixerGroup;
+    private static bool _firstTime = true;
 
     public void Awake()
     {
-        instance = this;
-        DontDestroyOnLoad(gameObject);
+        if(_firstTime)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+            _firstTime = false;
+        }
     }
     public IEnumerator PlayTransition(float start, float end, UnityAction callback = null)
     {
