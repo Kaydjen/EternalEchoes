@@ -27,7 +27,7 @@ public class GenerationHandler : MonoBehaviour
         parent.SetActive(false);
         DontDestroyOnLoad(parent);
 
-        Generator.Seed = seed;
+        Generator.Seed = UnityEngine.Random.Range(0, int.MaxValue);
         ProceduralGeneration.GameObjects.World world = Generator.CreateWorld(ind);
 
         StartCoroutine(ProceduralGeneration.Logic.Renderer3D.Render(world, parent.transform, () => {
