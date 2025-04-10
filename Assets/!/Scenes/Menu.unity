@@ -19384,10 +19384,22 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6123588090074504356, guid: fc36e326b60254040ac9827a7ee19329,
+        type: 3}
+      propertyPath: m_text
+      value: '02
+
+'
+      objectReference: {fileID: 0}
     - target: {fileID: 6875582888022407607, guid: fc36e326b60254040ac9827a7ee19329,
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7708486247187482863, guid: fc36e326b60254040ac9827a7ee19329,
+        type: 3}
+      propertyPath: m_text
+      value: play
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -38012,6 +38024,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Delegates.Array.data[2].callback.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7708486247187482863, guid: fc36e326b60254040ac9827a7ee19329,
+        type: 3}
+      propertyPath: m_text
+      value: play
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
