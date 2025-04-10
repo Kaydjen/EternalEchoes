@@ -51,7 +51,7 @@ public class ProjectileInstantiater : MonoBehaviour, IAttack
         {
             if (!_stamina.SubtractStamina(_manaCost)) return;
             Transform bullet = _pool.Get();
-            bullet.GetComponent<IGetAttacker>().SetAttacker(this.gameObject);
+            bullet.GetComponent<IGetAttacker>().SetAttacker(_stamina.gameObject);
             bullet.position = this.transform.position + _offset;
         }
         else
@@ -65,7 +65,7 @@ public class ProjectileInstantiater : MonoBehaviour, IAttack
                     if (!_stamina.SubtractStamina(_manaCost)) return;
                     Debug.Log("Ray rgthfytdgrftyghftgrfwetyujtyhtgrewtukh");
                     Transform bullet = _pool.Get();
-                    bullet.GetComponent<IGetAttacker>().SetAttacker(this.gameObject);
+                    bullet.GetComponent<IGetAttacker>().SetAttacker(_stamina.gameObject);
                     // Використовуємо hit.point замість hit.transform.position
                     bullet.position = hit.point + _offset; // Додайте _offset, якщо потрібно
                 }
