@@ -13,15 +13,12 @@ public class EnemyFlameAttack : MonoBehaviour
     {
         _hitColliders = Physics.OverlapSphere(_position.position, _radius, _layer);
         if(_hitColliders.Length == 0) return;
-        Debug.Log("ZA ODRUU");
         foreach(Collider hitCollider in _hitColliders)
         {
-            Debug.Log("ZA ALIANS!!!!!!!");
             if(!hitCollider.TryGetComponent(out IDamageable hp)) continue;
             else
             {
                 hp.GetDamage(Random.Range(_damageMin, _damageMax), this.gameObject);
-                Debug.Log("ZA PECZEŃKI!!!!!!!");
             }
         }        
     }
