@@ -149,6 +149,7 @@ MonoBehaviour:
   _manaCost: 0
   _offset: {x: 0, y: 0, z: 0}
   _areaDist: 0
+  _stamina: {fileID: 9190902522046598202}
   _areaProjectile: 0
 --- !u!1 &1347461623300488535
 GameObject:
@@ -331,6 +332,7 @@ MonoBehaviour:
   _manaCost: 0
   _offset: {x: 0, y: 0, z: 0}
   _areaDist: 0
+  _stamina: {fileID: 9190902522046598202}
   _areaProjectile: 0
 --- !u!1 &5017124165447908915
 GameObject:

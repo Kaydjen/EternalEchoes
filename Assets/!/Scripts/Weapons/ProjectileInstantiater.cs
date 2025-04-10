@@ -8,7 +8,7 @@ public class ProjectileInstantiater : MonoBehaviour, IAttack
     [SerializeField] private Vector3 _offset = new Vector3(0f, 0f, 0f);
     [SerializeField] private float _areaDist;
     private Pool<Transform> _pool;
-    private Stamina _stamina;
+    [SerializeField] private Stamina _stamina;
     [SerializeField] private bool _areaProjectile;
 
     private void Start()
@@ -44,7 +44,6 @@ public class ProjectileInstantiater : MonoBehaviour, IAttack
                 _areaProjectile = true;
                 break;
         }
-        _stamina = this.transform.root.GetComponent<Stamina>();
     }
     public void Attack()
     {
