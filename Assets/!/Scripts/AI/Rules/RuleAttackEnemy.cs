@@ -31,7 +31,7 @@ public class RuleAttackEnemy : MonoBehaviour, IRule
     }
     public void Execute()
     {
-        if(_agent.isActiveAndEnabled || _agent.isStopped || _isAttacking) return;
+        if(!_agent.isActiveAndEnabled || _agent.isStopped || _isAttacking) return;
         Debug.Log("Attack started");
         _isAttacking = true;
         _agent.isStopped = true;

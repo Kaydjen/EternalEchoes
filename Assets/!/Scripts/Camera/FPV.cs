@@ -128,18 +128,20 @@ public class FPV : CameraCore, IUpdate, ICamera
     {
         base.ExclusivityСheck();
 
-        if(_player == null && !CheckNull.Player())
+        if(!CheckNull.Player())
         {
             _player = PlayerCore.Instance.transform;
         }
         else
         {
-            Debug.Log($"{nameof(_player)} is null in {nameof(FPV)}");
-            return;
+            Debug.Log("PlayerCore.Instance.transform; is null");
         }
 
+        
+
+
             // Camera Hub Position
-        transform.position = _player.position;
+            transform.position = _player.position;
         transform.rotation = _player.GetChild(Constants.Player.BOTH).transform.localRotation;
 
         // Camera Position
