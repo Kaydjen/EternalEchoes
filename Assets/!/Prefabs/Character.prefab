@@ -757,7 +757,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecbd459edf01c934ca17f6e4cd5d35ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 30
+  _speed: 10
   _controller: {fileID: 6604847585228803124}
 --- !u!1 &8689755550870544889
 GameObject:
@@ -1035,6 +1035,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _volume: {fileID: 7693073170699791982}
-  _startDuration: 0.5
   _endDuration: 2
   _showDuration: 1

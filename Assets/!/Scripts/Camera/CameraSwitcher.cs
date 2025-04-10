@@ -28,17 +28,9 @@ public class CameraSwitcher : MonoBehaviour
     public void Awake()
     {
         #region Singleton
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        else
-        {
-            if (Instance == this) return;
-            Destroy(this);
-        }
+        Instance = this;
         InitEvents.OnCameraSwitcherReady?.Invoke();
-        DontDestroyOnLoad(gameObject);
+
         #endregion Singleton
 
         if (!TryGetComponent(out _FPV)) Debug.LogError($"{nameof(_FPV)} wasn't got in {nameof(CameraSwitcher)}");
