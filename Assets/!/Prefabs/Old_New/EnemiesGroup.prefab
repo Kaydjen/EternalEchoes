@@ -48,9 +48,9 @@ MonoBehaviour:
   _doSpawnSubordinate: 1
   _subordinateEnemyType: 0
   _subordinateEnemyRank: 0
-  _subordinateSpawnDelay: 0
-  _subordinatesCount: 1
-  _subordinatesRadiusOfSpawn: 0
+  _subordinateSpawnDelay: 1
+  _subordinatesCount: 6
+  _subordinatesRadiusOfSpawn: 6
   _doSpawnLeader: 0
   _leaderEnemyType: 1
   _leaderEnemyRank: 0
