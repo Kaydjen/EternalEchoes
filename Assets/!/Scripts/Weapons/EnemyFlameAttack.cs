@@ -15,7 +15,7 @@ public class EnemyFlameAttack : MonoBehaviour
         if(_hitColliders.Length == 0) return;
         foreach(Collider hitCollider in _hitColliders)
         {
-            if(!hitCollider.TryGetComponent(out IDamageable hp)) continue;
+            if(!hitCollider.TryGetComponent(out IDamageable hp) || !hitCollider.CompareTag("Character")) continue;
             else
             {
                 hp.GetDamage(Random.Range(_damageMin, _damageMax), this.gameObject);

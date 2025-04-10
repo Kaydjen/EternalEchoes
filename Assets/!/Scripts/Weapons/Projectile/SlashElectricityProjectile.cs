@@ -12,7 +12,13 @@ public class SlashElectricityProjectile : MonoBehaviour, IGetAttacker
 
     private void OnEnable()
     {
-        transform.SetParent(PlayerCore.Instance.Component.GetBoth());
+        if(PlayerCore.Instance == null)
+        {
+            Debug.Log($"{nameof(PlayerCore.Instance)} is null is {nameof(this.name)}");
+            InitEvents.OnFirstCharacterReady.AddListener(OnEnable);
+            return;
+        }
+        transform.SetParent(PlayerCore.Instance.transform.GetChild(0));
         transform.localRotation = Quaternion.Euler(0, 0, 0);
     }
     private void OnTriggerEnter(Collider other)

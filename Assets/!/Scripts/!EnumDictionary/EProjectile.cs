@@ -2,5 +2,7 @@
 {
     Fireball,
     Icicle,
-    Tornado
+    Tornado,
+    MeteorShower,
+    Crimsonfall
 }

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using Optimization;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -7,11 +8,11 @@ public class RuleAttackEnemy : MonoBehaviour, IRule
 {
     [SerializeField] private AnimationClip _attackAnimation;
     private CheckPossibilities _possibilities;
+    private bool _isAttacking = false;  // Дополнительный флаг для надежности
     private Animator _animator;
     private Transform _target;
     private AI _ai;
     private NavMeshAgent _agent;
-    private Coroutine _coroutine;
     public bool CanExecute()
     {
         var statement = _possibilities.IsInAttackRange();
@@ -20,6 +21,7 @@ public class RuleAttackEnemy : MonoBehaviour, IRule
         if(statement.Item1 && statement2.Item1)
         {
             _target = statement.Item2;
+            Debug.Log("Attack true");
             return true;
         }
         else
@@ -29,17 +31,19 @@ public class RuleAttackEnemy : MonoBehaviour, IRule
     }
     public void Execute()
     {
-        if(_agent.isStopped) return;
-        _coroutine = StartCoroutine(Attack());
-    }
-    private IEnumerator Attack()
-    {
+        if(_agent.isStopped || _isAttacking) return;
+        Debug.Log("Attack started");
+        _isAttacking = true;
         _agent.isStopped = true;
         _animator.SetTrigger("DidAttack");
-        this.transform.LookAt(_target);
-        //_attackAnimation.Play();
-        yield return new WaitForSeconds(_attackAnimation.length);
+        transform.LookAt(_target);
+        Invoke(nameof(StopAttack),_attackAnimation.length);
+    }
+    private void StopAttack()
+    {
         _agent.isStopped = false;
+        _isAttacking = false;
+        Debug.Log("Attack finished");
     }
     private void Awake()
     {

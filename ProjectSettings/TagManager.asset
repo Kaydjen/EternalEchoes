@@ -12,6 +12,7 @@ TagManager:
   - Shop
   - Tile
   - VisibleRadius
+  - Ground
   layers:
   - Default
   - TransparentFX
