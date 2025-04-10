@@ -13,7 +13,6 @@ public class RuleAttackEnemy : MonoBehaviour, IRule
     private Transform _target;
     private AI _ai;
     private NavMeshAgent _agent;
-    private Coroutine _coroutine;
     public bool CanExecute()
     {
         var statement = _possibilities.IsInAttackRange();
@@ -32,24 +31,18 @@ public class RuleAttackEnemy : MonoBehaviour, IRule
     }
     public void Execute()
     {
-        if(_agent.isStopped || _isAttacking || _coroutine != null) return;
-
-        Debug.Log("Attack Execute");
-        _coroutine = StartCoroutine(Attack());
-    }
-    private IEnumerator Attack()
-    {
+        if(_agent.isStopped || _isAttacking) return;
         Debug.Log("Attack started");
         _isAttacking = true;
         _agent.isStopped = true;
         _animator.SetTrigger("DidAttack");
         transform.LookAt(_target);
-
-        yield return new WaitForSeconds(_attackAnimation.length);
-
+        Invoke(nameof(StopAttack),_attackAnimation.length);
+    }
+    private void StopAttack()
+    {
         _agent.isStopped = false;
         _isAttacking = false;
-        _coroutine = null;
         Debug.Log("Attack finished");
     }
     private void Awake()
