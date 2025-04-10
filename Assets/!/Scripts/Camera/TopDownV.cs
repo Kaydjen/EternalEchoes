@@ -125,9 +125,6 @@ public class TopDownV : CameraCore, IUpdate, ICamera
     /// </summary>
     public void UpdateNeededComponents() // TODO: we dont need to get camera here, it's better to do in Init method
     {
-        if (CheckNull.Player()) return;
-        if (CheckNull.Camera()) return;
-
         _cameraTransform = transform.GetChild(Constants.Player.CAMERA).transform;
          if(_cameraTransform == null) 
             Debug.Log($"{nameof(_cameraTransform)} is null in {nameof(TopDownV)}");
@@ -176,26 +173,39 @@ public class TopDownV : CameraCore, IUpdate, ICamera
     }
     private void ChangeScreenPositionMause()
     {
-        if (Mouse.current.position.ReadValue().x > _rightEdgeThreshold)
+        Vector3 moveDirection = Vector3.zero;
+
+        if(Mouse.current.position.ReadValue().x > _rightEdgeThreshold)
         {
-            _moveDestination.x += _cameraClimbingStepValue; // Move right.
+            moveDirection.x += 1f; // Move right.
         }
-        if (Mouse.current.position.ReadValue().x < _leftEdgeThreshold)
+        if(Mouse.current.position.ReadValue().x < _leftEdgeThreshold)
         {
-            _moveDestination.x -= _cameraClimbingStepValue; // Move left.
+            moveDirection.x -= 1f; // Move left.
         }
-        if (Mouse.current.position.ReadValue().y > _topEdgeThreshold)
+        if(Mouse.current.position.ReadValue().y > _topEdgeThreshold)
         {
-            _moveDestination.z += _cameraClimbingStepValue; // Move forward/up.
+            moveDirection.z += 1f; // Move forward/up.
         }
-        if (Mouse.current.position.ReadValue().y < _bottomEdgeThreshold)
+        if(Mouse.current.position.ReadValue().y < _bottomEdgeThreshold)
         {
-            _moveDestination.z -= _cameraClimbingStepValue; // Move backward/down.
+            moveDirection.z -= 1f; // Move backward/down.
         }
+
+        // Нормализуем направление (если нужно двигаться по диагонали)
+        if(moveDirection.magnitude > 1f)
+        {
+            moveDirection.Normalize();
+        }
+
+        // Обновляем целевую позицию на основе текущей позиции, а не накапливаем
+        _moveDestination = transform.position +
+                           moveDirection * _cameraClimbingStepValue * Time.deltaTime +
+                           new Vector3(InputManager.WASDInput.x, 0f, InputManager.WASDInput.y);
 
         transform.position = Vector3.SmoothDamp(
             transform.position,
-            _moveDestination + new Vector3(InputManager.WASDInput.x, 0f, InputManager.WASDInput.y),
+            _moveDestination,
             ref _currentMoveVelocity,
             _smoothTime,
             _cameraMoveSensitivity,

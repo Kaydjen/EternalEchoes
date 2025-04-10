@@ -24,6 +24,7 @@ public class AI : MonoBehaviour
     public virtual void Unregister()
     {
         AIRepository.Unregister(this);
+        this.gameObject.SetActive(false);
     }
     public virtual void CheckRules()
     {

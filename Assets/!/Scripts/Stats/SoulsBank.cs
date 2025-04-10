@@ -10,7 +10,7 @@ public class SoulsBank : Stats, IGameplayModeSwitcher
         if (currentValue != 0)
         {
             _hp.GetRecovery(currentValue);
-            currentValue = 0;
+            Current = 0;
         }        
     }
     public int GetAllSouls()
@@ -21,10 +21,11 @@ public class SoulsBank : Stats, IGameplayModeSwitcher
     }
     public void Replenish(int value)
     {
-        currentValue += value;
+        Current += value;
     }
     public void ForAIMode()
     {
+        InputManager.OnHPRecovery.RemoveListener(Recovery);
         InputManager.OnHPRecovery.AddListener(Recovery);
     }
     public void ForManualMode()
@@ -34,5 +35,6 @@ public class SoulsBank : Stats, IGameplayModeSwitcher
     private void Start()
     {
         if (!TryGetComponent(out _hp)) Debug.Log($"SoulsBank couldn't get _hp component");
+        ForAIMode();
     }
 }

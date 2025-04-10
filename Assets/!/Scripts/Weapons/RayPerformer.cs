@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using UnityEditor.Build.Content;
+using UnityEngine;
 public delegate void HitPointDelegate(RaycastHit hitInfo);
 class RayPerformer : MonoBehaviour, IAttack
 {
@@ -16,6 +17,7 @@ class RayPerformer : MonoBehaviour, IAttack
     [SerializeField] private float _spreadRandomY = .01f;
     [SerializeField] private int _rayDist = 15;
     [SerializeField] private LayerMask _layers;
+    [SerializeField] private GameObject _player;
     private IDamageable _damageable;
     private Vector3 _spread;
     private int _damage;
@@ -32,7 +34,7 @@ class RayPerformer : MonoBehaviour, IAttack
                     _damage = (int)(Random.Range(_minDamage, _maxDamage) * _critMultiplier);
                 else
                     _damage = Random.Range(_minDamage, _maxDamage);
-                _damageable.GetDamage(_damage, this.gameObject);
+                _damageable.GetDamage(_damage, _player);
 
                 OnHitDamageable?.Invoke(hitInfo);
                 Debug.Log(_damage);

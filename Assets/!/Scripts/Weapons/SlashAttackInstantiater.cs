@@ -4,6 +4,7 @@
 public class SlashAttackInstantiater : MonoBehaviour, IAttack
 {
     [SerializeField] private ESlashAttack _type;
+    [SerializeField] private GameObject _player;
     private Pool<Transform> _pool;
 
     private void Update()
@@ -27,7 +28,7 @@ public class SlashAttackInstantiater : MonoBehaviour, IAttack
     public void Attack()
     {
         Transform slash = _pool.Get();
-        slash.GetComponent<IGetAttacker>().SetAttacker(this.gameObject);
+        slash.GetComponent<IGetAttacker>().SetAttacker(_player);
         slash.position = this.transform.position;
     }
 }

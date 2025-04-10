@@ -45,7 +45,10 @@ public class HomingSoul : MonoBehaviour
         if (_target.CompareTag("Enemy") && _target.TryGetComponent(out ISoulsLevelsHandler target))
             target.IncreaseSoulLevel();
         else if(_target.TryGetComponent(out SoulsBank characterSoul))
+        {
             characterSoul.Replenish(_soulValue);
+            Debug.Log("            characterSoul.Replenish(_soulValue);");
+        }
 
         Destroy(gameObject);
     }

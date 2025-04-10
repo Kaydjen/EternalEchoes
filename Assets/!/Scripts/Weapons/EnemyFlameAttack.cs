@@ -8,6 +8,7 @@ public class EnemyFlameAttack : MonoBehaviour
     [SerializeField] private float _radius;
     [SerializeField] private LayerMask _layer;
     [SerializeField] private Transform _position;
+    [SerializeField] private GameObject _player;
     private Collider[] _hitColliders;
     public void Attack()
     {
@@ -18,7 +19,7 @@ public class EnemyFlameAttack : MonoBehaviour
             if(!hitCollider.TryGetComponent(out IDamageable hp) || !hitCollider.CompareTag("Character")) continue;
             else
             {
-                hp.GetDamage(Random.Range(_damageMin, _damageMax), this.gameObject);
+                hp.GetDamage(Random.Range(_damageMin, _damageMax), _player);
             }
         }        
     }

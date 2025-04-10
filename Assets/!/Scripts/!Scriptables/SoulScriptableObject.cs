@@ -1,45 +1,24 @@
-using UnityEditor;
-using UnityEngine;
+﻿using UnityEngine;
 
-[CreateAssetMenu(fileName = "Soul", menuName = "ScriptableObjects", order = 2)]
+[CreateAssetMenu(fileName = "Soul", menuName = "ScriptableObjects/Soul", order = 2)]
 public class SoulScriptableObject : ScriptableObject
 {
-    public int HP;
-    public int Damage;
-    public int Speed;
-    public ESoulType Type;
-    public byte SoulValue;
-}
+    [Header("Stats")]
+    public int HP = 100;
+    public int Damage = 10;
+    public int Speed = 5;
 
+    [Header("Type")]
+    public ESoulType Type = ESoulType.Newborn;
 
+    [Header("Value")]
+    [Range(1, 255)] // Ограничение для Inspector
+    public byte SoulValue = 1;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
- 
-    public string[] Description = 
+    private void OnValidate()
     {
-        "1.",
-        "2.",
-        "3.",
-        "4.",
-        "5.",
-        "6.",
-        "7.",
-        "8.",
-        "9.",
-    };
-
-*/
+        HP = Mathf.Max(1, HP);
+        Damage = Mathf.Max(0, Damage);
+        Speed = Mathf.Max(0, Speed);
+    }
+}
