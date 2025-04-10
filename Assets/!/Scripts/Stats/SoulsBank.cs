@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class HPRecovery : Stats, IGameplayModeSwitcher
+public class SoulsBank : Stats, IGameplayModeSwitcher
 {
     public override ESliderType Type { get => ESliderType.Recovery; protected set { } }
     private HP _hp;
@@ -33,6 +33,6 @@ public class HPRecovery : Stats, IGameplayModeSwitcher
     }
     private void Start()
     {
-        if (!TryGetComponent(out _hp)) Debug.Log($"HPRecovery couldn't get _hp component");
+        if (!TryGetComponent(out _hp)) Debug.Log($"SoulsBank couldn't get _hp component");
     }
 }

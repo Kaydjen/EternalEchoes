@@ -19,6 +19,6 @@ public class ShopMenu : MonoBehaviour
     }
     public void GetMoneyFromCharacter()
     {
-        Money += PlayerCore.Instance.GetComponent<HPRecovery>().GetAllSouls();
+        Money += PlayerCore.Instance.GetComponent<SoulsBank>().GetAllSouls();
     }
 }
