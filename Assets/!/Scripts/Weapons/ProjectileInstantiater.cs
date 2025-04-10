@@ -57,18 +57,31 @@ public class ProjectileInstantiater : MonoBehaviour, IAttack
         else
         {
             Debug.Log("Ray start");
+            Vector3 rayStart = AimDirection.Direction.position;
+            Vector3 rayDir = AimDirection.Direction.forward * _areaDist;
+            Debug.DrawRay(rayStart, rayDir, Color.red, 2f); // Візуалізація
+
             RaycastHit hit;
-            if (Physics.Raycast(AimDirection.Direction.position, AimDirection.Direction.forward, out hit, _areaDist))
+            if (Physics.Raycast(rayStart, rayDir, out hit, _areaDist, 6))
             {
-                if (hit.collider.CompareTag("Ground"))
+                Debug.Log($"Hit: {hit.collider?.name ?? "null"}"); // Перевірка об'єкта
+                if (hit.collider != null && hit.collider.CompareTag("Ground"))
                 {
-                    if (!_stamina.SubtractStamina(_manaCost)) return;
-                    Debug.Log("Ray rgthfytdgrftyghftgrfwetyujtyhtgrewtukh");
+                    if (!_stamina.SubtractStamina(_manaCost))
+                    {
+                        Debug.Log("Недостатньо мани!");
+                        return;
+                    }
+
+                    Debug.Log("Створюємо снаряд");
                     Transform bullet = _pool.Get();
                     bullet.GetComponent<IGetAttacker>().SetAttacker(_stamina.gameObject);
-                    // Використовуємо hit.point замість hit.transform.position
-                    bullet.position = hit.point + _offset; // Додайте _offset, якщо потрібно
+                    bullet.position = hit.point + _offset;
                 }
+            }
+            else
+            {
+                Debug.Log("Промінь нічого не влучив");
             }
         }
     }
