@@ -4,6 +4,7 @@
 public class SlashAttackInstantiater : MonoBehaviour, IAttack
 {
     [SerializeField] private ESlashAttack _type;
+    [SerializeField] private GameObject _player;
     private Pool<Transform> _pool;
 
     private void Update()
