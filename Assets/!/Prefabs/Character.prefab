@@ -679,8 +679,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfc0ec121c2d4ee458f034c6876fbe25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxValue: 100
-  currentValue: 10
+  maxValue: 1000
+  currentValue: 1000
   _armor: 0
 --- !u!114 &9190902522046598202
 MonoBehaviour:
