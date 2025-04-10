@@ -21,7 +21,7 @@ public class SoulsBank : Stats, IGameplayModeSwitcher
     }
     public void Replenish(int value)
     {
-        currentValue += value;
+        Current += value;
     }
     public void ForAIMode()
     {
