@@ -1,14 +1,17 @@
-﻿using Optimization;
+﻿using System.Collections;
+using Optimization;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class RuleAttackEnemy : MonoBehaviour, IRule
 {
+    [SerializeField] private AnimationClip _attackAnimation;
     private CheckPossibilities _possibilities;
     private Animator _animator;
     private Transform _target;
     private AI _ai;
     private NavMeshAgent _agent;
+    private Coroutine _coroutine;
     public bool CanExecute()
     {
         var statement = _possibilities.IsInAttackRange();
@@ -21,16 +24,22 @@ public class RuleAttackEnemy : MonoBehaviour, IRule
         }
         else
         {
-            _agent.isStopped = false;
-            _animator.SetBool("IsAttackingSlash", false);
             return false;
         }
     }
     public void Execute()
     {
+        if(_agent.isStopped) return;
+        _coroutine = StartCoroutine(Attack());
+    }
+    private IEnumerator Attack()
+    {
         _agent.isStopped = true;
-        _agent.velocity = Vector3.zero;
-        _animator.SetBool("IsAttackingSlash", true);
+        _animator.SetTrigger("DidAttack");
+        this.transform.LookAt(_target);
+        //_attackAnimation.Play();
+        yield return new WaitForSeconds(_attackAnimation.length);
+        _agent.isStopped = false;
     }
     private void Awake()
     {

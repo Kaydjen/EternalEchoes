@@ -6,6 +6,7 @@ public class AIManager : MonoBehaviour
     #region PRIVATE 
     private void SubscribeOnEvents()
     {
+        AIRepository.OnInstantiate += ai => Minimap.MinimapHandler.Add(new Minimap.MoveableMinimapObject(ai.transform, 0, Color.white));
         AIRepository.OnInstantiate += ai => ai.gameObject.SetActive(true);
         AIRepository.OnRegister += ai => StartCoroutine(SpawnEffect(ai));
         AIRepository.OnUnregister += ai => Debug.Log($"Enemy with ID {ai.gameObject.GetInstanceID()} just died");

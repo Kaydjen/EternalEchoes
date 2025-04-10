@@ -3354,9 +3354,10 @@ GameObject:
   - component: {fileID: 2722738810470106111}
   - component: {fileID: 742924254688497541}
   - component: {fileID: 7567334744196303023}
-  m_Layer: 0
+  - component: {fileID: 2176554818712242533}
+  m_Layer: 7
   m_Name: Flame_TIR1
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3416,10 +3417,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 3221225591
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -3437,17 +3438,17 @@ NavMeshAgent:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7848179689184481440}
   m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 1.25
-  m_Speed: 6
-  m_Acceleration: 18
+  m_AgentTypeID: -1372625422
+  m_Radius: 0.5
+  m_Speed: 4.5
+  m_Acceleration: 500
   avoidancePriority: 50
   m_AngularSpeed: 360
-  m_StoppingDistance: 0
+  m_StoppingDistance: 2
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 2
+  m_Height: 1
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
@@ -3477,6 +3478,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: daf74dea040b5534db455d176c364732, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _attackAnimation: {fileID: -4823902244794491077, guid: 22d0926ceb3dc674a833bae340aa5fce,
+    type: 3}
 --- !u!114 &742924254688497541
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3489,7 +3492,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a7ecfbafef31374abc57b5467f003a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attackRange: 4
+  _attackRange: 3
   _followRange: 30
 --- !u!114 &7567334744196303023
 MonoBehaviour:
@@ -3501,6 +3504,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e6406b1cb1022524b934a5e18efcf647, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2176554818712242533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7848179689184481440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f55334164c96784db5b963c2de3e212, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &7950304924695220111

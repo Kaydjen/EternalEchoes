@@ -4,6 +4,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
+using static UnityEngine.EventSystems.EventTrigger;
 
 [RequireComponent(typeof(NavMeshAgent))]
 public class AI : MonoBehaviour
@@ -58,8 +59,18 @@ public class AI : MonoBehaviour
     }
     protected virtual void OnEnable()
     {
-        if (_agent != null) _agent.enabled = true;
-        else Debug.Log($"{nameof(_agent)} is null");
+        NavMeshHit hit;
+        if(NavMesh.SamplePosition(_agent.transform.position, out hit, 6.0f, NavMesh.AllAreas))
+        {
+            _agent.transform.position = hit.position;
+
+            if(_agent != null) _agent.enabled = true;
+            else Debug.Log($"{nameof(_agent)} is null");
+        }
+        else
+        {
+            Debug.Log($"BLIA");
+        }
     }
     protected virtual void OnDisable()
     {
