@@ -1,5 +1,4 @@
-﻿using UnityEditor.Build.Content;
-using UnityEngine;
+﻿using UnityEngine;
 public delegate void HitPointDelegate(RaycastHit hitInfo);
 class RayPerformer : MonoBehaviour, IAttack
 {
